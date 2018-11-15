@@ -1,10 +1,10 @@
 # 仿饿了么H5-纯前端Vue版+手把手教学
-
+转载自https://www.jianshu.com/p/65c957b228e9
 这是一个仿饿了么H5的纯前端练手，使用本地伪造数据。
 最新更新：修改小球抛物效果，使用css3贝塞尔曲线实现，效果更流畅。
 ######预览点这里：[https://hbxywdk.github.io/eleme-vue2-static/#/](https://hbxywdk.github.io/eleme-vue2-static/#/)
 网页是有假的账户密码的部分页面需要登录 ↓ ，最好在Chrome手机模式下浏览。
-username：admin 
+username：admin
 password：admin
 ### 本地预览步骤
 
@@ -106,7 +106,7 @@ state为状态数据，触发action，mutations会去改变state的值，getters
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './vuex/store'  // 引入store 
+import store from './vuex/store'  // 引入store
 
 Vue.config.productionTip = false
 
@@ -114,7 +114,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store, // 注入store 
+  store, // 注入store
   template: '<App/>',
   components: { App }
 })
@@ -215,7 +215,7 @@ export default new Router({
 我们引入空白组件，并定义路由，当访问对应路径时，如localhost:8080/#/business，App.vue中的<router-view></router-view>就会展示对应内容，做到无刷新跳转。path: '/business/:id'，后面的 :id 则是要传递的参数，组件中可以this.$route.params.id得到其值。
 
 template中用<router-link>来跳转，<router-link> 默认会被渲染成一个 `<a>` 标签 <router-link to="/business/123">Go to Foo</router-link>，js中可用router.replace(location)来进行跳转。
-    
+
 更多用法详见[http://router.vuejs.org/zh-cn/essentials/getting-started.html](http://router.vuejs.org/zh-cn/essentials/getting-started.html)
 
 ###下面进入到代码部分
