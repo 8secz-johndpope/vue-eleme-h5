@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
 import Homepage from 'components/Homepage';
+import Shop from 'components/Shop';
 import Order from 'components/Order';
 import Myzone from 'components/Myzone';
 import Business from 'components/Business';
@@ -15,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'homepage',
       component: Homepage
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: Shop
     },
     {
       path: '/order',

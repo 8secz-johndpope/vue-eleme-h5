@@ -1,43 +1,12 @@
 <template>
     <!-- 列表单个商家 -->
 
-  <nav class="fixed_nav">
-    <router-link to="/">
-      <span class="one_fixed_nav">
-        <svg v-if="returnPageNow == 'homepage'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#index.18edf5a"></use>
-        </svg>
-        <svg v-if="returnPageNow !== 'homepage'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#index-regular.b245d60"></use>
-        </svg>
-        <span>外卖</span>
-      </span>
-    </router-link>
-
-    <router-link to="/order">
-      <span class="one_fixed_nav">
-        <svg v-if="returnPageNow == 'order'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order.070ae2a"></use>
-        </svg>
-        <svg v-if="returnPageNow !== 'order'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order-regular.41c17f8"></use>
-        </svg>
-        <span>订单</span>
-      </span>
-    </router-link>
-
-    <router-link to="/myzone">
-      <span class="one_fixed_nav">
-        <svg v-if="returnPageNow == 'myzone'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile.dbc5ebf"></use>
-        </svg>
-        <svg v-if="returnPageNow !== 'myzone'">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-regular.c151d62"></use>
-        </svg>
-        <span>我的</span>
-      </span>
-    </router-link>
-  </nav>
+  <van-tabbar v-model="active">
+    <van-tabbar-item icon="home-o">标签</van-tabbar-item>
+    <van-tabbar-item icon="search" dot>标签</van-tabbar-item>
+    <van-tabbar-item icon="friends-o" info="5">标签</van-tabbar-item>
+    <van-tabbar-item icon="setting-o" info="20">标签</van-tabbar-item>
+  </van-tabbar>
 </template>
 
 <script>
@@ -45,7 +14,7 @@ export default {
   name: 'fixed_nav',
   data () {
     return {
-
+      active: 0
     };
   },
   mounted () {
@@ -81,11 +50,13 @@ export default {
       display:block;
       margin: .2rem auto .1rem;
      }
-     .one_fixed_nav{
-      width:32.6%;
-      display:inline-block;
-      height:1.2rem;
-      text-align:center;
-     }
+     .one_fixed_nav {
+        width: 19.3%;
+        display: inline-block;
+        height: 1.2rem;
+        text-align: center;
+        line-height: 1.2rem;
+        font-size: 0.35rem;
+    }
   }
 </style>

@@ -3,19 +3,19 @@
     <!-- 首页 -->
     <div class="index_header">
       <!-- 地址 -->
-      <!-- <div class="index_location">
+      <div class="index_location">
         <div class="location_left ell">
           <svg class="v-md">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#location"></use>
           </svg>
           <span  class="v-md">深圳市福田区这里是个假定位村淡定啦~这不重要</span>
-        </div> -->
+        </div>
 
         <!-- 登录按钮 -->
-        <!-- <div class="index_login" v-if="!getLogin">
+        <div class="index_login" v-if="!getLogin">
           <router-link to="/login">登录</router-link>
         </div>
-      </div> -->
+      </div>
 
       <!-- 搜索 -->
       <div class="search_box">

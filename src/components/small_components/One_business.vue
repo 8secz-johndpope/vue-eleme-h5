@@ -6,7 +6,7 @@
 
         <section class="one_business clear">
           <div class="business_img">
-            <img src="../../images/shop-logo.png" alt="">
+            <img src="../../images/slider-pic/slider-pic1.jpeg" alt="">
           </div>
           <div class="business_info">
             <section class="business_name clear">
@@ -25,7 +25,9 @@
             </section>
             <section class="business_code clear">
               <div class="code_num fl">
-                <YellowStar :code="a.shop_rating"></YellowStar>
+                <svg class="v-md">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rating-star"></use>
+                </svg>
                 <span class="v-md">{{ a.shop_rating }}</span>
               </div>
               <div class="code_icon fr">
@@ -55,13 +57,12 @@
 </template>
 
 <script>
-import YellowStar from './Yellow_star';
-
 export default {
   name: 'one_business',
   props: ['a'],
   data () {
     return {
+      msg: '1'
 
     };
   },
@@ -73,15 +74,13 @@ export default {
   },
   methods: {
 
-  },
-  components: {
-    YellowStar
   }
 
 };
 </script>
 
-<style lang="less" scoped>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="less">
 @baseBlue: #0096ff;
 @com_gray1: #666;
 @com_gray2: #999;
@@ -113,7 +112,6 @@ export default {
     width:7.4rem;
     height:1.6rem;
     padding:0.4rem .2rem .4rem 0;
-    box-sizing: border-box;
     .business_name{
       font-size:.35rem;
       line-height:.45rem;
@@ -154,6 +152,13 @@ export default {
       line-height:.25rem;
     }
 
+  }
+  .code_num{
+    svg{
+      width:.3rem;
+      height:.3rem;
+      fill: #ffaa0c;
+    }
   }
   .zsd{
     font-size:.25rem;

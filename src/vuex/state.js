@@ -2,7 +2,7 @@ import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } fro
 
 export default {
   // 是否在加载中
-  isLoading: false,
+  isLoading: true,
   // 假用户名
   username: 'admin',
   // 假密码

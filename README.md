@@ -1,5 +1,5 @@
 # 仿饿了么H5-纯前端Vue版+手把手教学
-转载自https://www.jianshu.com/p/65c957b228e9
+<p align="center">转载自https://www.jianshu.com/p/65c957b228e9</p>
 这是一个仿饿了么H5的纯前端练手，使用本地伪造数据。
 最新更新：修改小球抛物效果，使用css3贝塞尔曲线实现，效果更流畅。
 ######预览点这里：[https://hbxywdk.github.io/eleme-vue2-static/#/](https://hbxywdk.github.io/eleme-vue2-static/#/)
