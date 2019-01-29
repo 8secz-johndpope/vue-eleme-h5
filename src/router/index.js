@@ -7,6 +7,7 @@ import Myzone from 'components/Myzone';
 import Business from 'components/Business';
 import Login from 'components/Login';
 import Search from 'components/Search';
+import Myfans from 'components/Myfans';
 Vue.use(Router);
 
 export default new Router({
@@ -30,6 +31,11 @@ export default new Router({
       path: '/myzone',
       name: 'myzone',
       component: Myzone
+    },
+    {
+      path: '/myfans',
+      name: 'myfans',
+      component: Myfans
     },
     {
       path: '/business/:id',

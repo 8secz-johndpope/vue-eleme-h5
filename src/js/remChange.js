@@ -22,7 +22,7 @@ export function remChange () {
   var widthProportion = function () {
     var doc = document.body || document.documentElement;
     var p = doc.clientWidth;
-    return p / 10;
+    return p / 8;
   };
   var changePage = function () {
     document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + widthProportion() + 'px !important');

@@ -3,17 +3,16 @@
     ["es2015", { "modules": false }],
     "stage-2"
   ],
-  "plugins": [
-    ["import", {
-      "libraryName": "vant",
-      "libraryDirectory": "es",
-      "style": true
-    }]
-  ],
   "comments": false,
   "env": {
     "test": {
-      "plugins": [ "istanbul" ]
+      "plugins": [
+        ["import", {
+          "libraryName": "vant",
+          "libraryDirectory": "es",
+          "style": true
+        }]
+      ],
     }
   }
 }

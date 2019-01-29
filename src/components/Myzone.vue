@@ -1,6 +1,8 @@
 <template>
   <div class="myzone_index">
     <Backbar title="我的"></Backbar>
+    <!-- <van-icon name="setting-o" class="setting" /> -->
+    <i class="fa fa-bars setting"></i>
     <div class="myzone_content">
       <!-- 头 -->
       <div class="myzone_info clear">
@@ -15,25 +17,22 @@
     <div class="three_lan">
       <a class="three_lan_">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">0.00</span><span class="index-2V-Hh_0">元</span>
+          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">0.00</span><span class="index-2V-Hh_0">获赞</span>
         </p>
-        <p class="index-3S6cZ_0">余额</p>
       </a>
       <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">3</span><span class="index-2V-Hh_0">个</span>
+          <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">3</span><span class="index-2V-Hh_0">粉丝</span>
         </p>
-        <p class="index-3S6cZ_0">优惠</p>
       </a>
       <a class="three_lan_">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">6250</span><span class="index-2V-Hh_0">分</span>
+          <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">6250</span><span class="index-2V-Hh_0">关注</span>
         </p>
-        <p class="index-3S6cZ_0">积分</p>
       </a>
     </div>
     <!-- 栏 -->
-    <router-link to="/Order"> 
+    <!-- <router-link to="/Order">
       <div class="some_bar first-c">
         <svg class="v-md">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order.070ae2a"></use>
@@ -65,7 +64,15 @@
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#index.18edf5a"></use>
       </svg>
       <span class="v-md">下载饿了么APP</span>
-    </div>
+    </div> -->
+    <van-tabs v-model="active" sticky @click="onClick">
+      <van-tab title="我的作品">
+        我的作品
+      </van-tab>
+      <van-tab title="我的收藏">
+        我的收藏
+      </van-tab>
+    </van-tabs>
     <Fixednav></Fixednav>
   </div>
 </template>
@@ -77,7 +84,8 @@ export default {
   name: 'myzone',
   data () {
     return {
-      uname: ''
+      uname: '',
+      active: 1,
     };
   },
   mounted () {
@@ -95,7 +103,9 @@ export default {
     }
   },
   methods: {
-
+    onClick(index, title) {
+      this.$toast(title);
+    }
   },
   components: {
     Fixednav,
@@ -105,13 +115,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.setting{
+  z-index: 999;
+  position: fixed;
+  right: 0.3rem;
+  top: 0.3rem;
+  color: #fff;
+}
 .myzone_content{
-  width:10rem;
-  height:3rem;
-  margin-top:1rem;
-  padding: .8rem .4rem;
-  box-sizing:border-box;
-  background:#0097ff;
+  width: 10rem;
+  height: 2rem;
+  margin-top: 1rem;
+  padding: 0.2rem .4rem;
+  box-sizing: border-box;
+  background: #0097ff;
   img{
     width:1.4rem;
     height:1.4rem;
@@ -133,8 +150,9 @@ export default {
   display: table;
   width: 100%;
   height: 2.24rem;
+  color: #fff;
   border-bottom: 1px solid #ddd;
-  background-color: #fff;
+  background-color: #0097ff;
   .three_lan_{
     display: table-cell;
     width: 33.3333%;
@@ -152,12 +170,13 @@ export default {
     .index-2V-Hh_0 {
         font-size: .32rem;
         line-height: .32rem;
+        color: #fff;
     }
     .index-3S6cZ_0 {
         font-size: .32rem;
         line-height: .37rem;
         font-weight: 500;
-        color: #666;
+        color: #fff;
     }
 
   }
