@@ -4,10 +4,10 @@
     <transition name="router-fade" mode="out-in">
       <router-view></router-view>
     </transition>
-    <div class="loading_jump" v-if="isLoading">
+    <!-- <div class="loading_jump" v-if="isLoading">
       <div class="loading_jump1"></div>
       <div class="loading_jump2"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
