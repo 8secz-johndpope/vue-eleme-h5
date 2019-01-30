@@ -1,14 +1,41 @@
 <template>
   <div>
-    <van-swipe-cell :right-width="65">
+    <van-swipe-cell :right-width="130">
       <van-cell-group>
-        <van-cell title="单元格" value="内容" />
+        <van-cell class="displayflex">
+          <div class="displayflex-1 tleft">
+            <span class="van-avatar"><img src="../images/slider-pic/slider-pic11.jpeg" alt="" class="van-avatar-img"></span>
+          </div>
+          <div class="displayflex-1 tright">
+            <van-button type="danger" size="mini" @click="addInterest">关注</van-button>
+          </div>
+        </van-cell>
       </van-cell-group>
-      <span slot="right">删除00</span>
+      <span slot="right">删除</span>
     </van-swipe-cell>
-    <van-swipe-cell :right-width="65" :on-close="onClose">
+    <van-swipe-cell :right-width="130">
       <van-cell-group>
-        <van-cell title="单元格" value="内容" />
+        <van-cell class="displayflex">
+          <div class="displayflex-1 tleft">
+            <span class="van-avatar"><img src="../images/slider-pic/slider-pic11.jpeg" alt="" class="van-avatar-img"></span>
+          </div>
+          <div class="displayflex-1 tright">
+            <van-button type="default" size="mini" @click="cancelInterest">已关注</van-button>
+          </div>
+        </van-cell>
+      </van-cell-group>
+      <span slot="right">删除</span>
+    </van-swipe-cell>
+    <van-swipe-cell :right-width="130">
+      <van-cell-group>
+        <van-cell class="displayflex">
+          <div class="displayflex-1 tleft">
+            <span class="van-avatar"><img src="../images/slider-pic/slider-pic11.jpeg" alt="" class="van-avatar-img"></span>
+          </div>
+          <div class="displayflex-1 tright">
+            <van-button type="default" size="mini" @click="cancelInterest">互相关注</van-button>
+          </div>
+        </van-cell>
       </van-cell-group>
       <span slot="right">删除</span>
     </van-swipe-cell>
@@ -18,50 +45,43 @@
 
 <script>
 
-  import { Dialog } from "vant";
+  import { Dialog,Toast } from "vant";
   import Fixednav from './small_components/Fixed_nav';
 
-import "../css/common.css";
-export default {
-  components:{
-         Fixednav,
-         // [Swipe.name]:Swipe,
-         // [SwipeCell.name]:SwipeCell,
-         // [CellGroup.name]:CellGroup,
-         // [Cell.name]:Cell,
-         [Dialog.name]:Dialog,
+  import "../css/common.css";
+  export default {
+    components:{
+           Fixednav,
+           [Dialog.name]:Dialog,
+           [Toast.name]:Toast,
+        },
+    name: 'myfans',
+    data () {
+      return {
+        msg: '1'
+      };
+    },
+    mounted () {
+
+    },
+    computed: {
+
+    },
+    methods: {
+      // 添加关注
+      addInterest (instance){
+         Toast('成功关注');
       },
-  name: 'myfans',
-  data () {
-    return {
-      msg: '1'
-    };
-  },
-  mounted () {
-
-  },
-  computed: {
-
-  },
-  methods: {
-    onClose (clickPosition, instance) {
-      switch (clickPosition) {
-        case 'left':
-        case 'cell':
-        case 'outside':
+      // 取消关注
+      cancelInterest (clickPosition, instance) {
+        Dialog.confirm({
+          message: '确定取消关注吗？'
+        }).then(() => {
           instance.close();
-          break;
-        case 'right':
-          Dialog.confirm({
-            message: '确定删除吗？'
-          }).then(() => {
-            instance.close();
-          });
-          break;
+        });
       }
     }
   }
-}
 </script>
 <style lang="css" scoped>
 </style>

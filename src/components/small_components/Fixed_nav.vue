@@ -5,7 +5,7 @@
     <van-tabbar-item icon="home-o">标签</van-tabbar-item>
     <van-tabbar-item icon="search" dot :to="'/business/s10001'">商家</van-tabbar-item>
     <van-tabbar-item icon="friends-o" info="5" :to="'/Myfans'">粉丝</van-tabbar-item>
-    <van-tabbar-item icon="setting-o" info="20" :to="'/Myzone'">标签</van-tabbar-item>
+    <van-tabbar-item icon="setting-o" info="20" :to="'/Myzone'">我的</van-tabbar-item>
   </van-tabbar>
 </template>
 

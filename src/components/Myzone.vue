@@ -2,7 +2,7 @@
   <div class="myzone_index">
     <Backbar title="我的"></Backbar>
     <!-- <van-icon name="setting-o" class="setting" /> -->
-    <i class="fa fa-bars setting"></i>
+    <i class="fa fa-bars setting" @click="openSetting"></i>
     <div class="myzone_content">
       <!-- 头 -->
       <div class="myzone_info clear">
@@ -17,7 +17,7 @@
     <div class="three_lan">
       <a class="three_lan_">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">0.00</span><span class="index-2V-Hh_0">获赞</span>
+          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">1.2亿</span><span class="index-2V-Hh_0">获赞</span>
         </p>
       </a>
       <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
@@ -31,40 +31,6 @@
         </p>
       </a>
     </div>
-    <!-- 栏 -->
-    <!-- <router-link to="/Order">
-      <div class="some_bar first-c">
-        <svg class="v-md">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order.070ae2a"></use>
-        </svg>
-        <span class="v-md">我的订单</span>
-      </div>
-    </router-link>
-    <div class="some_bar">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
-      </svg>
-      <span class="v-md">积分商城</span>
-    </div>
-    <div class="some_bar">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#eleme"></use>
-      </svg>
-      <span class="v-md">饿了么会员卡</span>
-    </div>
-
-    <div class="some_bar first-c">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discover.5811137"></use>
-      </svg>
-      <span class="v-md">服务中心</span>
-    </div>
-    <div class="some_bar">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#index.18edf5a"></use>
-      </svg>
-      <span class="v-md">下载饿了么APP</span>
-    </div> -->
     <van-tabs v-model="active" sticky @click="onClick">
       <van-tab title="我的作品">
         我的作品
@@ -73,6 +39,10 @@
         我的收藏
       </van-tab>
     </van-tabs>
+    <van-popup v-model="show" position="right" :overlay="true">
+      <!-- 栏 -->
+      <Setting></Setting>
+    </van-popup>
     <Fixednav></Fixednav>
   </div>
 </template>
@@ -80,12 +50,14 @@
 <script>
 import Backbar from './small_components/Back_bar';
 import Fixednav from './small_components/Fixed_nav';
+import Setting from './Setting';
 export default {
   name: 'myzone',
   data () {
     return {
       uname: '',
       active: 1,
+      show: false,
     };
   },
   mounted () {
@@ -105,11 +77,15 @@ export default {
   methods: {
     onClick(index, title) {
       this.$toast(title);
+    },
+    openSetting(){
+      this.show = true;
     }
   },
   components: {
     Fixednav,
-    Backbar
+    Backbar,
+    Setting
   }
 };
 </script>
@@ -179,27 +155,6 @@ export default {
         color: #fff;
     }
 
-  }
-}
-div.some_bar{
-  width: 10rem;
-  height: 1.1rem;
-  padding: 0 .4rem;
-  box-sizing: border-box;
-  background:#fff;
-  font-size:.4rem;
-  line-height:1.1rem;
-  border-top:1px solid #dedede;
-  &.first-c{
-    margin-top: .3rem;
-    boeder:none;
-  }
-  svg{
-    width: .4rem;
-    height: .4rem;
-  }
-  span{
-    margin-left:.2rem;
   }
 }
 </style>
