@@ -33,7 +33,7 @@
     </div>
     <van-tabs v-model="active" sticky @click="onClick">
       <van-tab title="我的作品">
-        我的作品
+        <Conversation></Conversation>
       </van-tab>
       <van-tab title="我的收藏">
         我的收藏
@@ -50,6 +50,7 @@
 <script>
 import Backbar from './small_components/Back_bar';
 import Fixednav from './small_components/Fixed_nav';
+import Conversation from './small_components/Conversation';
 import Setting from './Setting';
 export default {
   name: 'myzone',
@@ -85,7 +86,8 @@ export default {
   components: {
     Fixednav,
     Backbar,
-    Setting
+    Setting,
+    Conversation,
   }
 };
 </script>
