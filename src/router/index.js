@@ -4,6 +4,7 @@ import Homepage from 'components/Homepage';
 import Shop from 'components/Shop';
 import Order from 'components/Order';
 import Myzone from 'components/Myzone';
+import Recommend from 'components/Recommend';
 import Business from 'components/Business';
 import Login from 'components/Login';
 import Search from 'components/Search';
@@ -31,6 +32,11 @@ export default new Router({
       path: '/myzone',
       name: 'myzone',
       component: Myzone
+    },
+    {
+      path: '/recommend',
+      name: 'recommend',
+      component: Recommend
     },
     {
       path: '/myfans',
