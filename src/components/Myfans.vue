@@ -26,7 +26,7 @@
         </van-cell-group>
         <span slot="right">删除</span>
       </van-swipe-cell>
-      <p>下拉刷新查看更多</p>
+      <p>下拉刷新</p>
     </van-pull-refresh>
     <!-- 固定标签页 -->
     <Fixednav></Fixednav>

@@ -33,10 +33,10 @@
     </div>
     <van-tabs v-model="active" sticky @click="onClick">
       <van-tab title="我的作品">
-        <Conversation></Conversation>
+        <Conversation :composition="composition"></Conversation>
       </van-tab>
       <van-tab title="我的收藏">
-        我的收藏
+        <Conversation :composition="composition"></Conversation>
       </van-tab>
     </van-tabs>
     <van-popup v-model="show" position="right" :overlay="true">
@@ -57,8 +57,21 @@ export default {
   data () {
     return {
       uname: '',
-      active: 1,
+      active: 0,
       show: false,
+      composition: [  // 作品
+        {
+          userName: '',
+          userId: '',
+          id: 'zs20190213',
+          author: '张三',
+          time: '2019.02.13',
+          likers: 9999,
+          isLike: false,
+          contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>',
+          content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',
+        },
+      ]
     };
   },
   mounted () {
@@ -101,7 +114,6 @@ export default {
   color: #fff;
 }
 .myzone_content{
-  width: 10rem;
   height: 2rem;
   margin-top: 1rem;
   padding: 0.2rem .4rem;

@@ -36,7 +36,7 @@ export default {
 
 <style lang="less" scoped>
 .back_box{
-  width:10rem;
+  // width:10rem;
   height:1rem;
   line-height:1rem;
   position:fixed;

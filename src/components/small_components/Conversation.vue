@@ -1,47 +1,42 @@
 <template>
     <div>
         <!-- 列表单个 -->
-        <van-panel title="@他" class="panel-s">
-          <div>
-            <p>男：xxx</p>
-            <p>女：xxx</p>
-            <p>男：xxx</p>
+        <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition">
+          <div class="content-box" v-html="item.contentHtml">
+            {{item.contentHtml}}
           </div>
-          <div slot="footer">
+          <div slot="footer" class="flex-r">
             <!-- <i class="fa fa-eye" aria-hidden="true"></i><span>1w</span> -->
-            <span><i class="fa fa-files-o" aria-hidden="true"></i></span><!-- 复制 -->
-            <i class="fa fa-heart-o" aria-hidden="true"></i><span>1w</span><!-- 收藏 -->
-            <i class="fa fa-share" aria-hidden="true" @click="share"></i><!-- 分享 -->
+            <span class="copy"
+              v-clipboard:copy="item.content"
+              v-clipboard:success="onCopy"
+              v-clipboard:error="onError"><!-- 复制 -->
+              <i class="fa fa-files-o" aria-hidden="true"></i>
+            </span>
+            <span @click="addMyLike(index)" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
+            <span @click="share" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
           </div>
         </van-panel>
-        <!-- 底部选项 -->
-        <van-actionsheet
-        v-model="show"
-        :actions="actions"
-        cancel-text="取消"
-        @select="onSelect"
-        @cancel="onCancel"
-        />
+        <!-- 分享选项 -->
+        <van-actionsheet v-model="show" title="分享到">
+          <i class="fa fa-weixin" aria-hidden="true"></i>
+          <i class="fa fa-qq" aria-hidden="true"></i>
+        </van-actionsheet>
     </div>
 </template>
 
 <script>
 export default {
+  // 父子通信
+  props: {
+    composition: {
+      type: Array,
+      default: [],
+    }
+  },
   data () {
     return {
-      show: false,
-      actions: [
-        {
-          name: '分享到'
-        },
-        {
-          name: '选项',
-          subname: '描述信息'
-        },
-        {
-          loading: true
-        },
-      ]
+      show: false,  // 底部 -- 分享
     };
   },
   mounted () {
@@ -50,23 +45,60 @@ export default {
 
   },
   methods: {
+    // 点击分享
     share () {
       this.show = true;
     },
-    onSelect(item) {
-      // 点击选项时默认不会关闭菜单，可以手动关闭
-      this.show = false;
-      Toast(item.name);
+    // 复制成功
+    onCopy: function (e) {
+      this.$toast('复制成功！')
     },
-    onCancel () {
-      this.show = false;
-    }
+    // 复制失败
+    onError: function (e) {
+      this.$toast('复制失败！')
+    },
+    // 加入喜欢
+    addMyLike: function (index) {
+      if (this.composition[index].isLike) {
+        this.composition[index].isLike = false;
+        this.composition[index].likers -= 1;
+      }else{
+        this.composition[index].isLike = true;
+        this.composition[index].likers += 1;
+        this.$toast('成功收藏！');
+      }
+    },
   }
 };
 </script>
 
 <style lang="less" scoped>
+  .flex-r{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    .copy{
+      width: 30px;
+      text-align: center;
+    }
+    .myLike{
+      width: 60px;
+      text-align: center;
+    }
+    .share{
+      width: 20px;
+      text-align: right;
+    }
+  }
   .panel-s{
     margin: 10px;
+    font-size: 14px;
+  }
+  .content-box{
+    padding: 0 15px;
+    line-height: 20px;
+  }
+  .red-color{
+    color: red;
   }
 </style>
