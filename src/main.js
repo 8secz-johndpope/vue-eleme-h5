@@ -4,12 +4,15 @@ import router from './router';
 import store from './vuex/store';
 import 'lib-flexible/flexible';
 import { setDPR, remChange } from './js/remChange';
-import { Tabbar, TabbarItem, Cell, CellGroup, SwipeCell, Icon, Tab, Tabs, Popup, Button } from 'vant';
+import globalFunc from './js/commonFunc';
+import { Tabbar, TabbarItem, Cell, CellGroup, SwipeCell, Icon, Tab, Tabs, Popup, Button, NavBar, PullRefresh } from 'vant';
 import 'vant/lib/index.css';
 
-Vue.use(Tabbar).use(TabbarItem).use(Cell).use(CellGroup).use(SwipeCell).use(Icon).use(Tab).use(Tabs).use(Popup).use(Button);
+Vue.use(Tabbar).use(TabbarItem).use(Cell).use(CellGroup).use(SwipeCell).use(Icon).use(Tab).use(Tabs).use(Popup).use(Button).use(NavBar).use(PullRefresh);
 setDPR();
 remChange();
+
+Vue.prototype.COMMONFUNC = globalFunc;  //其中$xx为新命的名。
 
 /* eslint-disable no-new */
 new Vue({
