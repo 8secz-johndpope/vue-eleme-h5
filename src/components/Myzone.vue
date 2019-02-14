@@ -1,14 +1,13 @@
 <template>
   <div class="myzone_index">
-    <Backbar title="我的"></Backbar>
     <!-- <van-icon name="setting-o" class="setting" /> -->
     <i class="fa fa-bars setting" @click="openSetting"></i>
     <div class="myzone_content">
       <!-- 头 -->
       <div class="myzone_info clear">
-        <img src="../images/slider-pic/slider-pic11.jpeg" alt="">
+        <img :src="getImitateUser.userImg" alt="">
         <div class="myzone_uid">
-          <h3>{{ uname }}</h3>
+          <h3>{{ getImitateUser.userName }}</h3>
           <p>183*****935</p>
         </div>
       </div>
@@ -17,26 +16,26 @@
     <div class="three_lan">
       <a class="three_lan_">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">1.2亿</span><span class="index-2V-Hh_0">获赞</span>
+          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
         </p>
       </a>
       <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">3</span><span class="index-2V-Hh_0">粉丝</span>
+          <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
         </p>
       </a>
       <a class="three_lan_">
         <p class="big_colorful">
-          <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">6250</span><span class="index-2V-Hh_0">关注</span>
+          <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
         </p>
       </a>
     </div>
     <van-tabs v-model="active" sticky @click="onClick">
       <van-tab title="我的作品">
-        <Conversation :composition="composition"></Conversation>
+        <Conversation :composition="getImitateConversation"></Conversation>
       </van-tab>
       <van-tab title="我的收藏">
-        <Conversation :composition="composition"></Conversation>
+        <Conversation :composition="getImitateConversation"></Conversation>
       </van-tab>
     </van-tabs>
     <van-popup v-model="show" position="right" :overlay="true">
@@ -48,10 +47,10 @@
 </template>
 
 <script>
-import Backbar from './small_components/Back_bar';
 import Fixednav from './small_components/Fixed_nav';
 import Conversation from './small_components/Conversation';
 import Setting from './Setting';
+import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
   data () {
@@ -59,19 +58,6 @@ export default {
       uname: '',
       active: 0,
       show: false,
-      composition: [  // 作品
-        {
-          userName: '',
-          userId: '',
-          id: 'zs20190213',
-          author: '张三',
-          time: '2019.02.13',
-          likers: 9999,
-          isLike: false,
-          contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>',
-          content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',
-        },
-      ]
     };
   },
   mounted () {
@@ -86,7 +72,11 @@ export default {
   computed: {
     isLogin () {
       return this.$store.getters.getLogin;
-    }
+    },
+    ...mapGetters([
+      'getImitateUser', // 获取用户数据
+      'getImitateConversation', // 获取模拟对话
+    ])
   },
   methods: {
     onClick(index, title) {
@@ -98,7 +88,6 @@ export default {
   },
   components: {
     Fixednav,
-    Backbar,
     Setting,
     Conversation,
   }
@@ -115,7 +104,6 @@ export default {
 }
 .myzone_content{
   height: 2rem;
-  margin-top: 1rem;
   padding: 0.2rem .4rem;
   box-sizing: border-box;
   background: #0097ff;

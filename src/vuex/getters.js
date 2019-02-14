@@ -16,5 +16,12 @@ export default {
   // 得到商家简略信息
   getFalseBussinessbrief: (state) => state.falseBussinessbrief,
   // 得到商家详细数据
-  getFalseBussinessInfo: (state) => state.falseBussinessInfo
+  getFalseBussinessInfo: (state) => state.falseBussinessInfo,
+  // 得到模拟用户数据
+  getImitateUser: (state) => state.imitateUser,
+  // 得到模拟用户列表数据 -- 粉丝 或者 关注
+  getImitateUserList: (state) => state.imitateUserList,
+  // 得到模拟对话数据
+  getImitateConversation: (state) => state.imitateConversation,
+
 };

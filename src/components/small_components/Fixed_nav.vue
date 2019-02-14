@@ -1,7 +1,7 @@
 <template>
     <!-- 列表单个商家 -->
 
-  <van-tabbar v-model="active" style="z-index:9999">
+  <van-tabbar v-model="active" style="z-index:999">
     <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
     <van-tabbar-item icon="search" dot :to="'/Recommend'">推荐</van-tabbar-item>
     <van-tabbar-item icon="friends-o" info="5" :to="'/Myfans'">消息</van-tabbar-item>

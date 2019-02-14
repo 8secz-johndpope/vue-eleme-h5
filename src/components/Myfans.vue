@@ -15,12 +15,13 @@
         <van-cell-group>
           <van-cell class="displayflex">
             <div class="displayflex-1 tleft">
-              <span class="van-avatar"><img src="../images/slider-pic/slider-pic11.jpeg" alt="" class="van-avatar-img"></span>
+              <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
+              <span>{{item.userName}}</span>
             </div>
             <div class="displayflex-1 tright">
-              <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item == 0">关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item == 1">已关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item == 2">互相关注</van-button>
+              <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
+              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
+              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
             </div>
           </van-cell>
         </van-cell-group>
@@ -37,6 +38,7 @@
 
   import { Dialog,Toast } from "vant";
   import Fixednav from './small_components/Fixed_nav';
+  import { mapGetters } from 'vuex';
 
   import "../css/common.css";
   export default {
@@ -49,29 +51,31 @@
     data () {
       return {
         msg: '1',
-        arrs: [0, 1, 2],
+        arrs: [],
         count: 0,
         isLoading: false,
       };
     },
     mounted () {
-
+      this.arrs = [...this.getImitateUserList];
     },
     computed: {
-
+      ...mapGetters([
+        'getImitateUserList', // 获取用户列表数据
+      ])
     },
     methods: {
       // 添加关注
       addInterest (index){
          Toast('成功关注');
-         this.arrs.splice(index,1,1);
+         this.arrs[index].follow_type = 1;
       },
       // 取消关注
       cancelInterest (index) {
         Dialog.confirm({
           message: '确定取消关注吗？'
         }).then(() => {
-          this.arrs.splice(index,1,0);
+          this.arrs[index].follow_type = 0;
         });
       },
       onClickLeft(){
@@ -85,7 +89,6 @@
         setTimeout(() => {
           this.$toast('刷新成功');
           this.isLoading = false;
-          this.arrs.push(0);
         }, 500);
       }
     }

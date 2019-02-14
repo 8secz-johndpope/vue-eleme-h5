@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="content-box">
     <van-tabs v-model="active" type="card" @click="onClick" class="tab">
       <van-tab title="推荐">
-        <Conversation :composition="composition"></Conversation>
+        <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
       <van-tab title="好友">
-        <Conversation :composition="composition"></Conversation>
+        <Conversation :composition="getImitateConversation"></Conversation>
       </van-tab>
     </van-tabs>
     <Fixednav></Fixednav>
@@ -15,6 +15,7 @@
 <script>
 import Fixednav from './small_components/Fixed_nav';
 import Conversation from './small_components/Conversation';
+import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
   data () {
@@ -22,24 +23,14 @@ export default {
       uname: '',
       active: 0,
       show: false,
-      composition: [  // 作品
-        {
-          userName: '',
-          userId: '',
-          id: 'zs20190213',
-          author: '张三',
-          time: '2019.02.13',
-          likers: 9999,
-          isLike: false,
-          contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>',
-          content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',
-        },
-      ]
     };
   },
   mounted () {
   },
   computed: {
+    ...mapGetters([
+      'getImitateConversation', // 获取模拟对话
+    ])
   },
   methods: {
     onClick(index, title) {
@@ -53,7 +44,8 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-  
-
+<style lang="less" scoped>
+  .item-box{
+    margin-top: 15px;
+  }
 </style>
