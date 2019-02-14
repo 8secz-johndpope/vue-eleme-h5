@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Home from 'components/Home';
 import Homepage from 'components/Homepage';
 import Shop from 'components/Shop';
 import Order from 'components/Order';
@@ -15,6 +16,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/homepage',
       name: 'homepage',
       component: Homepage
     },
