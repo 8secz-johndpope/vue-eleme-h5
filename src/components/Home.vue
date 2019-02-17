@@ -13,6 +13,20 @@
         <img v-lazy="image" />
       </van-swipe-item>
     </van-swipe>
+    <van-panel class="mg15 pd10" v-for="(menuItem, index) in getImitateMenu">
+      <div slot="header">
+        <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
+      </div>
+      <div class="flex-space-between">
+        <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/business/' + child_item.listId" >
+          <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
+        </router-link>
+      </div>
+    </van-panel>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="space"></div>
+    <!-- 固定标签页 -->
+    <Fixednav></Fixednav>
   </div>
 </template>
 
@@ -27,7 +41,7 @@ export default {
       showMe: false, // 是否展示当前页面
       value: '',  // 搜索词
       images: [
-        'https://img.yzcdn.cn/1.jpg',
+        'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
         'https://img.yzcdn.cn/2.jpg'
       ]
     };
@@ -48,7 +62,7 @@ export default {
     ...mapGetters([
       'getLogin',
       'getFalseHotWord',
-      'getFalseBussinessbrief' // 商家简略信息
+      'getImitateMenu' // 商家简略信息
     ])
   },
   methods: {
@@ -63,4 +77,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .item-linear{
+    background: linear-gradient(to right, #f38181, #e46d27, #f31802);
+    border: 0;
+    margin: 10px 5px 0 5px;
+    width: 95px;
+    padding: 0 5px;
+    height: 35px;
+    line-height: 35px;
+  }
+  .main-name{
+    margin-left: 10px; 
+  }
+  .panel-header{
+    padding-top: 10px;
+  }
 </style>
