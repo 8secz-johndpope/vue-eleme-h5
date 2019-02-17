@@ -10,6 +10,7 @@ import Business from 'components/Business';
 import Login from 'components/Login';
 import Search from 'components/Search';
 import Myfans from 'components/Myfans';
+import Message from 'components/Message';
 Vue.use(Router);
 
 export default new Router({
@@ -48,6 +49,11 @@ export default new Router({
       path: '/myfans',
       name: 'myfans',
       component: Myfans
+    },
+    {
+      path: '/message',
+      name: 'message',
+      component: Message
     },
     {
       path: '/business/:id',

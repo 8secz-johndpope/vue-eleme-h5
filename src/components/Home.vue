@@ -41,8 +41,8 @@ export default {
       showMe: false, // 是否展示当前页面
       value: '',  // 搜索词
       images: [
-        'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
-        'https://img.yzcdn.cn/2.jpg'
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg'
       ]
     };
   },

@@ -25,4 +25,6 @@ export default {
   getImitateConversation: (state) => state.imitateConversation,
   // 得到模拟菜单列表
   getImitateMenu: (state) => state.imitateMenu,
+  // 得到模拟消息
+  getImitateMessage: (state) => state.imitateMessage,
 };
