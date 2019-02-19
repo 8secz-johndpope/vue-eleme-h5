@@ -77,3 +77,9 @@
   width: 100%;
   height:1.2rem;
 }
+.selectConverstionType .van-tabs{
+  width: 8rem;
+}
+.selectConverstionType .van-tabs__nav--card{
+  margin: 0 1.6rem;
+}
