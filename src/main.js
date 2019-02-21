@@ -14,8 +14,8 @@ Vue.use(VueClipboards);
 
 Vue.use(Tabbar).use(TabbarItem).use(Cell).use(CellGroup).use(SwipeCell).use(Icon).use(Tab).use(Tabs).use(Popup).use(Button).use(NavBar).use(PullRefresh).use(Panel).use(Actionsheet)
    .use(Search).use(Swipe).use(SwipeItem).use(Lazyload).use(Field);
-setDPR();
-remChange();
+// setDPR();
+// remChange();
 
 Vue.prototype.COMMONFUNC = globalFunc;  //其中$xx为新命的名。
 

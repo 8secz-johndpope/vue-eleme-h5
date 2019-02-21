@@ -12,7 +12,7 @@
             <van-field
               v-model="message"
               type="textarea"
-              placeholder="写标准的内容并使用合适的话题，能让更多的人看到"
+              placeholder="写标准的内容，能让更多的人看到"
               rows="4"
               autosize
             />
@@ -24,7 +24,7 @@
               v-model="ManMessage"
               label="男"
               type="textarea"
-              placeholder="请输入留言"
+              placeholder="请输入内容"
               rows="1"
               autosize
               clearable
@@ -36,7 +36,7 @@
               v-model="WomanMessage"
               label="女"
               type="textarea"
-              placeholder="请输入留言"
+              placeholder="请输入内容"
               rows="1"
               autosize
               clearable
@@ -54,7 +54,7 @@
         <van-field
           v-model="theme"
           type="textarea"
-          placeholder="请输入类型"
+          placeholder="添加合适的话题，能让更多的人看到"
           rows="1"
           autosize
         />

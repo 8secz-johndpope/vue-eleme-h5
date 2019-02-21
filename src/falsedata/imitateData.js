@@ -145,6 +145,28 @@ export var imitateConversation = [
     contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
     content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
   },
+  {
+    userName: '',
+    userId: '',
+    id: 'zs20190213',
+    author: '张三哥',
+    time: '2019.02.13',
+    likers: 9999,   // 喜欢数
+    isLike: false, // 是否喜欢
+    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
+    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+  },
+  {
+    userName: '',
+    userId: '',
+    id: 'zs20190213',
+    author: '张三哥',
+    time: '2019.02.13',
+    likers: 9999,   // 喜欢数
+    isLike: false, // 是否喜欢
+    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
+    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+  },
 ];
 // 模拟消息
 export var imitateMessage = [

@@ -18,7 +18,8 @@ export default {
   data () {
     return {
       uname: '',
-      pwd: ''
+      pwd: '',
+      token: 'isLogin',
     };
   },
   mounted () {
@@ -42,6 +43,7 @@ export default {
       if (this.uname !== this.getuname || this.pwd !== this.getpwd) {
         alert('用户名或密码错误');
       } else {
+        this.COMMONFUNC.addCookie("token",this.token,"","/");
         this.$store.dispatch('setLogin', true);
         this.$router.replace('/myzone');
       }
@@ -55,7 +57,7 @@ export default {
 
 <style lang="less" scoped>
 .input_login{
-  margin-top: 1.35rem; 
+  margin-top: 1.35rem;
   input{
     height: 1rem;
     width: 10rem;

@@ -2,10 +2,10 @@
   <div>
     <van-tabbar v-model="active" style="z-index:999">
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
-      <van-tabbar-item icon="search" dot :to="'/Recommend'">推荐</van-tabbar-item>
+      <van-tabbar-item icon="browsing-history-o" :to="'/Recommend'">推荐</van-tabbar-item>
       <van-tabbar-item icon="add" @click="publish">发表</van-tabbar-item>
-      <van-tabbar-item icon="friends-o" info="5" :to="'/Message'">消息</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" info="20" :to="'/Myzone'">我的</van-tabbar-item>
+      <van-tabbar-item icon="chat-o" info="5" :to="'/Message'">消息</van-tabbar-item>
+      <van-tabbar-item icon="manager-o" :to="'/Myzone'">我的</van-tabbar-item>
     </van-tabbar>
     <addConversation :popupShow="popupShow" @closePop-ok="closePop" ></addConversation>
   </div>
@@ -20,6 +20,7 @@ export default {
   },
   data () {
     return {
+      active: 0,
       popupShow: false,
     };
   },

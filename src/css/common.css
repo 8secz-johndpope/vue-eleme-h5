@@ -86,3 +86,6 @@
 .fieldDiv .van-field .van-cell__title {
     max-width: 0.6rem;
 }
+.myzone_index .van-pull-refresh{
+  overflow: inherit;
+}

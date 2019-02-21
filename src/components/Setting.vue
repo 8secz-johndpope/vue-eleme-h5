@@ -6,33 +6,33 @@
         <svg class="v-md">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order.070ae2a"></use>
         </svg>
-        <span class="v-md">我的订单</span>
+        <span class="v-md">个人资料</span>
       </div>
     </router-link>
     <div class="some_bar">
       <svg class="v-md">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
       </svg>
-      <span class="v-md">积分商城</span>
+      <span class="v-md">积分说明</span>
     </div>
     <div class="some_bar">
       <svg class="v-md">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#eleme"></use>
       </svg>
-      <span class="v-md">饿了么会员卡</span>
+      <span class="v-md">反馈建议</span>
     </div>
 
     <div class="some_bar first-c">
       <svg class="v-md">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discover.5811137"></use>
       </svg>
-      <span class="v-md">服务中心</span>
+      <span class="v-md">联系我们</span>
     </div>
-    <div class="some_bar">
+    <div class="some_bar first-c">
       <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#index.18edf5a"></use>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discover.5811137"></use>
       </svg>
-      <span class="v-md">下载饿了么APP</span>
+      <span class="v-md">退出登录</span>
     </div>
   </div>
 </template>
