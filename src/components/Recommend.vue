@@ -7,7 +7,8 @@
       <van-tab title="好友">
         <Conversation :composition="getImitateConversation"></Conversation>
       </van-tab>
-    </van-tabs>
+    </van-tabs><!-- 撑开Fixednav挡住的位置 -->
+    <div class="space"></div>
     <Fixednav></Fixednav>
   </div>
 </template>

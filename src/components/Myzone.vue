@@ -21,8 +21,10 @@
             <h3>{{ getImitateUser.userName }}</h3>
             <p>183*****935</p>
           </div>
-          <div class="myzone_uid">
-              <van-button type="danger"><van-icon name="plus" />加关注</van-button>
+          <div class="flex-center myzone_uid">
+            <van-button type="danger" size="normal" v-if="follow_type == '0' " @click="addInterest"><van-icon name="plus" />加关注</van-button>
+            <van-button type="danger" size="mini" v-if="follow_type == '1' "><van-icon name="chat-o" />发消息</van-button>
+            <van-button type="danger" size="mini" v-if="follow_type == '1' " @click="cancelInterest"><van-icon name="exchange" /></van-button>
           </div>
         </div>
       </div>
@@ -77,7 +79,8 @@ export default {
       uname: '',
       active: 0,
       show: false,
-      isLoading: false
+      isLoading: false,
+      follow_type: 0,
     };
   },
   mounted () {
@@ -114,6 +117,12 @@ export default {
         this.$toast('刷新成功');
         this.isLoading = false;
       }, 500);
+    },
+    addInterest () {
+      this.follow_type = 1;
+    },
+    cancelInterest () {
+      this.follow_type = 0;
     }
   },
   components: {
@@ -164,15 +173,7 @@ export default {
     border-radius:50%;float: left;
   }
   .myzone_uid{
-    float: left;
-    margin-left:.5rem;
-    color:#fff;
-    h3{
-      font-size:.7rem;
-    }
-    p{
-      font-size:.4rem;
-    }
+
   }
 }
 .three_lan{
