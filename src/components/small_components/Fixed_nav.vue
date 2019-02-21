@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabbar v-model="active" style="z-index:999">
+    <van-tabbar v-model="active" style="z-index:999" @change="changeTab">
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
       <van-tabbar-item icon="browsing-history-o" :to="'/Recommend'">推荐</van-tabbar-item>
       <van-tabbar-item icon="add" @click="publish">发表</van-tabbar-item>
@@ -13,6 +13,7 @@
 
 <script>
 import addConversation from '../AddConversation';
+import { mapGetters } from 'vuex';
 export default {
   name: 'fixed_nav',
   components: {
@@ -20,18 +21,19 @@ export default {
   },
   data () {
     return {
-      active: 0,
       popupShow: false,
     };
   },
   mounted () {
-    setInterval(() => {
-      // console.log(this.returnPageNow);
-    }, 2000);
   },
   computed: {
-    returnPageNow () {
-      return this.$store.getters.getwhichpage;
+    active: {
+      // 解决 页面上切换tab的时候，vant会去改active的值
+      get: function () {
+        return this.$store.state.activeTab;
+      },
+      set: function () {
+      }
     }
   },
   methods: {
@@ -41,6 +43,9 @@ export default {
     closePop () {
       this.popupShow = false;
     },
+    changeTab (index) {
+      this.$store.state.activeTab = index
+    }
   }
 };
 </script>

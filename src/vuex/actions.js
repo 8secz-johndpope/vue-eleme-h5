@@ -18,5 +18,5 @@ export default {
   // 添加订单
   setOrder ({commit}, platform) {
     commit('SET_ORDER', platform);
-  }
+  },
 };

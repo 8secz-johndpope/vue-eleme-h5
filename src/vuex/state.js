@@ -30,4 +30,6 @@ export default {
   imitateMenu,
   // 模拟消息
   imitateMessage,
+  // 高亮的菜单
+  activeTab: 0,
 };

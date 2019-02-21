@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state,
   getters,
   mutations,
-  actions
+  actions,
 });
 // 1.state：包含了store中存储的各个状态也叫数据。
 // 2.getter: 类似于 Vue 中的计算属性，根据其他 getter 或 state 计算返回值。//调用方法store.getters.gettersFirst

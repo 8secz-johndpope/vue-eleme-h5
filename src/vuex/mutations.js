@@ -18,5 +18,5 @@ export default {
   // 添加订单
   SET_ORDER (state, platform) {
     state.falseOrder.unshift(platform);
-  }
+  },
 };
