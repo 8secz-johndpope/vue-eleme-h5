@@ -23,52 +23,52 @@ export default new Router({
     {
       path: '/homepage',
       name: 'homepage',
-      component: Homepage
+      component: (resolve) => require(['../components/Homepage'],resolve),
     },
     {
       path: '/shop',
       name: 'shop',
-      component: Shop
+      component: (resolve) => require(['../components/Shop'],resolve),
     },
     {
       path: '/order',
       name: 'order',
-      component: Order
+      component: (resolve) => require(['../components/Order'],resolve),
     },
     {
       path: '/myzone',
       name: 'myzone',
-      component: Myzone
+      component: (resolve) => require(['../components/myzone'],resolve),
     },
     {
       path: '/recommend',
       name: 'recommend',
-      component: Recommend
+      component: (resolve) => require(['../components/Recommend'],resolve),
     },
     {
       path: '/myfans',
       name: 'myfans',
-      component: Myfans
+      component: (resolve) => require(['../components/Myfans'],resolve),
     },
     {
       path: '/message',
       name: 'message',
-      component: Message
+      component: (resolve) => require(['../components/Message'],resolve),
     },
     {
       path: '/business/:id',
       name: 'business',
-      component: Business
+      component: (resolve) => require(['../components/Business'],resolve),
     },
     {
       path: '/search/:keyword',
       name: 'Search',
-      component: Search
+      component: (resolve) => require(['../components/Search'],resolve),
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: (resolve) => require(['../components/Login'],resolve),
     }
   ]
 });

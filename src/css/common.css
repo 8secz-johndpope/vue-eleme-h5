@@ -83,3 +83,6 @@
 .selectConverstionType .van-tabs__nav--card{
   margin: 0 1.6rem;
 }
+.fieldDiv .van-field .van-cell__title {
+    max-width: 0.6rem;
+}
