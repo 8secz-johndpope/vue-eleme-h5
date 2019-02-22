@@ -1,64 +1,53 @@
 <template>
   <div class="myzone_index">
     <router-link :to="'/setting'"><i class="fa fa-bars setting"></i></router-link>
-    <!-- 背景墙 用户自定义-->
-    <div class="bgImg"></div>
-    <!-- <van-icon name="setting-o" class="setting" /> -->
-    <van-pull-refresh
-      v-model="isLoading"
-      @refresh="onRefresh"
-      class="main-content"
-      pulling-text=" "
-      loosing-text=" "
-      loading-text=" "
-    >
-      <div class="myzone_content">
-        <!-- 头 -->
-        <div class="myzone_info">
-          <div class="basic-info">
-            <img :src="getImitateUser.userImg" alt="" @click="imagePreviewFunc">
-            <h3 class="userName">{{ getImitateUser.userName }}</h3>
-            <p class="userNo">账号:183*****935</p>
-          </div>
-          <div class="flex-center myzone_uid">
-            <van-button type="danger" size="normal" v-if="follow_type == '0' " @click="addInterest"><van-icon name="plus" />加关注</van-button>
-            <van-button type="danger" size="mini" v-if="follow_type == '1' "><van-icon name="chat-o" />发消息</van-button>
-            <van-button type="danger" size="mini" v-if="follow_type == '1' " @click="cancelInterest"><van-icon name="exchange" /></van-button>
-          </div>
+    <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg">
+      <!-- 头 -->
+      <div class="myzone_info">
+        <div class="basic-info">
+          <img :src="getImitateUser.userImg" alt="" @click.stop="userAvatar">
+          <h3 class="userName">{{ getImitateUser.userName }}</h3>
+          <p class="userNo">账号:183*****935</p>
+        </div>
+        <div class="flex-center myzone_uid">
+          <van-button type="danger" size="small" @click.stop="sign"><van-icon name="sign" />签到</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '0' " @click.stop="addInterest"><van-icon name="plus" />加关注</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '1' "><van-icon name="chat-o" />发消息</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '1' " @click.stop="cancelInterest"><van-icon name="exchange" /></van-button>
         </div>
       </div>
-      <!-- 3分 -->
-      <div class="three_lan">
-        <a class="three_lan_">
-          <p class="big_colorful" @click="getPraisedNum">
-            <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
+    </div>
+    <!-- 3分 -->
+    <div class="three_lan">
+      <a class="three_lan_">
+        <p class="big_colorful" @click="getPraisedNum">
+          <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
+        </p>
+      </a>
+      <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
+        <router-link :to="'/myfans'">
+          <p class="big_colorful">
+            <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
           </p>
-        </a>
-        <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
-          <router-link :to="'/myfans'">
-            <p class="big_colorful">
-              <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
-            </p>
-          </router-link>
-        </a>
-        <a class="three_lan_">
-          <router-link :to="'/myfans'">
-            <p class="big_colorful">
-              <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
-            </p>
-          </router-link>
-        </a>
-      </div>
-      <!-- 我的作品以及收藏 -->
-      <van-tabs v-model="active" sticky @click="changeTab" class="worksAndFavorite">
-        <van-tab title="我的作品">
-          <Conversation :composition="getImitateConversation"></Conversation>
-        </van-tab>
-        <van-tab title="我的收藏">
-          <Conversation :composition="getImitateConversation"></Conversation>
-        </van-tab>
-      </van-tabs>
-    </van-pull-refresh>
+        </router-link>
+      </a>
+      <a class="three_lan_">
+        <router-link :to="'/myfans'">
+          <p class="big_colorful">
+            <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
+          </p>
+        </router-link>
+      </a>
+    </div>
+    <!-- 我的作品以及收藏 -->
+    <van-tabs v-model="active" sticky @click="changeTab" class="worksAndFavorite">
+      <van-tab title="我的作品">
+        <Conversation :composition="getImitateConversation"></Conversation>
+      </van-tab>
+      <van-tab title="我的收藏">
+        <Conversation :composition="getImitateConversation"></Conversation>
+      </van-tab>
+    </van-tabs>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <Fixednav></Fixednav>
@@ -83,9 +72,9 @@ export default {
     return {
       uname: '',
       active: 0,
-      isLoading: false,
       follow_type: 0,
       praisedNumPopup: false, // 获得赞数 弹出层 查看具体赞数，可以插入广告
+      background_wall_img: 'http://img.bqatj.com/img/6a51e6cae12c5002.jpg', // 背景墙图片
     };
   },
   mounted () {
@@ -112,15 +101,19 @@ export default {
     ])
   },
   methods: {
+    // 切换tab 我的作品和收藏
     changeTab(index, title) {
       this.$toast(title);
     },
-    onRefresh() {
-      setTimeout(() => {
-        this.$toast('刷新成功');
-        this.isLoading = false;
-      }, 500);
+    // 签到
+    sign () {
+      this.$dialog.alert({
+        message: '签到成功，获得2积分'
+      }).then(() => {
+        // on close
+      });
     },
+    // 加关注
     addInterest () {
       this.follow_type = 1;
     },
@@ -136,9 +129,15 @@ export default {
       this.praisedNumPopup = false;
     },
     // 图片预览
-    imagePreviewFunc () {
+    userAvatar () {
       ImagePreview([
         this.getImitateUser.userImg,
+      ]);
+    },
+    // 背景墙图片
+    backgroundWallImg () {
+      ImagePreview([
+        this.background_wall_img,
       ]);
     }
   },
@@ -148,7 +147,7 @@ export default {
 <style lang="less" scoped>
 .bgImg{
   height: 8rem;
-  background-image: url(https://www.cpyzj.com/H5/images/bg_wode.png);
+  background-image: url(http://img.bqatj.com/img/6a51e6cae12c5002.jpg);
   position: fixed;
   top: 0;
   background-size: 100%;
@@ -167,18 +166,16 @@ export default {
   width: 0.5rem;
 }
 .myzone_info {
-  position: absolute;
   display: flex;
   justify-content: space-between;
-  top: -0.5rem;
-  z-index: 9999;
-  width: 90%;
 }
 .myzone_content{
-  height: 3rem;
+  height: 3.5rem;
   padding: 0.2rem .4rem;
   box-sizing: border-box;
-  background: #0097ff;
+  // background-image: url(http://img.bqatj.com/img/6a51e6cae12c5002.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
   position: relative;
   img{
     width:2rem;
