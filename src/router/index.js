@@ -61,6 +61,31 @@ export default new Router({
       component: (resolve) => require(['../components/Setting'],resolve),
     },
     {
+      path: '/setting/userinfo',
+      name: 'userinfo',
+      component: (resolve) => require(['../components/child_components/Setting_components/Userinfo'],resolve),
+    },
+    {
+      path: '/mywallet',
+      name: 'mywallet',
+      component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
+    },
+    {
+      path: '/integralDec',
+      name: 'integralDec',
+      component: (resolve) => require(['../components/child_components/Setting_components/IntegralEec'],resolve),
+    },
+    {
+      path: '/feedback',
+      name: 'feedback',
+      component: (resolve) => require(['../components/child_components/Setting_components/Feedback'],resolve),
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: (resolve) => require(['../components/child_components/Setting_components/Contact'],resolve),
+    },
+    {
       path: '/business/:id',
       name: 'business',
       component: (resolve) => require(['../components/Business'],resolve),
@@ -74,6 +99,6 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: (resolve) => require(['../components/Login'],resolve),
-    }
+    },
   ]
 });

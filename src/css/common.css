@@ -89,3 +89,6 @@
 .myzone_index .van-pull-refresh{
   overflow: inherit;
 }
+.cellTop .van-cell__right-icon{
+    line-height: 1rem;
+}
