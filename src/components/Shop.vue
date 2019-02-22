@@ -155,8 +155,8 @@
 
 <script>
 // import { Swipe, SwipeItem } from 'vue-swipe';
-import OneBusiness from './small_components/One_business';
-import Fixednav from './small_components/Fixed_nav';
+import OneBusiness from './common_components/One_business';
+import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 
 export default {

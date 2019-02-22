@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Fixednav from './small_components/Fixed_nav';
-import Conversation from './small_components/Conversation';
+import Fixednav from './common_components/Fixed_nav';
+import Conversation from './common_components/Conversation';
 import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',

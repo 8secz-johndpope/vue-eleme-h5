@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import Backbar from './small_components/Back_bar';
-import Fixednav from './small_components/Fixed_nav';
+import Backbar from './common_components/Back_bar';
+import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 export default {
   name: 'order',

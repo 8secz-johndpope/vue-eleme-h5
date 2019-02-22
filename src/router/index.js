@@ -38,7 +38,7 @@ export default new Router({
     {
       path: '/myzone',
       name: 'myzone',
-      component: (resolve) => require(['../components/myzone'],resolve),
+      component: (resolve) => require(['../components/Myzone'],resolve),
     },
     {
       path: '/recommend',

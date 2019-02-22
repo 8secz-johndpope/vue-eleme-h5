@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Fixednav from './small_components/Fixed_nav';
+import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -87,7 +87,7 @@ export default {
     line-height: 35px;
   }
   .main-name{
-    margin-left: 10px; 
+    margin-left: 10px;
   }
   .panel-header{
     padding-top: 10px;

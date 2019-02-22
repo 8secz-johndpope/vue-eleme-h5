@@ -37,7 +37,7 @@
 <script>
 
   import { Dialog,Toast } from "vant";
-  import Fixednav from './small_components/Fixed_nav';
+  import Fixednav from './common_components/Fixed_nav';
   import { mapGetters } from 'vuex';
 
   import "../css/common.css";

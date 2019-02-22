@@ -31,19 +31,23 @@
       <!-- 3分 -->
       <div class="three_lan">
         <a class="three_lan_">
-          <p class="big_colorful">
+          <p class="big_colorful" @click="getPraisedNum">
             <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
           </p>
         </a>
         <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
-          <p class="big_colorful">
-            <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
-          </p>
+          <router-link :to="'/myfans'">
+            <p class="big_colorful">
+              <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
+            </p>
+          </router-link>
         </a>
         <a class="three_lan_">
-          <p class="big_colorful">
-            <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
-          </p>
+          <router-link :to="'/myfans'">
+            <p class="big_colorful">
+              <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
+            </p>
+          </router-link>
         </a>
       </div>
       <!-- 我的作品以及收藏 -->
@@ -68,8 +72,8 @@
 </template>
 
 <script>
-import Fixednav from './small_components/Fixed_nav';
-import Conversation from './small_components/Conversation';
+import Fixednav from './common_components/Fixed_nav';
+import Conversation from './common_components/Conversation';
 import Setting from './Setting';
 import { mapGetters } from 'vuex';
 export default {
@@ -101,6 +105,7 @@ export default {
       }
     },
     ...mapGetters([
+      'setWhichpage',
       'getImitateUser', // 获取用户数据
       'getImitateConversation', // 获取模拟对话
     ])
@@ -123,6 +128,10 @@ export default {
     },
     cancelInterest () {
       this.follow_type = 0;
+    },
+    // 获取点赞数目
+    getPraisedNum () {
+
     }
   },
   components: {

@@ -32,7 +32,7 @@
 
     <!-- 首页导航 -->
     <div class="index_banner">
-      <!--  swipe 设置不自动滚动 
+      <!--  swipe 设置不自动滚动
       <Swipe class="my-swipe" :auto="0">
         <Swipe-item class="slide slide1">
           <router-link to="/search/美食">
@@ -155,8 +155,8 @@
 
 <script>
 // import { Swipe, SwipeItem } from 'vue-swipe';
-import OneBusiness from './small_components/One_business';
-import Fixednav from './small_components/Fixed_nav';
+import OneBusiness from './common_components/One_business';
+import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 
 export default {

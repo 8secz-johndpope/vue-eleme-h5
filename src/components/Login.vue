@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Backbar from './small_components/Back_bar';
+import Backbar from './common_components/Back_bar';
 import { mapGetters } from 'vuex';
 
 export default {

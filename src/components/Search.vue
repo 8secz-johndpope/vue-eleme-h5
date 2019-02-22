@@ -12,7 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import OneBusiness from './small_components/One_business';
+import OneBusiness from './common_components/One_business';
 
 export default {
   name: 'search',

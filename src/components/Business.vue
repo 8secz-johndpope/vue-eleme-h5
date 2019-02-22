@@ -177,7 +177,7 @@
   </div>
 </template>
 <script>
-import YellowStar from './small_components/Yellow_star';
+import YellowStar from './common_components/Yellow_star';
 
 export default {
   name: 'business',

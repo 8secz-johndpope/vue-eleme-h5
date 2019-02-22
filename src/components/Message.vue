@@ -36,7 +36,7 @@
 <script>
 
   import { Dialog } from "vant";
-  import Fixednav from './small_components/Fixed_nav';
+  import Fixednav from './common_components/Fixed_nav';
   import { mapGetters } from 'vuex';
 
   import "../css/common.css";
@@ -85,7 +85,7 @@
     line-height: 1.2rem;
   }
   .contents-zone{
-    margin-left: 10px; 
+    margin-left: 10px;
 
      width: calc(100% - 40px);
   }
