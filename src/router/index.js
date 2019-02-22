@@ -18,6 +18,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      component: Home,
+      redirect: '/index'
+    },
+    {
+      path: '/index',
+      name: 'home',
       component: Home
     },
     {
