@@ -11,22 +11,19 @@
     />
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-swipe-cell :right-width="130" v-for="(item,index) in arrs">
-        <van-cell-group>
-          <van-cell class="displayflex">
-            <div class="displayflex-1 tleft">
-              <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
-              <span>{{item.userName}}</span>
-            </div>
-            <div class="displayflex-1 tright">
-              <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
-            </div>
-          </van-cell>
-        </van-cell-group>
-        <span slot="right">删除</span>
-      </van-swipe-cell>
+      <van-cell-group v-for="(item,index) in arrs">
+        <van-cell class="displayflex">
+          <div class="displayflex-1 tleft">
+            <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
+            <span>{{item.userName}}</span>
+          </div>
+          <div class="displayflex-1 tright">
+            <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
+            <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
+            <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
+          </div>
+        </van-cell>
+      </van-cell-group>
       <p>下拉刷新</p>
     </van-pull-refresh>
     <!-- 固定标签页 -->

@@ -1,63 +1,49 @@
 <template>
   <div>
-    <!-- 栏 -->
-    <router-link to="/Order">
-      <div class="some_bar first-c">
-        <svg class="v-md">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order.070ae2a"></use>
-        </svg>
-        <span class="v-md">个人资料</span>
-      </div>
-    </router-link>
-    <div class="some_bar">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
-      </svg>
-      <span class="v-md">积分说明</span>
-    </div>
-    <div class="some_bar">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#eleme"></use>
-      </svg>
-      <span class="v-md">反馈建议</span>
-    </div>
-
-    <div class="some_bar first-c">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discover.5811137"></use>
-      </svg>
-      <span class="v-md">联系我们</span>
-    </div>
-    <div class="some_bar first-c">
-      <svg class="v-md">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discover.5811137"></use>
-      </svg>
-      <span class="v-md">退出登录</span>
-    </div>
+    <!-- 顶部 -->
+    <van-nav-bar
+      title="设置"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
+    <van-cell title="个人资料" icon="user-o" is-link to="index" class="cellDiv" />
+    <van-cell title="我的钱包" icon="gem-o" is-link to="index" />
+    <van-cell title="积分说明" icon="orders-o" is-link to="index" class="cellDiv" />
+    <van-cell title="反馈建议" icon="envelop-o" is-link to="index" />
+    <van-cell title="联系我们" icon="more-o" is-link to="index" />
+    <van-button size="large" @click="outLogin">退出登录</van-button>
   </div>
 </template>
+<script>
+  export default {
+    components:{
+    },
+    name: 'setting',
+    data () {
+      return {
+        msg: '1',
+      };
+    },
+    mounted () {
 
+    },
+    computed: {
+
+    },
+    methods: {
+      onClickLeft(){
+        this.COMMONFUNC.goBack();
+      },
+      outLogin () {
+        this.$toast("退出登录")
+      }
+    }
+}
+</script>
 
 <style lang="less" scoped>
-div.some_bar{
-  width: 10rem;
-  height: 1.1rem;
-  padding: 0 .4rem;
-  box-sizing: border-box;
-  background:#fff;
-  font-size:.4rem;
-  line-height:1.1rem;
-  border-top:1px solid #dedede;
-  &.first-c{
-    margin-top: .3rem;
-    boeder:none;
+  .cellDiv{
+    margin-top: 5px;
   }
-  svg{
-    width: .4rem;
-    height: .4rem;
-  }
-  span{
-    margin-left:.2rem;
-  }
-}
 </style>

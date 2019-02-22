@@ -1,9 +1,8 @@
 <template>
   <div class="myzone_index">
-    <i class="fa fa-bars setting" @click="openSetting"></i>
-    <div class="bgImg">
-      0
-    </div>
+    <router-link :to="'/setting'"><i class="fa fa-bars setting"></i></router-link>
+    <!-- 背景墙 用户自定义-->
+    <div class="bgImg"></div>
     <!-- <van-icon name="setting-o" class="setting" /> -->
     <van-pull-refresh
       v-model="isLoading"
@@ -17,9 +16,9 @@
         <!-- 头 -->
         <div class="myzone_info">
           <div class="basic-info">
-            <img :src="getImitateUser.userImg" alt="">
-            <h3>{{ getImitateUser.userName }}</h3>
-            <p>183*****935</p>
+            <img :src="getImitateUser.userImg" alt="" @click="imagePreviewFunc">
+            <h3 class="userName">{{ getImitateUser.userName }}</h3>
+            <p class="userNo">账号:183*****935</p>
           </div>
           <div class="flex-center myzone_uid">
             <van-button type="danger" size="normal" v-if="follow_type == '0' " @click="addInterest"><van-icon name="plus" />加关注</van-button>
@@ -51,7 +50,7 @@
         </a>
       </div>
       <!-- 我的作品以及收藏 -->
-      <van-tabs v-model="active" sticky @click="onClick" class="worksAndFavorite">
+      <van-tabs v-model="active" sticky @click="changeTab" class="worksAndFavorite">
         <van-tab title="我的作品">
           <Conversation :composition="getImitateConversation"></Conversation>
         </van-tab>
@@ -59,32 +58,34 @@
           <Conversation :composition="getImitateConversation"></Conversation>
         </van-tab>
       </van-tabs>
-      <!-- 设置栏 默认隐藏 -->
-      <van-popup v-model="show" position="right" :overlay="true">
-        <!-- 栏 -->
-        <Setting></Setting>
-      </van-popup>
     </van-pull-refresh>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <Fixednav></Fixednav>
+    <GetPraisedNum :praisedNumPopup="praisedNumPopup" @closePraisedNumPop-ok="closePraisedNumPop"></GetPraisedNum>
   </div>
 </template>
 
 <script>
 import Fixednav from './common_components/Fixed_nav';
 import Conversation from './common_components/Conversation';
-import Setting from './Setting';
+import GetPraisedNum from './child_components/Myzone/GetPraisedNum';
 import { mapGetters } from 'vuex';
+import { ImagePreview } from 'vant';
 export default {
   name: 'myzone',
+  components: {
+    Fixednav,
+    Conversation,
+    GetPraisedNum
+  },
   data () {
     return {
       uname: '',
       active: 0,
-      show: false,
       isLoading: false,
       follow_type: 0,
+      praisedNumPopup: false, // 获得赞数 弹出层 查看具体赞数，可以插入广告
     };
   },
   mounted () {
@@ -111,11 +112,8 @@ export default {
     ])
   },
   methods: {
-    onClick(index, title) {
+    changeTab(index, title) {
       this.$toast(title);
-    },
-    openSetting(){
-      this.show = true;
     },
     onRefresh() {
       setTimeout(() => {
@@ -131,14 +129,19 @@ export default {
     },
     // 获取点赞数目
     getPraisedNum () {
-
+      this.praisedNumPopup = true;
+    },
+    // 关闭 获取点赞数 弹出层
+    closePraisedNumPop () {
+      this.praisedNumPopup = false;
+    },
+    // 图片预览
+    imagePreviewFunc () {
+      ImagePreview([
+        this.getImitateUser.userImg,
+      ]);
     }
   },
-  components: {
-    Fixednav,
-    Setting,
-    Conversation,
-  }
 };
 </script>
 
@@ -161,6 +164,7 @@ export default {
   right: 0.3rem;
   top: 0.3rem;
   color: #fff;
+  width: 0.5rem;
 }
 .myzone_info {
   position: absolute;
@@ -171,7 +175,7 @@ export default {
   width: 90%;
 }
 .myzone_content{
-  height: 2rem;
+  height: 3rem;
   padding: 0.2rem .4rem;
   box-sizing: border-box;
   background: #0097ff;
@@ -179,16 +183,22 @@ export default {
   img{
     width:2rem;
     height:2rem;
-    border-radius:50%;float: left;
+    border-radius:50%;
+    float: left;
   }
-  .myzone_uid{
-
+  .userName{
+    color: #fff;
+    font-size: 18px;
+    padding: 2.1rem 0 0.1rem 0;
+  }
+  .userNo{
+    color: #fff;
   }
 }
 .three_lan{
   display: table;
   width: 100%;
-  height: 2.24rem;
+  height: 1.2rem;
   color: #fff;
   border-bottom: 1px solid #ddd;
   background-color: #0097ff;

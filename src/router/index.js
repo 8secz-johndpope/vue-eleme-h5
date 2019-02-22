@@ -56,6 +56,11 @@ export default new Router({
       component: (resolve) => require(['../components/Message'],resolve),
     },
     {
+      path: '/setting',
+      name: 'setting',
+      component: (resolve) => require(['../components/Setting'],resolve),
+    },
+    {
       path: '/business/:id',
       name: 'business',
       component: (resolve) => require(['../components/Business'],resolve),
