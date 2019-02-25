@@ -92,3 +92,10 @@
 .cellTop .van-cell__right-icon{
     line-height: 1rem;
 }
+#app .grayBg {
+  background-color: #F2F2F2;
+  height: 100%;
+}
+#app .grayBarBg{
+  background-color: #F2F2F2;
+}
