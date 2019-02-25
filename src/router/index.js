@@ -72,22 +72,22 @@ export default new Router({
       component: (resolve) => require(['../components/child_components/Setting_components/Userinfo'],resolve),
     },
     {
-      path: '/mywallet',
+      path: '/setting/mywallet',
       name: 'mywallet',
       component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
     },
     {
-      path: '/integralDec',
+      path: '/setting/integralDec',
       name: 'integralDec',
       component: (resolve) => require(['../components/child_components/Setting_components/IntegralEec'],resolve),
     },
     {
-      path: '/feedback',
+      path: '/setting/feedback',
       name: 'feedback',
       component: (resolve) => require(['../components/child_components/Setting_components/Feedback'],resolve),
     },
     {
-      path: '/contact',
+      path: '/setting/contact',
       name: 'contact',
       component: (resolve) => require(['../components/child_components/Setting_components/Contact'],resolve),
     },
