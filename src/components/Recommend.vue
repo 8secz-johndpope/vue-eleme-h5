@@ -5,7 +5,7 @@
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
       <van-tab title="好友">
-        <Conversation :composition="getImitateConversation"></Conversation>
+        <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
     </van-tabs><!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>

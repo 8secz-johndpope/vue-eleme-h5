@@ -2,26 +2,34 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="个人信息"
-      left-text="返回"
+      title="联系我们"
       left-arrow
       @click-left="onClickLeft"
     />
-    <van-cell title="头像" icon="user-o" is-link to="index" class="cellDiv" />
-    <van-cell title="名称" icon="gem-o" is-link to="index" />
-    <van-cell title="性别" icon="orders-o" is-link to="index" class="cellDiv" />
-    <van-cell title="地区" icon="envelop-o" is-link to="index" />
-    <van-cell title="个性签名" icon="more-o" is-link to="index" />
+    <van-collapse v-model="activeNames">
+      <van-collapse-item title="联系方式" name="1">
+        QQ：809136696；</br>
+        QQ群1：xxx；QQ群2：xxx；QQ群3：xxx；</br>
+        微信：xxx；</br>
+        电话：xxx</br>
+      </van-collapse-item>
+      <van-collapse-item title="地址" name="2">
+        北京中关村1号
+      </van-collapse-item>
+      <van-collapse-item title="服务时间" name="3">
+        周一至周五 9：00-20：00
+      </van-collapse-item>
+    </van-collapse>
   </div>
 </template>
 <script>
   export default {
     components:{
     },
-    name: 'setting',
+    name: 'contact',
     data () {
       return {
-        msg: '1',
+        activeNames: ['1','2','3']
       };
     },
     mounted () {
@@ -39,7 +47,4 @@
 </script>
 
 <style lang="less" scoped>
-  .cellDiv{
-    margin-top: 5px;
-  }
 </style>

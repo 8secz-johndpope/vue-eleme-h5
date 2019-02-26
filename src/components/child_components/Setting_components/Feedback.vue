@@ -2,16 +2,33 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="个人信息"
+      title="意见和反馈"
       left-text="返回"
+      right-text="提交"
       left-arrow
       @click-left="onClickLeft"
+      @click-right="commitAdvice"
     />
-    <van-cell title="头像" icon="user-o" is-link to="index" class="cellDiv" />
-    <van-cell title="名称" icon="gem-o" is-link to="index" />
-    <van-cell title="性别" icon="orders-o" is-link to="index" class="cellDiv" />
-    <van-cell title="地区" icon="envelop-o" is-link to="index" />
-    <van-cell title="个性签名" icon="more-o" is-link to="index" />
+    <!-- 文本框 -->
+    <van-cell-group>
+      <van-field
+        v-model="message"
+        type="textarea"
+        placeholder="请输入您的宝贵意见或建议"
+        rows="3"
+        autosize
+        class="cellDiv"
+      />
+    </van-cell-group>
+    <!-- 图片上传 -->
+    <van-cell size="large" class="cellDiv">
+      <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" multiple>
+        <van-icon name="photograph" />
+      </van-uploader>
+    </van-cell>
+    <van-cell-group class="cellDiv">
+      <van-field v-model="value" placeholder="请输入您的联系方式" />
+    </van-cell-group>
   </div>
 </template>
 <script>
@@ -21,7 +38,7 @@
     name: 'setting',
     data () {
       return {
-        msg: '1',
+        message: '',
       };
     },
     mounted () {
@@ -34,6 +51,13 @@
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
+      onRead(file) {
+        console.log(file);
+        this.$toast('上传成功')
+      },
+      commitAdvice () {
+        this.$toast('感谢您的宝贵建议')
+      }
     }
 }
 </script>

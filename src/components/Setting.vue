@@ -7,10 +7,10 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <van-cell title="个人资料" icon="user-o" is-link to="setting/userinfo" class="cellDiv" />
-    <van-cell title="我的钱包" icon="gem-o" is-link to="setting/mywallet" class="cellDiv" />
-    <van-cell title="反馈建议" icon="envelop-o" is-link to="index" />
-    <van-cell title="联系我们" icon="more-o" is-link to="index" />
+    <van-cell title="个人资料" icon="user-o" is-link to="setting/userinfo" class="cellSpace" />
+    <van-cell title="我的钱包" icon="gem-o" is-link to="setting/mywallet" />
+    <van-cell title="反馈建议" icon="envelop-o" is-link to="/setting/feedback" />
+    <van-cell title="联系我们" icon="more-o" is-link to="/setting/contact" />
     <van-button size="large" @click="outLogin">退出登录</van-button>
   </div>
 </template>
@@ -42,7 +42,7 @@
 </script>
 
 <style lang="less" scoped>
-  .cellDiv{
+  .cellSpace{
     margin-top: 5px;
   }
 </style>
