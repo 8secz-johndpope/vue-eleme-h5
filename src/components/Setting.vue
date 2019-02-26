@@ -9,7 +9,6 @@
     />
     <van-cell title="个人资料" icon="user-o" is-link to="setting/userinfo" class="cellDiv" />
     <van-cell title="我的钱包" icon="gem-o" is-link to="setting/mywallet" class="cellDiv" />
-    <van-cell title="积分说明" icon="orders-o" is-link to="index" class="cellDiv" />
     <van-cell title="反馈建议" icon="envelop-o" is-link to="index" />
     <van-cell title="联系我们" icon="more-o" is-link to="index" />
     <van-button size="large" @click="outLogin">退出登录</van-button>

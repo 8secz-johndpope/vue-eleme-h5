@@ -99,3 +99,7 @@
 #app .grayBarBg{
   background-color: #F2F2F2;
 }
+.noData{
+  text-align: center;
+  font-size: 0.4rem;
+}
