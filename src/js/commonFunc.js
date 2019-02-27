@@ -61,7 +61,7 @@ function deleteCookie(name, path) {
 /*清除所有的cookies*/
 function clearCookie() {
   var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-  $.each(keys, function (k, v) {
+  keys.forEach(function (k, v) {
     if (v == 'username' || v == 'isAlertFlag') {
       delete keys[k];
     }

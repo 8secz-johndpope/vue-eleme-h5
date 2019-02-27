@@ -9,8 +9,8 @@
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
     <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" />
+      <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center">
+        <img v-lazy="image" class="swipe-img" />
       </van-swipe-item>
     </van-swipe>
     <van-panel class="mg15 pd10" v-for="(menuItem, index) in getImitateMenu">
@@ -42,7 +42,7 @@ export default {
       value: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
-        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg'
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
       ]
     };
   },
@@ -91,5 +91,11 @@ export default {
   }
   .panel-header{
     padding-top: 10px;
+  }
+  .swipe-img{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 0.1rem 0.4rem 0 0.4rem;
   }
 </style>

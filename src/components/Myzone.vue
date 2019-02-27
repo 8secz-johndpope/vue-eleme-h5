@@ -10,10 +10,10 @@
           <p class="userNo">账号:183*****935</p>
         </div>
         <div class="flex-center myzone_uid">
-          <van-button type="danger" size="small" @click.stop="sign"><van-icon name="sign" />签到</van-button>
-          <van-button type="danger" size="small" v-if="follow_type == '0' " @click.stop="addInterest"><van-icon name="plus" />加关注</van-button>
-          <van-button type="danger" size="small" v-if="follow_type == '1' "><van-icon name="chat-o" />发消息</van-button>
-          <van-button type="danger" size="small" v-if="follow_type == '1' " @click.stop="cancelInterest"><van-icon name="exchange" /></van-button>
+          <van-button type="danger" size="small" @click.stop="sign"><van-icon name="sign" class="iconType" />签到</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '0' " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '1' "><van-icon name="chat-o" class="iconType" />发消息</van-button>
+          <van-button type="danger" size="small" v-if="follow_type == '1' " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
         </div>
       </div>
     </div>
@@ -229,5 +229,10 @@ export default {
 }
 .worksAndFavorite{
   background: #F4F4F4;
+}
+.iconType{
+  vertical-align: middle;
+  font-size: 0.34rem;
+  padding: 0 0.08rem 0.08rem 0;
 }
 </style>
