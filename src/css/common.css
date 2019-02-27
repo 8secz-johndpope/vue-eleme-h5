@@ -50,6 +50,9 @@
 .mg15{
   margin: 15px;
 }
+.mgt10{
+  margin-top: 10px;
+}
 .pd15{
   padding: 15px;
 }
@@ -95,6 +98,9 @@
 #app .grayBg {
   background-color: #F2F2F2;
   height: 100%;
+}
+#app .blackBg {
+  background-color: black;
 }
 #app .grayBarBg{
   background-color: #F2F2F2;

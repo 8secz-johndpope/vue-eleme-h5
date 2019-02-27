@@ -91,7 +91,7 @@ export default {
       if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
         return true;
       }else {
-        return this.$store.getters.getLogin;
+        return false;
       }
     },
     ...mapGetters([

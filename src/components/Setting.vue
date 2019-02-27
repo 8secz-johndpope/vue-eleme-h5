@@ -35,6 +35,7 @@
         this.COMMONFUNC.goBack();
       },
       outLogin () {
+        this.$store.dispatch('setLogin', false);
         this.COMMONFUNC.clearCookie(); //清除所有的cookies
         this.$toast("安全退出");
         this.$router.push({  //核心语句

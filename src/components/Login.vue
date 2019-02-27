@@ -45,7 +45,7 @@ export default {
       } else {
         this.COMMONFUNC.addCookie("token",this.token,"","/");
         this.$store.dispatch('setLogin', true);
-        this.$router.replace('/myzone');
+        this.COMMONFUNC.goBack();
       }
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="popupShow" :close-on-click-overlay="false">
+  <van-popup v-model="popupShow" :close-on-click-overlay="false" overlay-class="blackBg">
     <div class="closePop">
       <van-icon name="close" @click="closePop" />
     </div>
@@ -44,8 +44,10 @@
             </van-field>
             <van-button slot="button" size="mini" type="default">添加</van-button>
           </van-cell-group>
-          <van-button plain type="primary" size="mini">他</van-button>
-          <van-button plain type="danger" size="mini">她</van-button>
+          <div class="mgt10">
+            <van-button plain type="primary" size="mini">他</van-button>
+            <van-button plain type="danger" size="mini">她</van-button>
+          </div>
         </van-tab>
       </van-tabs>
     </div>
@@ -59,7 +61,7 @@
           autosize
         />
       </van-cell-group>
-      <van-button size="mini">#类型</van-button>
+      <van-button size="mini" class="mgt10">#类型</van-button>
     </div>
     <div class="spaceDiv"></div>
     <div class="opt-zone">
@@ -94,7 +96,15 @@ export default {
   },
   methods: {
     closePop () {
-      this.$emit('closePop-ok')
+      let that = this;
+      that.$dialog.confirm({
+        // title: '标题',
+        message: '直接退出将不会保存您输入的内容，</br>是否退出'
+      }).then(() => {
+        that.$emit('closePop-ok')
+      }).catch(() => {
+        // on cancel
+      });
     },
   }
 };

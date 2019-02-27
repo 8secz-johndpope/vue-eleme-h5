@@ -15,6 +15,10 @@ export default {
   setHomepageMore ({commit}, platform) {
     commit('SET_HOME_PAGE_MORE', platform);
   },
+  // 改变 推荐页 推荐加载更多
+  setRecommendPageRecommendMore ({commit}, platform) {
+    commit('SET_RECOMMEND_PAGE_RECOMMEND_MORE', platform);
+  },
   // 添加订单
   setOrder ({commit}, platform) {
     commit('SET_ORDER', platform);
