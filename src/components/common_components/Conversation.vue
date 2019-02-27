@@ -42,7 +42,13 @@ export default {
   mounted () {
   },
   computed: {
-
+    isLogin () {
+      if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
+        return true;
+      }else {
+        return false;
+      }
+    },
   },
   methods: {
     // 点击分享
@@ -59,13 +65,27 @@ export default {
     },
     // 加入喜欢
     addMyLike: function (index) {
-      if (this.composition[index].isLike) {
-        this.composition[index].isLike = false;
-        this.composition[index].likers -= 1;
-      }else{
-        this.composition[index].isLike = true;
-        this.composition[index].likers += 1;
-        this.$toast('成功收藏！');
+      let that = this;
+      if(that.isLogin){
+        if (that.composition[index].isLike) {
+          that.composition[index].isLike = false;
+          that.composition[index].likers -= 1;
+        }else{
+          that.composition[index].isLike = true;
+          that.composition[index].likers += 1;
+          that.$toast('成功收藏！');
+        }
+      }else {
+        that.$dialog.confirm({
+          title: '未登录',
+          message: '登录后可收藏到您的喜欢当中'
+        }).then(() => {
+          that.$router.push({  //核心语句
+            path:'/login'   //跳转的路径
+          })
+        }).catch(() => {
+          // on cancel
+        });
       }
     },
   }

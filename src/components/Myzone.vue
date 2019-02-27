@@ -59,8 +59,8 @@
 import Fixednav from './common_components/Fixed_nav';
 import Conversation from './common_components/Conversation';
 import GetPraisedNum from './child_components/Myzone/GetPraisedNum';
-import { mapGetters } from 'vuex';
 import { ImagePreview } from 'vant';
+import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
   components: {
@@ -83,7 +83,7 @@ export default {
     } else {
       this.uname = this.$store.getters.getuname;
       // 设置当前标记为我的
-      this.$store.dispatch('setWhichpage', 'myzone');
+      // this.$store.dispatch('setWhichpage', 'myzone');
     }
   },
   computed: {

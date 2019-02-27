@@ -28,16 +28,6 @@ export default {
     };
   },
   mounted () {
-    // 设置当前状态为加载中
-    this.$store.dispatch('setLoading', true);
-    // 模拟请求等待
-    var time = Math.floor(Math.random() * 2000);
-    console.log('模拟加载用时' + time);
-    setTimeout(() => {
-      // 页面显示
-      this.$store.dispatch('setLoading', false);
-      this.showMe = true;
-    }, time);
     setTimeout(() => {
       window.addEventListener('scroll', this.dispatchLoad, false);
     }, 0);
@@ -85,18 +75,15 @@ export default {
           // on cancel
         });
       }else {
+        // 使用路由跳转回出问题 未解决
         if (this.getImitateConversation.length > 10) {
-          that.$dialog.confirm({
+          that.$dialog.alert({
             title: '积分不足',
-            message: '您的积分不足，可前往《我的》页面做任务或充值获取积分',
-            confirmButtonText: '立即前往'
+            message: '可通过发表对话、前往《我的》页面签到、充值、邀请好友注册获取积分',
+            confirmButtonText: '知道了'
           }).then(() => {
-            this.$router.push({  //核心语句
-              path:'/myzone'   //跳转的路径
-            })
-          }).catch(() => {
-            // on cancel
-          });
+
+          })
         }else{
           this.$store.dispatch('setLoading', true);
           if (!this.isLoadingMore) { // 是否加载中
@@ -107,7 +94,7 @@ export default {
                 this.$store.dispatch('setRecommendPageRecommendMore', [...this.getImitateConversation, ...(this.getImitateConversation).slice(0, 5)]);
               }
               this.isLoadingMore = false;
-            }, 300);
+            }, 100);
           }
         }
       }
