@@ -36,29 +36,29 @@
       </van-cell-group>
     </van-popup>
     <!-- 常见问题设置 -->
-    <van-popup v-model="helpPopupShow" position="bottom" :overlay="true" class="grayBg">
+    <van-popup v-model="helpPopupShow" position="bottom" :overlay="true">
       <van-nav-bar
         title="常见问题"
         @click-left="closeHelpPopup"
         left-arrow
-        class="grayBarBg"
       />
-      <van-cell-group>
-        <div class="grayBarBg popup-content">
-          <p class="question">1.如何充值积分？</p>
-          <p class="answer">1.1 我的页面打开充值面板，可以快速充值；</p>
-          <p class="answer">1.2 在 “我的-更多-钱包”页面中进行充值。</p>
-          <p class="question">2.为什么提示“充值失败”？</p>
-          <p class="answer">2.1 请检查付款时网络连接是否正常；</p>
-          <p class="answer">2.2 请检查付款账号余额是否大于购买的积分金额。</p>
-          <p class="question">3.付款成功，但积分没到账？</p>
-          <p class="answer">3.1 由于网络原因可能导致积分到账延迟，滞后90分钟内属正常现象，请耐心等候；</p>
-          <p class="answer">3.2 如超过90分钟积分仍未到账，则请提供「充值时的扣款截屏，需包含消费时间、金额、
-            收款对象等各种必要证明信息」及「你的应用个人主页截屏」到设置中的问题反馈进行反馈，两者缺一不可，我们会在工作时间尽快帮你核查。</p>
-          <p class="question">4.每日提现限额</p>
-          <p class="answer">一旦充值，将不做退款处理，请知悉</p>
-        </div>
-      </van-cell-group>
+      <!-- pc 和 移动端看到的样式有出入  -->
+      <van-collapse v-model="helpActiveNames">
+        <van-collapse-item title="1、如何充值积分？" name="1">
+          1.1 我的页面打开充值面板，可以快速充值；</br>
+          1.2 在 “我的-更多-钱包”页面中进行充值。</br>
+        </van-collapse-item>
+        <van-collapse-item title="2、为什么提示“充值失败”？" name="2">
+          2.1 请检查付款时网络连接是否正常；</br>
+          2.2 请检查付款账号余额是否大于购买的积分金额。</br>
+        </van-collapse-item>
+        <van-collapse-item title="3、付款成功，但积分没到账？" name="3">
+          3.1 由于网络原因可能导致积分到账延迟，滞后90分钟内属正常现象，请耐心等候；</br>
+          3.1 如超过90分钟积分仍未到账，则请提供「充值时的扣款截屏，需包含消费时间、金额、
+            收款对象等各种必要证明信息」及「你的应用个人主页截屏」到设置中的问题反馈进行反馈，两者缺一不可，我们会在工作时间尽快帮你核查。</br>
+        </van-collapse-item>
+        <van-cell title="4、一旦充值，将不做退款处理，请知悉" />
+      </van-collapse>
     </van-popup>
     <!-- 积分说明设置 -->
     <van-popup v-model="integralPopupShow" position="bottom" :overlay="true" class="grayBg">
@@ -69,23 +69,27 @@
         class="grayBarBg"
       />
       <van-cell-group>
-        <div class="grayBarBg popup-content">
-          <p class="question">1.做任务获取积分</p>
-          <p class="answer">1.1 我的页面每日签到获得2积分；</p>
-          <p class="answer">1.2 我的页面打开充值面板，或者在 “我的-更多-钱包”页面中，可以快速充值；</p>
-          <p class="answer">1.3 发表对话，审核通过之后，获得2积分；（暂定）</p>
-          <p class="answer">1.4 邀请好友，通过邀请码，每次邀请一个，获50积分（暂定）；</p>
-          <p class="question">2.充值购买积分？（暂定）</p>
-          <p class="answer">2.1 分6种方式，充的越多，积分、收藏容量相应层级增加，可叠加；</p>
-          <p class="answer">2.2  </br>5元   100积分    送 10篇收藏容量（暂定）
-                                 </br>10元  250积分   送 25篇收藏容量（暂定）
-                                 </br>20元  600积分   送 60篇收藏容量（暂定）
-                                 </br>30元  1000积分 送 100篇收藏容量（暂定）
-                                 </br>50元  2000积分 送 200篇收藏容量（暂定）
-          </p>
-          <p class="question">3.提醒</p>
-          <p class="answer">积分不可转让，也不可兑换</p>
-        </div>
+        <!-- pc 和 移动端看到的样式有出入  -->
+        <van-collapse v-model="integralActiveNames">
+          <van-collapse-item title="1、如何做任务获取积分？" name="1">
+            1.1 我的页面每日签到获得2积分；</br>
+            1.2 我的页面打开充值面板，或者在 “我的-更多-钱包”页面中，可以快速充值；</br>
+            1.3 发表对话，审核通过之后，获得2积分；（暂定）</br>
+            1.4 邀请好友，通过邀请码，每次邀请一个，获50积分（暂定）；</br>
+          </van-collapse-item>
+          <van-collapse-item title="2，充值购买积分？（暂定）" name="2">
+            2.1 分6种方式，充的越多，积分、收藏容量相应层级增加，可叠加；</br>
+            2.2 价格说明，充的越多，送的越多 
+                 </br>5元   100积分    送 10篇收藏容量（暂定）
+                 </br>10元  250积分   送 25篇收藏容量（暂定）
+                 </br>20元  600积分   送 60篇收藏容量（暂定）
+                 </br>30元  1000积分 送 100篇收藏容量（暂定）
+                 </br>50元  2000积分 送 200篇收藏容量（暂定）
+          </van-collapse-item>
+          <van-collapse-item title="3、积分可转让或者兑换？" name="3">
+            积分暂时不可转让，也不可兑换</br>
+          </van-collapse-item>
+        </van-collapse>
       </van-cell-group>
     </van-popup>
   </div>
@@ -112,7 +116,9 @@
             integral: 20, // 积分
             time: '2019.02.19', // 充值时间
           }
-        ]
+        ],
+        helpActiveNames: ['1','2','3'], // 常见问题折叠筐
+        integralActiveNames: ['1','2','3'], // 积分说明折叠筐
       };
     },
     mounted () {

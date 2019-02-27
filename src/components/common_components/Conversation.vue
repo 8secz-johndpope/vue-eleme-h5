@@ -78,7 +78,8 @@ export default {
       }else {
         that.$dialog.confirm({
           title: '未登录',
-          message: '登录后可收藏到您的喜欢当中'
+          message: '登录后可收藏至您的喜欢',
+          confirmButtonText: '立即登录'
         }).then(() => {
           that.$router.push({  //核心语句
             path:'/login'   //跳转的路径

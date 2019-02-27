@@ -12,6 +12,7 @@
         QQ群1：xxx；QQ群2：xxx；QQ群3：xxx；</br>
         微信：xxx；</br>
         电话：xxx</br>
+        商务合作热线：xxx</br>
       </van-collapse-item>
       <van-collapse-item title="地址" name="2">
         北京中关村1号
