@@ -4,10 +4,9 @@
     <van-nav-bar
       title="消息"
     />
-
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-swipe-cell :right-width="130" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId">
+      <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId">
         <van-cell-group>
           <van-cell class="displayflex">
             <div class="img-zone">
@@ -38,7 +37,6 @@
   import { Dialog } from "vant";
   import Fixednav from './common_components/Fixed_nav';
   import { mapGetters } from 'vuex';
-
   import "../css/common.css";
   export default {
     components:{
@@ -86,7 +84,6 @@
   }
   .contents-zone{
     margin-left: 10px;
-
-     width: calc(100% - 40px);
+    width: calc(100% - 40px);
   }
 </style>

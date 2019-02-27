@@ -19,34 +19,35 @@
           </van-cell-group>
         </van-tab>
         <van-tab title="分段对话">
-          <van-cell-group class="fieldDiv">
-            <van-field
-              v-model="ManMessage"
-              label="男"
-              type="textarea"
-              placeholder="请输入内容"
-              rows="1"
-              autosize
-              clearable
-            >
-            </van-field>
-          </van-cell-group>
-          <van-cell-group class="fieldDiv">
-            <van-field
-              v-model="WomanMessage"
-              label="女"
-              type="textarea"
-              placeholder="请输入内容"
-              rows="1"
-              autosize
-              clearable
-              >
-            </van-field>
-            <van-button slot="button" size="mini" type="default">添加</van-button>
-          </van-cell-group>
+          <div id="demo">
+            <van-cell-group class="fieldDiv">
+              <van-field
+                v-model="ManMessage"
+                label="男"
+                type="textarea"
+                placeholder="请输入内容"
+                rows="1"
+                autosize
+                clearable
+                >
+              </van-field>
+            </van-cell-group>
+            <van-cell-group class="fieldDiv">
+              <van-field
+                v-model="WomanMessage"
+                label="女"
+                type="textarea"
+                placeholder="请输入内容"
+                rows="1"
+                autosize
+                clearable
+                >
+              </van-field>
+            </van-cell-group>
+          </div>
           <div class="mgt10">
-            <van-button plain type="primary" size="mini">他</van-button>
-            <van-button plain type="danger" size="mini">她</van-button>
+            <van-button plain type="primary" size="mini" @click="addManBox">他</van-button>
+            <van-button plain type="danger" size="mini" @click="addWomanBox">她</van-button>
           </div>
         </van-tab>
       </van-tabs>
@@ -72,6 +73,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   name: 'add_conversation',
   props: {
@@ -106,17 +108,47 @@ export default {
         // on cancel
       });
     },
+    addManBox() {
+      var MyComponent = Vue.extend({
+        template: `<van-cell-group style="margin-top:0.266667rem"><van-field label="男" type="textarea" placeholder="请输入内容" rows="1" autosize clearable ></van-field></van-cell-group>`,
+        data() {
+          return {
+            dataId: '0'
+          };
+        }
+      });
+      var component = new MyComponent().$mount();
+      var dom = document.querySelector("#demo");
+      dom.appendChild(component.$el);
+    },
+    addWomanBox() {
+      var MyComponent = Vue.extend({
+        template: `<van-cell-group style="margin-top:0.266667rem"><van-field label="女" type="textarea" placeholder="请输入内容" rows="1" autosize clearable ></van-field></van-cell-group>`,
+        data() {
+          return {
+            dataId: '0'
+          };
+        }
+      });
+      var component = new MyComponent().$mount();
+      var dom = document.querySelector("#demo");
+      dom.appendChild(component.$el);
+    },
   }
 };
 </script>
 
 <style lang="less" scoped>
+  .blackBg{
+    position: relative;
+  }
   .van-popup {
     background-color: unset;
     width: 100%;
     height: 100%;
   }
   .closePop{
+    font-size: 0.6rem;
     position: fixed;
     left: 20px;
     top: 20px;
@@ -141,7 +173,7 @@ export default {
     height: 10rem;
   }
   .opt-zone{
-    position: fixed;
+    position: absolute;
     bottom: 15px;
     width: 100%;
     text-align: center;
