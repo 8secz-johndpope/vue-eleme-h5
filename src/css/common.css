@@ -112,3 +112,7 @@
   text-align: center;
   font-size: 0.4rem;
 }
+#app .classify-button{
+  background-color: #409EFF;
+  border: 0.026667rem solid #409EFF;
+}

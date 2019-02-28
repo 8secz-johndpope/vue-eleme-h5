@@ -36,7 +36,7 @@
             <van-button slot="button" size="small" type="default">忘记密码</van-button>
           </van-field>
         </van-cell-group>
-        <van-button type="primary" size="large" @click="cheack_n_p">登录</van-button>
+        <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
         <div class="flex-center noAccount">
           <p><router-link :to="{ name: '/regist', params: {} }" class="noAccount-a">验证码登录</router-link></p>
           <p class="shutiao">|</p>
@@ -48,7 +48,6 @@
 </template>
 
 <script>
-// import Backbar from './common_components/Back_bar';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -73,13 +72,16 @@ export default {
     ])
   },
   methods: {
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
+    },
     cheack_n_p () {
       if (this.uname === '' || this.pwd === '') {
-        alert('用户名或密码不能为空');
+        this.$toast('用户名或密码不能为空');
         return;
       }
       if (this.uname !== this.getuname || this.pwd !== this.getpwd) {
-        alert('用户名或密码错误');
+        this.$toast('用户名或密码错误');
       } else {
         this.COMMONFUNC.addCookie("token",this.token,"","/");
         this.$store.dispatch('setLogin', true);

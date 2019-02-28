@@ -101,5 +101,20 @@ export default new Router({
       name: 'Login',
       component: (resolve) => require(['../components/Login'],resolve),
     },
+    {
+      path: '/forgot',
+      name: 'Forgot',
+      component: (resolve) => require(['../components/login_components/Forgot'],resolve),
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: (resolve) => require(['../components/login_components/Register'],resolve),
+    },
+    {
+      path: '/loginByCheckCode',
+      name: 'LoginByCheckCode',
+      component: (resolve) => require(['../components/login_components/LoginByCheckCode'],resolve),
+    },
   ]
 });
