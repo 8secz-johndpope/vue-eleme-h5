@@ -37,7 +37,7 @@
   import Fixednav from './common_components/Fixed_nav';
   import { mapGetters } from 'vuex';
 
-  import "../css/common.css";
+  // import "../css/common.css";
   export default {
     components:{
            Fixednav,

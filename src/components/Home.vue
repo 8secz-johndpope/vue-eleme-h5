@@ -33,7 +33,7 @@
 <script>
 import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
-
+import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
   name: 'home',
   data () {
