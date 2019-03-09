@@ -1,11 +1,11 @@
 <template>
   <div class="content-box">
     <van-tabs v-model="active" type="card" @click="changeTab" class="tab">
-      <van-tab title="推荐">
+      <van-tab title="话术">
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
-      <van-tab title="好友">
-        <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
+      <van-tab title="文章">
+        <Article :composition="getImitateConversation" class="item-box"></Article>
       </van-tab>
     </van-tabs><!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
@@ -16,6 +16,7 @@
 <script>
 import Fixednav from './common_components/Fixed_nav';
 import Conversation from './common_components/Conversation';
+import Article from './common_components/Article';
 import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
@@ -103,6 +104,7 @@ export default {
   components: {
     Fixednav,
     Conversation,
+    Article,
   }
 };
 </script>
