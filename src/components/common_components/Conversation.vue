@@ -1,29 +1,36 @@
 <template>
-    <div>
-        <!-- 列表单个 -->
-        <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition">
-          <div class="content-box" v-html="item.contentHtml">
-            {{item.contentHtml}}
-          </div>
-          <div slot="footer" class="flex-r">
-            <!-- <i class="fa fa-eye" aria-hidden="true"></i><span>1w</span> -->
-            <span class="copy"
-              v-clipboard:copy="item.content"
-              v-clipboard:success="onCopy"
-              v-clipboard:error="onError"><!-- 复制 -->
-              <i class="fa fa-files-o" aria-hidden="true"></i>
-            </span>
-            <span @click="addMyLike(index)" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
-            <span @click="addMyLike(index)" class="myLike"><i class="fa fa-commenting-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 评论 -->
-            <span @click="share" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
-          </div>
-        </van-panel>
-        <!-- 分享选项 -->
-        <van-actionsheet v-model="show" title="分享到">
-          <i class="fa fa-weixin" aria-hidden="true"></i>
-          <i class="fa fa-qq" aria-hidden="true"></i>
-        </van-actionsheet>
-    </div>
+  <div>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="我也是底线的"
+      @load="onLoad"
+    >
+      <!-- 列表单个 -->
+      <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition">
+        <div class="content-box" v-html="item.contentHtml">
+          {{item.contentHtml}}
+        </div>
+        <div slot="footer" class="flex-r">
+          <!-- <i class="fa fa-eye" aria-hidden="true"></i><span>1w</span> -->
+          <span class="copy"
+            v-clipboard:copy="item.content"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError"><!-- 复制 -->
+            <i class="fa fa-files-o" aria-hidden="true"></i>
+          </span>
+          <span @click="addMyLike(index)" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
+          <span @click="addMyLike(index)" class="myLike"><i class="fa fa-commenting-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 评论 -->
+          <span @click="share" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
+        </div>
+      </van-panel>
+      <!-- 分享选项 -->
+      <van-actionsheet v-model="show" title="分享到">
+        <i class="fa fa-weixin" aria-hidden="true"></i>
+        <i class="fa fa-qq" aria-hidden="true"></i>
+      </van-actionsheet>
+    </van-list>
+  </div>
 </template>
 
 <script>
@@ -38,6 +45,8 @@ export default {
   data () {
     return {
       show: false,  // 底部 -- 分享
+      loading: false,
+      finished: false,
     };
   },
   mounted () {
@@ -90,6 +99,31 @@ export default {
         });
       }
     },
+    onLoad() {
+      let obj = {
+        userName: '',
+        userId: '',
+        id: 'zs20190213',
+        author: '王五',
+        time: '2019.02.13',
+        likers: 9999,   // 喜欢数
+        isLike: false, // 是否喜欢
+        contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
+        content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+      };
+      // 异步更新数据
+      setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+          this.composition.push(obj);
+        }
+        // 加载状态结束
+        this.loading = false;
+        // 数据全部加载完成
+        if (this.composition.length >= 20) {
+          this.finished = true;
+        }
+      }, 500);
+    }
   }
 };
 </script>
