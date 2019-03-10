@@ -14,7 +14,7 @@ function formatterW(num) {
   if (parseFloat(num).toString() == "NaN") {
 　　　return;
 　} else {
-　　　return num >= 10000 ? (num - num % 1000)/10000 + 'W' : num;
+　　　return num >= 10000 ? (num - num % 1000)/10000 + 'W+' : num;
 　}
 }
 /**添加设置cookie**/

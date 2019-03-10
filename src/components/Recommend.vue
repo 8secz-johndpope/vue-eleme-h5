@@ -5,7 +5,7 @@
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
       <van-tab title="文章">
-        <Article :composition="getImitateConversation" class="item-box"></Article>
+        <Article :composition="getImitateArticleList" class="item-box"></Article>
       </van-tab>
     </van-tabs><!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
@@ -46,6 +46,7 @@ export default {
     },
     ...mapGetters([
       'getImitateConversation', // 获取模拟对话
+      'getImitateArticleList', // 获取模拟文章列表
     ])
   },
   methods: {
