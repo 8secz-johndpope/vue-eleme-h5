@@ -4,6 +4,7 @@
       v-model="loading"
       :finished="finished"
       finished-text="我也是底线的"
+      :lazy-load="true"
       @load="onLoad"
     >
       <van-card

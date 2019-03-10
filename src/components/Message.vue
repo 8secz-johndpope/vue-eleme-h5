@@ -4,6 +4,12 @@
     <van-nav-bar
       title="消息"
     />
+    <van-tabbar v-model="messageActive" class="topTabbar" active-color="#7d7e80">
+      <van-tabbar-item icon="friends-o" info="20">好友</van-tabbar-item>
+      <van-tabbar-item icon="user-circle-o">粉丝</van-tabbar-item>
+      <van-tabbar-item icon="thumb-circle-o" dot>赞</van-tabbar-item>
+      <van-tabbar-item icon="comment-circle-o" info="5">评论和@</van-tabbar-item>
+    </van-tabbar>
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId">
@@ -50,6 +56,7 @@
         arrs: [],
         count: 0,
         isLoading: false,
+        messageActive: -1,
       };
     },
     mounted () {
@@ -76,6 +83,9 @@
   }
 </script>
 <style lang="css" scoped>
+  .topTabbar{
+    position: initial;
+  }
   .displayflex{
     padding: 0 0.4rem;
   }
