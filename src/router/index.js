@@ -116,5 +116,10 @@ export default new Router({
       name: 'LoginByCheckCode',
       component: (resolve) => require(['../components/login_components/LoginByCheckCode'],resolve),
     },
+    {
+      path: '/result/:id',
+      name: 'result',
+      component: (resolve) => require(['../components/common_components/Result'],resolve),
+    },
   ]
 });

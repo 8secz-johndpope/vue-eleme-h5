@@ -18,7 +18,7 @@
         <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
       </div>
       <div class="flex-space-between">
-        <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/business/' + child_item.listId" >
+        <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
           <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
         </router-link>
       </div>
@@ -62,7 +62,7 @@ export default {
     ...mapGetters([
       'getLogin',
       'getFalseHotWord',
-      'getImitateMenu' // 商家简略信息
+      'getImitateMenu' // 话术分类信息
     ])
   },
   methods: {
