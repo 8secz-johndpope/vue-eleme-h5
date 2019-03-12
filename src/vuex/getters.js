@@ -29,4 +29,6 @@ export default {
   getImitateMenu: (state) => state.imitateMenu,
   // 得到模拟消息
   getImitateMessage: (state) => state.imitateMessage,
+  // 得到关键词
+  getKeywords: (state) => state.keywords,
 };

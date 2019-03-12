@@ -23,4 +23,8 @@ export default {
   setOrder ({commit}, platform) {
     commit('SET_ORDER', platform);
   },
+  // 修改关键词
+  setKeywords ({commit}, platform) {
+    commit('SET_KEYWORDS', platform);
+  },
 };

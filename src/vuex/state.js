@@ -34,4 +34,6 @@ export default {
   imitateMessage,
   // 高亮的菜单
   activeTab: 0,
+  // 关键词
+  keywords: '',
 };

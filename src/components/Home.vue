@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-search
-      v-model="value"
+      v-model="keywords"
       placeholder="请输入搜索关键词"
       show-action
       @search="onSearch"
@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       showMe: false, // 是否展示当前页面
-      value: '',  // 搜索词
+      keywords: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -67,7 +67,8 @@ export default {
   },
   methods: {
     onSearch () {
-      this.$toast(this.value)
+      this.$store.dispatch('setKeywords', this.keywords);
+      this.$router.push('/result/'+this.keywords);
     }
   },
   components: {

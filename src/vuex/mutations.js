@@ -23,4 +23,8 @@ export default {
   SET_ORDER (state, platform) {
     state.falseOrder.unshift(platform);
   },
+  // 设置关键词
+  SET_KEYWORDS (state, platform) {
+    state.keywords = platform;
+  }
 };

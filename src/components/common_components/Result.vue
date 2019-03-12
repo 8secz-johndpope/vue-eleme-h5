@@ -1,15 +1,13 @@
 <template>
   <div class="content-box">
-    <van-nav-bar title="结果页" left-text="返回" left-arrow>
-      <van-icon name="search" slot="right" @click="clickSearchBtn"/>
-    </van-nav-bar>
     <form action="/">
       <van-search
-        v-model="value"
+        v-model="keywords"
         placeholder="请输入搜索关键词"
         show-action
         @search="onSearch"
         @cancel="onCancel"
+        class="fixed-top"
       />
     </form>
     <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
@@ -27,17 +25,29 @@ export default {
     return {
       uname: '',
       active: 0,
+      keywords: '',
     };
   },
   mounted () {
+    this.keywords = this.getKeywords;
   },
   computed: {
     ...mapGetters([
       'getImitateConversation', // 获取模拟对话
+      'getKeywords',  // 获取关键词
     ])
   },
   methods: {
-    
+    // 取消返回上一页
+    onCancel(){
+      this.$store.dispatch('setKeywords', '');
+      this.COMMONFUNC.goBack();
+    },
+    // 查询
+    onSearch () {
+      this.$store.dispatch('setKeywords', this.getKeywords);
+      this.$toast('查询成功');
+    }
   },
   components: {
     Conversation,
@@ -47,6 +57,12 @@ export default {
 
 <style lang="less" scoped>
   .item-box{
-    margin-top: 15px;
+    margin-top: 1.2rem;
+  }
+  .fixed-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
   }
 </style>

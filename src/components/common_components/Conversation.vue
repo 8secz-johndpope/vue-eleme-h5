@@ -150,6 +150,9 @@ export default {
     margin: 10px;
     font-size: 14px;
   }
+  .panel-s:first-child{
+    margin-top: 5px;
+  }
   .content-box{
     padding: 0 15px;
     line-height: 20px;
