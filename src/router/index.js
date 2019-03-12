@@ -121,5 +121,10 @@ export default new Router({
       name: 'result',
       component: (resolve) => require(['../components/common_components/Result'],resolve),
     },
+    {
+      path: '/articleDetail/:id',
+      name: 'articleDetail',
+      component: (resolve) => require(['../components/common_components/ArticleDetail'],resolve),
+    },
   ]
 });

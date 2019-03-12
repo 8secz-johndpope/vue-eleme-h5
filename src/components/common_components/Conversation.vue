@@ -26,14 +26,14 @@
       </van-panel>
       <!-- 分享选项 -->
       <van-actionsheet v-model="show" title="分享到">
-        <i class="fa fa-weixin" aria-hidden="true"></i>
-        <i class="fa fa-qq" aria-hidden="true"></i>
+        <ShareBox :targetId="targetId"></ShareBox>
       </van-actionsheet>
     </van-list>
   </div>
 </template>
 
 <script>
+import ShareBox from './ShareBox';
 export default {
   // 父子通信
   props: {
@@ -42,11 +42,15 @@ export default {
       default: [],
     }
   },
+  components : {
+    ShareBox,
+  },
   data () {
     return {
       show: false,  // 底部 -- 分享
       loading: false,
       finished: false,
+      targetId: '', // 选中的id值
     };
   },
   mounted () {
