@@ -116,3 +116,12 @@
   background-color: #409EFF;
   border: 0.026667rem solid #409EFF;
 }
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.text-img{
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+}
