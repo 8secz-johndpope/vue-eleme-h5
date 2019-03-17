@@ -7,11 +7,11 @@
         </div>
         <div class="contents-zone">
           <div class="flex-space-between">
-            <span>{{item.sendUserName}}</span>
-            <span>{{item.time}}</span>
+            <span>@{{item.sendUserName}}</span>
+            <span><i class="fa fa-thumbs-o-up thumb-icon" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i>200</span>
           </div>
           <div>
-            <span>{{item.contents}}</span>
+            <span class="comments-contents">{{item.contents}}</span><span class="publish-time">{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
           </div>
         </div>
       </van-cell>
@@ -68,5 +68,16 @@
   .contents-zone{
     margin-left: 10px;
     width: calc(100% - 40px);
+  }
+  .comments-contents{
+    font-size: 0.438rem;
+  }
+  .publish-time{
+    font-size: 0.375rem;
+    color: rgb(144, 154, 164);
+    margin: 0 0 0 0.312rem;
+  }
+  .thumb-icon{
+    margin: 0 0.156rem 0 0;
   }
 </style>

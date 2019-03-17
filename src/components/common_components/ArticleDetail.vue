@@ -41,11 +41,12 @@
       </section>
       <!-- 推荐 -->
       <section class="advertisement">
-        <div class="recommend">精彩推荐</div>
+        <div class="van-recommend">精彩推荐</div>
         <Article :composition="recommendArticle"></Article>
       </section>
       <!-- 评论 -->
       <section class="comments">
+        <div class="van-recommend">精彩评论</div>
         <Comments></Comments>
       </section>
     </div>
@@ -53,6 +54,8 @@
     <van-actionsheet v-model="sharePopShow" title="分享到">
       <ShareBox :targetId="targetId"></ShareBox>
     </van-actionsheet>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="space"></div>
     <!-- 固定评论区 -->
     <FixedCommentsZone @openSharePop="openSharePop"></FixedCommentsZone>
   </div>
@@ -174,7 +177,7 @@
   .article-contents section{
     padding: 0.312rem 0 0 0;
   }
-  .recommend {
+  .van-recommend {
     color: rgb(34, 34, 34);
     font-size: 0.5rem;
     line-height: 0.781rem;
@@ -182,7 +185,7 @@
     font-family: PingFangSC-Semibold;
     padding: 0.312rem 0 0 0;
   }
-  .recommend::after {
+  .van-recommend::after {
     content: "";
     display: block;
     width: 0.375rem;

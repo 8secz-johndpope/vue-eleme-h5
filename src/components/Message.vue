@@ -21,7 +21,7 @@
             <div class="contents-zone">
               <div class="flex-space-between">
                 <span>{{item.sendUserName}}</span>
-                <span>{{item.time}}</span>
+                <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
               </div>
               <div>
                 <span>{{item.contents}}</span>

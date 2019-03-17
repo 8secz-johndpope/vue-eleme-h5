@@ -226,7 +226,7 @@ export var imitateMessage = [
     isOfficial: 0,  // 是否官方，0-是，1-否
     sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     sendUserName: '消息助手',
-    time: '2019-2-17',
+    time: '1552833875',
     contents: '欢迎来到xxx',
     isReaded: 0,    // 是否已读， 0-是， 1-否
     messageId: 'mId000001',  // 消息Id
@@ -235,7 +235,7 @@ export var imitateMessage = [
     isOfficial: 1,  // 是否官方，0-是，1-否
     sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     sendUserName: '破天小神',
-    time: '2019-2-17',
+    time: '1552838875',
     contents: 'hello，我关注了你哟',
     isReaded: 1,    // 是否已读， 0-是， 1-否
     messageId: 'mId000001',  // 消息Id
