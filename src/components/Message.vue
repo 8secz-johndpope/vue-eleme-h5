@@ -39,17 +39,14 @@
 </template>
 
 <script>
-
-  import { Dialog } from "vant";
   import Fixednav from './common_components/Fixed_nav';
   import { mapGetters } from 'vuex';
   // import "../css/common.css";
   export default {
     components:{
            Fixednav,
-           [Dialog.name]:Dialog,
         },
-    name: 'myfans',
+    name: 'message',
     data () {
       return {
         msg: '1',

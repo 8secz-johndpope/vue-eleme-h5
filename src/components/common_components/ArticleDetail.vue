@@ -42,29 +42,35 @@
       <!-- 推荐 -->
       <section class="advertisement">
         <div class="recommend">精彩推荐</div>
-        <Article :composition="getImitateArticleList"></Article>
+        <Article :composition="recommendArticle"></Article>
       </section>
       <!-- 评论 -->
       <section class="comments">
-        
+        <Comments></Comments>
       </section>
     </div>
     <!-- 分享选项 -->
     <van-actionsheet v-model="sharePopShow" title="分享到">
       <ShareBox :targetId="targetId"></ShareBox>
     </van-actionsheet>
+    <!-- 固定评论区 -->
+    <FixedCommentsZone @openSharePop="openSharePop"></FixedCommentsZone>
   </div>
 </template>
 <script>
   import ShareBox from './ShareBox';
   import Advertisement from './Advertisement';
+  import Comments from './Comments';
   import Article from './Article';
+  import FixedCommentsZone from './FixedCommentsZone';
   import { mapGetters } from 'vuex';
   export default {
     components:{
       ShareBox,
       Advertisement,
       Article,
+      Comments,
+      FixedCommentsZone,
     },
     name: 'mywallet',
     data () {
@@ -73,10 +79,11 @@
         sharePopShow: false,  // 更多选项
         targetId: '', // 文章Id
         isAttention: false, // 是否已经关注
+        recommendArticle: [],
       };
     },
     mounted () {
-
+      this.recommendArticle = this.getImitateArticleList.splice(1,5)
     },
     computed: {
       isLogin () {
@@ -97,6 +104,10 @@
       // 打开更多弹框
       openMorePop () {
         this.sharePopShow = true;
+      },
+      // 打开更多弹框
+      openSharePop (isShow) {
+        this.sharePopShow = isShow;
       },
       // 加关注
       addAttention: function () {
