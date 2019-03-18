@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="登录"
+      title="忘记密码"
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"

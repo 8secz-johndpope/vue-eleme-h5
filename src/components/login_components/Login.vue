@@ -33,7 +33,7 @@
             center
             clearable
           >
-            <van-button slot="button" size="small" type="default">忘记密码</van-button>
+            <van-button :to="'/forgot'" slot="button" size="small" type="default">忘记密码</van-button>
           </van-field>
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
