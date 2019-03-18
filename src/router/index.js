@@ -7,7 +7,6 @@ import Order from 'components/Order';
 import Myzone from 'components/Myzone';
 import Recommend from 'components/Recommend';
 import Business from 'components/Business';
-import Login from 'components/Login';
 import Search from 'components/Search';
 import Myfans from 'components/Myfans';
 import Message from 'components/Message';
@@ -99,7 +98,7 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: (resolve) => require(['../components/Login'],resolve),
+      component: (resolve) => require(['../components/login_components/Login'],resolve),
     },
     {
       path: '/forgot',

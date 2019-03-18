@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="登录"
+      title="注册"
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"
@@ -33,14 +33,14 @@
             center
             clearable
           >
-            <van-button slot="button" size="small" type="default">忘记密码</van-button>
+            <van-button slot="button" size="small" type="default">获取验证码</van-button>
           </van-field>
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
         <div class="flex-center noAccount">
-          <p><router-link :to="{ name: '/regist', params: {} }" class="noAccount-a">验证码登录</router-link></p>
+          <p><router-link :to="{ name: 'LoginByCheckCode', params: {} }" class="noAccount-a">验证码登录</router-link></p>
           <p class="shutiao">|</p>
-          <p><router-link :to="{ name: '/regist', params: {} }" class="noAccount-a">新用户注册</router-link></p>
+          <p><router-link :to="{ name: 'Login', params: {} }" class="noAccount-a">账号登陆</router-link></p>
         </div>
       </div>
     </div>
