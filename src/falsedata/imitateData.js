@@ -241,3 +241,57 @@ export var imitateMessage = [
     messageId: 'mId000001',  // 消息Id
   },
 ];
+// 模拟评论
+export var imitateComments = [
+  {
+    isOfficial: 0,  // 是否官方，0-是，1-否
+    vipLevel: 1,  // VIP等级，后续可能做vip评论高亮等处理
+    sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',   // 评论者头像
+    sendUserName: '评论者名称', // 评论者的用户名
+    time: '1552833875',   // 评论时间戳
+    contents: '评论内容',  // 评论内容
+    praiseNum: 10000, // 评论数
+    isPraised: 0,    // 是否已点赞， 0-是， 1-否
+    commentsId: 'mId000001',  // 评论Id
+    position: '中国·深圳·南山', // 评论者所在位置
+    Id: 'mId000001',  // 消息Id
+    postId: 'postId0000121', // 所评论文章，对话的id
+    childLength: 3,
+    child: [
+      {
+        childId: 'mId000001', // 子级二级评论id,
+        childUserId: 'mId000001', // 子级二级评论者id,
+        childTime: '1552833875',   // 子级评论时间戳，子级评论按照时间先后
+        childPraiseNum: '1552833875',   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
+        childUserName: '我是二级评论员', // 子级二级评论者id,
+        childCommentsNum: 12, // 子级二级评论数,
+        childCommentsContents: '我是二级评论内容', // 子级二级评论内容,
+      },
+      {
+        childId: 'mId000001', // 子级二级评论id,
+        childUserId: 'mId000001', // 子级二级评论者id,
+        childTime: '1552833875',   // 子级评论时间戳，子级评论按照时间先后
+        childPraiseNum: '1552833875',   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
+        childUserName: '我是二级评论员', // 子级二级评论者id,
+        childCommentsNum: 12, // 子级二级评论数,
+        childCommentsContents: '我是二级评论内容', // 子级二级评论内容,
+      },
+    ]
+  },
+  {
+    isOfficial: 0,  // 是否官方，0-是，1-否
+    vipLevel: 1,  // VIP等级，后续可能做vip评论高亮等处理
+    sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',   // 评论者头像
+    sendUserName: '评论者名称', // 评论者的用户名
+    time: '1552833875',   // 评论时间戳
+    contents: '评论内容',  // 评论内容
+    praiseNum: 10000, // 评论数
+    isPraised: 0,    // 是否已点赞， 0-是， 1-否
+    commentsId: 'mId000001',  // 评论Id
+    position: '中国·深圳·南山', // 评论者所在位置
+    Id: 'mId000001',  // 消息Id
+    postId: 'postId0000121', // 所评论文章，对话的id
+    childLength: 0,
+    child: [],
+  },
+];

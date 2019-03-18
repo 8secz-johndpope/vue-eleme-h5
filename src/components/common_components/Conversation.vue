@@ -103,6 +103,7 @@ export default {
         });
       }
     },
+    // 下拉加载更多
     onLoad() {
       let obj = {
         userName: '',

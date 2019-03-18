@@ -1,5 +1,5 @@
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
-import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage } from '../falsedata/imitateData.js';
+import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage, imitateComments } from '../falsedata/imitateData.js';
 
 export default {
   // 是否在加载中
@@ -32,6 +32,8 @@ export default {
   imitateMenu,
   // 模拟消息
   imitateMessage,
+  // 模拟评论
+  imitateComments,
   // 高亮的菜单
   activeTab: 0,
   // 关键词
