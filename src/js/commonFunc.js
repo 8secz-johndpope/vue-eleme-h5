@@ -12,7 +12,7 @@ function goBack() {
 // 数字格式化
 function formatterW(num) {
   if (parseFloat(num).toString() == "NaN") {
-　　　return;
+　　　return 0;
 　} else {
 　　　return num >= 10000 ? (num - num % 1000)/10000 + 'W+' : num;
 　}
