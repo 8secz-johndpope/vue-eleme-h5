@@ -4,6 +4,7 @@
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
       <van-tabbar-item icon="browsing-history-o" :to="'/recommend'">推荐</van-tabbar-item>
       <van-tabbar-item icon="add" @click="publish">发表</van-tabbar-item>
+      <!-- <van-tabbar-item icon="add" :to="'/publish'">发表</van-tabbar-item> -->
       <van-tabbar-item icon="chat-o" info="5" :to="'/message'">消息</van-tabbar-item>
       <van-tabbar-item icon="manager-o" :to="'/myzone'">我的</van-tabbar-item>
     </van-tabbar>

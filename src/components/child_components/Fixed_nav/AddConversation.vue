@@ -99,14 +99,21 @@ export default {
   methods: {
     closePop () {
       let that = this;
-      that.$dialog.confirm({
-        // title: '标题',
-        message: '直接退出将不会保存您输入的内容，</br>是否退出'
-      }).then(() => {
-        that.$emit('closePop-ok')
-      }).catch(() => {
-        // on cancel
-      });
+      // confirm({
+      //   // title: '标题',
+      //   message: '直接退出将不会保存您输入的内容，</br>是否退出'
+      // }).then(() => {
+      //   that.$emit('closePop-ok')
+      // }).catch(() => {
+      //   // on cancel
+      // });
+      let text = '直接退出将不会保存您输入的内容</br>是否退出';
+      let r = confirm(text)
+      if (r==true) {
+         that.$emit('closePop-ok')
+      }else{
+
+      }
     },
     addManBox() {
       var MyComponent = Vue.extend({
