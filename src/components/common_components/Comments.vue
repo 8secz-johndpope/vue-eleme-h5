@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="commentsTotalNumZone">
-      <span>全部评论（5400）</span>
-    </div>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -20,9 +17,10 @@
               <span>@{{item.sendUserName}}</span>
               <span @click="praise(index)"><i class="fa fa-thumbs-o-up thumb-icon" :class="{ 'red-color': item.isPraised }" aria-hidden="true"></i>{{COMMONFUNC.formatterW(item.praiseNum)}}</span>
             </div>
-            <!-- 评论内容以及时间 -->
+            <!-- 评论内容 -->
             <div>
-              <span class="comments-contents">{{item.contents}}</span></span>
+              <span class="comments-contents" v-if="item.contentsStatus == 0">{{item.contents}}</span>
+              <span class="comments-contents deletedContents" v-if="item.contentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
             </div>
             <!-- 评论时间，地点 -->
             <div class="flex-space-between">
@@ -39,7 +37,8 @@
             <div class="reply-zone" v-if="item.childLength !== 0">
               <div v-for="(c_item, c_index) in item.child">
                 <span>{{c_item.childUserName}}：</span>
-                <span>{{c_item.childCommentsContents}}</span>
+                <span v-if="c_item.childContentsStatus == 0">{{c_item.childCommentsContents}}</span>
+                <span class="deletedContents" v-if="c_item.childContentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
               </div>
               <div v-if="item.childLength >=2 ">
                 <span class="reply-operate">查看全部{{item.childLength}}条回复>></span>
@@ -87,7 +86,6 @@
           }else{
             that.getImitateComments[index].isPraised = true;
             that.getImitateComments[index].praiseNum += 1;
-            that.$toast('成功收藏！');
           }
         }else {
           that.$dialog.confirm({
@@ -112,6 +110,7 @@
           sendUserName: '评论者名称', // 评论者的用户名
           time: '1552833875',   // 评论时间戳
           contents: '评论内容',  // 评论内容
+          contentsStatus: 0,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
           praiseNum: 10000, // 评论数
           isPraised: 0,    // 是否已点赞， 0-是， 1-否
           commentsId: 'mId000001',  // 评论Id
@@ -138,9 +137,6 @@
   }
 </script>
 <style lang="css" scoped>
-  .commentsTotalNumZone{
-    margin: 0.156rem 0;
-  }
   .displayflex{
     padding: 0 0.4rem;
   }
@@ -156,6 +152,9 @@
   }
   .comments-contents{
     font-size: 0.438rem;
+  }
+  .deletedContents{
+    color: rgb(144, 154, 164);
   }
   .reply-operate{
     font-size: 0.375rem;

@@ -20,13 +20,17 @@
             <i class="fa fa-files-o" aria-hidden="true"></i>
           </span>
           <span @click="addMyLike(index)" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
-          <span @click="addMyLike(index)" class="myLike"><i class="fa fa-commenting-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 评论 -->
+          <span @click="openCommentsPop(index)" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.commentsNum)}}</span><!-- 评论 -->
           <span @click="share" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
         </div>
       </van-panel>
       <!-- 分享选项 -->
-      <van-actionsheet v-model="show" title="分享到">
+      <van-actionsheet v-model="sharePopShow" title="分享到">
         <ShareBox :targetId="targetId"></ShareBox>
+      </van-actionsheet>
+      <!-- 评论区 -->
+      <van-actionsheet v-model="commentsShow" title="共999条评论">
+        <Comments></Comments>
       </van-actionsheet>
     </van-list>
   </div>
@@ -34,6 +38,7 @@
 
 <script>
 import ShareBox from './ShareBox';
+import Comments from './Comments';
 export default {
   // 父子通信
   props: {
@@ -44,12 +49,14 @@ export default {
   },
   components : {
     ShareBox,
+    Comments,
   },
   data () {
     return {
-      show: false,  // 底部 -- 分享
+      sharePopShow: false,  // 底部 -- 分享
       loading: false,
       finished: false,
+      commentsShow: false,  // 评论区 弹框
       targetId: '', // 选中的id值
     };
   },
@@ -67,7 +74,11 @@ export default {
   methods: {
     // 点击分享
     share () {
-      this.show = true;
+      this.sharePopShow = true;
+    },
+    // 点击评论
+    openCommentsPop () {
+      this.commentsShow = true;
     },
     // 复制成功
     onCopy: function (e) {

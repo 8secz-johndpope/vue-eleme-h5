@@ -47,6 +47,9 @@
       <!-- 评论 -->
       <section class="comments">
         <div class="van-recommend">精彩评论</div>
+        <div class="commentsTotalNumZone">
+          <span>全部评论（5400）</span>
+        </div>
         <Comments></Comments>
       </section>
     </div>
@@ -197,5 +200,8 @@
   .statement{
     color: #909AA4;
     padding: 0.469rem 0;
+  }
+  .commentsTotalNumZone{
+    margin: 0.156rem 0;
   }
 </style>
