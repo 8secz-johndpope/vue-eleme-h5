@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 用户列表组件 -->
-    <UserList :userType="0"></UserList>
+    <UserList :userType="1"></UserList>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定标签页 -->

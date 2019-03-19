@@ -8,7 +8,6 @@ import Myzone from 'components/Myzone';
 import Recommend from 'components/Recommend';
 import Business from 'components/Business';
 import Search from 'components/Search';
-import Myfans from 'components/Myfans';
 import Message from 'components/Message';
 Vue.use(Router);
 
@@ -54,6 +53,11 @@ export default new Router({
       path: '/myfans',
       name: 'myfans',
       component: (resolve) => require(['../components/Myfans'],resolve),
+    },
+    {
+      path: '/myfollows',
+      name: 'Myfollows',
+      component: (resolve) => require(['../components/Myfollows'],resolve),
     },
     {
       path: '/message',

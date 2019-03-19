@@ -32,7 +32,7 @@
         </router-link>
       </a>
       <a class="three_lan_">
-        <router-link :to="'/myfans'">
+        <router-link :to="'/myfollows'">
           <p class="big_colorful">
             <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
           </p>

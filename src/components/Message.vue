@@ -33,6 +33,8 @@
       </van-swipe-cell>
       <p>下拉刷新</p>
     </van-pull-refresh>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="space"></div>
     <!-- 固定标签页 -->
     <Fixednav></Fixednav>
   </div>
