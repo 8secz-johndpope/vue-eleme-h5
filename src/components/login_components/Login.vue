@@ -33,7 +33,7 @@
             center
             clearable
           >
-            <van-button :to="'/forgot'" slot="button" size="small" type="default">忘记密码</van-button>
+            <van-button slot="button" size="small" type="default" @click="goForget">忘记密码</van-button>
           </van-field>
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
@@ -75,6 +75,7 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
+    // 校验用户名密码
     cheack_n_p () {
       if (this.uname === '' || this.pwd === '') {
         alert('用户名或密码不能为空');
@@ -87,6 +88,10 @@ export default {
         this.$store.dispatch('setLogin', true);
         this.COMMONFUNC.goBack();
       }
+    },
+    // 跳转忘记密码页面，写在页面不生效
+    goForget () {
+      this.$router.push('/forgot')
     }
   },
   components: {

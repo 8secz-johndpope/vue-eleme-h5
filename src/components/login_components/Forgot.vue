@@ -13,34 +13,67 @@
         <h2>产品名称</h2>
       </div>
       <div class="input_login">
-        <van-cell-group class="fieldDiv_long">
+        <van-cell-group>
           <van-field
             v-model="uname"
-            placeholder="请输入手机号码"
-            label="用户名"
-            left-icon="contact"
+            placeholder="请输入中国大陆手机号码"
+            label="手机号码"
             center
             clearable
           />
         </van-cell-group>
-        <van-cell-group class="fieldDiv_long">
+        <van-cell-group>
           <van-field
             v-model="pwd"
             type="password"
-            left-icon="bag-o"
-            placeholder="不少于6位字符"
-            label="密码"
+            placeholder="6-15位英文和数字组合密码"
+            label="新密码"
             center
             clearable
           >
-            <van-button slot="button" size="small" type="default">忘记密码</van-button>
+          </van-field>
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            v-model="checkPwd"
+            type="password"
+            placeholder="6-15位英文和数字组合密码"
+            label="确认密码"
+            center
+            clearable
+          >
+          </van-field>
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            v-model="imgCode"
+            type="password"
+            placeholder="6位字符"
+            label="图片验证码"
+            center
+            clearable
+          >
+            <van-button slot="button" size="small" type="default" @click="getCheckCode">图片验证码</van-button>
+          </van-field>
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            v-model="checkCode"
+            type="password"
+            placeholder="6位字符"
+            label="短信验证码"
+            center
+            clearable
+          >
+            <van-button slot="button" size="small" type="default" v-show="btnShow" @click="getCheckCode">获取验证码</van-button>
+            <van-button slot="button" size="small" type="default" v-show="!btnShow" :disabled="!btnShow">{{countTime}}秒</van-button>
           </van-field>
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
         <div class="flex-center noAccount">
-          <p><router-link :to="{ name: '/regist', params: {} }" class="noAccount-a">验证码登录</router-link></p>
+          <p><router-link :to="{ name: 'LoginByCheckCode', params: {} }" class="noAccount-a">验证码登录</router-link></p>
           <p class="shutiao">|</p>
-          <p><router-link :to="{ name: '/regist', params: {} }" class="noAccount-a">新用户注册</router-link></p>
+          <p><router-link :to="{ name: 'Register', params: {} }" class="noAccount-a">账号密码</router-link></p>
         </div>
       </div>
     </div>
@@ -56,7 +89,12 @@ export default {
     return {
       uname: '',
       pwd: '',
+      checkPwd: '', //确认密码
+      imgCode: '',  // 图片验证码
+      checkCode: '',  // 校验码
       token: 'isLogin',
+      btnShow: true,  // 默认显示获取验证码，不显示倒计时
+      countTime: '',  // 默认显示获取倒计时
     };
   },
   mounted () {
@@ -75,19 +113,67 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
+    // 校验用户名密码
     cheack_n_p () {
-      if (this.uname === '' || this.pwd === '') {
-        alert('用户名或密码不能为空');
-        return;
+      let that = this;
+      if (!that.checkInput ()) {
+        return
       }
-      if (this.uname !== this.getuname || this.pwd !== this.getpwd) {
-        alert('用户名或密码错误');
-      } else {
-        this.COMMONFUNC.addCookie("token",this.token,"","/");
-        this.$store.dispatch('setLogin', true);
-        this.COMMONFUNC.goBack();
+      if (that.checkCode === '') {
+        that.$toast('请输入确认验证码');
+        return
       }
-    }
+      that.COMMONFUNC.addCookie("token",that.token,"","/");
+      that.$store.dispatch('setLogin', true);
+      that.COMMONFUNC.goBack();
+    },
+    // 获取验证码
+    getCheckCode () {
+      let that = this;
+      if (!that.checkInput ()) {
+        return
+      }
+      that.$toast('验证码发送中，请注意查收');
+      //定时器
+      let curCount = 60;
+      that.btnShow = false;
+      that.countTime = curCount;
+      let InterValObj = window.setInterval(function () {
+        if (curCount == 0) {
+          that.btnShow = true;
+          that.countTime = curCount;
+          window.clearInterval(InterValObj);    // 停止计时器
+        } else {
+          that.countTime = curCount;
+          curCount--;
+        }
+      }, 1000); // 启动计时器，1秒执行一次
+    },
+    // 校验手机号码
+    checkInput () {
+      let flag = true;
+      let that = this;
+      if (that.uname === '') {
+        that.$toast('手机号码不能为空');
+        flag = false;
+      }else if (!(/^1[34578]\d{9}$/.test(that.uname))) {
+        that.$toast('请输入正确的手机号码');
+        flag = false;
+      }else if (that.checkPwd === '') {
+        that.$toast('请输入确认密码');
+        flag = false;
+      }else if (!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/.test(that.pwd))) {
+        that.$toast('请输入6-15位英文和数字组合密码');
+        flag = false;
+      }else if (this.pwd !== this.checkPwd) {
+        this.$toast('两次密码不一致');
+        flag = false;
+      }else if (that.imgCode === '') {
+        that.$toast('请输入图片验证码');
+        flag = false;
+      }
+      return flag;
+    },
   },
   components: {
     // 'Backbar': Backbar
