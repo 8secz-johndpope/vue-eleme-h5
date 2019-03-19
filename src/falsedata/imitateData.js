@@ -145,6 +145,7 @@ export var imitateConversation = [
     isLike: false, // 是否喜欢
     contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
     content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+    isTop: 0, // 是否置顶 0-是， 1-否
   },
   {
     userName: '',
@@ -157,42 +158,7 @@ export var imitateConversation = [
     isLike: false, // 是否喜欢
     contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
     content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
-  },
-  {
-    userName: '',
-    userId: '',
-    id: 'zs20190213',
-    author: '王五',
-    time: '2019.02.13',
-    likers: 9999,   // 喜欢数
-    commentsNum: 999, // 评论数
-    isLike: false, // 是否喜欢
-    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
-  },
-  {
-    userName: '',
-    userId: '',
-    id: 'zs20190213',
-    author: '赵二',
-    time: '2019.02.13',
-    likers: 9999,   // 喜欢数
-    commentsNum: 999, // 评论数
-    isLike: false, // 是否喜欢
-    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
-  },
-  {
-    userName: '',
-    userId: '',
-    id: 'zs20190213',
-    author: '李思思',
-    time: '2019.02.13',
-    likers: 9999,   // 喜欢数
-    commentsNum: 999, // 评论数
-    isLike: false, // 是否喜欢
-    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+    isTop: 0, // 是否置顶 0-是， 1-否
   },
 ];
 // 模拟文章列表

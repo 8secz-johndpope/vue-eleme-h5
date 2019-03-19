@@ -21,6 +21,14 @@
       <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>举报</p>
     </div>
+    <div class="shareBox-item" v-if="isShowRoofPlacementChild&&isTopNow === 1">
+      <i class="fa fa-paper-plane fa-2x shareBox-icon" aria-hidden="true"></i>
+      <p>置顶</p>
+    </div>
+    <div class="shareBox-item" v-if="isShowRoofPlacementChild&&isTopNow === 0">
+      <i class="fa fa-paper-plane-o fa-2x shareBox-icon" aria-hidden="true"></i>
+      <p>取消置顶</p>
+    </div>
   </div>
 </template>
 
@@ -32,14 +40,23 @@ export default {
     targetId: {
       type: String,
       default: '',
-    }
+    },
+    // 是否在分享弹框显示置顶按钮
+    isShowRoofPlacementChild: {
+      type: Boolean,
+      default: false,
+    },
+    // 当前是置顶还是取消置顶
+    isTopNow: {
+      type: Number,
+      default: 1,
+    },
   },
   data () {
     return {
     };
   },
   mounted () {
-
   },
   computed: {
   },

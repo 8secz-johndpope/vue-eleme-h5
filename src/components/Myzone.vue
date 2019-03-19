@@ -42,10 +42,10 @@
     <!-- 我的作品以及收藏 -->
     <van-tabs v-model="active" sticky @click="changeTab" class="worksAndFavorite">
       <van-tab title="我的作品">
-        <Conversation :composition="getImitateConversation"></Conversation>
+        <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
       </van-tab>
       <van-tab title="我的收藏">
-        <Conversation :composition="getImitateConversation"></Conversation>
+        <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
       </van-tab>
     </van-tabs>
     <!-- 撑开Fixednav挡住的位置 -->

@@ -7,7 +7,7 @@
       @load="onLoad"
     >
       <!-- 列表单个 -->
-      <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition">
+      <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition" :status="isShowRoofPlacement && item.isTop === 0 ? '置顶' : '' ">
         <div class="content-box" v-html="item.contentHtml">
           {{item.contentHtml}}
         </div>
@@ -21,12 +21,12 @@
           </span>
           <span @click="addMyLike(index)" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
           <span @click="openCommentsPop(index)" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.commentsNum)}}</span><!-- 评论 -->
-          <span @click="share" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
+          <span @click="share(index)" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
         </div>
       </van-panel>
       <!-- 分享选项 -->
       <van-actionsheet v-model="sharePopShow" title="分享到">
-        <ShareBox :targetId="targetId"></ShareBox>
+        <ShareBox :targetId="targetId" :isShowRoofPlacementChild="isShowRoofPlacement" :isTopNow="itemIsTop"></ShareBox>
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
@@ -45,7 +45,12 @@ export default {
     composition: {
       type: Array,
       default: [],
-    }
+    },
+    // 是否在分享弹框显示置顶按钮
+    isShowRoofPlacement: {
+      type: Boolean,
+      default: false,
+    },
   },
   components : {
     ShareBox,
@@ -58,6 +63,7 @@ export default {
       finished: false,
       commentsShow: false,  // 评论区 弹框
       targetId: '', // 选中的id值
+      itemIsTop: 1, // 子项是否置顶中的置顶
     };
   },
   mounted () {
@@ -73,8 +79,9 @@ export default {
   },
   methods: {
     // 点击分享
-    share () {
+    share (index) {
       this.sharePopShow = true;
+      this.itemIsTop = this.composition[index].isTop;
     },
     // 点击评论
     openCommentsPop () {
@@ -124,6 +131,7 @@ export default {
         time: '2019.02.13',
         likers: 9999,   // 喜欢数
         isLike: false, // 是否喜欢
+        isTop: 1, // 是否置顶 0-是， 1-否
         contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
         content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
       };
