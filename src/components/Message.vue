@@ -5,33 +5,39 @@
       title="消息"
     />
     <van-tabbar v-model="messageActive" class="topTabbar" active-color="#7d7e80">
-      <van-tabbar-item icon="friends-o" info="20">好友</van-tabbar-item>
-      <van-tabbar-item icon="user-circle-o">粉丝</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" :to="'/myfollows'">关注</van-tabbar-item>
+      <van-tabbar-item icon="user-circle-o" info="20" :to="'/myfans'">粉丝</van-tabbar-item>
       <van-tabbar-item icon="thumb-circle-o" dot>赞</van-tabbar-item>
       <van-tabbar-item icon="comment-circle-o" info="5">评论和@</van-tabbar-item>
     </van-tabbar>
     <!-- 主体内容 -->
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId">
-        <van-cell-group>
-          <van-cell class="displayflex">
-            <div class="img-zone">
-              <span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span>
-            </div>
-            <div class="contents-zone">
-              <div class="flex-space-between">
-                <span>{{item.sendUserName}}</span>
-                <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
+    <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
+        <van-list
+        v-model="listLoading"
+        :finished="finished"
+        finished-text="我也是底线的"
+        @load="onLoadMore"
+        >
+        <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId">
+          <van-cell-group>
+            <van-cell class="displayflex">
+              <div class="img-zone">
+                <span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span>
               </div>
-              <div>
-                <span>{{item.contents}}</span>
+              <div class="contents-zone">
+                <div class="flex-space-between">
+                  <span>{{item.sendUserName}}</span>
+                  <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
+                </div>
+                <div>
+                  <span>{{item.contents}}</span>
+                </div>
               </div>
-            </div>
-          </van-cell>
-        </van-cell-group>
-        <span slot="right">删除</span>
-      </van-swipe-cell>
-      <p>下拉刷新</p>
+            </van-cell>
+          </van-cell-group>
+          <span slot="right">删除</span>
+        </van-swipe-cell>
+      </van-list>
     </van-pull-refresh>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
@@ -46,16 +52,18 @@
   // import "../css/common.css";
   export default {
     components:{
-           Fixednav,
-        },
+       Fixednav,
+    },
     name: 'message',
     data () {
       return {
         msg: '1',
         arrs: [],
         count: 0,
-        isLoading: false,
-        messageActive: -1,
+        isRefreshLoading: false, // 下拉刷新
+        listLoading: false, // 下拉加载更多
+        messageActive: -1,  // 默认高亮位置
+        finished: false,
       };
     },
     mounted () {
@@ -71,12 +79,38 @@
       onRefresh() {
         setTimeout(() => {
           this.$toast('刷新成功');
-          this.isLoading = false;
+          this.isRefreshLoading = false;
         }, 500);
       },
-       onClose(clickPosition, instance){
+      // 删除信息
+      onClose(clickPosition, instance){
         this.$toast('删除成功'+instance.$el.dataset.id);
         instance.close();
+      },
+      // 下拉加载更多
+      onLoadMore() {
+        let obj = {
+          isOfficial: 0,  // 是否官方，0-是，1-否
+          sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+          sendUserName: '消息助手',
+          time: '1552833875',
+          contents: '欢迎来到xxx',
+          isReaded: 0,    // 是否已读， 0-是， 1-否
+          messageId: 'mId000001',  // 消息Id
+        };
+        // 异步更新数据
+        setTimeout(() => {
+          // 每次加载10条
+          for (let i = 0; i < 5; i++) {
+            this.arrs.push(obj);
+          }
+          // 加载状态结束
+          this.listLoading = false;
+          // 数据全部加载完成
+          if (this.arrs.length >= 5) {
+            this.finished = true;
+          }
+        }, 500);
       }
     }
   }
@@ -86,7 +120,7 @@
     position: initial;
   }
   .displayflex{
-    padding: 0 0.4rem;
+    padding: 0.1rem 0.4rem;
   }
   .img-zone{
     line-height: 1.2rem;

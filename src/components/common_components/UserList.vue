@@ -83,7 +83,7 @@
     methods: {
       // 添加关注
       addInterest (index){
-         shit.$toast('成功关注');
+         this.$toast('成功关注');
          this.arrs[index].follow_type = 1;
       },
       // 取消关注
@@ -98,7 +98,7 @@
         this.COMMONFUNC.goBack();
       },
       onClickRight() {
-        shit.$toast('按钮');
+        this.$router.push('/addFriends');
       },
       // 下拉刷新
       onRefresh() {
@@ -115,6 +115,10 @@
           userId: '',
           userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
           follow_type: 0, // 关注类型 0-未关注 1-已关注 2-互相关注
+          sex: 0, // 性别类型 0-男 1-女
+          fansNum: 9999,  // 粉丝数
+          workNum: 10000, // 作品数
+          autograph: '个性签名，吸引用户关注对方', // 个性签名
         };
         // 异步更新数据
         setTimeout(() => {

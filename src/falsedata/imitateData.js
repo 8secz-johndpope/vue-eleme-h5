@@ -21,6 +21,10 @@ export var imitateUserList = [
     userId: '',
     userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     follow_type: 0, // 关注类型 0-未关注 1-已关注 2-互相关注
+    sex: 0, // 性别类型 0-男 1-女
+    fansNum: 9999,  // 粉丝数
+    workNum: 10000, // 作品数
+    autograph: '个性签名，吸引用户关注对方', // 个性签名
   },
   {
     LiaoNo: '000002', // 编号
@@ -28,6 +32,10 @@ export var imitateUserList = [
     userId: '',
     userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     follow_type: 1, // 关注类型 0-未关注 1-已关注 2-互相关注
+    sex: 1, // 性别类型 0-男 1-女
+    fansNum: 9999,  // 粉丝数
+    workNum: 10000, // 作品数
+    autograph: '个性签名，吸引用户关注对方', // 个性签名
   },
 ];
 // 模拟话术分类列表菜单，后台可配
@@ -207,7 +215,7 @@ export var imitateMessage = [
     sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     sendUserName: '破天小神',
     time: '1552838875',
-    contents: 'hello，我关注了你哟',
+    contents: 'hello，可否加个朋友',
     isReaded: 1,    // 是否已读， 0-是， 1-否
     messageId: 'mId000001',  // 消息Id
   },

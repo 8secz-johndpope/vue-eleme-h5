@@ -129,5 +129,10 @@ export default new Router({
       name: 'articleDetail',
       component: (resolve) => require(['../components/common_components/ArticleDetail'],resolve),
     },
+    {
+      path: '/addFriends',
+      name: 'addFriends',
+      component: (resolve) => require(['../components/AddFriends'],resolve),
+    },
   ]
 });

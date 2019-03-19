@@ -163,7 +163,7 @@ export default {
   right: 0.3rem;
   top: 0.3rem;
   color: #fff;
-  width: 0.5rem;
+  width: 0.8rem;
 }
 .myzone_info {
   display: flex;
