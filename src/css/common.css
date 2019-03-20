@@ -143,3 +143,8 @@
   background-repeat: no-repeat;
   width: 100%;
 }
+/* 消息模块右滑删除键 */
+.messageModule .van-swipe-cell__right{
+  padding: 0.15rem 0.05rem;
+  text-align: center;
+}
