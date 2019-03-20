@@ -10,7 +10,7 @@
       @click-right="commitAdvice"
     />
     <!-- 文本框 -->
-    <van-cell-group>
+    <van-cell-group class="van-cell-group">
       <van-field
         v-model="message"
         type="textarea"
@@ -19,6 +19,7 @@
         autosize
         class="cellDiv"
       />
+      <span class="dec">{{message.length}}/200</span>
     </van-cell-group>
     <!-- 图片上传 -->
     <van-cell size="large" class="cellDiv">
@@ -35,7 +36,7 @@
   export default {
     components:{
     },
-    name: 'setting',
+    name: 'feedback',
     data () {
       return {
         message: '',
@@ -58,6 +59,13 @@
       commitAdvice () {
         this.$toast('感谢您的宝贵建议')
       }
+    },
+    watch: {
+      message: function (curVal, oldVal) {
+        if (curVal.length > 200) {
+          this.message = this.message.slice(0, 200);
+        }
+      }
     }
 }
 </script>
@@ -65,5 +73,14 @@
 <style lang="less" scoped>
   .cellDiv{
     margin-top: 5px;
+  }
+  .van-cell-group{
+    position: relative;
+  }
+  .dec{
+    position: absolute;
+    bottom: 0.1rem;
+    right: 0.3rem;
+    color: #969799;
   }
 </style>

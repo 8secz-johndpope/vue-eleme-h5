@@ -17,10 +17,12 @@
       <i class="fa fa-clone fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>复制链接</p>
     </div>
-    <div class="shareBox-item">
-      <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>
-      <p>举报</p>
-    </div>
+    <router-link :to="{ name: 'accusation', params: {} }">
+      <div class="shareBox-item">
+        <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>
+        <p>举报</p>
+      </div>
+    </router-link>
     <div class="shareBox-item" v-if="isShowRoofPlacementChild&&isTopNow === 1">
       <i class="fa fa-paper-plane fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>置顶</p>

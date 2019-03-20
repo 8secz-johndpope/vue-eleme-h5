@@ -134,5 +134,15 @@ export default new Router({
       name: 'addFriends',
       component: (resolve) => require(['../components/AddFriends'],resolve),
     },
+    {
+      path: '/accusation',
+      name: 'accusation',
+      component: (resolve) => require(['../components/Accusation'],resolve),
+    },
+    {
+      path: '/accusation/report/:id',
+      name: 'report',
+      component: (resolve) => require(['../components/child_components/Accusation_components/Report'],resolve),
+    },
   ]
 });
