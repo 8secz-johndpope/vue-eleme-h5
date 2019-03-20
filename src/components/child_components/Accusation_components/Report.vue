@@ -9,7 +9,7 @@
       @click-left="onClickLeft"
       @click-right="commitAdvice"
     />
-    <van-cell-group>
+    <van-cell-group class="accusation-cell">
       <van-field
         :value="type"
         label="举报理由"
@@ -152,6 +152,9 @@
 <style lang="less" scoped>
   .cellDiv{
     margin-top: 5px;
+  }
+  .accusation-cell{
+    margin: 0.133333rem 0 0 0; 
   }
   .dec{
     padding: 0.166667rem 0.4rem 0.1rem 0.4rem;

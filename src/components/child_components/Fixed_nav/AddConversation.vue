@@ -107,7 +107,7 @@ export default {
       // }).catch(() => {
       //   // on cancel
       // });
-      let text = '直接退出将不会保存您输入的内容</br>是否退出';
+      let text = '直接退出将不会保存您输入的内容哦';
       let r = confirm(text)
       if (r==true) {
          that.$emit('closePop-ok')
