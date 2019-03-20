@@ -3,19 +3,19 @@
     <!-- 首页 -->
     <div class="index_header">
       <!-- 地址 -->
-      <div class="index_location">
+      <!-- <div class="index_location">
         <div class="location_left ell">
           <svg class="v-md">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#location"></use>
           </svg>
           <span  class="v-md">深圳市福田区这里是个假定位村淡定啦~这不重要</span>
-        </div>
+        </div> -->
 
         <!-- 登录按钮 -->
-        <div class="index_login" v-if="!getLogin">
+        <!-- <div class="index_login" v-if="!getLogin">
           <router-link to="/login">登录</router-link>
         </div>
-      </div>
+      </div> -->
 
       <!-- 搜索 -->
       <div class="search_box">
@@ -32,7 +32,7 @@
 
     <!-- 首页导航 -->
     <div class="index_banner">
-      <!-- swipe 设置不自动滚动
+      <!--  swipe 设置不自动滚动
       <Swipe class="my-swipe" :auto="0">
         <Swipe-item class="slide slide1">
           <router-link to="/search/美食">
@@ -155,8 +155,8 @@
 
 <script>
 // import { Swipe, SwipeItem } from 'vue-swipe';
-import OneBusiness from './common_components/One_business';
-import Fixednav from './common_components/Fixed_nav';
+import OneBusiness from '../common_components/One_business';
+import Fixednav from '../common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 
 export default {

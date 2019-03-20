@@ -28,15 +28,15 @@
     >
       <van-cell-group v-for="(item,index) in arrs">
         <van-cell class="displayflex">
-          <div class="tleft user-item-left">
+          <div class="tleft van-user-item-left">
             <div class="van-avatar-large"><img :src="item.userImg" alt="" class="van-avatar-img"></div>
-            <div class="flex-column user-item-text-info">
-              <span class="userName">{{item.userName}}</span>
-              <span class="autograph">{{item.autograph}}</span>
+            <div class="flex-column van-user-item-text-info">
+              <span class="van-userName">{{item.userName}}</span>
+              <span class="van-autograph">{{item.autograph}}</span>
               <span>{{item.sex === 1 ? '女' : '男'}}&nbsp;&nbsp;作品：{{COMMONFUNC.formatterW(item.workNum)}} 粉丝：{{COMMONFUNC.formatterW(item.fansNum)}}</span>
             </div>
           </div>
-          <div class="tright user-item-right">
+          <div class="tright van-user-item-right">
             <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
             <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
             <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
@@ -130,26 +130,28 @@
     display: flex;
     align-items: center;
   }
-  .user-item-left{
+  /*我的赞，我的评论和@，好友新增搜索页 -- 开始 */
+  .van-user-item-left{
     display: flex;
     align-items: center;
     width: 90%;
   }
-  .user-item-right{
+  .van-user-item-right{
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
   }
-  .user-item-text-info{
+  .van-user-item-text-info{
     margin-left: 0.2rem;
   }
-  .userName{
-    font-size: 14px;
+  .van-userName{
+    font-size: 0.438rem;
   }
-  .autograph{
+  .van-autograph{
     max-width: 6rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
   }
+  /*我的赞，我的评论和@，好友新增搜索页 -- 结束 */
 </style>

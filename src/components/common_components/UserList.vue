@@ -55,7 +55,6 @@
       return {
         tabTitle: '', // 头部名称
         arrs: [],
-        count: 0,
         isRefreshLoading: false,  // 下拉重新刷新
         listLoading: false, // 下拉加载更多
         finished: false,
@@ -83,8 +82,8 @@
     methods: {
       // 添加关注
       addInterest (index){
-         this.$toast('成功关注');
-         this.arrs[index].follow_type = 1;
+        this.$toast('成功关注');
+        this.arrs[index].follow_type = 1;
       },
       // 取消关注
       cancelInterest (index) {

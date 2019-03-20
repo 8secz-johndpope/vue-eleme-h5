@@ -7,8 +7,8 @@
     <van-tabbar v-model="messageActive" class="topTabbar" active-color="#7d7e80">
       <van-tabbar-item icon="friends-o" :to="'/myfollows'">关注</van-tabbar-item>
       <van-tabbar-item icon="user-circle-o" info="20" :to="'/myfans'">粉丝</van-tabbar-item>
-      <van-tabbar-item icon="thumb-circle-o" dot>赞</van-tabbar-item>
-      <van-tabbar-item icon="comment-circle-o" info="5">评论和@</van-tabbar-item>
+      <van-tabbar-item icon="thumb-circle-o" :to="'/mypraise'" dot>赞</van-tabbar-item>
+      <van-tabbar-item icon="comment-circle-o" :to="'/mycomments'" info="5">评论和@</van-tabbar-item>
     </van-tabbar>
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">

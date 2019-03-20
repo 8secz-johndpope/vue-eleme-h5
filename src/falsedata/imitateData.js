@@ -278,3 +278,70 @@ export var imitateComments = [
     child: [],
   },
 ];
+
+// 模拟用户相关的点赞、评论和@列表 一段时间内的，如果用户实时在线，则每一秒一次，否则则是上一次查看到这一次的时间
+export var imitateMyPraiseAndComments = [
+  {
+    userList: [ // 子一级评论/点赞用户列表
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+    ],
+    workId: 'workId001',    // 作品Id
+    workAuthor: '作品作者',  // 作品作者
+    workFirstHtml: '<p>男：点赞作品html</p>',
+    time: '1552838875',
+    type: 0,    // 0-点赞作品，1-点赞评论，2-评论内容
+    total: 5,   // 点赞/评论 总人数
+    comments: '这是一条评论', 
+    firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
+    firstUserName: '最新用户',    // 最新用户的id
+    firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的id
+  },
+  {
+    userList: [ // 子一级评论/点赞用户列表
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+        {
+            userId: '',
+            userName: '最新用户',
+            userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+        },
+    ],
+    workId: 'workId001',    // 作品Id
+    workAuthor: '作品作者',  // 作品作者
+    workFirstHtml: '<p>男：点赞评论html</p>',
+    time: '1552838875',
+    type: 1,    // 0-点赞作品，1-点赞评论，2-评论内容
+    total: 2,   // 点赞/评论 总人数
+    comments: '这是一条评论', 
+    firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
+    firstUserName: '最新用户',    // 最新用户的名称
+    firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的头像
+  },
+];

@@ -33,4 +33,6 @@ export default {
   getImitateComments: (state) => state.imitateComments,
   // 得到关键词
   getKeywords: (state) => state.keywords,
+  // 得到模拟用户相关的点赞、评论和@列表
+  getImitateMyPraiseAndComments: (state) => state.imitateMyPraiseAndComments,
 };

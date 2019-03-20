@@ -1,5 +1,6 @@
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
-import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage, imitateComments } from '../falsedata/imitateData.js';
+import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage, 
+         imitateComments, imitateMyPraiseAndComments } from '../falsedata/imitateData.js';
 
 export default {
   // 是否在加载中
@@ -38,4 +39,6 @@ export default {
   activeTab: 0,
   // 关键词
   keywords: '',
+  // 模拟用户相关的点赞、评论和@列表
+  imitateMyPraiseAndComments,
 };

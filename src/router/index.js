@@ -1,14 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from 'components/Home';
-import Homepage from 'components/Homepage';
-import Shop from 'components/Shop';
-import Order from 'components/Order';
-import Myzone from 'components/Myzone';
-import Recommend from 'components/Recommend';
-import Business from 'components/Business';
-import Search from 'components/Search';
-import Message from 'components/Message';
 Vue.use(Router);
 
 export default new Router({
@@ -27,17 +19,17 @@ export default new Router({
     {
       path: '/homepage',
       name: 'homepage',
-      component: (resolve) => require(['../components/Homepage'],resolve),
+      component: (resolve) => require(['../components/reference_components/Homepage'],resolve),
     },
     {
       path: '/shop',
       name: 'shop',
-      component: (resolve) => require(['../components/Shop'],resolve),
+      component: (resolve) => require(['../components/reference_components/Shop'],resolve),
     },
     {
       path: '/order',
       name: 'order',
-      component: (resolve) => require(['../components/Order'],resolve),
+      component: (resolve) => require(['../components/reference_components/Order'],resolve),
     },
     {
       path: '/myzone',
@@ -92,12 +84,12 @@ export default new Router({
     {
       path: '/business/:id',
       name: 'business',
-      component: (resolve) => require(['../components/Business'],resolve),
+      component: (resolve) => require(['../components/reference_components/Business'],resolve),
     },
     {
       path: '/search/:keyword',
       name: 'Search',
-      component: (resolve) => require(['../components/Search'],resolve),
+      component: (resolve) => require(['../components/reference_components/Search'],resolve),
     },
     {
       path: '/login',
@@ -143,6 +135,16 @@ export default new Router({
       path: '/accusation/report/:id',
       name: 'report',
       component: (resolve) => require(['../components/child_components/Accusation_components/Report'],resolve),
+    },
+    {
+      path: '/mypraise',
+      name: 'mypraise',
+      component: (resolve) => require(['../components/Mypraise'],resolve),
+    },
+    {
+      path: '/mycomments',
+      name: 'mycomments',
+      component: (resolve) => require(['../components/Mycomments'],resolve),
     },
   ]
 });
