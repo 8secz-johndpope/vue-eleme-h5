@@ -139,7 +139,7 @@
           sendUserName: '评论者名称', // 评论者的用户名
           time: '1552833875',   // 评论时间戳
           contents: '评论内容',  // 评论内容
-          contentsStatus: 0,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
+          contentsStatus: 1,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
           praiseNum: 10000, // 评论数
           isPraised: 0,    // 是否已点赞， 0-是， 1-否
           commentsId: 'mId000001',  // 评论Id
@@ -147,11 +147,12 @@
           Id: 'mId000001',  // 消息Id
           postId: 'postId0000121', // 所评论文章，对话的id
           childLength: 0,
+          isShowReply: true,  // 回复框 与 取消回复框
           child: [],
         };
         // 异步更新数据
         setTimeout(() => {
-          for (let i = 0; i < 2; i++) {
+          for (let i = 0; i < 1; i++) {
             this.arrs.push(obj);
           }
           // 加载状态结束
@@ -182,6 +183,7 @@
       },
       // 评论回复某人
       replyComments (userName, index) {
+        this.initArrs();  // 初始化评论的回复
         this.replyWho = '@'+userName;
         this.arrs[index].isShowReply = false;
       },
@@ -192,6 +194,7 @@
       },
       // 二级 评论回复某人
       childReplyComments (userName, index, c_index) {
+        this.initArrs();  // 初始化评论的回复
         this.replyWho = '@'+userName;
         this.arrs[index].child[c_index].childIsShowReply = false;
       },
@@ -200,6 +203,19 @@
         this.replyWho = '';
         this.arrs[index].child[c_index].childIsShowReply = true;
       },
+      // 初始化评论的回复
+      initArrs () {
+        let that = this;
+        // 其他先还原
+        that.arrs.forEach( (v,i) => {
+          v.isShowReply = true;
+          if(v.child !== 0){
+            v.child.forEach( (c_v, c_i) => {
+              c_v.childIsShowReply = true
+            })
+          }
+        })
+      }
     }
   }
 </script>
