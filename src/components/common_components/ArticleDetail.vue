@@ -10,7 +10,7 @@
       <header class="header">
         <h2>如何在赚钱的同时，追到自己喜欢的妹子</h2>
         <section class="title-tag flex-between">
-          <h4><span>花牛时报</span><span>03/14 14:08:42</span></h4>
+          <div><span>花牛时报</span><span>&nbsp;03/14 14:08:42</span></div>
           <div @click="addAttention">
             <van-tag round type="primary" size="medium">{{isAttention ? '已关注' : '+关注'}}</van-tag>
           </div>
@@ -60,7 +60,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone @openSharePop="openSharePop"></FixedCommentsZone>
+    <FixedCommentsZone></FixedCommentsZone>
   </div>
 </template>
 <script>
@@ -111,10 +111,6 @@
       openMorePop () {
         this.sharePopShow = true;
       },
-      // 打开更多弹框
-      openSharePop (isShow) {
-        this.sharePopShow = isShow;
-      },
       // 加关注
       addAttention: function () {
         let that = this;
@@ -153,6 +149,7 @@
   }
   .title-tag{
     padding: 0.156rem 0;
+    color: #666;
   }
   .dec{
     color: #666;

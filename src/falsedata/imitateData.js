@@ -228,7 +228,7 @@ export var imitateComments = [
     sendUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',   // 评论者头像
     sendUserName: '评论者名称', // 评论者的用户名
     time: '1552833875',   // 评论时间戳
-    contents: '评论内容',  // 评论内容
+    contents: '这是一条非常非常非常非常非常非常非常非常非常非常长的评论内容',  // 评论内容
     contentsStatus: 0,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
     praiseNum: 9999, // 评论数
     isPraised: 0,    // 是否已点赞， 0-是， 1-否
@@ -237,26 +237,33 @@ export var imitateComments = [
     Id: 'mId000001',  // 消息Id
     postId: 'postId0000121', // 所评论文章，对话的id
     childLength: 3,
+    isShowReply: true,  // 回复框 与 取消回复框
     child: [
       {
         childId: 'mId000001', // 子级二级评论id,
         childUserId: 'mId000001', // 子级二级评论者id,
+        childUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',   // 评论者头像
         childTime: '1552833875',   // 子级评论时间戳，子级评论按照时间先后
-        childPraiseNum: '1552833875',   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
-        childUserName: '我是二级评论员', // 子级二级评论者id,
+        childPraiseNum: 10000,   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
+        childUserName: '二级评论员', // 子级二级评论者id,
+        childIsPraised: 0,    // 是否已点赞， 0-是， 1-否
         childCommentsNum: 12, // 子级二级评论数,
-        childCommentsContents: '我是二级评论内容', // 子级二级评论内容,
+        childCommentsContents: '我是二级评论内容，这是一条非常非常非常非常非常非常非常非常非常非常长的评论内容', // 子级二级评论内容,
         childContentsStatus: 0,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
+        childIsShowReply: true,  // 回复框 与 取消回复框
       },
       {
         childId: 'mId000001', // 子级二级评论id,
         childUserId: 'mId000001', // 子级二级评论者id,
+        childUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',   // 评论者头像
         childTime: '1552833875',   // 子级评论时间戳，子级评论按照时间先后
-        childPraiseNum: '1552833875',   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
-        childUserName: '我是二级评论员', // 子级二级评论者id,
+        childPraiseNum: 9999,   // 子级评论评论数,评论说多的前三条放在最前面，后面的按照时间先后顺序
+        childUserName: '二级评论员', // 子级二级评论者id,
+        childIsPraised: 1,    // 是否已点赞， 0-是， 1-否
         childCommentsNum: 12, // 子级二级评论数,
         childCommentsContents: '我是二级评论内容', // 子级二级评论内容,
         childContentsStatus: 1,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
+        childIsShowReply: true,  // 回复框 与 取消回复框
       },
     ]
   },
@@ -275,6 +282,7 @@ export var imitateComments = [
     Id: 'mId000001',  // 消息Id
     postId: 'postId0000121', // 所评论文章，对话的id
     childLength: 0,
+    isShowReply: true,  // 回复框 与 取消回复框
     child: [],
   },
 ];
@@ -315,7 +323,7 @@ export var imitateMyPraiseAndComments = [
     time: '1552838875',
     type: 0,    // 0-点赞作品，1-点赞评论，2-评论内容
     total: 5,   // 点赞/评论 总人数
-    comments: '这是一条评论', 
+    comments: '这是一条评论',
     firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
     firstUserName: '最新用户',    // 最新用户的id
     firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的id
@@ -339,7 +347,7 @@ export var imitateMyPraiseAndComments = [
     time: '1552838875',
     type: 1,    // 0-点赞作品，1-点赞评论，2-评论内容
     total: 2,   // 点赞/评论 总人数
-    comments: '这是一条评论', 
+    comments: '这是一条评论',
     firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
     firstUserName: '最新用户',    // 最新用户的名称
     firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的头像

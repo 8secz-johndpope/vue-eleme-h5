@@ -79,7 +79,7 @@
           that.tabTitle = '赞'
           break;
         case 1:
-          that.tabTitle = '评论和@'
+          that.tabTitle = '评论'
           break;
         default:
           that.tabTitle = '赞'
@@ -122,7 +122,7 @@
             time: '1552838875',
             type: 1,    // 0-点赞作品，1-点赞评论，2-评论内容
             total: 2,   // 点赞/评论 总人数
-            comments: '这是一条评论', 
+            comments: '这是一条评论',
             firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
             firstUserName: '最新用户',    // 最新用户的名称
             firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 最新用户的头像
