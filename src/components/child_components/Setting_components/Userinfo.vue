@@ -15,10 +15,18 @@
         </van-uploader>
       </template>
     </van-cell>
-    <van-cell title="名称" is-link value="全村的希望" @click="openUserNameSettingPopup" />
+    <van-cell is-link class="cellTop">
+      <template slot="title">
+        <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" class="uploaderImg">
+          <span class="custom-text">背景</span>
+          <img src="http://img.bqatj.com/img/6a51e6cae12c5002.jpg" class="avatar" />
+        </van-uploader>
+      </template>
+    </van-cell>
+    <van-cell title="名称" is-link :value="userName" @click="openUserNameSettingPopup" />
     <van-cell title="性别" is-link value="男" @click="showSexPop" />
     <van-cell title="地区" is-link value="中国·广东·深圳" />
-    <van-cell title="签名" is-link value="做个俗人，贪财好色" @click="openAutographSettingPopup" />
+    <van-cell title="签名" is-link :value="autographSettingShow" @click="openAutographSettingPopup" />
     <!-- 性别弹出层 -->
     <van-actionsheet
     v-model="sexPopShow"

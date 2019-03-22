@@ -18,15 +18,15 @@
         @load="onLoadMore"
       >
         <van-cell-group v-for="(item,index) in arrs">
-          <van-cell class="displayflex">
+          <van-cell class="displayflex" @click="goUserzone">
             <div class="displayflex-1 tleft">
               <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
               <span>{{item.userName}}</span>
             </div>
             <div class="displayflex-1 tright">
-              <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
-              <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
+              <van-button type="danger" size="mini" @click.stop="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
+              <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
+              <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
             </div>
           </van-cell>
         </van-cell-group>
@@ -91,7 +91,9 @@
           message: '确定取消关注吗？'
         }).then(() => {
           this.arrs[index].follow_type = 0;
-        });
+        }).catch(() => {
+          // on cancel
+        });;
       },
       onClickLeft(){
         this.COMMONFUNC.goBack();
@@ -132,6 +134,10 @@
             this.finished = true;
           }
         }, 500);
+      },
+      // 用户中心
+      goUserzone () {
+        this.$router.push('/userzone')
       }
     }
   }

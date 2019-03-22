@@ -9,12 +9,12 @@
       <van-cell-group v-for="(item,index) in arrs" class="van-cell-group">
         <van-cell class="displayflex">
           <div class="img-zone">
-            <span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span>
+            <router-link :to="{ name: 'userzone', params: {} }"><span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span></router-link>
           </div>
           <div class="contents-zone">
             <!-- 评论者头像以及评论数 -->
             <div class="flex-space-between">
-              <span>@{{item.sendUserName}}</span>
+              <router-link :to="{ name: 'userzone', params: {} }"><span>{{'@'+item.sendUserName}}</span></router-link>
               <div @click="praise(index)" class="praise">
                 <i class="fa fa-thumbs-o-up thumb-icon" :class="{ 'red-color': item.isPraised }" aria-hidden="true"></i>
                 <span>{{COMMONFUNC.formatterW(item.praiseNum)}}</span>
@@ -42,8 +42,12 @@
               <div v-for="(c_item, c_index) in item.child" class="reply-item">
                 <div class="flex-space-between">
                   <div>
-                    <span class="van-avatar-small"><img :src="c_item.childUserImg" alt="" class="van-avatar-img"></span>
-                    <span>@{{c_item.childUserName}}</span>
+                    <router-link :to="{ name: 'userzone', params: {} }">
+                      <span class="van-avatar-small"><img :src="c_item.childUserImg" alt="" class="van-avatar-img"></span>
+                    </router-link>
+                    <router-link :to="{ name: 'userzone', params: {} }">
+                      <span>@{{c_item.childUserName}}</span>
+                    </router-link>
                   </div>
                   <div @click="praise(index)" class="praise">
                     <i class="fa fa-thumbs-o-up thumb-icon" :class="{ 'red-color': c_item.childIsPraised }" aria-hidden="true"></i>

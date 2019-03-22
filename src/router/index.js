@@ -37,6 +37,11 @@ export default new Router({
       component: (resolve) => require(['../components/Myzone'],resolve),
     },
     {
+      path: '/userzone',
+      name: 'userzone',
+      component: (resolve) => require(['../components/Userzone'],resolve),
+    },
+    {
       path: '/recommend',
       name: 'recommend',
       component: (resolve) => require(['../components/Recommend'],resolve),
@@ -56,10 +61,17 @@ export default new Router({
       name: 'message',
       component: (resolve) => require(['../components/Message'],resolve),
     },
+    // 个人用户设置 -- 自己的
     {
       path: '/setting',
       name: 'setting',
       component: (resolve) => require(['../components/Setting'],resolve),
+    },
+    // 其他用户更多
+    {
+      path: '/userSetting',
+      name: 'userSetting',
+      component: (resolve) => require(['../components/UserSetting'],resolve),
     },
     {
       path: '/setting/userinfo',

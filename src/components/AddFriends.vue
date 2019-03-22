@@ -27,7 +27,7 @@
       @load="onLoadMore"
     >
       <van-cell-group v-for="(item,index) in arrs">
-        <van-cell class="displayflex">
+        <van-cell class="displayflex" @click="goUserzone">
           <div class="tleft van-user-item-left">
             <div class="van-avatar-large"><img :src="item.userImg" alt="" class="van-avatar-img"></div>
             <div class="flex-column van-user-item-text-info">
@@ -37,9 +37,9 @@
             </div>
           </div>
           <div class="tright van-user-item-right">
-            <van-button type="danger" size="mini" @click="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
-            <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
-            <van-button type="default" size="mini" @click="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
+            <van-button type="danger" size="mini" @click.stop="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
+            <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
+            <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
           </div>
         </van-cell>
       </van-cell-group>
@@ -84,7 +84,9 @@
           message: '确定取消关注吗？'
         }).then(() => {
           this.arrs[index].follow_type = 0;
-        });
+        }).catch(() => {
+          // on cancel
+        });;
       },
       onClickLeft(){
         this.COMMONFUNC.goBack();
@@ -119,6 +121,10 @@
       // 搜索用户
       onSearch () {
         this.$toast('搜索：' + this.value)
+      },
+      // 用户中心
+      goUserzone () {
+        this.$router.push('/userzone')
       }
     }
   }

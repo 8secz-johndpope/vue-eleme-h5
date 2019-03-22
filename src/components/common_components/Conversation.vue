@@ -7,7 +7,11 @@
       @load="onLoad"
     >
       <!-- 列表单个 -->
-      <van-panel :title="'@'+item.author" class="panel-s" v-for="(item,index) in composition" :status="isShowRoofPlacement && item.isTop === 0 ? '置顶' : '' ">
+      <van-panel class="panel-s" v-for="(item,index) in composition">
+        <div slot="header" class="flex-space-between header">
+          <router-link :to="{ name: 'userzone', params: {} }"><span>{{'@'+item.author}}</span></router-link>
+          <van-tag type="danger" v-if="isShowRoofPlacement && item.isTop === 0">置顶</van-tag>
+        </div>
         <div class="content-box" v-html="item.contentHtml">
           {{item.contentHtml}}
         </div>
@@ -171,8 +175,11 @@ export default {
     }
   }
   .panel-s{
-    margin: 10px;
+    margin: 20px;
     font-size: 14px;
+  }
+  .header{
+    padding: 0.2rem;
   }
   .panel-s:first-child{
     margin-top: 5px;
