@@ -1,17 +1,19 @@
 // 模拟用户
 export var imitateUser = {
-    LiaoNo: '000001', // 编号
+    LiaoNo: 'glh888888', // 编号
     userName: 'ganluhua',
     sex: 0, // 0-男,1-女
-    area: '中国·广东·深圳',
+    area: '深圳',
     birthday: '1993-04-26',
     userId: '',
     userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
     tel: '18124655386',
     integral: 100,  // 积分
     getPraised: 9999, // 获赞
+    year: 26, // 年龄
     fans: 9999, // 粉丝
     follow: 999,  // 关注
+    autograph: '个性签名，吸引用户关注对方', // 个性签名
 };
 // 模拟用户列表， 粉丝 或 关注对象
 export var imitateUserList = [

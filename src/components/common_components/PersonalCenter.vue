@@ -1,19 +1,38 @@
 <template>
   <div class="myzone_index">
+      <!-- 用户自己的主页 -->
       <div v-if="centerType === 0 ">
         <router-link :to="'/setting'"><i class="fa fa-bars setting"></i></router-link>
       </div>
+      <!-- 他人用户主页 -->
       <div v-else-if="centerType === 1 ">
-        <van-icon name="arrow-left" @click="onClickLeft" class="arrow-left" />
+        <van-icon name="arrow-left" @click.stop="onClickLeft" class="arrow-left" />
         <router-link :to="'/UserSetting'"><i class="fa fa-bars setting"></i></router-link>
       </div>
-      <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg">
+      <!-- <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg"> -->
+      <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }">
         <!-- 头 -->
         <div class="myzone_info">
           <div class="basic-info">
             <img :src="getImitateUser.userImg" alt="" @click.stop="userAvatar">
             <h3 class="userName">{{ getImitateUser.userName }}</h3>
-            <p class="userNo">账号:183*****935</p>
+            <p class="userNo">
+              <span
+                v-clipboard:copy="getImitateUser.LiaoNo"
+                v-clipboard:success="onCopyUserNo"
+                v-clipboard:error="onCopyUserError"><!-- 复制 -->
+                <span>账号:{{ getImitateUser.LiaoNo }}</span>
+              </span>
+              <!-- 点击按钮跳转个人信息编辑页 -->
+              <van-tag @click.stop = 'goUserInfo'>
+                <van-icon name="manager-o" v-if="getImitateUser.sex == 0 " class="blue-color" />
+                <van-icon name="manager-o" v-if="getImitateUser.sex == 1 " class="red-color" />
+                <span class="gray-color">{{ getImitateUser.year }}岁</span>
+              </van-tag>
+              <van-tag class="gray-color" v-if="getImitateUser.area" @click.stop = 'goUserInfo'>
+                <span class="gray-color">{{ getImitateUser.area }}</span>
+              </van-tag>
+            </p>
           </div>
           <div class="flex-center myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
@@ -22,6 +41,10 @@
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
           </div>
+        </div>
+        <div class="user-dec" @click.stop = 'goUserInfo'>
+          <p class="user-autograph gray-color"> {{ getImitateUser.autograph ? getImitateUser.autograph : '填写个性签名更容易获得别人关注哦' }}
+          </p>
         </div>
       </div>
       <!-- 3分 -->
@@ -146,6 +169,18 @@ export default {
     // 发消息
     sendMsg () {
       this.$toast('跳转聊天室')
+    },
+     // 复制成功
+    onCopyUserNo: function (e) {
+      this.$toast('复制成功！')
+    },
+    // 复制失败
+    onCopyUserError: function (e) {
+      this.$toast('复制失败！')
+    },
+    // 用户自己主页可跳转
+    goUserInfo () {
+      if (this.centerType === 0)  this.$router.push('/setting/userinfo')
     }
   },
 };
@@ -171,7 +206,7 @@ export default {
   top: 0.3rem;
   color: #fff;
   width: 0.8rem;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
 }
 .setting{
   z-index: 999;
@@ -186,8 +221,12 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.user-dec{
+  padding: 0.1rem 0;
+  color: #fff;
+}
 .myzone_content{
-  height: 4.2rem;
+  height: 4.8rem;
   padding: 0.8rem 0.58rem;
   box-sizing: border-box;
   background-size: 100%;

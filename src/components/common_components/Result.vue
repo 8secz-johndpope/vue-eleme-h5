@@ -45,6 +45,7 @@ export default {
     },
     // 查询
     onSearch () {
+      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
       this.$store.dispatch('setKeywords', this.getKeywords);
       this.$toast('查询成功');
     }
