@@ -19,7 +19,7 @@
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
-            <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 "><van-icon name="chat-o" class="iconType" />发消息</van-button>
+            <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
           </div>
         </div>
@@ -143,6 +143,10 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
+    // 发消息
+    sendMsg () {
+      this.$toast('跳转聊天室')
+    }
   },
 };
 </script>
