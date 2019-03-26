@@ -20,10 +20,15 @@ export default {
     return {
     };
   },
-  mounted () {
+  create () {
     if (!this.isLogin) {
       this.$router.replace('/login');
     }
+  },
+  mounted () {
+    // if (!this.isLogin) {
+    //   this.$router.replace('/login');
+    // }
   },
   computed: {
     isLogin () {
