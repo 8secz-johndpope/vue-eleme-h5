@@ -89,7 +89,7 @@ export default {
   }
   .shareBox-item{
     text-align: center;
-    width: 1.5rem;
+    width: 1.6rem;
   }
   .shareBox-item p{
     padding: 0 0.1rem 0 0;
