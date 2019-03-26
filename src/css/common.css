@@ -116,7 +116,7 @@
   margin: 0 1.6rem;
 }
 .fieldDiv .van-field .van-cell__title {
-    max-width: 0.6rem;
+    max-width: 0.8rem;
 }
 .fieldDiv_long .van-field .van-cell__title {
     max-width: 1.5rem;
@@ -170,3 +170,6 @@
   color: #323233;
 }
 /* 举报页举报理由 -- 结束 */
+.gray-font{
+  color: #969799;
+}
