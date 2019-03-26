@@ -21,7 +21,8 @@
       @cancel="onCancel"
       />
     </form> -->
-    <div class="comments">
+    <div class="comments" :class="showCommentsNum ? 'commentsHasNum' : '' ">
+      <van-icon name="comment-o" class="blue-color commentsNum-zone" @click="openCommentsPop" v-if="showCommentsNum"><span class="black-color commentsNum">9999</span></van-icon>
       <van-icon name="smile-o" class="smile-o"></van-icon>
     </div>
   </div>
@@ -37,6 +38,11 @@ export default {
     replyWho: {
       type: String,
       default: '',
+    },
+    // 是否有评论数
+    showCommentsNum: {
+      type: Boolean,
+      default: false,
     }
   },
   data () {
@@ -52,6 +58,10 @@ export default {
   methods: {
     send: function () {
       this.$toast("ok")
+    },
+    // 打开评论弹框
+    openCommentsPop () {
+      this.$emit('showCommentsPopP', true)
     }
   }
 };
@@ -74,5 +84,17 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+  .commentsHasNum{
+    width: 35%;
+  }
+  .commentsNum-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .commentsNum{
+    font-size: 0.438rem;
+    padding: 0 0 0.1rem 0.1rem;
   }
 </style>

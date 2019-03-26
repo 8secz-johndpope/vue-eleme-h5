@@ -60,7 +60,11 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone></FixedCommentsZone>
+    <FixedCommentsZone :showCommentsNum="true" @showCommentsPopP="showCommentsPop"></FixedCommentsZone>
+    <!-- 文章评论区 -->
+    <van-popup v-model="articleCommentsPopShow" position="right">
+      <ArticleComments @closeCommentsPopP="closeCommentsPop" ></ArticleComments>
+    </van-popup>
   </div>
 </template>
 <script>
@@ -69,6 +73,7 @@
   import Comments from './Comments';
   import Article from './Article';
   import FixedCommentsZone from './FixedCommentsZone';
+  import ArticleComments from './ArticleComments';
   import { mapGetters } from 'vuex';
   export default {
     components:{
@@ -77,6 +82,7 @@
       Article,
       Comments,
       FixedCommentsZone,
+      ArticleComments,
     },
     name: 'mywallet',
     data () {
@@ -86,6 +92,7 @@
         targetId: '', // 文章Id
         isAttention: false, // 是否已经关注
         recommendArticle: [],
+        articleCommentsPopShow: false,  // 文章评论区
       };
     },
     mounted () {
@@ -112,7 +119,7 @@
         this.sharePopShow = true;
       },
       // 加关注
-      addAttention: function () {
+      addAttention () {
         let that = this;
         if(that.isLogin){
           if (that.addAttention) {
@@ -135,6 +142,14 @@
           });
         }
       },
+      // 显示文章内容评论弹框
+      showCommentsPop (flag) {
+        this.articleCommentsPopShow = flag;
+      },
+      // 关闭文章内容评论弹框
+      closeCommentsPop (flag) {
+        this.articleCommentsPopShow = flag;
+      }
     }
 }
 </script>
