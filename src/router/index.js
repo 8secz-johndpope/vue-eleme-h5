@@ -42,6 +42,16 @@ export default new Router({
       component: (resolve) => require(['../components/Userzone'],resolve),
     },
     {
+      path: '/addConversation',
+      name: 'addConversation',
+      component: (resolve) => require(['../components/AddConversation'],resolve),
+    },
+    {
+      path: '/addConversation/question',
+      name: 'addConversationQuestion',
+      component: (resolve) => require(['../components/child_components/AddConversation_components/AddConversationQuestion'],resolve),
+    },
+    {
       path: '/recommend',
       name: 'recommend',
       component: (resolve) => require(['../components/Recommend'],resolve),
