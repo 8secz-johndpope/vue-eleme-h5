@@ -10,6 +10,7 @@
     <van-cell title="个人资料" icon="user-o" is-link to="setting/userinfo" class="cellSpace" />
     <van-cell title="我的钱包" icon="gem-o" is-link to="setting/mywallet" />
     <van-cell title="反馈建议" icon="envelop-o" is-link to="/setting/feedback" />
+    <van-cell title="邀请有礼" icon="point-gift-o" is-link to="/setting/invitation" />
     <van-cell title="联系我们" icon="more-o" is-link to="/setting/contact" />
     <van-button size="large" @click="outLogin">退出登录</van-button>
   </div>

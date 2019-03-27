@@ -93,6 +93,12 @@ export default new Router({
       name: 'mywallet',
       component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
     },
+    // 邀请分享
+    {
+      path: '/setting/invitation',
+      name: 'invitation',
+      component: (resolve) => require(['../components/child_components/Setting_components/Invitation'],resolve),
+    },
     {
       path: '/setting/feedback',
       name: 'feedback',
