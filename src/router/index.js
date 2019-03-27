@@ -174,5 +174,16 @@ export default new Router({
       name: 'mycomments',
       component: (resolve) => require(['../components/Mycomments'],resolve),
     },
+    /*
+      落地页 -- 开始
+    */
+    {
+      path: '/activity/inviteToShare',
+      name: 'inviteToShare',
+      component: (resolve) => require(['../components/landingPage_components/InviteToShare'],resolve),
+    },
+    /*
+      落地页 -- 结束
+    */
   ]
 });

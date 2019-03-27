@@ -19,7 +19,7 @@
       <template slot="title">
         <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" class="uploaderImg">
           <span class="custom-text">背景</span>
-          <img src="http://img.bqatj.com/img/6a51e6cae12c5002.jpg" class="avatar" />
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553668757135&di=5265263d5697ddcde0103e16aa02114e&imgtype=0&src=http%3A%2F%2Fimage2.5253.com%2Fimages%2Fuser_cover%2F201410%2F24%2F1452%2F46%2F201410241452460660_1000.png" class="avatar" />
         </van-uploader>
       </template>
     </van-cell>

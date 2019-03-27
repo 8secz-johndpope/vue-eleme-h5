@@ -84,7 +84,7 @@
 
 <script>
 import Conversation from './Conversation';
-import GetPraisedNum from '../child_components/Myzone/GetPraisedNum';
+import GetPraisedNum from '../child_components/Myzone_components/GetPraisedNum';
 import { ImagePreview } from 'vant';
 import { mapGetters } from 'vuex';
 export default {
@@ -104,7 +104,7 @@ export default {
       tabActive: 0,  // 我的作品，我的收藏
       follow_type: 0,
       praisedNumPopup: false, // 获得赞数 弹出层 查看具体赞数，可以插入广告
-      background_wall_img: 'http://img.bqatj.com/img/6a51e6cae12c5002.jpg', // 背景墙图片
+      background_wall_img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553668757135&di=5265263d5697ddcde0103e16aa02114e&imgtype=0&src=http%3A%2F%2Fimage2.5253.com%2Fimages%2Fuser_cover%2F201410%2F24%2F1452%2F46%2F201410241452460660_1000.png', // 背景墙图片
       isSign: false, // 是否已签到
     };
   },
@@ -229,7 +229,7 @@ export default {
   height: 4.8rem;
   padding: 0.8rem 0.58rem;
   box-sizing: border-box;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;
   img{
@@ -253,7 +253,7 @@ export default {
   height: 1.2rem;
   color: #fff;
   border-bottom: 1px solid #ddd;
-  background-color: #0097ff;
+  background-color: #409EFF;
   .three_lan_{
     display: table-cell;
     width: 33.3333%;
