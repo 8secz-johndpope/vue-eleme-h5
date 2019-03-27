@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     changeTab(index, title) {
-      this.$toast(title);
+      // this.$toast(title);
     },
   },
   components: {

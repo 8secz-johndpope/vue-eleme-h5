@@ -61,10 +61,6 @@
     <div class="space"></div>
     <!-- 固定评论区 -->
     <FixedCommentsZone :showCommentsNum="true" @showCommentsPopP="showCommentsPop"></FixedCommentsZone>
-    <!-- 文章评论区 -->
-    <van-popup v-model="articleCommentsPopShow" position="right">
-      <!-- <ArticleComments @closeCommentsPopP="closeCommentsPop" ></ArticleComments> -->
-    </van-popup>
   </div>
 </template>
 <script>
@@ -73,7 +69,6 @@
   import Comments from './Comments';
   import Article from './Article';
   import FixedCommentsZone from './FixedCommentsZone';
-  // import ArticleComments from './ArticleComments';
   import { mapGetters } from 'vuex';
   export default {
     components:{
@@ -82,7 +77,6 @@
       Article,
       Comments,
       FixedCommentsZone,
-      // ArticleComments,
     },
     name: 'mywallet',
     data () {

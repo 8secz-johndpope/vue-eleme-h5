@@ -22,7 +22,7 @@
       />
     </form> -->
     <div class="comments" :class="showCommentsNum ? 'commentsHasNum' : '' ">
-      <van-icon name="comment-o" class="blue-color commentsNum-zone" @click="openCommentsPop" v-if="showCommentsNum"><span class="black-color commentsNum">9999</span></van-icon>
+      <router-link :to="'/articleComments/articleId' " ><van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showCommentsNum"><span class="black-color commentsNum">9999</span></van-icon></router-link>
       <van-icon name="smile-o" class="smile-o"></van-icon>
     </div>
   </div>
@@ -59,10 +59,6 @@ export default {
     send: function () {
       this.$toast("ok")
     },
-    // 打开评论弹框
-    openCommentsPop () {
-      this.$emit('showCommentsPopP', true)
-    }
   }
 };
 </script>

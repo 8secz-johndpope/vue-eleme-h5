@@ -150,6 +150,11 @@ export default new Router({
       component: (resolve) => require(['../components/common_components/ArticleDetail'],resolve),
     },
     {
+      path: '/articleComments/:id',
+      name: 'articleComments',
+      component: (resolve) => require(['../components/common_components/ArticleComments'],resolve),
+    },
+    {
       path: '/addFriends',
       name: 'addFriends',
       component: (resolve) => require(['../components/AddFriends'],resolve),
