@@ -1,6 +1,6 @@
 <template>
   <div class="content-box">
-    <van-tabs v-model="active" type="card" @click="changeTab" class="tab">
+    <van-tabs v-model="active" type="card" @click="changeTab" class="tab" sticky v-if="isShowSearchBox">
       <van-tab title="话术">
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
@@ -8,6 +8,19 @@
         <Article :composition="getImitateArticleList" class="item-box"></Article>
       </van-tab>
     </van-tabs><!-- 撑开Fixednav挡住的位置 -->
+    <div class="search-box" @click="openSearchBox" v-if="isShowSearchBox">
+      <van-icon name="search" />
+    </div>
+    <form action="/" v-if="!isShowSearchBox">
+      <van-search
+        v-model="keywords"
+        placeholder="请输入搜索关键词"
+        show-action
+        @search="onSearch"
+        @cancel="onCancel"
+        class="fixed-top"
+      />
+    </form>
     <div class="space"></div>
     <Fixednav></Fixednav>
   </div>
@@ -24,6 +37,8 @@ export default {
     return {
       uname: '',
       active: 0,
+      keywords: '',
+      isShowSearchBox: false,
     };
   },
   mounted () {
@@ -38,6 +53,18 @@ export default {
     changeTab(index, title) {
       // this.$toast(title);
     },
+    openSearchBox () {
+      this.isShowSearchBox = true;
+    },
+    onCancel(){
+      this.keywords = '';
+      this.isShowSearchBox = false;
+    },
+    onSearch () {
+      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
+      // this.$store.dispatch('setKeywords', this.keywords);
+      this.$router.push('/result/'+this.keywords);
+    }
   },
   components: {
     Fixednav,
@@ -50,5 +77,12 @@ export default {
 <style lang="less" scoped>
   .item-box{
     margin-top: 15px;
+  }
+  .search-box{
+    position: fixed;
+    top: 0.4rem;
+    right: 0.4rem;
+    font-size: 0.4rem;
+    z-index: 999;
   }
 </style>
