@@ -13,6 +13,11 @@ export default {
     return {
     };
   },
+  beforeRouteLeave(to, from, next) {
+       // 设置下一个路由的 meta
+      to.meta.keepAlive = true;  // 让 A 缓存，即不刷新
+      next();
+  },
   mounted () {
   },
   computed: {

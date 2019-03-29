@@ -53,7 +53,7 @@ export default {
   mounted () {
   },
   computed: {
-    
+
   },
   methods: {
     onLoad() {
