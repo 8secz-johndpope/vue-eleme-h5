@@ -26,5 +26,9 @@ export default {
   // 设置关键词
   SET_KEYWORDS (state, platform) {
     state.keywords = platform;
-  }
+  },
+  // 设置推荐页高亮tab
+  SET_RECOMMENDHIGHLIGHTTAB (state, platform) {
+    state.recommendHighLightTab = platform;
+  },
 };

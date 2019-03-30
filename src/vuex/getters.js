@@ -35,4 +35,8 @@ export default {
   getKeywords: (state) => state.keywords,
   // 得到模拟用户相关的点赞、评论和@列表
   getImitateMyPraiseAndComments: (state) => state.imitateMyPraiseAndComments,
+  // 得到推荐页高亮tab
+  getRecommendHighLightTab: (state) => state.recommendHighLightTab,
+  // 地址列表
+  getAreaList: (state) => state.areaList,
 };

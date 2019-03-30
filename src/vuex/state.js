@@ -1,3 +1,4 @@
+import { areaList } from '../jsonData/Area.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage, 
          imitateComments, imitateMyPraiseAndComments } from '../falsedata/imitateData.js';
@@ -15,6 +16,8 @@ export default {
   whichPage: '',
   // 假的热搜词
   falseHotWord,
+  // 推荐页当前高亮tab
+  recommendHighLightTab: 0,
   // 已完成订单
   falseOrder,
   // 商家简略信息
@@ -41,4 +44,6 @@ export default {
   keywords: '',
   // 模拟用户相关的点赞、评论和@列表
   imitateMyPraiseAndComments,
+  // 地址列表
+  areaList,
 };

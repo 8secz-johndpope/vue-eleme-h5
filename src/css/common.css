@@ -101,6 +101,12 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.flex-start{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .flex-column{
   display: flex;
   flex-direction: column;
@@ -153,6 +159,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100%;
+  height: 100%;
 }
 
 /* 消息模块右滑删除键 -- 开始 */

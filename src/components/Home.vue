@@ -9,7 +9,7 @@
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
     <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center">
+      <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
         <img v-lazy="image" class="swipe-img" />
       </van-swipe-item>
     </van-swipe>
@@ -17,7 +17,7 @@
       <div slot="header">
         <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
       </div>
-      <div class="flex-space-between">
+      <div class="flex-start">
         <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
           <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
         </router-link>
@@ -82,22 +82,27 @@ export default {
   .item-linear{
     background: linear-gradient(to right, #f38181, #e46d27, #f31802);
     border: 0;
-    margin: 10px 5px 0 5px;
-    width: 95px;
-    padding: 0 5px;
-    height: 35px;
-    line-height: 35px;
+    margin: 0.312rem 0.156rem 0 0.156rem;
+    width: 2.57rem;
+    padding: 0 0.156rem;
+    height: 1.094rem;
+    line-height: 1.094rem;
   }
   .main-name{
-    margin-left: 10px;
+    margin-left: 0.312rem;
   }
   .panel-header{
-    padding-top: 10px;
+    padding-top: 0.312rem;
+  }
+  .swipe-img-zone{
+    width: 34.375rem;
+    height: 13.125rem;
   }
   .swipe-img{
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 9.333rem;
+    height: 4.0rem;
     padding: 0.1rem 0.4rem 0 0.4rem;
   }
 </style>

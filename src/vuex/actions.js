@@ -27,4 +27,8 @@ export default {
   setKeywords ({commit}, platform) {
     commit('SET_KEYWORDS', platform);
   },
+  // 修改推荐页高亮tab
+  setRcommendHighLightTab ({commit}, platform) {
+    commit('SET_RECOMMENDHIGHLIGHTTAB', platform);
+  },
 };

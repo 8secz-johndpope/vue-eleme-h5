@@ -9,12 +9,18 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      redirect: '/index'
+      redirect: '/index',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
     },
     {
       path: '/index',
       name: 'homes',
-      component: Home
+      component: Home,
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
     },
     {
       path: '/homepage',
