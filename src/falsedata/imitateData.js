@@ -343,21 +343,34 @@ export var imitateConversation = [
     likers: 9999,   // 喜欢数
     commentsNum: 999, // 评论数
     isLike: false, // 是否喜欢
-    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+    contentHtml: '<p>男：你今天有点怪</p><p>女：哪里怪了（脸红）</p><p>男：怪可爱的，哈哈哈</p>', // 对话渲染html
+    content: '男：你今天有点怪</br>女：哪里怪了（脸红）</br>男：怪可爱的，哈哈哈',  // 复制粘贴内容
+    isTop: 1, // 是否置顶 0-是， 1-否
+  },
+  {
+    userName: '',
+    userId: '',
+    id: 'zs20190213',
+    author: '御姐',
+    time: '2019.02.13',
+    likers: 9999,   // 喜欢数
+    commentsNum: 999, // 评论数
+    isLike: false, // 是否喜欢
+    contentHtml: '<p>男：你脸上有点东西</p><p>女：什么东西（脸红）</p><p>男：有点可爱</p>', // 对话渲染html
+    content: '男：你脸上有点东西</br>女：什么东西（脸红）</br>男：有点可爱',  // 复制粘贴内容
     isTop: 0, // 是否置顶 0-是， 1-否
   },
   {
     userName: '',
     userId: '',
     id: 'zs20190213',
-    author: '李四',
+    author: '软萌妹子',
     time: '2019.02.13',
     likers: 9999,   // 喜欢数
     commentsNum: 999, // 评论数
     isLike: false, // 是否喜欢
-    contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-    content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+    contentHtml: '<p>女：你是什么星座的呀</p><p>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）</p>', // 对话渲染html
+    content: '女：你是什么星座的呀</br>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）',  // 复制粘贴内容
     isTop: 0, // 是否置顶 0-是， 1-否
   },
 ];

@@ -131,13 +131,14 @@ export default {
         userName: '',
         userId: '',
         id: 'zs20190213',
-        author: '王五',
+        author: '李四',
         time: '2019.02.13',
         likers: 9999,   // 喜欢数
+        commentsNum: 999, // 评论数
         isLike: false, // 是否喜欢
-        isTop: 1, // 是否置顶 0-是， 1-否
-        contentHtml: '<p>男：justify-content: flex-start | flex-end | center | space-between | space-around;</p><p>女：xxx</p><p>男：xxx</p>', // 对话渲染html
-        content: 'justify-content: flex-start | flex-end | center | space-between | space-around;xxx;xxx',  // 复制粘贴内容
+        contentHtml: '<p>女：你是什么星座的呀</p><p>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）</p>', // 对话渲染html
+        content: '女：你是什么星座的呀</br>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）',  // 复制粘贴内容
+        isTop: 0, // 是否置顶 0-是， 1-否
       };
       // 异步更新数据
       setTimeout(() => {
@@ -162,31 +163,31 @@ export default {
     justify-content: flex-end;
     align-items: baseline;
     .copy{
-      width: 30px;
+      width: 0.8rem;
       text-align: center;
     }
     .myLike{
-      width: 60px;
+      width: 1.6rem;
       text-align: center;
     }
     .share{
-      width: 20px;
+      width: 0.533rem;
       text-align: right;
     }
   }
   .panel-s{
-    margin: 20px;
-    font-size: 14px;
+    margin: 0.267rem 0.4rem;
+    font-size: 0.373rem;
   }
   .header{
     padding: 0.2rem;
   }
   .panel-s:first-child{
-    margin-top: 5px;
+    margin-top: 0.267rem;
   }
   .content-box{
-    padding: 0 15px;
-    line-height: 20px;
+    padding: 0 0.4rem;
+    line-height: 0.533rem;
   }
   .red-color{
     color: red;
