@@ -77,13 +77,18 @@ export default {
     },
     // 校验用户名密码
     cheack_n_p () {
-      if (this.uname === '' || this.pwd === '') {
-        alert('用户名或密码不能为空');
+      if (this.uname === '') {
+        this.$toast('用户名不能为空');
+        return;
+      }
+      if (this.pwd === '') {
+        this.$toast('密码不能为空');
         return;
       }
       if (this.uname !== this.getuname || this.pwd !== this.getpwd) {
-        alert('用户名或密码错误');
+        this.$toast('用户名或密码错误');
       } else {
+        this.$toast({message: '登陆成功',duration: 1500});
         this.COMMONFUNC.addCookie("token",this.token,"","/");
         this.$store.dispatch('setLogin', true);
         this.COMMONFUNC.goBack();

@@ -345,7 +345,7 @@ export var imitateConversation = [
     isLike: false, // 是否喜欢
     contentHtml: '<p>男：你今天有点怪</p><p>女：哪里怪了（脸红）</p><p>男：怪可爱的，哈哈哈</p>', // 对话渲染html
     content: '男：你今天有点怪</br>女：哪里怪了（脸红）</br>男：怪可爱的，哈哈哈',  // 复制粘贴内容
-    isTop: 1, // 是否置顶 0-是， 1-否
+    isTop: 0, // 是否置顶 0-是， 1-否
   },
   {
     userName: '',
@@ -371,7 +371,7 @@ export var imitateConversation = [
     isLike: false, // 是否喜欢
     contentHtml: '<p>女：你是什么星座的呀</p><p>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）</p>', // 对话渲染html
     content: '女：你是什么星座的呀</br>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）',  // 复制粘贴内容
-    isTop: 0, // 是否置顶 0-是， 1-否
+    isTop: 1, // 是否置顶 0-是， 1-否
   },
 ];
 // 模拟文章列表

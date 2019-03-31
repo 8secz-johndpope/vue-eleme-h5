@@ -20,8 +20,8 @@ export default {
     return {
     };
   },
-  create () {
-    if (!this.isLogin) {
+  beforeCreate () {
+    if (this.COMMONFUNC.getCookieValue("token") !== 'isLogin') {
       this.$router.replace('/login');
     }
   },
@@ -31,13 +31,6 @@ export default {
     // }
   },
   computed: {
-    isLogin () {
-      if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
-        return true;
-      }else {
-        return false;
-      }
-    },
   },
   methods: {
   },

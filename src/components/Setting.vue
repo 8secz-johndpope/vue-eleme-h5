@@ -39,7 +39,7 @@
       outLogin () {
         this.$store.dispatch('setLogin', false);
         this.COMMONFUNC.clearCookie(); //清除所有的cookies
-        this.$toast("安全退出");
+        this.$toast({message: '安全退出',duration: 1500});
         this.$router.push({  //核心语句
           path:'/'   //跳转的路径
           // query:{           //路由传参时push和query搭配使用 ，作用时传递参数
