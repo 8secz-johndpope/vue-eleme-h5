@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mywallet">
     <!-- 顶部 -->
     <van-nav-bar
       title="我的钱包"
@@ -15,9 +15,13 @@
       </div>
       <div class="flex-space-between amount">
         <span>1，000</span>
-        <van-button size="small" type="danger">充值</van-button>
+        <router-link :to="'/setting/shopping'" > 
+          <van-button size="small" type="danger">点我充值</van-button> 
+        </router-link>
       </div>
     </van-panel>
+    <!-- 优惠券单元格 -->
+    <Coupon :componentsType="1"></Coupon>
     <van-cell title="积分说明" is-link @click="openIntegralPopup" />
     <van-cell title="常见问题" is-link @click="openHelpPopup" />
     <!-- 充值记录设置 -->
@@ -74,17 +78,12 @@
           <van-collapse-item title="1、如何做任务获取积分？" name="1">
             1.1 我的页面每日签到获得2积分；</br>
             1.2 我的页面打开充值面板，或者在 “我的-更多-钱包”页面中，可以快速充值；</br>
-            1.3 发表对话，审核通过之后，获得2积分；（暂定）</br>
-            1.4 邀请好友，通过邀请码，每次邀请一个，获50积分（暂定）；</br>
+            1.3 参加每日活动，如发表对话，审核通过之后，获得4积分，评论获得2积分，收藏内容获得2积分；（暂定）</br>
+            1.4 邀请好友，通过邀请码，每次邀请一个，获30积分（暂定）；</br>
           </van-collapse-item>
           <van-collapse-item title="2，充值购买积分？（暂定）" name="2">
-            2.1 分6种方式，充的越多，积分、收藏容量相应层级增加，可叠加；</br>
-            2.2 价格说明，充的越多，送的越多 
-                 </br>5元   100积分    送 10篇收藏容量（暂定）
-                 </br>10元  250积分   送 25篇收藏容量（暂定）
-                 </br>20元  600积分   送 60篇收藏容量（暂定）
-                 </br>30元  1000积分 送 100篇收藏容量（暂定）
-                 </br>50元  2000积分 送 200篇收藏容量（暂定）
+            2.1 分6种方式，充的越多，送的越多；</br>
+            2.2 如果您是月度会员，查询不会消耗您的积分；若您有未用完的积分或会员剩余时间，我们会帮您累计
           </van-collapse-item>
           <van-collapse-item title="3、积分可转让或者兑换？" name="3">
             积分暂时不可转让，也不可兑换</br>
@@ -95,13 +94,14 @@
   </div>
 </template>
 <script>
+  import Coupon from '../../common_components/Coupon';
   export default {
     components:{
+      Coupon,
     },
     name: 'mywallet',
     data () {
       return {
-        msg: '1',
         rechargeRecordPopShow: false,  // 充值记录设置弹框
         helpPopupShow: false, // 常见问题 帮助中心弹框
         integralPopupShow: false, // 积分说明弹框
@@ -119,7 +119,7 @@
         ],
         helpActiveNames: ['1','2','3'], // 常见问题折叠筐
         integralActiveNames: ['1','2','3'], // 积分说明折叠筐
-      };
+      }
     },
     mounted () {
 

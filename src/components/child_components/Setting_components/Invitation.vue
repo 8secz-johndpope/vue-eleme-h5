@@ -15,7 +15,7 @@
       </div>
       <div class="txt-zone">
         <p class="flex-center giveIntegral">
-          赠送30积分
+          邀请成功，您将获得<span class="red-color num">30</span>积分
         </p>
         <p class="flex-center allHas">
           邀请好友 你我都有
@@ -149,5 +149,8 @@
   }
   .prominent{
     font-size: 0.48rem;
+  }
+  .num{
+    margin: 0 0.133rem;
   }
 </style>

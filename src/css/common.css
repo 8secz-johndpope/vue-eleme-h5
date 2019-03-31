@@ -177,6 +177,15 @@
   color: #323233;
 }
 /* 举报页举报理由 -- 结束 */
+
+/* 充值页 -- 开始 */
+.mywallet .van-coupon-list__list{
+  padding: 0.2rem 0 0 0;
+}
+.mywallet .van-coupon-list__close {
+    bottom: 0.35rem;
+}
+/* 设置页 -- 结束 */
 .gray-font{
   color: #969799;
 }

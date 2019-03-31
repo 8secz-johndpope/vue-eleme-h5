@@ -7,7 +7,7 @@
       <div class="content">
         <div class="txt-zone">
           <p class="flex-center giveIntegral">
-            好友邀请你免费领取60积分
+            恭喜获得<span class="red-color num">5元</span>红包
           </p>
           <p class="flex-center allHas">
             自古深情留不住，从来套路得人心
@@ -202,5 +202,8 @@
     text-align: center;
     padding: 0.2rem 0;
     font-size: 0.373333rem;
+  }
+  .num{
+    margin: 0 0.133rem;
   }
 </style>

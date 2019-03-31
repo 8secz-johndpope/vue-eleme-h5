@@ -144,6 +144,14 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
     },
+    {
+      path: '/setting/shopping',
+      name: 'shopping',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Setting_components/Shopping'],resolve),
+    },
     // 邀请分享
     {
       path: '/setting/invitation',

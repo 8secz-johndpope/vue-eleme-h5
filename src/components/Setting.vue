@@ -23,7 +23,7 @@
     name: 'setting',
     data () {
       return {
-        msg: '1',
+        
       };
     },
     mounted () {

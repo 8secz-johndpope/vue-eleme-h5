@@ -2,7 +2,7 @@
 export var imitateUser = {
     LiaoNo: 'glh888888', // 编号
     userName: 'ganluhua',
-    sex: 0, // 0-男,1-女
+    sex: 1, // 0-男,1-女
     area: '深圳',
     birthday: '1993-04-26',
     userId: '',

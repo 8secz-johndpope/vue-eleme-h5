@@ -26,12 +26,12 @@
                 <span>账号:{{ getImitateUser.LiaoNo }}</span>
               </span>
               <!-- 点击按钮跳转个人信息编辑页 -->
-              <van-tag @click.stop = 'goUserInfo'>
+              <van-tag color="#3A758C" @click.stop = 'goUserInfo'>
                 <van-icon name="manager-o" v-if="getImitateUser.sex == 0 " class="blue-color" />
                 <van-icon name="manager-o" v-if="getImitateUser.sex == 1 " class="red-color" />
                 <span class="gray-color">{{ getImitateUser.year }}岁</span>
               </van-tag>
-              <van-tag class="gray-color" v-if="getImitateUser.area" @click.stop = 'goUserInfo'>
+              <van-tag color="#3A758C" class="gray-color" v-if="getImitateUser.area" @click.stop = 'goUserInfo'>
                 <span class="gray-color">{{ getImitateUser.area }}</span>
               </van-tag>
             </p>
@@ -39,7 +39,7 @@
           <div class="flex-center myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
-            <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="centerType === 0 "><van-icon name="integral" class="iconType" />积分：{{COMMONFUNC.formatterW(getImitateUser.integral)}}</van-button>
+            <van-button type="danger" class="zone-btn" size="small" @click.stop="goIntegral" v-if="centerType === 0 "><van-icon name="integral" class="iconType" />积分：{{COMMONFUNC.formatterW(getImitateUser.integral)}}</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
@@ -181,6 +181,10 @@ export default {
     // 前往设置页
     goUserSetting () {
       this.$router.push('/userSetting')
+    },
+    // 前往积分页
+    goIntegral () {
+      this.$router.push('/setting/mywallet')
     },
     // 发消息
     sendMsg () {
