@@ -1,16 +1,18 @@
 <template>
-  <div class="myzone_index">
-      <!-- 用户自己的主页 -->
-      <div v-if="centerType === 0 ">
-        <router-link :to="'/setting'"><i class="fa fa-bars setting"></i></router-link>
+  <div class="myzone_index">      
+      <div class="bgImg" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg">
+        <!-- 用户自己的主页 -->
+        <div v-if="centerType === 0 ">
+          <i class="fa fa-bars setting" @click.stop="goSetting"></i>
+        </div>
+        <!-- 他人用户主页 -->
+        <div v-else-if="centerType === 1 ">
+          <van-icon name="arrow-left" @click.stop="onClickLeft" class="arrow-left" />
+          <i class="fa fa-bars setting" @click.stop="goUserSetting"></i>
+        </div>
       </div>
-      <!-- 他人用户主页 -->
-      <div v-else-if="centerType === 1 ">
-        <van-icon name="arrow-left" @click.stop="onClickLeft" class="arrow-left" />
-        <router-link :to="'/UserSetting'"><i class="fa fa-bars setting"></i></router-link>
-      </div>
-      <!-- <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg"> -->
-      <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }">
+      <!-- <div class="myzone_content" :style="{backgroundImage: 'url(' + background_wall_img + ')' }"> -->
+      <div class="myzone_content">
         <!-- 头 -->
         <div class="myzone_info">
           <div class="basic-info">
@@ -37,6 +39,7 @@
           <div class="flex-center myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
+            <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="centerType === 0 "><van-icon name="integral" class="iconType" />积分：{{COMMONFUNC.formatterW(getImitateUser.integral)}}</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
@@ -54,7 +57,7 @@
             <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
           </p>
         </a>
-        <a class="three_lan_" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
+        <a class="three_lan_">
           <router-link :to="'/myfans'">
             <p class="big_colorful">
               <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
@@ -104,7 +107,7 @@ export default {
       tabActive: 0,  // 我的作品，我的收藏
       follow_type: 0,
       praisedNumPopup: false, // 获得赞数 弹出层 查看具体赞数，可以插入广告
-      background_wall_img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553668757135&di=5265263d5697ddcde0103e16aa02114e&imgtype=0&src=http%3A%2F%2Fimage2.5253.com%2Fimages%2Fuser_cover%2F201410%2F24%2F1452%2F46%2F201410241452460660_1000.png', // 背景墙图片
+      background_wall_img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg', // 背景墙图片
       isSign: false, // 是否已签到
     };
   },
@@ -171,6 +174,14 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
+    // 前往设置页
+    goSetting () {
+      this.$router.push('/setting')
+    },
+    // 前往设置页
+    goUserSetting () {
+      this.$router.push('/userSetting')
+    },
     // 发消息
     sendMsg () {
       this.$toast('跳转聊天室')
@@ -193,11 +204,10 @@ export default {
 
 <style lang="less" scoped>
 .bgImg{
-  height: 8rem;
-  background-image: url(http://img.bqatj.com/img/6a51e6cae12c5002.jpg);
+  height: 7.8rem;
   position: fixed;
   top: 0;
-  background-size: 100%;
+  background-size: 100% auto;
   width: 100%;
   background-repeat: no-repeat;
 }
@@ -216,7 +226,7 @@ export default {
 .setting{
   z-index: 999;
   position: fixed;
-  right: 0.3rem;
+  right: 0.1rem;
   top: 0.3rem;
   color: #fff;
   width: 0.8rem;
@@ -226,17 +236,22 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.user-dec{
-  padding: 0.1rem 0;
-  color: #fff;
-}
 .myzone_content{
-  height: 4.8rem;
-  padding: 0.8rem 0.58rem;
+  height: 3.5rem;
+  padding: 0 0.58rem;
   box-sizing: border-box;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  position: relative;
+  position: relative;    
+  background-color: #006599;
+  margin-top: 2.5rem;
+  .basic-info{
+    position: absolute;
+    bottom: 0.667rem;
+  }
+  .myzone_uid{
+    position: absolute;
+    right: 0.4rem;
+    top: 0.267rem;
+  }
   img{
     width:2rem;
     height:2rem;
@@ -251,6 +266,11 @@ export default {
   .userNo{
     color: #fff;
   }
+  .user-dec{
+    color: #fff;
+    position: absolute;
+    bottom: 0.1rem;
+  }
 }
 .three_lan{
   display: table;
@@ -258,7 +278,8 @@ export default {
   height: 1.2rem;
   color: #fff;
   border-bottom: 1px solid #ddd;
-  background-color: #409EFF;
+  background-color: #006599;
+  position: relative;
   .three_lan_{
     display: table-cell;
     width: 33.3333%;
