@@ -24,6 +24,7 @@
       </template>
     </van-cell>
     <van-cell title="名称" is-link :value="userName" @click="openUserNameSettingPopup" />
+    <van-cell title="生日" is-link :value="birthDay" @click="birthDayPop = true" />
     <van-cell title="性别" is-link value="男" @click="showSexPop" />
     <van-cell title="地区" is-link :value="address" @click="areaPopShow = true" />
     <van-cell title="签名" is-link :value="autograph" @click="openAutographSettingPopup" />
@@ -63,14 +64,26 @@
     </van-popup>
     <!-- 地址设置 -->
     <van-popup v-model="areaPopShow" position="bottom" :overlay="true">
-      <van-area :area-list="getAreaList" value="110101" :item-height='80' @confirm="confirmArea" @cancel="areaPopShow=false" />
+      <van-area :area-list="getAreaList" value="110101" :item-height="80" @confirm="confirmArea" @cancel="areaPopShow=false" />
+    </van-popup>
+    <!-- 生日设置 -->
+    <van-popup v-model="birthDayPop" position="bottom" :overlay="true">
+      <van-datetime-picker
+        v-model="currentDate"
+        type="date"
+        :min-date="minDate"
+        :item-height="80"
+        @confirm="confirmBirth"
+      />
     </van-popup>
   </div>
 </template>
 <script>
   import Vue from 'vue';
   import { Area } from 'vant';
+  import { DatetimePicker } from 'vant';
   import { mapGetters } from 'vuex';
+  Vue.use(DatetimePicker);
   Vue.use(Area);
   export default {
     components:{
@@ -83,6 +96,7 @@
         userNameSettingShow: false,  // 名称设置弹框
         autographSettingShow: false,  // 个性签名设置弹框
         areaPopShow: false, // 地址栏弹框
+        birthDayPop: false, // 生日弹框
         actions: [
           {
             name: '男',
@@ -96,6 +110,9 @@
         address: '中国·广东·深圳', // 地址
         userName: 'lisan',  // 用户名
         autograph: '做个俗人，贪财好色', // 个性签名
+        currentDate: new Date(),
+        minDate: new Date(),
+        birthDay: '2019-04-02',
       };
     },
     mounted () {
@@ -154,6 +171,11 @@
       confirmArea (e) {
         this.areaPopShow = false;
         this.address = e[0].name+'·'+e[1].name+'·'+e[2].name;
+      },
+      // 确认生日
+      confirmBirth (e) {
+        this.birthDayPop = false;
+        this.birthDay = this.COMMONFUNC.crtTimeFtt(e);
       }
     }
 }

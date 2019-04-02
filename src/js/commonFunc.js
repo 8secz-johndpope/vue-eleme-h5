@@ -132,6 +132,18 @@ function commentsTimeFormatter(timestamp) {
     }
     return '刚刚';
 };
+
+// 时间格式化 -- 转成年月日
+function crtTimeFtt(val) {
+    if (val != null) {
+        var date = new Date(val);
+        var m = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1;
+        var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        return date.getFullYear() + '-' + m + '-' + d;
+    }else {
+      console.log('时间格式化出错：'+val)
+    }
+}
 export default {
   httpUrl,
   goBack,
@@ -141,4 +153,5 @@ export default {
   deleteCookie,
   clearCookie,
   commentsTimeFormatter,
+  crtTimeFtt,
 }

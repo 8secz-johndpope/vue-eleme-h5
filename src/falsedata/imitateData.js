@@ -289,6 +289,20 @@ export var imitateMenu = [
             linkAddress: '',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
+        {
+            levelTwoName: '生活短句', // 起床睡觉困难，为什么要轻易
+            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
+            openNewLink: false,  // 打开新连接
+            linkAddress: '',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
+        {
+            levelTwoName: '节日话术', // 你知道为什么叫愚人节吗，遇到你，走了心
+            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
+            openNewLink: false,  // 打开新连接
+            linkAddress: '',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
     ]
   },
   {
