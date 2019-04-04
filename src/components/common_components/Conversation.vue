@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="conversationActionsheet">
     <van-list
       v-model="loading"
       :finished="finished"

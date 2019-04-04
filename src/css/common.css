@@ -161,6 +161,9 @@
   width: 100%;
   height: 100%;
 }
+.gray-font{
+  color: #969799;
+}
 
 /* 消息模块右滑删除键 -- 开始 */
 .messageModule .van-swipe-cell__right{
@@ -186,6 +189,9 @@
     bottom: 0.35rem;
 }
 /* 设置页 -- 结束 */
-.gray-font{
-  color: #969799;
+
+/* 对话页 -- 开始 */
+.conversationActionsheet .van-actionsheet {
+    max-height: 70%;
 }
+/* 对话页 -- 结束 */
