@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="coupon-module">
     <!-- 优惠券单元格 -->
     <van-coupon-cell
       :coupons="coupons"
@@ -56,7 +56,7 @@
     props: {
       // 类型
       componentsType: Number,
-      default: 0, // 0-跳转，1-本地
+      default: 0, // 0-本地，1-跳转
     },
     data () {
       return {
@@ -67,7 +67,7 @@
       };
     },
     mounted () {
-      
+
     },
     computed: {
 
@@ -75,7 +75,7 @@
     methods: {
       // 关闭优惠券弹框
       onChange(index) {
-        if (this.componentsType === 1) {
+        if (this.componentsType === 1 && index !== -1) {
           this.$router.push('/setting/shopping')
         }
         this.showList = false;

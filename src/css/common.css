@@ -204,3 +204,12 @@
     max-height: 70%;
 }
 /* 对话页 -- 结束 */
+
+/* 优惠券 -- 开始 */
+.coupon-module .van-coupon-list__close {
+    left: 0;
+    bottom: 0.34rem;
+    position: absolute;
+    font-weight: 500;
+}
+/* 优惠券 -- 结束 */
