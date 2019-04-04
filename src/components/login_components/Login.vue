@@ -3,11 +3,12 @@
     <van-nav-bar
       title="登录"
       left-text="返回"
+      right-text="首页"
       left-arrow
       @click-left="onClickLeft"
+      @click-right="onClickRight"
     />
     <div class="login_box">
-      <!-- <Backbar title="登录"></Backbar> -->
       <div class="title">
         <img src="http://img.bqatj.com/img/6a51e6cae12c5002.jpg" class="common-img" />
         <h2>产品名称</h2>
@@ -49,9 +50,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
 export default {
   name: 'login',
+  components: {
+  },
   data () {
     return {
       uname: '',
@@ -60,9 +62,9 @@ export default {
     };
   },
   mounted () {
-    if (this.getLogin) {
-      this.$router.replace('/myzone');
-    }
+    // if (this.getLogin) {
+    //   this.$router.replace('/myzone');
+    // }
   },
   computed: {
     ...mapGetters([
@@ -72,9 +74,6 @@ export default {
     ])
   },
   methods: {
-    onClickLeft(){
-      this.COMMONFUNC.goBack();
-    },
     // 校验用户名密码
     cheack_n_p () {
       if (this.uname === '') {
@@ -97,11 +96,14 @@ export default {
     // 跳转忘记密码页面，写在页面不生效
     goForget () {
       this.$router.push('/forgot')
-    }
+    },
+    onClickLeft(){
+      history.go(-2)
+    },
+    onClickRight(){
+      this.$router.push('/index')
+    },
   },
-  components: {
-    // 'Backbar': Backbar
-  }
 };
 </script>
 

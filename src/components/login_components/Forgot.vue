@@ -1,11 +1,6 @@
 <template>
   <div>
-    <van-nav-bar
-      title="忘记密码"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
+    <Backbar :titleName="'忘记密码'"></Backbar>
     <div class="login_box">
       <!-- <Backbar title="登录"></Backbar> -->
       <div class="title">
@@ -84,7 +79,10 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'login',
+  name: 'forgot',
+  components: {
+    Backbar,
+  },
   data () {
     return {
       uname: '',
@@ -98,9 +96,9 @@ export default {
     };
   },
   mounted () {
-    if (this.getLogin) {
-      this.$router.replace('/myzone');
-    }
+    // if (this.getLogin) {
+    //   this.$router.push('/myzone');
+    // }
   },
   computed: {
     ...mapGetters([
@@ -175,9 +173,6 @@ export default {
       return flag;
     },
   },
-  components: {
-    // 'Backbar': Backbar
-  }
 };
 </script>
 

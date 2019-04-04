@@ -1,11 +1,6 @@
 <template>
   <div>
-    <van-nav-bar
-      title="注册"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
+    <Backbar :titleName="'注册'"></Backbar>
     <div class="login_box">
       <!-- <Backbar title="登录"></Backbar> -->
       <div class="title">
@@ -59,10 +54,14 @@
 </template>
 
 <script>
+import Backbar from '../common_components/Back_bar';
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'login',
+  name: 'register',
+  components: {
+    'Backbar': Backbar
+  },
   data () {
     return {
       uname: '',
@@ -74,9 +73,9 @@ export default {
     };
   },
   mounted () {
-    if (this.getLogin) {
-      this.$router.replace('/myzone');
-    }
+    // if (this.getLogin) {
+    //   this.$router.replace('/myzone');
+    // }
   },
   computed: {
     ...mapGetters([
@@ -142,9 +141,6 @@ export default {
       return flag;
     },
   },
-  components: {
-    // 'Backbar': Backbar
-  }
 };
 </script>
 

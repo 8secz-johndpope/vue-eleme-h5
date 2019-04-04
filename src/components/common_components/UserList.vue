@@ -1,37 +1,41 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <van-nav-bar
+    <div class="fixed-top">
+      <van-nav-bar
       :title="tabTitle"
       left-text="返回"
       right-text="添加"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
-    />
-    <!-- 主体内容 -->
-    <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
-      <van-list
-        v-model="listLoading"
-        :finished="finished"
-        finished-text="我也是底线的"
-        @load="onLoadMore"
-      >
-        <van-cell-group v-for="(item,index) in arrs">
-          <van-cell class="displayflex" @click="goUserzone">
-            <div class="displayflex-1 tleft">
-              <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
-              <span>{{item.userName}}</span>
-            </div>
-            <div class="displayflex-1 tright">
-              <van-button type="danger" size="mini" @click.stop="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
-              <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
-              <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
-            </div>
-          </van-cell>
-        </van-cell-group>
-      </van-list>
-    </van-pull-refresh>
+      />
+    </div>
+    <div class="fixed-content-box">
+      <!-- 主体内容 -->
+      <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
+        <van-list
+          v-model="listLoading"
+          :finished="finished"
+          finished-text="我也是底线的"
+          @load="onLoadMore"
+          >
+          <van-cell-group v-for="(item,index) in arrs">
+            <van-cell class="displayflex" @click="goUserzone">
+              <div class="displayflex-1 tleft">
+                <span class="van-avatar"><img :src="item.userImg" alt="" class="van-avatar-img"></span>
+                <span>{{item.userName}}</span>
+              </div>
+              <div class="displayflex-1 tright">
+                <van-button type="danger" size="mini" @click.stop="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
+                <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
+                <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
+              </div>
+            </van-cell>
+          </van-cell-group>
+        </van-list>
+      </van-pull-refresh>
+    </div>
   </div>
 </template>
 

@@ -164,6 +164,15 @@
 .gray-font{
   color: #969799;
 }
+.fixed-top{
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+.fixed-content-box{
+  margin-top: 1.2rem;
+}
 
 /* 消息模块右滑删除键 -- 开始 */
 .messageModule .van-swipe-cell__right{

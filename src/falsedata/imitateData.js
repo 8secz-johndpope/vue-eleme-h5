@@ -343,6 +343,13 @@ export var imitateMenu = [
             linkAddress: 'www.baidu.com',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
+        {
+            levelTwoName: '热评',    // 奇闻趣事
+            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
+            openNewLink: true,  // 打开新连接
+            linkAddress: 'www.baidu.com',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
     ]
   },
 ];

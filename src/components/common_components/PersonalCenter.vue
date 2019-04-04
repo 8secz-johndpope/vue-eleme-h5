@@ -1,5 +1,5 @@
 <template>
-  <div class="myzone_index">      
+  <div class="myzone_index">
       <div class="bgImg" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg">
         <!-- 用户自己的主页 -->
         <div v-if="centerType === 0 ">
@@ -244,9 +244,9 @@ export default {
   height: 3.5rem;
   padding: 0 0.58rem;
   box-sizing: border-box;
-  position: relative;    
+  position: relative;
   background-color: #006599;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   .basic-info{
     position: absolute;
     bottom: 0.667rem;
