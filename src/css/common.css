@@ -173,6 +173,24 @@
 .fixed-content-box{
   margin-top: 1.2rem;
 }
+.zhifubao-icon{
+  background-image: url('../images/icon/zhifubao.png');
+  background-size: 100% 100%;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: 0 0.2rem 0.08rem 0.2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.weixin-icon{
+  background-image: url('../images/icon/weixin.png');
+  background-size: 100% 100%;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: 0 0.2rem 0.08rem 0.2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 /* 消息模块右滑删除键 -- 开始 */
 .messageModule .van-swipe-cell__right{

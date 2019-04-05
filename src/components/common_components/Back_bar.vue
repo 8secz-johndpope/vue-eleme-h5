@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     onClickLeft(){
-      history.go(-2)
+      history.go(-1)
     },
   }
 };

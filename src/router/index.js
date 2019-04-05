@@ -144,6 +144,7 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
     },
+    // 购买商品页
     {
       path: '/setting/shopping',
       name: 'shopping',
@@ -151,6 +152,15 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['../components/child_components/Setting_components/Shopping'],resolve),
+    },
+    // 支付订单页
+    {
+      path: '/setting/payment',
+      name: 'payment',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Setting_components/Payment'],resolve),
     },
     // 邀请分享
     {

@@ -160,8 +160,8 @@
         that.isShoping = true;
         setTimeout(() => {
           that.isShoping = false;
-        }, 3000);
-        this.$toast('跳转交易台')
+          that.$router.push('/setting/payment')
+        }, 1000);
       },
       // 选择商品
       selectShop (index, item) {
