@@ -110,6 +110,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/Message'],resolve),
     },
+    // 聊天室
+    {
+      path: '/chat/:id',
+      name: 'chat',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/common_components/Chat'],resolve),
+    },
     // 个人用户设置 -- 自己的
     {
       path: '/setting',

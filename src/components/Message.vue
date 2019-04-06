@@ -18,7 +18,7 @@
         finished-text="我也是底线的"
         @load="onLoadMore"
         >
-        <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId" class="messageModule">
+        <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId" class="messageModule" @click="toChat">
           <van-cell-group>
             <van-cell class="displayflex">
               <div class="img-zone">
@@ -111,6 +111,10 @@
             this.finished = true;
           }
         }, 500);
+      },
+      // 跳转聊天室
+      toChat () {
+        this.$router.push('/chat/001')
       }
     }
   }
