@@ -21,7 +21,7 @@
           </div> 
           <div class="xw-chat-servicer"> 
            <div class="xw-servicer-avantar-wrap"> 
-            <img src="/static/images/logo.jpg" class="xw-servicer-avantar" /> 
+            <img src="../../../static/images/logo.jpg" class="xw-servicer-avantar" /> 
            </div> 
            <div class="xw-chat-msg"> 
             <span v-html="replaceFace(messageList.content)"></span> 
@@ -35,7 +35,7 @@
           </div> 
           <div class="xw-chat-customer"> 
            <div class="xw-customer-avantar-wrap"> 
-            <img src="/static/images/female.jpg" class="xw-customer-avantar" /> 
+            <img src="../../../static/images/female.jpg" class="xw-customer-avantar" /> 
            </div> 
            <div class="xw-chat-msg" style="display:inline-block"> 
             <span v-html="replaceFace(messageList.content)"></span> 
@@ -105,7 +105,7 @@
         showMoreOpratin:false,//是否显示更多操作
         toShowMaskInfo: false,//点击头部是否显示相信信息
         bellStatus: false,//头部区域铃声图标
-        myaudio: '../../static/audio/msg.mp3',//铃音
+        myaudio: '../../../static/audio/msg.mp3',//铃音
         testContents: ["今天天气不错", '这个问题还没遇到过', '你说什么，我听不明白', '今天周五了', '请稍后--', '当前客服忙', '您还有什么咨询的吗', '正在查询', 'gone with the wind'],
         content: '',
         //聊天记录
@@ -275,11 +275,11 @@ ul{
 
 
 .xw-ring-icon {
-  background: url(/static/images/soundOn.svg) no-repeat 50%;
+  background: url(../../../static/images/soundOn.svg) no-repeat 50%;
 }
 
  .xw-ring-icon-toggle{
-   background: url(/static/images/soundClose.svg) no-repeat 50%;
+   background: url(../../../static/images/soundClose.svg) no-repeat 50%;
 }
 
 .xw-ring-icon {
@@ -530,10 +530,10 @@ ul{
 }
 
 .xw-chat-tool-btn.xw-face {
-   background: url(/static/images/smileOn.svg) no-repeat 50%;
+   background: url(../../../static/images/smileOn.svg) no-repeat 50%;
 }
 .xw-chat-tool-btn.xw-face-close {
-   background: url(/static/images/smileClose.svg) no-repeat 50%;
+   background: url(../../../static/images/smileClose.svg) no-repeat 50%;
 }
 
 .xw-chat-tool-item .xw-window-text {
@@ -620,7 +620,7 @@ ul{
 }
 
 .xw-hide-operation{
-  background: url(/static/images/addOn.svg) no-repeat 50%;
+  background: url(../../../static/images/addOn.svg) no-repeat 50%;
   width: 38px;
   height: 38px;
   margin-right:10px;
@@ -628,7 +628,7 @@ ul{
 }
 
 .xw-hide-operation-close{
-  background: url(/static/images/addClose.svg) no-repeat 50%;
+  background: url(../../../static/images/addClose.svg) no-repeat 50%;
   width: 38px;
   height: 38px;
   margin-right:10px;
@@ -729,27 +729,6 @@ ul{
   text-align: center;
 }
 
-.xw-samll-pop-wrap{
-  position: absolute;
-  height: 160px;
-  width: 30%;
-  top: 0;
-  right: 0;
- background-size: 100% 100%;
- background: url(/static/images/s.jpg) no-repeat;
-  z-index: 1000;
-}
-.xw-narrow-pop{
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  display: inline-block;
-  background: red;
-  color: #fff;
-  text-align: center;
-}
 .xw-chat-msg span img{
   vertical-align: middle;
 }
