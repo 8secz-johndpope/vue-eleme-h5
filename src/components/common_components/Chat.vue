@@ -84,8 +84,8 @@
       </transition> 
      </div> 
      <!-- 提示音 --> 
-     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio"> 
-      <source :src="myaudio" type="audio/mpeg"></source> 
+     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3"> 
+      <!-- <source :src="myaudio" type="audio/mpeg"></source>  -->
      </audio> 
     </div>
   </div>
@@ -105,7 +105,7 @@
         showMoreOpratin:false,//是否显示更多操作
         toShowMaskInfo: false,//点击头部是否显示相信信息
         bellStatus: false,//头部区域铃声图标
-        myaudio: '../../../static/audio/msg.mp3',//铃音
+        myaudio: '/static/audio/msg.mp3',//铃音
         testContents: ["今天天气不错", '这个问题还没遇到过', '你说什么，我听不明白', '今天周五了', '请稍后--', '当前客服忙', '您还有什么咨询的吗', '正在查询', 'gone with the wind'],
         content: '',
         //聊天记录
