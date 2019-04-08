@@ -9,10 +9,10 @@
       <i class="fa fa-qq fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>QQ</p>
     </div>
-    <div class="shareBox-item">
+    <!-- <div class="shareBox-item">
       <i class="fa fa-star fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>收藏</p>
-    </div>
+    </div> -->
     <div class="shareBox-item"
       v-clipboard:copy="copyContent"
       v-clipboard:success="onCopy"
@@ -24,6 +24,12 @@
       <div class="shareBox-item">
         <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>
         <p>举报</p>
+      </div>
+    </router-link>
+    <router-link :to="{ name: 'accusation', params: {} }">
+      <div class="shareBox-item">
+        <i class="fa fa-link fa-2x shareBox-icon" aria-hidden="true"></i>
+        <p>速推计划</p>
       </div>
     </router-link>
     <div class="shareBox-item" v-if="isShowRoofPlacementChild&&isTopNow === 1">
@@ -89,7 +95,7 @@ export default {
   }
   .shareBox-item{
     text-align: center;
-    width: 1.6rem;
+    width: 1.4rem;
   }
   .shareBox-item p{
     padding: 0 0.1rem 0 0;
