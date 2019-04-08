@@ -1,92 +1,92 @@
 <template>
-  <div class="app"> 
+  <div class="app">
     <!-- 顶部 -->
     <div class="fixed-top">
       <van-nav-bar
-      title="小仙女"
-      right-text="..."
-      left-arrow
-      @click-left="onClickLeft"
-      @click-right="onClickRight"
-      />
+        title="小仙女"
+        left-arrow
+        @click-left="onClickLeft"
+      >
+        <van-icon name="ellipsis" slot="right" @click="onClickRight" />
+      </van-nav-bar>
     </div>
     <div class="fixed-content-box">
-     <div class="xw-content" @touchstart="toShowMaskInfo=false" ref="xwBody"> 
-      <div class="xw-chat-wrap"> 
-       <ul> 
-        <li v-for="messageList in records"> 
-         <div v-if="messageList.type==1"> 
+     <div class="xw-content" @touchstart="toShowMaskInfo=false" ref="xwBody">
+      <div class="xw-chat-wrap">
+       <ul>
+        <li v-for="messageList in records">
+         <div v-if="messageList.type==1">
           <div class="xw-chat-time">
            {{messageList.time}}
-          </div> 
-          <div class="xw-chat-servicer"> 
-           <div class="xw-servicer-avantar-wrap"> 
-            <img src="../../../static/images/logo.jpg" class="xw-servicer-avantar" /> 
-           </div> 
-           <div class="xw-chat-msg"> 
-            <span v-html="replaceFace(messageList.content)"></span> 
-           </div> 
-          </div> 
-         </div> 
-         <!-- 用户发送的消息模板--> 
-         <div v-else=""> 
+          </div>
+          <div class="xw-chat-servicer">
+           <div class="xw-servicer-avantar-wrap">
+            <img src="../../../static/images/logo.jpg" class="xw-servicer-avantar" />
+           </div>
+           <div class="xw-chat-msg">
+            <span v-html="replaceFace(messageList.content)"></span>
+           </div>
+          </div>
+         </div>
+         <!-- 用户发送的消息模板-->
+         <div v-else="">
           <div class="xw-chat-time">
            {{messageList.time}}
-          </div> 
-          <div class="xw-chat-customer"> 
-           <div class="xw-customer-avantar-wrap"> 
-            <img src="../../../static/images/female.jpg" class="xw-customer-avantar" /> 
-           </div> 
-           <div class="xw-chat-msg" style="display:inline-block"> 
-            <span v-html="replaceFace(messageList.content)"></span> 
-           </div> 
-          </div> 
-         </div> </li> 
-       </ul> 
-      </div> 
-     </div> 
-     <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false"> 
-      <div class="xw-footer-content"> 
-       <div class="xw-vmodel-wrap"> 
-        <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea> 
-       </div> 
-       <div class="xw-chat-tool"> 
-        <div class="xw-chat-tool-item"> 
-         <transition name="fade"> 
-          <a href="javascript:void(0)" class="xw-send-btn-text" v-if="content.trim().length" @click="sendMsg">发送</a> 
-         </transition> 
-        </div> 
-        <div class="xw-chat-tool-item"> 
-         <a href="javascript:;" :class="[showEmoji ? 'xw-face' :'xw-face-close','xw-chat-tool-btn']" @click="emojiFuc"></a> 
-        </div> 
-        <div class="xw-chat-tool-item"> 
-         <a :class="[showMoreOpratin ? 'xw-hide-operation-close' :'xw-hide-operation','xw-chat-tool-btn']" @click="showMoreOpratin=!showMoreOpratin"></a> 
-         <transition name="fade"> 
-          <div class="xw-window-text" v-if="showMoreOpratin"> 
-           <label for="uploadImg"> <span> <input type="file" name="image" accept="image/*" multiple="" style="display:none;" id="uploadImg" />图片 </span> </label> 
-          </div> 
-         </transition> 
-        </div> 
-       </div> 
-      </div> 
-      <!--  <emojiSlider :isShow="showEmoji" :EXPS="EXPS"></emojiSlider> --> 
-      <!-- 表情开始 --> 
-      <transition name="slide-fade" style="display:none"> 
-       <div class="xw-window-text xw-face-emoji-ul" v-if="showEmoji"> 
-        <div class="xw-chat-ul-box"> 
-         <van-swipe :auto="0"> 
-          <van-swipe-item v-for="n in Math.ceil(EXPS.length/15)" :key="n"> 
-           <li v-for="(item, index) in getEmotionData(n,15)" class="xw-faceEmoji"> <img :src="item.file" :data="item.code" v-on:click="content+=item.code" /> </li> 
-          </van-swipe-item> 
-         </van-swipe> 
-        </div> 
-       </div> 
-      </transition> 
-     </div> 
-     <!-- 提示音 --> 
-     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3"> 
+          </div>
+          <div class="xw-chat-customer">
+           <div class="xw-customer-avantar-wrap">
+            <img src="../../../static/images/female.jpg" class="xw-customer-avantar" />
+           </div>
+           <div class="xw-chat-msg" style="display:inline-block">
+            <span v-html="replaceFace(messageList.content)"></span>
+           </div>
+          </div>
+         </div> </li>
+       </ul>
+      </div>
+     </div>
+     <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false">
+      <div class="xw-footer-content">
+       <div class="xw-vmodel-wrap">
+        <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea>
+       </div>
+       <div class="xw-chat-tool">
+        <div class="xw-chat-tool-item">
+         <transition name="fade">
+          <a href="javascript:void(0)" class="xw-send-btn-text" v-if="content.trim().length" @click="sendMsg">发送</a>
+         </transition>
+        </div>
+        <div class="xw-chat-tool-item">
+         <a href="javascript:;" :class="[showEmoji ? 'xw-face' :'xw-face-close','xw-chat-tool-btn']" @click="emojiFuc"></a>
+        </div>
+        <div class="xw-chat-tool-item">
+         <a :class="[showMoreOpratin ? 'xw-hide-operation-close' :'xw-hide-operation','xw-chat-tool-btn']" @click="showMoreOpratin=!showMoreOpratin"></a>
+         <transition name="fade">
+          <div class="xw-window-text" v-if="showMoreOpratin">
+           <label for="uploadImg"> <span> <input type="file" name="image" accept="image/*" multiple="" style="display:none;" id="uploadImg" />图片 </span> </label>
+          </div>
+         </transition>
+        </div>
+       </div>
+      </div>
+      <!--  <emojiSlider :isShow="showEmoji" :EXPS="EXPS"></emojiSlider> -->
+      <!-- 表情开始 -->
+      <transition name="slide-fade" style="display:none">
+       <div class="xw-window-text xw-face-emoji-ul" v-if="showEmoji">
+        <div class="xw-chat-ul-box">
+         <van-swipe :auto="0">
+          <van-swipe-item v-for="n in Math.ceil(EXPS.length/15)" :key="n">
+           <li v-for="(item, index) in getEmotionData(n,15)" class="xw-faceEmoji"> <img :src="item.file" :data="item.code" v-on:click="content+=item.code" /> </li>
+          </van-swipe-item>
+         </van-swipe>
+        </div>
+       </div>
+      </transition>
+     </div>
+     <!-- 提示音 -->
+     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3">
       <!-- <source :src="myaudio" type="audio/mpeg"></source>  -->
-     </audio> 
+     </audio>
     </div>
   </div>
 </template>
@@ -113,7 +113,7 @@
           type: 1,
           time: new Date().toLocaleTimeString(),
           content: '您好！欢迎来到小薇客服，请问有什么能帮到您？如有疑问请在线咨询或者拨打400-926-2012咨询！感谢您的支持! '
-          }, 
+          },
           {
           type: 2,
           time: new Date().toLocaleTimeString(),
