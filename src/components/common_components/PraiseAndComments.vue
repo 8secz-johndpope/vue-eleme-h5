@@ -18,8 +18,8 @@
           finished-text="我也是底线的"
           @load="onLoadMore"
         >
-           <van-cell-group v-for="(item,index) in arrs">
-            <van-cell class="displayflex">
+          <van-cell-group v-for="(item,index) in arrs">
+            <van-cell class="displayflex" @click="seeDetail(item,index)">
               <div class="tleft van-user-item-left">
                 <div class="van-avatar-large"><img :src="item.firstUserImg" alt="" class="van-avatar-img"></div>
                 <div class="flex-column van-user-item-text-info">
@@ -130,6 +130,8 @@
             firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
             firstUserName: '最新用户',    // 最新用户的名称
             firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 最新用户的头像
+            commentsId: 'cID000001', // 该评论的Id
+            commentsType: 0,  // 评论所属类型， 0-作品，1-文章
         };
         // 异步更新数据
         setTimeout(() => {
@@ -144,6 +146,15 @@
             this.finished = true;
           }
         }, 500);
+      },
+      // 查看详情
+      seeDetail (item,index) {
+        // commentsType: 0,  // 评论所属类型， 0-作品，1-文章
+        if (item.commentsType == 0) {
+          this.$router.push('replyDetail/'+item.commentsId)
+        }else if (item.commentsType === 1) {
+          this.$router.push('/articleComments/'+item.commentsId)
+        }
       }
     }
   }

@@ -3,7 +3,7 @@
     <van-list
       v-model="loading"
       :finished="finished"
-      finished-text="我也是底线的"
+      :finished-text=" isRecommend ? '我也是底线的' : '' "
       @load="onLoad"
     >
       <!-- 列表单个 -->
@@ -55,6 +55,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    // 是否为推荐的页面
+    isRecommend: {
+      type: Boolean,
+      default: true,
+    }
   },
   components : {
     ShareBox,
@@ -63,14 +68,19 @@ export default {
   data () {
     return {
       sharePopShow: false,  // 底部 -- 分享
-      loading: false,
-      finished: false,
+      loading: false,   //  是否处于加载状态，加载过程中不触发load事件, 默认false
+      finished: false,  // 	是否已加载完成，加载完成后不再触发load事件, 默认false
       commentsShow: false,  // 评论区 弹框
       targetId: '', // 选中的id值
       itemIsTop: 1, // 子项是否置顶中的置顶
     };
   },
   mounted () {
+    // 如果不是推荐页，而是回复详情页
+    if(!this.isRecommend){
+      this.finished = true;
+      this.commentsShow = true;
+    }
   },
   computed: {
     isLogin () {

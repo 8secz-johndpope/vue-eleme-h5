@@ -22,7 +22,7 @@ import Conversation from './common_components/Conversation';
 import Article from './common_components/Article';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'myzone',
+  name: 'recommend',
   data () {
     return {
       uname: '',
