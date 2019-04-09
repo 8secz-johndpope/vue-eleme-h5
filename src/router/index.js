@@ -196,6 +196,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Setting_components/Contact'],resolve),
     },
+    // 申请开店
+    {
+      path: '/setting/applyOpenShop',
+      name: 'applyOpenShop',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Setting_components/ApplyOpenShop'],resolve),
+    },
     {
       path: '/business/:id',
       name: 'business',
