@@ -11,12 +11,10 @@
         <div slot="header" class="flex-space-between header">
           <router-link :to="{ name: 'userzone', params: {} }"><span>{{'@'+item.author}}</span></router-link>
           <van-tag type="danger" v-if="isShowRoofPlacement && item.isTop === 0">置顶</van-tag>
-          <router-link :to="{ name: 'showcase', params: {'id':'01'} }">
-            <div class="showcase-zone" v-if="!isShowRoofPlacement && item.isBusiness === 0" >
-              <van-icon name="cart-o" class="font-gold showcase" />
-              <span class="showcaseDec">撩妹必备</span>
-            </div>
-          </router-link>
+          <div class="showcase-zone" v-if="!isShowRoofPlacement && item.isBusiness === 0" @click="goodsShow = true">
+            <van-icon name="cart-o" class="font-gold showcase" />
+            <span class="showcaseDec">撩妹必备</span>
+          </div>
         </div>
         <div class="content-box" v-html="item.contentHtml">
           {{item.contentHtml}}
@@ -41,6 +39,19 @@
       <van-actionsheet v-model="commentsShow" title="共999条评论">
         <Comments></Comments>
       </van-actionsheet>
+      <!-- 商品展示页 -->
+      <van-actionsheet v-model="goodsShow" title="XXX的推荐">
+        <!-- 商品组件 -->
+        <GoodsCard></GoodsCard>
+        <div class="btn-zone">
+          <van-button size="large" round type="danger" @click="goTaobao">去看看</van-button>
+        </div>
+        <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
+          <p class="flex-center goShowcase red-color">
+            XXX的商品橱窗
+          </p>
+        </router-link>
+      </van-actionsheet>
     </van-list>
   </div>
 </template>
@@ -48,6 +59,7 @@
 <script>
 import ShareBox from './ShareBox';
 import Comments from './Comments';
+import GoodsCard from './GoodsCard';
 export default {
   // 父子通信
   props: {
@@ -69,6 +81,7 @@ export default {
   components : {
     ShareBox,
     Comments,
+    GoodsCard,
   },
   data () {
     return {
@@ -78,6 +91,7 @@ export default {
       commentsShow: false,  // 评论区 弹框
       targetId: '', // 选中的id值
       itemIsTop: 1, // 子项是否置顶中的置顶
+      goodsShow: false, //商品弹框
     };
   },
   mounted () {
@@ -168,6 +182,10 @@ export default {
           this.finished = true;
         }
       }, 500);
+    },
+    // 跳转淘宝链接
+    goTaobao () {
+      this.$toast('跳转淘宝链接页')
     }
   }
 };
@@ -215,5 +233,12 @@ export default {
   .showcase{
     font-size: 0.5rem;
     padding: 0 0.1rem 0 0;
+  }
+  .btn-zone{
+    padding: 0.2rem 1rem;
+  }
+  .goShowcase{
+    padding: 0.2rem 0 0.6rem 0;
+    font-size: 16px;
   }
 </style>

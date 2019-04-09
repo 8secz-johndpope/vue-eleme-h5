@@ -32,21 +32,8 @@
         @load="onLoadMore"
       >
       <div v-for="(item,index) in goodsArr">
-        <van-card
-          num="2"
-          tag="标签"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          :thumb="item.imageURL"
-          origin-price="10.00"
-          :lazy-load="item.lazyLoad"
-        >
-          <div slot="tags">
-            <van-tag type="danger">热卖</van-tag>
-            <van-tag type="danger">热卖</van-tag>
-          </div>
-        </van-card>
+        <!-- 商品组件 -->
+        <GoodsCard></GoodsCard>
       </div>
       </van-list>
     </div>
@@ -55,8 +42,10 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import GoodsCard from '../../common_components/GoodsCard';
   export default {
     components:{
+      GoodsCard,
     },
     name: 'myPraise',
     data () {
