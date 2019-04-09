@@ -32,9 +32,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import { Card } from 'vant';
-Vue.use(Card);
 
 export default {
   // 父子通信

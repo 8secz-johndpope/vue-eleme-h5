@@ -1,6 +1,6 @@
 import { areaList } from '../jsonData/Area.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
-import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage, 
+import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
          imitateComments, imitateMyPraiseAndComments } from '../falsedata/imitateData.js';
 
 export default {
@@ -18,6 +18,8 @@ export default {
   falseHotWord,
   // 推荐页当前高亮tab
   recommendHighLightTab: 0,
+  // 通用图片
+  globalUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', 
   // 已完成订单
   falseOrder,
   // 商家简略信息

@@ -317,6 +317,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/ReplyDetail'],resolve),
     },
+    // 商品橱窗
+    {
+      path: '/showcase/userId/:id',
+      name: 'showcase',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Conversation_components/Showcase'],resolve),
+    },
     /*
       落地页 -- 开始
     */

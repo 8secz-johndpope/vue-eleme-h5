@@ -11,12 +11,17 @@
         <div slot="header" class="flex-space-between header">
           <router-link :to="{ name: 'userzone', params: {} }"><span>{{'@'+item.author}}</span></router-link>
           <van-tag type="danger" v-if="isShowRoofPlacement && item.isTop === 0">置顶</van-tag>
+          <router-link :to="{ name: 'showcase', params: {'id':'01'} }">
+            <div class="showcase-zone" v-if="!isShowRoofPlacement && item.isBusiness === 0" >
+              <van-icon name="cart-o" class="font-gold showcase" />
+              <span class="showcaseDec">撩妹必备</span>
+            </div>
+          </router-link>
         </div>
         <div class="content-box" v-html="item.contentHtml">
           {{item.contentHtml}}
         </div>
         <div slot="footer" class="flex-r">
-          <!-- <i class="fa fa-eye" aria-hidden="true"></i><span>1w</span> -->
           <span class="copy"
             v-clipboard:copy="item.content"
             v-clipboard:success="onCopy"
@@ -149,6 +154,7 @@ export default {
         contentHtml: '<p>女：你是什么星座的呀</p><p>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）</p>', // 对话渲染html
         content: '女：你是什么星座的呀</br>男：我呀，是为你量身定做的（避实就虚，保持男生神秘感，激发兴趣）',  // 复制粘贴内容
         isTop: 1, // 是否置顶 0-是， 1-否
+        isBusiness: 1, // 是否商家 0-是， 1-否
       };
       // 异步更新数据
       setTimeout(() => {
@@ -201,5 +207,13 @@ export default {
   }
   .red-color{
     color: red;
+  }
+  .showcase-zone{
+    display: flex;
+    color: #ffa631;
+  }
+  .showcase{
+    font-size: 0.5rem;
+    padding: 0 0.1rem 0 0;
   }
 </style>

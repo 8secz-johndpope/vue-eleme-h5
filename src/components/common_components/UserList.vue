@@ -60,8 +60,8 @@
         tabTitle: '', // 头部名称
         arrs: [],
         isRefreshLoading: false,  // 下拉重新刷新
-        listLoading: false, // 下拉加载更多
-        finished: false,
+        listLoading: false, // 是否处于加载状态，加载过程中不触发load事件
+        finished: false,  // 是否已加载完成，加载完成后不再触发load事件
       };
     },
     mounted () {
