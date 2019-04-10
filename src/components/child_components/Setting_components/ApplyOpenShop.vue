@@ -18,20 +18,24 @@
           </div>
         </div>
         <div class="conditionItem flex-center">
-          <div>
-            <van-icon name="medel-o " class="icon pink-color" />
-            <div>发布作品</div>
-            <div>≥10个</div>
-            <div class="white-color">未完成</div>
-          </div>
+          <router-link :to="{ name: 'addConversation', params: {} }">
+            <div>
+              <van-icon name="medel-o " class="icon pink-color" />
+              <div class="gray-color">发布作品</div>
+              <div class="gray-color">≥10个</div>
+              <div class="white-color">未完成</div>
+            </div>
+          </router-link>
         </div>
         <div class="conditionItem flex-center">
-          <div>
-            <van-icon name="user-o" class="icon pink-color" />
-            <div>实名认证</div>
-            <div>通过认证</div>
-            <div class="white-color">未完成</div>
-          </div>
+          <router-link :to="{ name: 'certification', params: {} }">
+            <div>
+              <van-icon name="user-o" class="icon pink-color" />
+              <div class="gray-color">实名认证</div>
+              <div class="gray-color">通过认证</div>
+              <div class="white-color">未完成</div>
+            </div>
+          </router-link>
         </div>
       </div>
     </van-panel>
