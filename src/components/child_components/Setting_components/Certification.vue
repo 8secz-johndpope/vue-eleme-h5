@@ -28,7 +28,7 @@
       />
     </van-cell-group>
     <!-- 图片上传 -->
-    <van-panel title="" desc="身份证照片"  class="cellDiv">
+    <van-panel title="" desc="身份证照片" class="cellDiv">
       <div class="flex-space-between photo-zone">
         <div class="flex-center photo-zone-left">
           <img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" class="photo" />

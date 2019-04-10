@@ -65,12 +65,6 @@
 <script>
   import Coupon from '../../common_components/Coupon';
   import Vue from 'vue';
-  import { Area } from 'vant';
-  import { NoticeBar } from 'vant';
-  import { SubmitBar } from 'vant';
-  Vue.use(SubmitBar);
-  Vue.use(NoticeBar);
-  Vue.use(Area);
   export default {
     components:{
       Coupon,
@@ -137,9 +131,9 @@
           },
         ],
         currentSelect: 1,  // 当前选中
-        isShoping: false, // 是否交易中
         integralPopupShow: false, // 积分帮助
         integralActiveNames: ['1','2','3'], // 积分说明折叠筐
+        isShoping: false, // 是否交易中
         price: 1990, // 价格，分为单位
         shopTips: '166积分权益，额外再赠送：10积分', // 充值提示
         isCounponed: 1, // 是否已经优惠，0-是，1-否

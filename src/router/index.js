@@ -344,6 +344,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Conversation_components/Showcase'],resolve),
     },
+    // 速推+上热门
+    {
+      path: '/extension/workId/:id',
+      name: 'extension',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Conversation_components/Extension'],resolve),
+    },
     /*
       落地页 -- 开始
     */

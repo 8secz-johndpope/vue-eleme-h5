@@ -26,7 +26,7 @@
         <p>举报</p>
       </div>
     </router-link>
-    <router-link :to="{ name: 'accusation', params: {} }">
+    <router-link :to="{ name: 'extension', params: {'id':'001'} }">
       <div class="shareBox-item">
         <i class="fa fa-link fa-2x shareBox-icon" aria-hidden="true"></i>
         <p>速推计划</p>
