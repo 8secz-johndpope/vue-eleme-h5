@@ -73,6 +73,7 @@
         type="date"
         :min-date="minDate"
         :item-height="80"
+        @cancel="birthDayPop = false"
         @confirm="confirmBirth"
       />
     </van-popup>

@@ -28,7 +28,7 @@
       </van-uploader>
     </van-cell>
     <van-cell-group class="cellDiv">
-      <van-field v-model="value" placeholder="请输入您的联系方式" />
+      <van-field v-model="tel" placeholder="请输入您的联系方式" />
     </van-cell-group>
   </div>
 </template>
@@ -40,6 +40,7 @@
     data () {
       return {
         message: '',
+        tel: '',
       };
     },
     mounted () {

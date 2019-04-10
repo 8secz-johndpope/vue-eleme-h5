@@ -12,7 +12,7 @@
       </van-nav-bar>
     </div>
     <div class="fixed-content-box">
-      <van-panel desc="67.1w人看过" status="一家好店">
+      <van-panel desc="67.1w人看过">
         <div slot="header" class="flex-start header">
           <router-link :to="{ name: 'userzone', params: {} }">
             <div>
@@ -76,7 +76,7 @@
         this.COMMONFUNC.goBack();
       },
       onClickRight () {
-        this.$toast('跳转我也要卖货')
+        this.$router.push('/setting/applyOpenShop')
       },
       // 下拉加载更多
       onLoadMore() {

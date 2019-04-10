@@ -205,6 +205,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Setting_components/ApplyOpenShop'],resolve),
     },
+    // 实名认证
+    {
+      path: '/setting/certification',
+      name: 'certification',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Setting_components/Certification'],resolve),
+    },
     {
       path: '/business/:id',
       name: 'business',

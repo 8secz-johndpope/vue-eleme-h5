@@ -48,7 +48,7 @@
         </p>
       </div>
     </van-panel>
-    <div class="btn-zone flex-center">
+    <div class="fixed-footer-btn-zone">
       <van-button size="large" round type="danger" class="apply-btn" @click="apply">立即申请</van-button>
     </div>
   </div>
@@ -100,11 +100,6 @@
   .getProfit{
     padding: 0 0.5rem 0.5rem 0.5rem;
     font-size: 14px;
-  }
-  .btn-zone{
-    position: fixed;
-    bottom: 0.8rem;
-    width: 100%;
   }
   .apply-btn{
     width: 90%;

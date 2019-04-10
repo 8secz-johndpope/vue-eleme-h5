@@ -191,6 +191,14 @@
   display: inline-block;
   vertical-align: middle;
 }
+.fixed-footer-btn-zone{
+  position: fixed;
+  bottom: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* 消息模块右滑删除键 -- 开始 */
 .messageModule .van-swipe-cell__right{

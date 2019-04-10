@@ -11,7 +11,7 @@
         <div slot="header" class="flex-space-between header">
           <router-link :to="{ name: 'userzone', params: {} }"><span>{{'@'+item.author}}</span></router-link>
           <van-tag type="danger" v-if="isShowRoofPlacement && item.isTop === 0">置顶</van-tag>
-          <div class="showcase-zone" v-if="!isShowRoofPlacement && item.isBusiness === 0" @click="goodsShow = true">
+          <div class="gold-color showcase-zone" v-if="!isShowRoofPlacement && item.isBusiness === 0" @click="goodsShow = true">
             <van-icon name="cart-o" class="font-gold showcase" />
             <span class="showcaseDec">撩妹必备</span>
           </div>
@@ -228,7 +228,6 @@ export default {
   }
   .showcase-zone{
     display: flex;
-    color: #ffa631;
   }
   .showcase{
     font-size: 0.5rem;

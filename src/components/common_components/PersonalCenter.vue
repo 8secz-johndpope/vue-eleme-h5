@@ -54,7 +54,7 @@
       <div class="three_lan">
         <a class="three_lan_">
           <p class="big_colorful" @click="getPraisedNum">
-            <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
+            <span class="gold-color index-2FmrF_0">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
           </p>
         </a>
         <a class="three_lan_">
