@@ -18,25 +18,27 @@
         finished-text="我也是底线的"
         @load="onLoadMore"
         >
-        <van-swipe-cell :right-width="180" v-for="(item,index) in arrs" :on-close="onClose" :data-id="item.messageId" class="messageModule" @click="toChat">
-          <van-cell-group>
-            <van-cell class="displayflex">
-              <div class="img-zone">
-                <span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span>
-              </div>
-              <div class="contents-zone">
-                <div class="flex-space-between">
-                  <span>{{item.sendUserName}}</span>
-                  <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
+        <div @click="toChat($event)" v-for="(item,index) in arrs">
+          <van-swipe-cell :right-width="180" :on-close.stop="onClose" :data-id="item.messageId" class="messageModule">
+            <van-cell-group>
+              <van-cell class="displayflex">
+                <div class="img-zone">
+                  <span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span>
                 </div>
-                <div>
-                  <span>{{item.contents}}</span>
+                <div class="contents-zone">
+                  <div class="flex-space-between">
+                    <span>{{item.sendUserName}}</span>
+                    <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
+                  </div>
+                  <div>
+                    <span>{{item.contents}}</span>
+                  </div>
                 </div>
-              </div>
-            </van-cell>
-          </van-cell-group>
-          <span slot="right">删除</span>
-        </van-swipe-cell>
+              </van-cell>
+            </van-cell-group>
+            <span slot="right">删除</span>
+          </van-swipe-cell>
+        </div>
       </van-list>
     </van-pull-refresh>
     <!-- 撑开Fixednav挡住的位置 -->
@@ -64,6 +66,7 @@
         listLoading: false, // 下拉加载更多
         messageActive: -1,  // 默认高亮位置
         finished: false,
+        isToChat: true,  // 是否前往聊天室，解决右滑跟点击的时候的冲突
       };
     },
     mounted () {
@@ -84,8 +87,25 @@
       },
       // 删除信息
       onClose(clickPosition, instance){
-        this.$toast('删除成功'+instance.$el.dataset.id);
-        instance.close();
+        let that = this;
+        that.isToChat = false;
+        switch (clickPosition) {
+          case 'left':
+          case 'cell':
+          case 'outside':
+            instance.close();
+            break;
+          case 'right':
+            that.$dialog.confirm({
+              message: '确定删除吗？'
+            }).then(() => {
+              this.$toast('删除成功');
+              instance.close();
+            }).catch( () => {
+              // console.log('取消删除');
+            });
+            break;
+          }
       },
       // 下拉加载更多
       onLoadMore() {
@@ -113,9 +133,13 @@
         }, 500);
       },
       // 跳转聊天室
-      toChat () {
-        this.$router.push('/chat/001')
-      }
+      toChat (ev){
+        if (this.isToChat) {
+          // console.log('s');
+          this.$router.push('chat/userId')
+        }
+        this.isToChat = true;
+      },
     }
   }
 </script>
