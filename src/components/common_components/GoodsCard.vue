@@ -1,7 +1,6 @@
 <template>
   <div>
     <van-card
-      num="2"
       tag="标签"
       price="2.00"
       desc="描述信息"
@@ -10,6 +9,9 @@
       origin-price="10.00"
       v-lazy="imgSrc"
     >
+      <div slot="num">
+        9.9w+人看过
+      </div>
       <div slot="tags">
         <van-tag type="danger">热卖</van-tag>
         <van-tag type="danger">热卖</van-tag>

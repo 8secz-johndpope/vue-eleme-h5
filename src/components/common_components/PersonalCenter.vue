@@ -36,38 +36,43 @@
               </van-tag>
             </p>
           </div>
-          <div class="flex-center myzone_uid">
+          <div class="myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="goIntegral" v-if="centerType === 0 "><van-icon name="integral" class="iconType" />积分：{{COMMONFUNC.formatterW(getImitateUser.integral)}}</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
+            <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
+              <div class="gold-color showcase">
+                <span class="showcaseDec">商品橱窗</span><van-icon name="cart-o" />
+              </div>
+            </router-link>
           </div>
         </div>
-        <div class="user-dec" @click.stop = 'goUserInfo'>
-          <p class="user-autograph gray-color"> {{ getImitateUser.autograph ? getImitateUser.autograph : '填写个性签名更容易获得别人关注哦' }}
-          </p>
-        </div>
+      </div>
+      <div class="user-dec" @click.stop = 'goUserInfo'>
+        <p class="user-autograph gray-color"> {{ getImitateUser.autograph ? getImitateUser.autograph : '填写个性签名更容易获得别人关注哦' }}
+        </p>
       </div>
       <!-- 3分 -->
       <div class="three_lan">
         <a class="three_lan_">
           <p class="big_colorful" @click="getPraisedNum">
-            <span class="gold-color index-2FmrF_0">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
+            <span class="index-2FmrF_0">{{getImitateUser.getPraised}}</span><span class="index-2V-Hh_0">获赞</span>
           </p>
         </a>
         <a class="three_lan_">
           <router-link :to="'/myfans'">
             <p class="big_colorful">
-              <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
+              <span class="index-2FmrF_0">{{getImitateUser.fans}}</span><span class="index-2V-Hh_0">粉丝</span>
             </p>
           </router-link>
         </a>
         <a class="three_lan_">
           <router-link :to="'/myfollows'">
             <p class="big_colorful">
-              <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
+              <span class="index-2FmrF_0">{{getImitateUser.follow}}</span><span class="index-2V-Hh_0">关注</span>
             </p>
           </router-link>
         </a>
@@ -241,7 +246,7 @@ export default {
   justify-content: space-between;
 }
 .myzone_content{
-  height: 3.5rem;
+  height: 3rem;
   padding: 0 0.58rem;
   box-sizing: border-box;
   position: relative;
@@ -249,12 +254,13 @@ export default {
   margin-top: 3rem;
   .basic-info{
     position: absolute;
-    bottom: 0.667rem;
+    bottom: 0.2rem;
   }
   .myzone_uid{
     position: absolute;
     right: 0.4rem;
     top: 0.267rem;
+    height: 2.54rem;
   }
   img{
     width:2rem;
@@ -270,20 +276,23 @@ export default {
   .userNo{
     color: #fff;
   }
-  .user-dec{
-    color: #fff;
-    position: absolute;
-    bottom: 0.1rem;
-  }
+}
+.user-dec{
+  color: #fff;
+  background-color: #006599;
+  padding: 0 0.58rem 0.2rem 0.58rem;
+  font-size: 0.34rem;
+  position: relative;
+  margin-top: -1px;
 }
 .three_lan{
   display: table;
   width: 100%;
   height: 1.2rem;
   color: #fff;
-  border-bottom: 1px solid #ddd;
   background-color: #006599;
   position: relative;
+  margin-top: -1px;
   .three_lan_{
     display: table-cell;
     width: 33.3333%;
@@ -296,7 +305,7 @@ export default {
         padding: .4rem 0 0;
         font-size: .6rem;
         line-height: .6rem;
-        font-weight: 700;
+        color: #fff;
     }
     .index-2V-Hh_0 {
         font-size: .32rem;
@@ -322,5 +331,17 @@ export default {
 }
 .zone-btn{
   margin-left: 0.15rem;
+}
+.showcase{
+  font-size: 22px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+.showcaseDec{
+  font-size: 20px;
+  padding: 0 0.04rem 0 0;
 }
 </style>

@@ -36,10 +36,10 @@
 
 
       <van-goods-action>
-        <van-goods-action-big-btn icon="chat-o" @click="sorry">
+        <van-goods-action-big-btn icon="chat-o" to="/chat/userId">
           客服
         </van-goods-action-big-btn>
-        <van-goods-action-big-btn primary @click="sorry">
+        <van-goods-action-big-btn primary @click="toTaobao">
           去淘宝看看
         </van-goods-action-big-btn>
       </van-goods-action>
@@ -100,11 +100,8 @@ export default {
     formatPrice() {
       return '¥' + (this.goods.price / 100).toFixed(2);
     },
-    onClickCart() {
-      Toast('暂无后续逻辑~');
-    },
-    sorry() {
-      Toast('暂无后续逻辑~');
+    toTaobao() {
+      Toast('跳转商品的淘宝链接');
     }
   }
 };
