@@ -31,7 +31,7 @@
             <span class="weixin-icon"></span><span class="custom-text">微信支付</span>
           </template>
           <van-icon slot="right-icon"><van-radio name="2" /></van-icon>
-        </van-cell>      
+        </van-cell>
       </van-cell-group>
     </van-radio-group>
     <div class="immediately-pay-zone">
@@ -41,10 +41,6 @@
 </template>
 <script>
   import Backbar from '../../common_components/Back_bar';
-  import Vue from 'vue';
-  import { RadioGroup, Radio } from 'vant';
-  Vue.use(RadioGroup);
-  Vue.use(Radio);
   export default {
     components:{
       Backbar
