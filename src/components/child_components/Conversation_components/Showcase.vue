@@ -31,7 +31,7 @@
         finished-text="没有更多了"
         @load="onLoadMore"
       >
-      <div v-for="(item,index) in goodsArr">
+      <div v-for="(item,index) in goodsArr" @click="toCommodity(item)">
         <!-- 商品组件 -->
         <GoodsCard></GoodsCard>
       </div>
@@ -59,8 +59,9 @@
           price: '2.00', //商品价格
           tag: '推荐',  // 标签
           tags: [], // 自定义描述下方标签区域
-          imageURL: 'https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg',
+          imageURL: 'https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg',  // 商品预览图
           lazyLoad: true,
+          commodityId: 'cID00114',  // 商品ID
         },
         listLoading: false, // 是否处于加载状态，加载过程中不触发load事件
         finished: false,  // 是否已加载完成，加载完成后不再触发load事件
@@ -93,6 +94,10 @@
             this.finished = true;
           }
         }, 500);
+      },
+      // 跳转商品详情
+      toCommodity (item) {
+        this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
       },
     }
   }

@@ -44,7 +44,7 @@
         <!-- 商品组件 -->
         <GoodsCard></GoodsCard>
         <div class="btn-zone">
-          <van-button size="large" round type="danger" @click="goTaobao">去看看</van-button>
+          <van-button size="large" round type="danger" @click="toCommodity">去看看</van-button>
         </div>
         <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
           <p class="flex-center goShowcase red-color">
@@ -183,9 +183,9 @@ export default {
         }
       }, 500);
     },
-    // 跳转淘宝链接
-    goTaobao () {
-      this.$toast('跳转淘宝链接页')
+    // 跳转商品详情
+    toCommodity () {
+      this.$router.push({ name: 'commodity', params: { 'id': 'id000000' }})
     }
   }
 };

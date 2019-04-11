@@ -5,6 +5,7 @@
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"
+      :fixed="true"
     />
     <div class="question-zone">
       <p class="question-tips font-orange">注意：请确保您的内容符合规范，否则将不能通过审核</span></p>
@@ -40,7 +41,7 @@ export default {
 <style lang="less" scoped>
   .question-zone{
     width: 90%;
-    margin: 0 auto;
+    margin: 1.226667rem auto;
     text-align: center;
   }
   .questionPopTitle{
