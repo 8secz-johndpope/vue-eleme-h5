@@ -353,6 +353,15 @@ export default new Router({
       },
       component: (resolve) => require(['../components/child_components/Conversation_components/Commodity'],resolve),
     },
+    // 新增或者修改商品
+    {
+      path: '/addOrUpdateCommodity/commodityId/:id',
+      name: 'addOrUpdateCommodity',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/child_components/Conversation_components/AddOrUpdateCommodity'],resolve),
+    },
     // 速推+上热门
     {
       path: '/extension/workId/:id',

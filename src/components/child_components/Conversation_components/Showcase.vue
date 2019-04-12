@@ -31,9 +31,10 @@
         finished-text="没有更多了"
         @load="onLoadMore"
       >
-      <div v-for="(item,index) in goodsArr" @click="toCommodity(item)">
+      <!-- 轮询商品 -->
+      <div v-for="(item,index) in goodsArr">
         <!-- 商品组件 -->
-        <GoodsCard></GoodsCard>
+        <GoodsCard :moreOperate="true"></GoodsCard>
       </div>
       </van-list>
     </div>
@@ -94,10 +95,6 @@
             this.finished = true;
           }
         }, 500);
-      },
-      // 跳转商品详情
-      toCommodity (item) {
-        this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
       },
     }
   }

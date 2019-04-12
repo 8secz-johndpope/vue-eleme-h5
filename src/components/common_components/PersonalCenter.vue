@@ -261,6 +261,8 @@ export default {
     right: 0.4rem;
     top: 0.267rem;
     height: 2.54rem;
+    width: 4.4rem;
+    text-align: right;
   }
   img{
     width:2rem;

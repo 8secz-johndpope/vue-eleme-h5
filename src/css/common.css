@@ -199,7 +199,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.van-content-box{
+  margin: 1.226667rem 0 0 0;
+}
 /* 消息模块右滑删除键 -- 开始 */
 .messageModule .van-swipe-cell__right{
   padding: 0.15rem 0.05rem;
