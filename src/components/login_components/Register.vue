@@ -2,7 +2,6 @@
   <div>
     <Backbar :titleName="'注册'"></Backbar>
     <div class="login_box">
-      <!-- <Backbar title="登录"></Backbar> -->
       <div class="title">
         <img src="http://img.bqatj.com/img/6a51e6cae12c5002.jpg" class="common-img" />
         <h2>产品名称</h2>

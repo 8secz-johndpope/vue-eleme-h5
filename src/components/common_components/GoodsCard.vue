@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="toCommodity(item)">
+    <div @click="toCommodity()">
       <van-card
       tag="标签"
       price="2.00"
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     // 跳转商品详情
-    toCommodity (item) {
+    toCommodity () {
       this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
     },
     // 置顶

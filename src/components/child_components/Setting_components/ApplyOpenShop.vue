@@ -1,57 +1,61 @@
 <template>
   <div class="applyOpenShop">
-    <!-- 顶部 -->
-    <van-nav-bar
-      title="商品分享功能申请"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
-    <van-panel title="申请条件" desc="完成以下条件即可申请商品分享功能">
-      <div class="flex-center">
-        <div class="conditionItem flex-center">
-          <div>
-            <van-icon name="friends-o" class="icon pink-color" />
-            <div>粉丝量</div>
-            <div>≥10名</div>
-            <div>已完成</div>
+    <div class="fixed-top">
+      <!-- 顶部 -->
+      <van-nav-bar
+        title="商品分享功能申请"
+        left-text="返回"
+        left-arrow
+        @click-left="onClickLeft"
+      /> 
+    </div>
+    <div class="fixed-content-box">
+      <van-panel title="申请条件" desc="完成以下条件即可申请商品分享功能">
+        <div class="flex-center">
+          <div class="conditionItem flex-center">
+            <div>
+              <van-icon name="friends-o" class="icon pink-color" />
+              <div>粉丝量</div>
+              <div>≥10名</div>
+              <div>已完成</div>
+            </div>
+          </div>
+          <div class="conditionItem flex-center">
+            <router-link :to="{ name: 'addConversation', params: {} }">
+              <div>
+                <van-icon name="medel-o " class="icon pink-color" />
+                <div class="gray-color">发布作品</div>
+                <div class="gray-color">≥10个</div>
+                <div class="white-color">未完成</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="conditionItem flex-center">
+            <router-link :to="{ name: 'certification', params: {} }">
+              <div>
+                <van-icon name="user-o" class="icon pink-color" />
+                <div class="gray-color">实名认证</div>
+                <div class="gray-color">通过认证</div>
+                <div class="white-color">未完成</div>
+              </div>
+            </router-link>
           </div>
         </div>
-        <div class="conditionItem flex-center">
-          <router-link :to="{ name: 'addConversation', params: {} }">
-            <div>
-              <van-icon name="medel-o " class="icon pink-color" />
-              <div class="gray-color">发布作品</div>
-              <div class="gray-color">≥10个</div>
-              <div class="white-color">未完成</div>
-            </div>
-          </router-link>
+      </van-panel>
+      <van-panel title="获得权益" desc="商品分享功能将为您带来以下收益">
+        <div class="getProfit">
+          <p>
+            1.拥有个人主页电商橱窗。
+          </p>
+          <p>
+            2.可以为您发布的作品添加商品并售卖。
+          </p>
+          <p>
+            3.拥有liao+(流量推广)功能，可以将您发布的作品推广给更多的人。
+          </p>
         </div>
-        <div class="conditionItem flex-center">
-          <router-link :to="{ name: 'certification', params: {} }">
-            <div>
-              <van-icon name="user-o" class="icon pink-color" />
-              <div class="gray-color">实名认证</div>
-              <div class="gray-color">通过认证</div>
-              <div class="white-color">未完成</div>
-            </div>
-          </router-link>
-        </div>
-      </div>
-    </van-panel>
-    <van-panel title="获得权益" desc="商品分享功能将为您带来以下收益">
-      <div class="getProfit">
-        <p>
-          1.拥有个人主页电商橱窗。
-        </p>
-        <p>
-          2.可以为您发布的作品添加商品并售卖。
-        </p>
-        <p>
-          3.拥有liao+(流量推广)功能，可以将您发布的作品推广给更多的人。
-        </p>
-      </div>
-    </van-panel>
+      </van-panel>
+    </div>
     <div class="fixed-footer-btn-zone">
       <van-button size="large" round type="danger" class="apply-btn" @click="apply">立即申请</van-button>
     </div>
@@ -64,7 +68,6 @@
     name: 'applyOpenShop',
     data () {
       return {
-        msg: '1',
       };
     },
     mounted () {

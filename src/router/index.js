@@ -82,7 +82,7 @@ export default new Router({
       path: '/recommend',
       name: 'recommend',
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true, // 不需要缓存
       },
       component: (resolve) => require(['../components/Recommend'],resolve),
     },
@@ -201,7 +201,7 @@ export default new Router({
       path: '/setting/applyOpenShop',
       name: 'applyOpenShop',
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['../components/child_components/Setting_components/ApplyOpenShop'],resolve),
     },
@@ -240,7 +240,7 @@ export default new Router({
     },
     {
       path: '/forgot',
-      name: 'Forgot',
+      name: 'forgot',
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -340,7 +340,7 @@ export default new Router({
       path: '/showcase/userId/:id',
       name: 'showcase',
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 不需要缓存
       },
       component: (resolve) => require(['../components/child_components/Conversation_components/Showcase'],resolve),
     },

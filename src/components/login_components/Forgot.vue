@@ -77,7 +77,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
+import Backbar from '../common_components/Back_bar';
 export default {
   name: 'forgot',
   components: {

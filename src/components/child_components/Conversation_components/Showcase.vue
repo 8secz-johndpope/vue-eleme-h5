@@ -2,17 +2,17 @@
   <div>
     <div class="fixed-top">
         <van-nav-bar
-        title="商品橱窗"
-        left-text="返回"
-        right-text="我也要卖货"
-        left-arrow
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-        >
-      </van-nav-bar>
+          title="商品橱窗"
+          left-text="返回"
+          right-text="我也要卖货"
+          left-arrow
+          @click-left="onClickLeft"
+          @click-right="onClickRight"
+          >
+        </van-nav-bar>
     </div>
     <div class="fixed-content-box">
-      <van-panel desc="67.1w人看过">
+      <van-panel>
         <div slot="header" class="flex-start header">
           <router-link :to="{ name: 'userzone', params: {} }">
             <div>
@@ -48,7 +48,7 @@
     components:{
       GoodsCard,
     },
-    name: 'myPraise',
+    name: 'showcase',
     data () {
       return {
         goodsArr: [], // 商品数组

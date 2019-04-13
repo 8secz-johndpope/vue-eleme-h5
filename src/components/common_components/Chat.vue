@@ -196,9 +196,16 @@
         this.scrollToBottom();
       },
       _loadEmojiData(){
-        getEmojiData().then((res)=>{
-          var json = eval('('+res+')');
+        // getEmojiData().then((res)=>{
+        //   var json = eval('('+res+')');
+        //   this.EXPS=json.EXPS.slice(0);
+        // });
+        this.instance.getEmojiData({                 
+        }).then(res=>{
+          var json = eval('('+res+')');
           this.EXPS=json.EXPS.slice(0);
+        }).catch(function (error) {
+            console.log(error);
         });
       },
       onClickLeft(){
