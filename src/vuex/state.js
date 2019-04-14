@@ -1,4 +1,5 @@
 import { areaList } from '../jsonData/Area.js';
+import { EXPSList } from '../jsonData/EXPSList.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
          imitateComments, imitateMyPraiseAndComments } from '../falsedata/imitateData.js';
@@ -48,4 +49,6 @@ export default {
   imitateMyPraiseAndComments,
   // 地址列表
   areaList,
+  // 表情列表
+  EXPSList,
 };

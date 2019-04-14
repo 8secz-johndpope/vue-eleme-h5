@@ -11,7 +11,7 @@ import { Tabbar, TabbarItem, Cell, CellGroup, SwipeCell, Icon, Tab, Tabs, Popup,
          Tag, Card, SubmitBar, NoticeBar, RadioGroup, Radio, Switch } from 'vant';
 import VueClipboards from 'vue-clipboard2'; //复制粘贴
 import 'vant/lib/index.css';
-import 'font-awesome/css/font-awesome.css';
+// import 'font-awesome/css/font-awesome.css';
 
 import instance_ from './api/index';
 Vue.prototype.instance = instance_;  //axios实例

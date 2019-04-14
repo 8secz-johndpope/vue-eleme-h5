@@ -39,4 +39,6 @@ export default {
   getRecommendHighLightTab: (state) => state.recommendHighLightTab,
   // 地址列表
   getAreaList: (state) => state.areaList,
+  // 表情列表
+  getEXPSList: (state) => state.EXPSList,
 };
