@@ -11,6 +11,7 @@
       </van-nav-bar>
     </div>
     <div class="fixed-content-box">
+      <!-- 对话框高度 -->
      <div class="xw-content" @touchstart="toShowMaskInfo=false" ref="xwBody">
       <div class="xw-chat-wrap">
        <ul>
@@ -48,7 +49,16 @@
      <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false">
       <div class="xw-footer-content">
        <div class="xw-vmodel-wrap">
-        <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea>
+       <!--  <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea> -->
+        <van-cell-group>
+          <van-field
+            type="textarea"
+            placeholder="请输入留言"
+            v-model="content" @focus="onFocusText"
+            rows="1"
+            :autosize = '{ maxHeight: 120, minHeight: 50 }'
+          />
+        </van-cell-group>
        </div>
        <div class="xw-chat-tool">
         <div class="xw-chat-tool-item">
@@ -129,6 +139,9 @@
     created(){
       this._loadEmojiData();
     },
+    mounted () {
+      this.scrollToBottom();
+    },
     methods: {
       showInfo(){
         this.toShowMaskInfo = true;
@@ -180,18 +193,17 @@
 
       //滚动到底
       scrollToBottom(){
+        let that = this;
         setTimeout(()=>{
-          //滚动条长度
-          var currentDistance=this.$refs.xwBody.scrollHeight-this.$refs.xwBody.clientHeight;
-          //当前滚动条距离顶部的距离
-          var currentScroll_y=this.$refs.xwBody.scrollTop;
-          if(currentDistance>0 && currentDistance>currentScroll_y){
-              currentScroll_y=Math.ceil((currentDistance-currentScroll_y)/10)+currentScroll_y;
-              currentScroll_y=currentScroll_y>currentDistance ? currentDistance: currentScroll_y;
+          var currentDistance = that.$refs.xwBody.scrollHeight - that.$refs.xwBody.clientHeight; //滚动条长度
+          var currentScroll_y = that.$refs.xwBody.scrollTop;  //当前滚动条距离顶部的距离
+          if(currentDistance > 0 && currentDistance > currentScroll_y){
+              currentScroll_y = Math.ceil((currentDistance-currentScroll_y)/10) + currentScroll_y;
+              currentScroll_y = currentScroll_y > currentDistance ? currentDistance : currentScroll_y;
               //微信和qq浏览器不支持 scrollTo？
-              //this.$refs.xwBody.scrollTo(0,currentScroll_y);
-              this.$refs.xwBody.scrollTop = currentScroll_y;
-              this.scrollToBottom();
+              //that.$refs.xwBody.scrollTo(0,currentScroll_y);
+              that.$refs.xwBody.scrollTop = currentScroll_y;
+              that.scrollToBottom();
           }
         },13);
       },
@@ -402,6 +414,8 @@
     box-shadow: 0 -1px 4px rgba(0, 0, 0, .05);
     background: #fff;
     z-index: 2;
+    position: fixed;
+    bottom: 0;
   }
 
   .xw-footer-content {
@@ -411,60 +425,45 @@
    box-shadow: rgba(0, 0, 0, 0.05) 0px -1px 4px;
   }
   .xw-vmodel-wrap{
-    flex:1;
-  }
-  .xw-content-textarea{
-    box-sizing: border-box;
-    z-index: 1;
-    overflow-y: auto;
-    font-size: 14px;
-    line-height: 14px;
-    border: none;
-    resize: none;
-    padding: 16px 85px 16px 14px;
-    font-family: inherit;
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    width: 65%;
+    padding: 0.133rem 0 0 0;
   }
 
   .xw-chat-tool {
-    position: absolute;
-    right: 0px;
-    bottom: 0;
-    z-index: 2;
+    width: 35%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .xw-chat-tool-item {
     height: 52px;
-    line-height: 52px;
+    margin: 0 0 0 0.267rem;
     position: relative;
     float: left;
     background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
   }
-
 
   .xw-chat-tool-btn {
     display: block;
-  }
-
-  .xw-chat-tool-btn {
-    margin-top: 7px;
     height: 38px;
-    width: 38px;
+    width: 0.533rem;
     border-radius: 100%;
     text-indent: -9999px;
-    opacity: .5;
+    opacity: 1;
     overflow: hidden;
     transform: translateZ(0);
-    margin-left: 10px;
   }
 
   .xw-chat-tool-btn.xw-face {
-     background: url(../../chatSrc/images/smileOn.svg) no-repeat 50%;
+    background: url(../../chatSrc/images/smileOn.svg) no-repeat 100%;
+    background-size: 100% 100%;
   }
   .xw-chat-tool-btn.xw-face-close {
-     background: url(../../chatSrc/images/smileClose.svg) no-repeat 50%;
+    background: url(../../chatSrc/images/smileClose.svg) no-repeat 100%;
+    background-size: 100% 100%;
   }
 
   .xw-chat-tool-item .xw-window-text {
@@ -508,7 +507,7 @@
     z-index: 1;
     background: #fff;
     padding: 8px;
-    height: 130px;
+    /*height: 130px;*/
     overflow: hidden;
     width: 340px;
     margin: 0px auto;
@@ -543,27 +542,23 @@
   .swiper-pagination-bullet-active{
     background: #007aff;
   }
-
-  .xw-chat-tool-item {
-    height: 52px;
-    position: relative;
-    float: left;
-  }
-
   .xw-hide-operation{
-    background: url(../../chatSrc/images/addOn.svg) no-repeat 50%;
-    width: 38px;
-    height: 38px;
+    background: url(../../chatSrc/images/addOn.svg) no-repeat 100%;
+    background-size: 100% 100%;
+    width: 0.533rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 0.533rem;
     margin-right:10px;
-    transform:scale(.7);
   }
 
   .xw-hide-operation-close{
-    background: url(../../chatSrc/images/addClose.svg) no-repeat 50%;
-    width: 38px;
-    height: 38px;
+    background: url(../../chatSrc/images/addClose.svg) no-repeat 100%;
+    background-size: 100% 100%;
+    width: 0.533rem;
+    height: 0.533rem;
     margin-right:10px;
-    transform:scale(.7);
   }
 
   .xw-chat-tool-item .xw-window-text span {
@@ -648,16 +643,14 @@
     margin-top: 20px;
   }
 
-
-
   .xw-faceEmoji{
     margin-bottom: 7px;
     width:20%;
     float: left;
-  }
-
-  .xw-faceEmoji-main{
     text-align: center;
+  }
+  .xw-faceEmoji img{
+    width: 0.533rem;
   }
 
   .xw-chat-msg span img{
