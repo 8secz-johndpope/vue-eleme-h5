@@ -12,7 +12,7 @@
     </div>
     <div class="fixed-content-box">
       <!-- 对话框高度 -->
-     <div class="xw-content" @touchstart="toShowMaskInfo=false" ref="xwBody">
+     <div class="xw-content" ref="xwBody">
       <div class="xw-chat-wrap">
        <ul>
         <li v-for="messageList in records">
@@ -46,14 +46,16 @@
        </ul>
       </div>
      </div>
-     <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false">
+     <!-- 提示音 -->
+     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3">
+     </audio>
+    </div>
+    <div class="xw-footer-wrap">
       <div class="xw-footer-content">
        <div class="xw-vmodel-wrap">
-       <!--  <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea> -->
         <van-cell-group>
           <van-field
             type="textarea"
-            placeholder="请输入留言"
             v-model="content" @focus="onFocusText"
             rows="1"
             :autosize = '{ maxHeight: 120, minHeight: 50 }'
@@ -63,7 +65,7 @@
        <div class="xw-chat-tool">
         <div class="xw-chat-tool-item">
          <transition name="fade">
-          <a href="javascript:void(0)" class="xw-send-btn-text" v-if="content.trim().length" @click="sendMsg">发送</a>
+          <van-button :disabled="content.trim().length <= 0 ? true : false" @click="sendMsg" size="small" type="danger">发送</van-button>
          </transition>
         </div>
         <div class="xw-chat-tool-item">
@@ -92,10 +94,6 @@
        </div>
       </transition>
      </div>
-     <!-- 提示音 -->
-     <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3">
-     </audio>
-    </div>
   </div>
 </template>
 
@@ -109,9 +107,7 @@
       return {
         comment:{},
         showEmoji: true,//是否显示表情
-        toastText:'',
         showMoreOpratin:false,//是否显示更多操作
-        toShowMaskInfo: false,//点击头部是否显示相信信息
         bellStatus: false,//头部区域铃声图标
         myaudio: '/static/audio/msg.mp3',//铃音
         testContents: ["今天天气不错", '这个问题还没遇到过', '你说什么，我听不明白', '今天周五了', '请稍后--', '当前客服忙', '您还有什么咨询的吗', '正在查询', 'gone with the wind'],
@@ -123,10 +119,36 @@
           content: '您好！欢迎来到小薇客服，请问有什么能帮到您？如有疑问请在线咨询或者拨打400-926-2012咨询！感谢您的支持! '
           },
           {
-          type: 2,
-          time: new Date().toLocaleTimeString(),
-          content: '谢谢您的帮助'
-        }],
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+          {
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+          {
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+          {
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+          {
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+          {
+            type: 2,
+            time: new Date().toLocaleTimeString(),
+            content: '谢谢您的帮助'
+          },
+        ],
         imgFile :{},
         EXPS: [],
       }
@@ -143,9 +165,6 @@
       this.scrollToBottom();
     },
     methods: {
-      showInfo(){
-        this.toShowMaskInfo = true;
-      },
       //点击控制表情切换（显示和隐藏）
       emojiFuc(){
         this.showEmoji = !this.showEmoji;
@@ -185,7 +204,7 @@
         if (con.toString().indexOf('/:') > -1) {
           var exps = this.EXPS;
           for (var i = 0; i < exps.length; i++) {
-            con = con.replace(exps[i].reg, '<img src="' + exps[i].file + '"  alt="" />');
+            con = con.replace(exps[i].reg, '<img src="' + exps[i].file + '"  alt="" style="width: 0.533rem; vertical-align: middle;" />');
           }
         }
         return con;
@@ -194,18 +213,9 @@
       //滚动到底
       scrollToBottom(){
         let that = this;
-        setTimeout(()=>{
-          var currentDistance = that.$refs.xwBody.scrollHeight - that.$refs.xwBody.clientHeight; //滚动条长度
-          var currentScroll_y = that.$refs.xwBody.scrollTop;  //当前滚动条距离顶部的距离
-          if(currentDistance > 0 && currentDistance > currentScroll_y){
-              currentScroll_y = Math.ceil((currentDistance-currentScroll_y)/10) + currentScroll_y;
-              currentScroll_y = currentScroll_y > currentDistance ? currentDistance : currentScroll_y;
-              //微信和qq浏览器不支持 scrollTo？
-              //that.$refs.xwBody.scrollTo(0,currentScroll_y);
-              that.$refs.xwBody.scrollTop = currentScroll_y;
-              that.scrollToBottom();
-          }
-        },13);
+        this.$nextTick(() => {
+            document.body.scrollTop = document.body.scrollTop + 480;
+        });
       },
       onFocusText(){
         this.scrollToBottom();
@@ -265,8 +275,7 @@
 
   .xw-chat-wrap {
     overflow: auto;
-    padding-left: 16px;
-    padding-bottom: 20px;
+    padding: 14px;
   }
 
   .xw-chat-wrap .xw-chat-time,
@@ -292,12 +301,6 @@
     position: absolute;
     bottom: 0;
     line-height: 0;
-  }
-  .xw-send-btn-text{
-    padding: 4px 8px;
-    background-color:#ed4858;
-    color: #fff;
-    border-radius: 5px;
   }
   .xw-customer-avantar-wrap {
     position: absolute;
@@ -443,7 +446,7 @@
     background: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
   }
 
   .xw-chat-tool-btn {
@@ -548,7 +551,7 @@
     width: 0.533rem;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     height: 0.533rem;
     margin-right:10px;
   }
@@ -862,5 +865,11 @@
   .bounceInUp {
     -webkit-animation-name: bounceInUp;
     animation-name: bounceInUp;
+  }
+  .emoji-icon{
+    width: 0.533rem;
+  }
+  .fixed-content-box{
+    height: 12.4rem;
   }
 </style>
