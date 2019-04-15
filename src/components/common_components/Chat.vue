@@ -10,7 +10,7 @@
         <van-icon name="ellipsis" slot="right" @click="onClickRight" />
       </van-nav-bar>
     </div>
-    <div class="fixed-content-box">
+    <div :class=" showEmoji ? 'fixed-content-box' : 'fixed-content-box-large' ">
       <!-- 对话框高度 -->
      <div class="xw-content" ref="xwBody">
       <div class="xw-chat-wrap">
@@ -57,7 +57,9 @@
           <van-field
             type="textarea"
             v-model="content" @focus="onFocusText"
+            rel="inputMsg"
             rows="1"
+            id="inputMsgId"
             :autosize = '{ maxHeight: 120, minHeight: 50 }'
           />
         </van-cell-group>
@@ -106,7 +108,7 @@
     data() {
       return {
         comment:{},
-        showEmoji: true,//是否显示表情
+        showEmoji: false,//是否显示表情
         showMoreOpratin:false,//是否显示更多操作
         bellStatus: false,//头部区域铃声图标
         myaudio: '/static/audio/msg.mp3',//铃音
@@ -117,26 +119,6 @@
           type: 1,
           time: new Date().toLocaleTimeString(),
           content: '您好！欢迎来到小薇客服，请问有什么能帮到您？如有疑问请在线咨询或者拨打400-926-2012咨询！感谢您的支持! '
-          },
-          {
-            type: 2,
-            time: new Date().toLocaleTimeString(),
-            content: '谢谢您的帮助'
-          },
-          {
-            type: 2,
-            time: new Date().toLocaleTimeString(),
-            content: '谢谢您的帮助'
-          },
-          {
-            type: 2,
-            time: new Date().toLocaleTimeString(),
-            content: '谢谢您的帮助'
-          },
-          {
-            type: 2,
-            time: new Date().toLocaleTimeString(),
-            content: '谢谢您的帮助'
           },
           {
             type: 2,
@@ -178,21 +160,24 @@
       },
       sendMsg(){
         var content = this.content.trim();
+        this.records.push({
+          time: new Date().toLocaleTimeString(),
+          content: content,
+          type: 2
+        });
+        this.content = "";
+        setTimeout(() => {
+          this.hint();
           this.records.push({
             time: new Date().toLocaleTimeString(),
-            content: content,
-            type: 2
+            content: this.testContents[Math.floor(Math.random() * 9)],
+            type: 1
           });
-          this.content = "";
-          setTimeout(() => {
-            this.hint();
-            this.records.push({
-              time: new Date().toLocaleTimeString(),
-              content: this.testContents[Math.floor(Math.random() * 9)],
-              type: 1
-            });
-            this.scrollToBottom();
-          }, 800);
+          this.scrollToBottom();
+        }, 800);
+        var idObj = document.getElementById('inputMsgId');
+        this.content = "";
+        idObj.focus();
       },
       getEmotionData(pageNow, pageSize) {
         return this.EXPS.slice((pageNow - 1) * pageSize, pageSize * pageNow)
@@ -214,11 +199,20 @@
       scrollToBottom(){
         let that = this;
         this.$nextTick(() => {
-            document.body.scrollTop = document.body.scrollTop + 480;
+          document.body.scrollTop = that.getScroll().top + 1000;
+          document.documentElement.scrollTop = that.getScroll().top + 1000;
+          window.pageYOffset = that.getScroll().top + 1000;
         });
+      },
+      //获得页面向左、向上卷动的距离
+      getScroll () {
+         return {
+             top: window.pageYOffset + 1000 || document.documentElement.scrollTop + 1000 || document.body.scrollTop + 1000 || 0 + 1000
+         };
       },
       onFocusText(){
         this.scrollToBottom();
+        this.showEmoji = false;
       },
       _loadEmojiData(){
         let that = this;
@@ -870,6 +864,11 @@
     width: 0.533rem;
   }
   .fixed-content-box{
-    height: 12.4rem;
+    height: 8.4rem;
+    margin-top: 1.2rem;
+  }
+  .fixed-content-box-large{
+    height: 12.2rem;
+    margin-top: 1.2rem;
   }
 </style>
