@@ -195,9 +195,6 @@
   position: fixed;
   bottom: 0.8rem;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .van-content-box{
   margin: 1.226667rem 0 0 0;

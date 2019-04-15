@@ -97,7 +97,7 @@
 </template>
 
 <script>
-  import Orientation from '../extension_components/Orientation';
+  import Orientation from '../child_components/Extension_components/Orientation';
   export default {
     components:{
       Orientation,

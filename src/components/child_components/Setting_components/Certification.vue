@@ -45,7 +45,7 @@
         <span class="gold-color" @click="showUserAgreementPop = true">用户协议及隐私条款</span>
       </div>
     </van-panel>
-    <div class="fixed-footer-btn-zone">
+    <div class="flex-center fixed-footer-btn-zone">
       <van-button size="large" round type="danger" class="submit-btn" @click="submit">提交审核</van-button>
     </div>
     <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">

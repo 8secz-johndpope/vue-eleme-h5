@@ -342,7 +342,7 @@ export default new Router({
       meta: {
         keepAlive: true // 不需要缓存
       },
-      component: (resolve) => require(['../components/child_components/Conversation_components/Showcase'],resolve),
+      component: (resolve) => require(['../components/shop_components/Showcase'],resolve),
     },
     // 商品详情
     {
@@ -351,7 +351,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/child_components/Conversation_components/Commodity'],resolve),
+      component: (resolve) => require(['../components/shop_components/Commodity'],resolve),
     },
     // 新增或者修改商品
     {
@@ -360,7 +360,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/child_components/Conversation_components/AddOrUpdateCommodity'],resolve),
+      component: (resolve) => require(['../components/shop_components/AddOrUpdateCommodity'],resolve),
     },
     // 速推+上热门
     {
@@ -369,7 +369,16 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/child_components/Conversation_components/Extension'],resolve),
+      component: (resolve) => require(['../components/shop_components/Extension'],resolve),
+    },
+    // 店铺信息
+    {
+      path: '/shopInfo/shopId/:id',
+      name: 'shopInfo',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['../components/shop_components/AddOrUpdateShowcase'],resolve),
     },
     /*
       落地页 -- 开始

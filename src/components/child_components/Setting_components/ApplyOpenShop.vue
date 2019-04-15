@@ -7,7 +7,7 @@
         left-text="返回"
         left-arrow
         @click-left="onClickLeft"
-      /> 
+      />
     </div>
     <div class="fixed-content-box">
       <van-panel title="申请条件" desc="完成以下条件即可申请商品分享功能">
@@ -56,7 +56,7 @@
         </div>
       </van-panel>
     </div>
-    <div class="fixed-footer-btn-zone">
+    <div class="flex-center fixed-footer-btn-zone">
       <van-button size="large" round type="danger" class="apply-btn" @click="apply">立即申请</van-button>
     </div>
   </div>

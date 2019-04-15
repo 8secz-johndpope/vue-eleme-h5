@@ -13,15 +13,20 @@
     </div>
     <div class="fixed-content-box">
       <van-panel>
-        <div slot="header" class="flex-start header">
-          <router-link :to="{ name: 'userzone', params: {} }">
-            <div>
-              <span class="van-avatar"><img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" alt="" class="van-avatar-img"></span>
+        <div slot="header" class="flex-space-between header">
+          <div class="flex-start">
+            <router-link :to="{ name: 'userzone', params: {} }">
+              <div>
+                <span class="van-avatar"><img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" alt="" class="van-avatar-img"></span>
+              </div>
+            </router-link>
+            <div class="flex-column shopkeeper">
+              <span>XXX的商品橱窗</span>
+              <span class="gray-font">全部商品 10</span>
             </div>
-          </router-link>
-          <div class="flex-column shopkeeper">
-            <span>XXX的商品橱窗</span>
-            <span class="gray-font">全部商品 10</span>
+          </div>
+          <div>
+            <router-link :to="{ name: 'shopInfo', params: {} }">编辑商店<van-icon name="edit" /></router-link>
           </div>
         </div>
       </van-panel>
@@ -43,7 +48,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import GoodsCard from '../../common_components/GoodsCard';
+  import GoodsCard from '../common_components/GoodsCard';
   export default {
     components:{
       GoodsCard,

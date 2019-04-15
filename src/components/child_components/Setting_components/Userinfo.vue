@@ -81,11 +81,9 @@
 </template>
 <script>
   import Vue from 'vue';
-  import { Area } from 'vant';
   import { DatetimePicker } from 'vant';
   import { mapGetters } from 'vuex';
   Vue.use(DatetimePicker);
-  Vue.use(Area);
   export default {
     components:{
     },

@@ -26,7 +26,7 @@
             <van-tag class="goods-tag" type="danger">官方</van-tag>
           </template>
         </van-cell>
-        <van-cell title="商铺店址" value="广东·深圳市" is-link />
+        <van-cell title="发货地址" value="广东省·深圳市·罗湖区" is-link />
         <van-collapse v-model="activeNames">
           <van-collapse-item title="商品详情" name="1">
             提供多样店铺模板，快速搭建网上商城
