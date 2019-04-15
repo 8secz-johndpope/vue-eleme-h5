@@ -60,6 +60,8 @@
             <van-cell title="达人相似粉丝投放" clickable @click="targetUserRadio = '2'">
               <van-radio name="2" />
             </van-cell>
+            <!-- 达人相似粉丝投放 区域 -->
+            <Daren v-show="targetUserRadio == '2'"></Daren>
           </van-cell-group>
         </van-radio-group>
       </div>
@@ -98,9 +100,11 @@
 
 <script>
   import Orientation from '../child_components/Extension_components/Orientation';
+  import Daren from '../child_components/Extension_components/Daren';
   export default {
     components:{
       Orientation,
+      Daren,
     },
     name: 'extension',
     data () {
@@ -155,7 +159,7 @@
           'title': '作品推荐',
           'dec': '将作品展现给更多潜在兴趣用户，提升作品的曝光量',
         },
-        targetUserRadio: '0', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
+        targetUserRadio: '2', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
       };
     },
     mounted () {

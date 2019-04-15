@@ -1,17 +1,28 @@
 <template>
-  <div class="orientation-content-box">
-    <div class="cell-item">
-      性别（单选）
-      <van-button size="mini" plain v-for="(item,index) in sex" @click="selectSex(item,index)" :type="currentSex == index ? 'danger' : 'default' ">{{item.name}}</van-button>
+  <div>
+    <div class="orientation-content-box">
+      <div class="cell-item">
+        性别（单选）
+        <van-button size="mini" plain v-for="(item,index) in sex" @click="selectSex(item,index)" :type="currentSex == index ? 'danger' : 'default' ">{{item.name}}</van-button>
+      </div>
+      <div class="cell-item">
+        年龄（多选）
+        <van-button size="mini" plain v-for="(item,index) in age" @click="selectAge(item,index)" :type="currentAge.indexOf(index) !== -1 ? 'danger' : 'default' ">{{item.name}}</van-button>
+      </div>
+      <div class="cell-item">
+        地区（单选）
+        <van-button size="mini" plain @click="areaPopShow = true" type="danger" class="address-btn">{{address}}</van-button>
+      </div>
     </div>
-    <div class="cell-item">
-      年龄（多选）
-      <van-button size="mini" plain v-for="(item,index) in age" @click="selectAge(item,index)" :type="currentAge.indexOf(index) !== -1 ? 'danger' : 'default' ">{{item.name}}</van-button>
-    </div>
+    <!-- 发货地址设置 -->
+    <van-popup v-model="areaPopShow" position="bottom" :overlay="true">
+      <van-area :area-list="getAreaList" value="440303" :item-height="80" @confirm="confirmArea" @cancel="areaPopShow=false" />
+    </van-popup>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   export default {
     components:{
     },
@@ -51,12 +62,17 @@
             name: '40岁+',
             value: 3,
           },
-        ]
+        ],
+        areaPopShow: false, // 地址栏弹框
+        address: '广东省·深圳市·罗湖区', // 地址
       };
     },
     mounted () {
     },
     computed: {
+      ...mapGetters([
+        'getAreaList',
+      ])
     },
     methods: {
       // 选择性别
@@ -79,6 +95,11 @@
           }
         }
       },
+      // 确认地址
+      confirmArea (e) {
+        this.areaPopShow = false;
+        this.address = e[0].name+'·'+e[1].name+'·'+e[2].name;
+      },
     }
   }
 </script>
@@ -91,5 +112,9 @@
     height: 0.7rem;
     display: flex;
     align-items: center;
+  }
+  .address-btn{
+    width: auto;
+    padding: 0 0.1rem;
   }
 </style>
