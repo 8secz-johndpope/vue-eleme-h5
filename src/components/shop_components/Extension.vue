@@ -10,7 +10,7 @@
       </van-nav-bar>
     </div>
     <!-- 固定内容区域 -->
-    <div class="fixed-content-box">
+    <div class="content-zone">
       <!-- 作品区域 -->
       <van-panel class="work-panel">
         <div class="flex-wrap">
@@ -64,6 +64,43 @@
             <Daren v-show="targetUserRadio == '2'"></Daren>
           </van-cell-group>
         </van-radio-group>
+        <!-- 播放量提升 -->
+        <div class="cell-zone">
+          <span>预计播放量提升</span>
+          <van-icon name="question-o" class="question-icon" @click="bofangIcon" />
+        </div>
+        <!-- 播放量提升数 -->
+        <div class="flex-center red-color playbackVolume">
+          {{playbackVolume}}+
+        </div>
+        <!-- 投放金额 -->
+        <div class="cell-zone">
+          <span>投放金额</span>
+          <van-icon name="question-o" class="question-icon" @click="jineIcon" />
+        </div>
+        <!-- 金额列表区域 -->
+        <div class="shopList-zone">
+          <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectShop(index, item)" class="shop-btn">
+            <span>{{item.value}}</span>
+          </van-button>
+        </div>
+        <div class="cell-zone">
+          <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
+          <span>继续表示同意</span>
+          <div @click="showUserAgreementPop = true">
+            <span class="gold-color">用户服务协议</span>
+            <span>及</span>
+            <span class="gold-color">投放要求</span>
+          </div>
+        </div>
+        <van-submit-bar
+          :disabled="isShoping"
+          :price="price"
+          button-text="支付"
+          @submit="onSubmit"
+        >
+          <!-- <div>共：166积分</div> -->
+        </van-submit-bar>
       </div>
     </div>
     <van-submit-bar
@@ -95,24 +132,41 @@
         <van-icon name="close" @click="showHelpPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
+    <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
+      <div class="fixed-top">
+        <van-nav-bar
+          title="服务协议及投放要求"
+          @click-left="showUserAgreementPop = false"
+          left-arrow
+        />
+      </div>
+      <div class="fixed-content-box">
+        <UserAgreement></UserAgreement>
+      </div>
+    </van-popup>
   </div>
 </template>
 
 <script>
   import Orientation from '../child_components/Extension_components/Orientation';
   import Daren from '../child_components/Extension_components/Daren';
+  import UserAgreement from '../word_components/UserAgreement';
   export default {
     components:{
       Orientation,
       Daren,
+      UserAgreement,
     },
     name: 'extension',
     data () {
       return {
+        agreeCheckbox: true,  // 同意条款
         isShoping: false, // 是否交易中
         price: 1990, // 价格，分为单位
         showHelpPop: false,  // 帮助问题弹框
         advertisingTargetActionPop: false,  //逛选项上拉菜单
+        showUserAgreementPop: false,  // 隐私协议条款
+        durationActionPop: false,  //时长上拉菜单
         currentAdvertisingTarget: 0,  // 当前广告投放目标，0-视频互动量，1-粉丝增长
         advertisingTargetAction: [ // 投放广告选项
           {
@@ -124,7 +178,6 @@
             value: 1
           },
         ],
-        durationActionPop: false,  //时长上拉菜单
         currentDuration: 0,  // 当前时长， 0-6小时，1-12小时，2-24小时
         durationAction: [ // 投放时长选项
           {
@@ -157,9 +210,54 @@
         },
         xingquUseDec: {
           'title': '作品推荐',
-          'dec': '将作品展现给更多潜在兴趣用户，提升作品的曝光量',
+          'dec': '将作品展现给更多潜在兴趣用户，提升作品的曝光量。',
+        },
+        bofangDec: {
+          'title': '预计播放量',
+          'dec': '自定义投放设置越精确，投放成本越高，系统将会根据您的自定义投放设置实时估算预计播放量。',
+        },
+        jineDec: {
+          'title': '投放金额',
+          'dec': '投放金额为此次投放的最大消耗值，系统会100%投放完成，投放过程中如若遇到非系统故障，如'+
+                  '视频删除/人工举报，系统将不予退回金额。如遇到系统故障等非用户自身操作，如系统升级，系统会自动延放到下一个版本。',
         },
         targetUserRadio: '2', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
+        playbackVolume: 5000, // 预计播放量
+        isShoping: false, // 是否交易中
+        price: 1990, // 价格，分为单位
+        currentSelect: 0,  // 当前选中
+        shopList: [
+          {
+            num: 9.9,
+            value: '￥9.9',
+            isHot: 0, // 是否热选，0-是，1-否
+          },
+          {
+            num: 19.9,
+            value: '￥19.9',
+            isHot: 1, // 是否热选，0-是，1-否
+          },
+          {
+            num: 38,
+            value: '￥38',
+            isHot: 1, // 是否热选，0-是，1-否
+          },
+          {
+            num: 68,
+            value: '￥68',
+            isHot: 1, // 是否热选，0-是，1-否
+          },
+          {
+            num: 128,
+            value: '￥28',
+            isHot: 1, // 是否热选，0-是，1-否
+          },
+          {
+            num: 66,
+            value: '￥66',
+            isHot: 1, // 是否热选，0-是，1-否
+          },
+        ],
       };
     },
     mounted () {
@@ -185,6 +283,16 @@
         this.currentPopCentent = this.xingquUseDec;
         this.showHelpPop = true;
       },
+      // 播放icon
+      bofangIcon () {
+        this.currentPopCentent = this.bofangDec;
+        this.showHelpPop = true;
+      },
+      // 投放金额icon
+      jineIcon () {
+        this.currentPopCentent = this.jineDec;
+        this.showHelpPop = true;
+      },
       // 提交商品
       onSubmit () {
         let that = this;
@@ -205,6 +313,24 @@
         this.durationActionPop = false;
         this.currentDuration = item.value;
         this.$toast(item.name);
+      },
+      // 提交商品
+      onSubmit () {
+        let that = this;
+        that.isShoping = true;
+        setTimeout(() => {
+          that.isShoping = false;
+          that.$router.push('/setting/payment')
+        }, 500);
+      },
+      // 切换同意条款按钮
+      changeAgreeCheckbox () {
+        this.isShoping = !this.isShoping;
+      },
+      // 选择商品
+      selectShop (index, item) {
+        this.currentSelect = index;
+        this.price = item.num * 100;
       },
     }
   }
@@ -265,5 +391,23 @@
   .questionPopDec{
     display: flex;
     text-align: left;
+  }
+  .playbackVolume{
+    height: 1rem;
+    font-size: 0.8rem;
+  }
+  .shopList-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .shop-btn{
+    width: 2.5rem;
+    margin: 0.133rem 0.133rem;
+    padding: 0;
+  }
+  .content-zone{
+    margin: 1.2rem 0 1.6rem 0;
   }
 </style>
