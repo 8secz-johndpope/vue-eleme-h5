@@ -1,27 +1,28 @@
 // 模拟用户
 export var imitateUser = {
     LiaoNo: 'glh888888', // 编号
-    userName: 'ganluhua',
+    userName: 'ganluhua',   // 用户名
+    userId: '',     // 用户ID
     sex: 1, // 0-男,1-女
-    area: '深圳',
-    birthday: '1993-04-26',
-    userId: '',
-    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
-    tel: '18124655386',
-    integral: 100,  // 积分
-    getPraised: 9999, // 获赞
-    year: 26, // 年龄
-    fans: 9999, // 粉丝
-    follow: 999,  // 关注
-    autograph: '个性签名，吸引用户关注对方', // 个性签名
+    area: '深圳',     // 用户地区
+    areaValue: '110000',     // 用户地区编号 110000: '北京市',
+    birthday: '1993-04-26',     // 生日，应该用时间戳表示
+    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 用户头像
+    tel: '18124655386', // 用户电话
+    integral: 100,  // 用户积分
+    getPraised: 9999, // 用户获赞
+    year: 26, // 用户年龄，与生日时间戳重复了
+    fans: 9999, // 用户粉丝
+    follow: 999,  // 用户关注
+    autograph: '个性签名，吸引用户关注对方', // 用户的个性签名
 };
 // 模拟用户列表， 粉丝 或 关注对象
 export var imitateUserList = [
   {
     LiaoNo: '000001', // 编号
-    userName: 'ganluhua',
-    userId: '',
-    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+    userName: 'ganluhua',    // 用户名
+    userId: '', // 用户ID
+    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 用户头像
     follow_type: 0, // 关注类型 0-未关注 1-已关注 2-互相关注
     sex: 0, // 性别类型 0-男 1-女
     fansNum: 9999,  // 粉丝数
@@ -46,7 +47,7 @@ export var imitateMenu = [
     levelOneName: '恋爱话术', // 分类一级名称
     menuList: [
         {
-            levelTwoName: '搭讪开场白',
+            levelTwoName: '搭讪开场白',  // 分类二级名称
             level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
             openNewLink: false,  // 打开新连接
             linkAddress: '',   // 新链接地址
@@ -350,13 +351,13 @@ export var imitateMenu = [
             linkAddress: 'www.baidu.com',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
-        {
-            levelTwoName: '表白吧',    // 奇闻趣事
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
+        // {
+        //     levelTwoName: '表白吧',    // 奇闻趣事
+        //     level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
+        //     openNewLink: true,  // 打开新连接
+        //     linkAddress: 'www.baidu.com',   // 新链接地址
+        //     listId: 'id0001',   // 菜单Id
+        // },
     ]
   },
 ];

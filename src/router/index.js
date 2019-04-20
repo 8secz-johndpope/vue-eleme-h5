@@ -378,7 +378,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/AddOrUpdateShowcase'],resolve),
+      component: (resolve) => require(['../components/shop_components/ShopInfo'],resolve),
     },
     /*
       落地页 -- 开始

@@ -55,53 +55,13 @@
     data () {
       return {
         searchValue: '',  // 搜索内容
-        darenSelectPop: false, // 达人选择弹框
+        darenSelectPop: true, // 达人选择弹框
         address: '广东省·深圳市·罗湖区', // 地址
-        activeKey: 0,
-        badgeArrs: [
+        activeKey: 0, // 选中badge/徽章的索引
+        badgeArrs: [  // badge/徽章/商品分类的列表
           {
             badgeType: '0001',  // 类型
             badgeName: '服装',  // 标签名称
-            badgeSelected: 2,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '动漫',  // 标签名称
-            badgeSelected: 2,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '奢侈品',  // 标签名称
-            badgeSelected: 1,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '母婴',  // 标签名称
-            badgeSelected: 0,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '服装',  // 标签名称
-            badgeSelected: 0,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '动漫',  // 标签名称
-            badgeSelected: 0,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '搞笑',  // 标签名称
-            badgeSelected: 0,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '游戏',  // 标签名称
-            badgeSelected: 0,  // 标签已选数量
-          },
-          {
-            badgeType: '0001',  // 类型
-            badgeName: '帅哥',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
           },
           {
@@ -111,12 +71,12 @@
           },
           {
             badgeType: '0001',  // 类型
-            badgeName: '美妆',  // 标签名称
+            badgeName: '奢侈品',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
           },
           {
             badgeType: '0001',  // 类型
-            badgeName: '交通',  // 标签名称
+            badgeName: '饮食',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
           },
         ],

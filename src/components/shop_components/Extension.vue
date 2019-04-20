@@ -99,7 +99,6 @@
           button-text="支付"
           @submit="onSubmit"
         >
-          <!-- <div>共：166积分</div> -->
         </van-submit-bar>
       </div>
     </div>
@@ -132,6 +131,7 @@
         <van-icon name="close" @click="showHelpPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
+    <!-- 服务协议 -->
     <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
       <div class="fixed-top">
         <van-nav-bar
