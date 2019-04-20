@@ -40,11 +40,12 @@
     name: 'selectUserCheckbox',
     data () {
       return {
-        checkboxList: ['数码', '美妆', '音乐', '教育', '交通'],
-        checkboxResult: ['数码', '美妆'],
+        checkboxList: ['id0001','id0002','id0003','id0004','id0005'],
+        checkboxResult: ['id0001','id0002'],
       };
     },
     mounted () {
+
     },
     computed: {
     },
@@ -52,6 +53,7 @@
       // 复选框
       toggle(index) {
         this.$refs.checkboxes[index].toggle();
+        // this.$emit('currentCheckUserList','')
       }
     }
   }

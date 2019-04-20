@@ -80,10 +80,10 @@
             badgeSelected: 0,  // 标签已选数量
           },
         ],
-        currentRate: 100, // 当前进度
       };
     },
     mounted () {
+
     },
     computed: {
       ...mapGetters([
