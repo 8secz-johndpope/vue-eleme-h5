@@ -15,7 +15,7 @@
               <div class="flex-column van-user-item-text-info">
                 <span class="van-userName">{{checkboxArr[0].userName}}</span>
                 <span>粉丝：{{COMMONFUNC.formatterW(checkboxArr[0].fansNum)}}</span>
-                <span class="van-autograph">{{checkboxArr[0].autograph}}</span>
+                <span class="font-ellipsis" :class=" isSearchBox ? 'van-autograph-long' : 'van-autograph' ">{{checkboxArr[0].autograph}}</span>
               </div>
             </div>
           </template>
@@ -43,6 +43,11 @@
       'badgeArrsParent': {
         type: Array,
         default: [],
+      },
+      // 当前选中的框组
+      'curentIsSearchCheckbox': {
+        type: Boolean,
+        default: false,
       }
     },
     components:{
@@ -59,13 +64,25 @@
       this.getUserListByIndex(this.checkboxArr)  // 获取用户列表
     },
     computed: {
-      totalSelectChild: function () {
+      totalSelectChild () {
         let sum = 0;
         this.badgeArrsParent.forEach( (val, index) => {
           sum += val.badgeSelected;
         })
         return sum
-      }
+      },
+      // 监听当前用户列表长度，是否点击搜索框
+      isSearchBox () {
+        return this.curentIsSearchCheckbox;
+      },
+    },
+    watch:{
+      // 监听当前用户列表，左侧徽章切换的时候，用户列表会随之更换
+      checkboxArr (newData,oldData) {
+        this.checkboxResult = this.badgeArrsParent[this.activeIndex].currentCheckboxResult;
+        this.userResultList = this.badgeArrsParent[this.activeIndex].currentBadgeSelectedList;
+        this.getUserListByIndex(newData) // 获取用户列表
+      },
     },
     methods: {
       // 复选框
@@ -110,14 +127,6 @@
         };
       }
     },
-    watch:{
-      // 监听当前用户列表，左侧徽章切换的时候，用户列表会随之更换
-      checkboxArr (newData,oldData) {
-        this.checkboxResult = this.badgeArrsParent[this.activeIndex].currentCheckboxResult;
-        this.userResultList = this.badgeArrsParent[this.activeIndex].currentBadgeSelectedList;
-        this.getUserListByIndex(newData) // 获取用户列表
-      }
-    },
   }
 </script>
 <style lang="css" scoped>
@@ -130,16 +139,27 @@
     align-items: center;
     width: 170%;
   }
+  .van-user-item-text-info{
+    padding: 0 0 0 0.266667rem;
+  }
   .van-user-item-right{
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: flex-end;
   }
-  .van-autograph{
-    max-width: 150px;
+  .van-userName{
+    font-weight: 700;
+  }
+  .font-ellipsis{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  .van-autograph{
+    max-width: 4rem;
+  }
+  .van-autograph-long{
+    max-width: 7rem;
   }
 </style>

@@ -230,6 +230,15 @@
 }
 /* 对话页 -- 结束 */
 
+/* 速推计划/达人 -- 开始 */
+.definedMoneyInput>div:first-child{
+  max-width: 0.6rem;
+}
+.darenActionsheet .van-popup {
+    height: 75%;
+}
+/* 速推计划/达人 -- 结束 */
+
 /* 优惠券 -- 开始 */
 .coupon-module .van-coupon-list__close {
     left: 0;

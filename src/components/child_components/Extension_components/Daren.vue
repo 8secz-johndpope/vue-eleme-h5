@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="darenActionsheet">
     <div class="daren-content-box">
       <div class="cell-item">
-        <div class="flex-column" @click="darenSelectPop = true">
+        <div class="flex-column" @click="openDarenSelectPop">
           <span class="van-avatar van-avatar-select">+</span>
           <span class="van-avatar-name">添加</span>
         </div>
-        <div class="flex-column hasSelectedUser" v-for="(item, index) in getImitateUserList">
-          <img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" class="van-avatar van-avatar-select" />
-          <span class="van-avatar-name">{{getImitateUserList[0].userName}}</span>
-          <van-icon name="close" class="close-icon" @click="deleteSelectUser(index)"/>
+        <div class="hasSelectedUser-zone">
+          <div class="flex-column hasSelectedUser" v-for="(item, index) in hasSelectedUserList">
+            <img :src="item.userImg" class="van-avatar van-avatar-select" />
+            <span class="van-avatar-name">{{item.userName}}</span>
+            <van-icon name="close" class="close-icon" @click="deleteSelectUser(item,index)"/>
+          </div>
         </div>
       </div>
     </div>
@@ -26,14 +28,33 @@
       <div>
         <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
       </div>
-      <div class="select-zone">
+      <div class="search-zone" v-if="isSearch">
+        <!-- 复选框组 -->
+        <SelectUserCheckbox
+          :curentIsSearchCheckbox="isSearch"
+          :badgeArrsParent="badgeArrs"
+          :checkboxArr="badgeArrs[activeKey].userList"
+          :activeIndex="activeKey"
+          @chlidSelectUser="getChildSelectUser"
+          v-if="badgeArrs[activeKey].userList.length !== 0">
+        </SelectUserCheckbox>
+      </div>
+      <div class="select-zone" v-else>
         <div class="select-zone-left">
           <van-badge-group :active-key="activeKey" @change="onChangeBadge">
             <van-badge :title="item.badgeName" :info="item.badgeSelected > 0 ? item.badgeSelected : '' " v-for="(item, index) in badgeArrs" />
           </van-badge-group>
         </div>
         <div class="select-zone-right">
-          <SelectUserCheckbox :badgeArrsParent="badgeArrs" :checkboxArr="badgeArrs[activeKey].userList" :activeIndex="activeKey" @chlidSelectUser="getChildSelectUser" v-if="badgeArrs[activeKey].userList.length !== 0"></SelectUserCheckbox>
+          <!-- 复选框组 -->
+          <SelectUserCheckbox
+            :curentIsSearchCheckbox="isSearch"
+            :badgeArrsParent="badgeArrs"
+            :checkboxArr="badgeArrs[activeKey].userList"
+            :activeIndex="activeKey"
+            @chlidSelectUser="getChildSelectUser"
+            v-if="badgeArrs[activeKey].userList.length !== 0">
+          </SelectUserCheckbox>
         </div>
       </div>
     </van-popup>
@@ -55,9 +76,10 @@
     data () {
       return {
         searchValue: '',  // 搜索内容
-        darenSelectPop: true, // 达人选择弹框
+        darenSelectPop: false, // 达人选择弹框
         address: '广东省·深圳市·罗湖区', // 地址
         activeKey: 0, // 选中badge/徽章的索引
+        isSearch: false,  // 是否是搜索框
         badgeArrs: [  // badge/徽章/商品分类的列表
           {
             badgeType: '0001',  // 类型
@@ -91,7 +113,33 @@
             currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
             currentCheckboxResult: [],  // 当前选择的复选标识
           },
+          {
+            badgeType: '0001',  // 类型
+            badgeName: '生活技巧',  // 标签名称
+            badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
+          },
+          {
+            badgeType: '0001',  // 类型
+            badgeName: '母婴',  // 标签名称
+            badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
+          },
+          {
+            badgeType: '0001',  // 类型
+            badgeName: '美妆',  // 标签名称
+            badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
+          },
         ],
+        badgeArrsInit: [],  // 徽章数据init
+        hasSelectedUserList: [],  // 已选择的用户
       };
     },
     mounted () {
@@ -110,19 +158,55 @@
         return sum
       }
     },
+    watch: {
+      searchValue (newData,oldData) {
+        if (newData !== '') {
+          this.isSearch = true;
+        }else {
+          this.isSearch = false;
+        }
+      }
+    },
     methods: {
+      // 打开弹框
+      openDarenSelectPop () {
+        this.darenSelectPop = true;
+        this.badgeArrs = JSON.parse(JSON.stringify(this.badgeArrsInit));
+      },
       // 切换徽章
-      onChangeBadge(key) {
+      onChangeBadge (key) {
         this.activeKey = key;
         this.getImitateUserListByActiveKey(key);
       },
       // 完成选择
       finishedSelect () {
+        let that = this;
         this.darenSelectPop = false;
+        that.hasSelectedUserList = [];
+        that.badgeArrs.forEach( (val,index) => {
+          if (val.badgeSelected !== 0) {
+            val.currentBadgeSelectedList.forEach( (c_val, c_index) => {
+              let obj = {
+                userId : c_val.userId,
+                userName : c_val.userName,
+                userImg : c_val.userImg,
+                p_index: index,
+                c_index: c_index,
+              }
+              that.hasSelectedUserList.push(obj)
+            })
+          }
+        })
+        that.badgeArrsInit = JSON.parse(JSON.stringify(that.badgeArrs));
       },
       // 删除已经选择的达人
-      deleteSelectUser (index) {
-        this.$toast('删除操作');
+      deleteSelectUser (item,index) {
+        let deleltArr = this.hasSelectedUserList.splice(index,1);
+        let obj_p_index = deleltArr[0].p_index;
+        let obj_c_index = deleltArr[0].c_index;
+        this.badgeArrsInit[obj_p_index].badgeSelected -= 1;
+        this.badgeArrsInit[obj_p_index].currentBadgeSelectedList.splice(obj_c_index,1);
+        this.badgeArrsInit[obj_p_index].currentCheckboxResult.splice(obj_c_index,1);
       },
       // 获取用户选择子组件选择的用户
       getChildSelectUser ({userList, checkboxResult}){
@@ -171,6 +255,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .hasSelectedUser-zone{
+    display: flex;
+    overflow-x: scroll;
+  }
   .hasSelectedUser{
     position: relative;
   }
@@ -196,18 +284,22 @@
   .popTop-title-dec{
     font-size: 0.32rem;
   }
+  .search-zone{
+    height: 10.6rem;
+    overflow: scroll;
+  }
   .select-zone{
     display: flex;
     justify-content: space-between;
   }
   .select-zone-left{
     width: 30%;
-    height: 6.133333rem;
+    height: 10.6rem;
     overflow: scroll;
   }
   .select-zone-right{
     width: 70%;
-    height: 6.133333rem;
+    height: 10.6rem;
     overflow: scroll;
   }
 </style>

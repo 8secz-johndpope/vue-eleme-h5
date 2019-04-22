@@ -80,8 +80,8 @@
         </div>
         <!-- 金额列表区域 -->
         <div class="shopList-zone">
-          <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectShop(index, item)" class="shop-btn">
-            <span>{{item.value}}</span>
+          <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectMoney(index, item)" class="shop-btn">
+            <span v-if="isDefinedMoneyNumRight && index == 5">￥</span><span>{{item.value}}</span><span v-if="isDefinedMoneyNumRight && index == 5">></span>
           </van-button>
         </div>
         <div class="cell-zone">
@@ -131,6 +131,21 @@
         <van-icon name="close" @click="showHelpPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
+    <!-- 自定义投放金额弹框 -->
+    <van-popup v-model="definedMoneyPop" class="helpPop" :close-on-click-overlay="false">
+      <div class="pop-content">
+        <h3 class="pop-content-title">自定义金额</h3>
+        <van-cell-group>
+          <van-field v-model="definedMoneyNum" type="number" label="￥" placeholder="请输入金额" class="definedMoneyInput" >
+          </van-field>
+        </van-cell-group>
+        <span class="red-color definedMoneyDec">金额在10~5000之间，且为10的倍数</span>
+        <van-button type="danger" size="large" :disabled="isDefinedMoneyNumRight ? false : true" @click="confirmDefineMoney">确定</van-button>
+      </div>
+      <div class="flex-center pop-close-zone">
+        <van-icon name="close" @click="definedMoneyPop=false" class="pop-close-icon"/>
+      </div>
+    </van-popup>
     <!-- 服务协议 -->
     <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
       <div class="fixed-top">
@@ -166,7 +181,10 @@
         showHelpPop: false,  // 帮助问题弹框
         advertisingTargetActionPop: false,  //逛选项上拉菜单
         showUserAgreementPop: false,  // 隐私协议条款
-        durationActionPop: false,  //时长上拉菜单
+        durationActionPop: false,  // 时长上拉菜单
+        definedMoneyPop: false, // 自定义投放金额弹框
+        definedMoneyNum: '',  // 自定义金额
+        isDefinedMoneyNumRight: false,  // 自定义金额是否准确
         currentAdvertisingTarget: 0,  // 当前广告投放目标，0-视频互动量，1-粉丝增长
         advertisingTargetAction: [ // 投放广告选项
           {
@@ -221,40 +239,40 @@
           'dec': '投放金额为此次投放的最大消耗值，系统会100%投放完成，投放过程中如若遇到非系统故障，如'+
                   '视频删除/人工举报，系统将不予退回金额。如遇到系统故障等非用户自身操作，如系统升级，系统会自动延放到下一个版本。',
         },
-        targetUserRadio: '2', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
+        targetUserRadio: '0', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
         playbackVolume: 5000, // 预计播放量
         isShoping: false, // 是否交易中
         price: 1990, // 价格，分为单位
         currentSelect: 0,  // 当前选中
         shopList: [
           {
-            num: 9.9,
-            value: '￥9.9',
+            num: 10,
+            value: '￥10',
             isHot: 0, // 是否热选，0-是，1-否
           },
           {
-            num: 19.9,
-            value: '￥19.9',
+            num: 50,
+            value: '￥50',
             isHot: 1, // 是否热选，0-是，1-否
           },
           {
-            num: 38,
-            value: '￥38',
+            num: 100,
+            value: '￥100',
             isHot: 1, // 是否热选，0-是，1-否
           },
           {
-            num: 68,
-            value: '￥68',
+            num: 200,
+            value: '￥200',
             isHot: 1, // 是否热选，0-是，1-否
           },
           {
-            num: 128,
-            value: '￥28',
+            num: 300,
+            value: '￥300',
             isHot: 1, // 是否热选，0-是，1-否
           },
           {
-            num: 66,
-            value: '￥66',
+            num: 0,
+            value: '自定义',
             isHot: 1, // 是否热选，0-是，1-否
           },
         ],
@@ -263,6 +281,17 @@
     mounted () {
     },
     computed: {
+    },
+    watch: {
+      definedMoneyNum (curVal, oldVal) {
+        if (parseFloat(curVal).toString() !== "NaN" && curVal >= 10 && curVal <= 5000 && curVal % 10 === 0 ) {
+          this.isDefinedMoneyNumRight = true;
+        }else if (curVal > 5000 ) {
+          this.definedMoneyNum = 5000;
+        }else{
+          this.isDefinedMoneyNumRight = false;
+        }
+      }
     },
     methods: {
       onClickLeft(){
@@ -327,11 +356,22 @@
       changeAgreeCheckbox () {
         this.isShoping = !this.isShoping;
       },
-      // 选择商品
-      selectShop (index, item) {
+      // 选择金额
+      selectMoney (index, item) {
         this.currentSelect = index;
         this.price = item.num * 100;
+        if (index === 5) {
+          this.definedMoneyPop = true;
+          this.definedMoneyNum = this.shopList[5].value;
+        }else {
+          this.playbackVolume = 5000 * (index + 1);
+        }
       },
+      // 确定自定义金额
+      confirmDefineMoney () {
+        this.definedMoneyPop = false;
+        this.shopList[5].value = this.definedMoneyNum;
+      }
     }
   }
 </script>
@@ -409,5 +449,13 @@
   }
   .content-zone{
     margin: 1.2rem 0 1.6rem 0;
+  }
+  .definedMoneyInput{
+    background-color: #F4F4F4;
+  }
+  .definedMoneyDec{
+    height: 1rem;
+    display: flex;
+    align-items: center;
   }
 </style>
