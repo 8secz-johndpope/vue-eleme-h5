@@ -21,7 +21,7 @@
           <span>选择达人</span>
           <span class="gray-color popTop-title-dec">建议选择5个达人以上</span>
         </div>
-        <div @click="finishedSelect">完成({{totalSelect}}/20)</div>
+        <div @click="finishedSelect">完成({{totalSelect}}/10)</div>
       </div>
       <div>
         <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
@@ -33,7 +33,7 @@
           </van-badge-group>
         </div>
         <div class="select-zone-right">
-          <SelectUserCheckbox :checkboxArr = "getImitateUserList"></SelectUserCheckbox>
+          <SelectUserCheckbox :badgeArrsParent="badgeArrs" :checkboxArr="badgeArrs[activeKey].userList" :activeIndex="activeKey" @chlidSelectUser="getChildSelectUser" v-if="badgeArrs[activeKey].userList.length !== 0"></SelectUserCheckbox>
         </div>
       </div>
     </van-popup>
@@ -63,27 +63,39 @@
             badgeType: '0001',  // 类型
             badgeName: '服装',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
           },
           {
             badgeType: '0001',  // 类型
             badgeName: '数码',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
           },
           {
             badgeType: '0001',  // 类型
             badgeName: '奢侈品',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
           },
           {
             badgeType: '0001',  // 类型
             badgeName: '饮食',  // 标签名称
             badgeSelected: 0,  // 标签已选数量
+            userList: [], // 该徽章下的用户列表
+            currentBadgeSelectedList:[], //当前选择的总用户列表，用来提交给后端
+            currentCheckboxResult: [],  // 当前选择的复选标识
           },
         ],
       };
     },
     mounted () {
-
+      this.getImitateUserListByActiveKey(0);  // 通过徽章索引获得每一个徽章下的用户列表数
     },
     computed: {
       ...mapGetters([
@@ -102,6 +114,7 @@
       // 切换徽章
       onChangeBadge(key) {
         this.activeKey = key;
+        this.getImitateUserListByActiveKey(key);
       },
       // 完成选择
       finishedSelect () {
@@ -110,7 +123,29 @@
       // 删除已经选择的达人
       deleteSelectUser (index) {
         this.$toast('删除操作');
-      }
+      },
+      // 获取用户选择子组件选择的用户
+      getChildSelectUser ({userList, checkboxResult}){
+        let that = this;
+        that.badgeArrs[that.activeKey].currentBadgeSelectedList = userList;
+        that.badgeArrs[that.activeKey].currentCheckboxResult = checkboxResult;
+        that.badgeArrs[that.activeKey].badgeSelected = userList.length;
+      },
+      // 通过徽章索引获得每一个徽章下的用户列表数
+      getImitateUserListByActiveKey (activeKey) {
+        let that = this;
+        that.badgeArrs[activeKey].userList = [];
+        for (var i = 0; i < 10; i++) {
+          let obj = {
+            userId : that.getImitateUserList[0].userId,
+            userName : that.getImitateUserList[0].userName,
+            userImg : that.getImitateUserList[0].userImg,
+            autograph : that.getImitateUserList[0].autograph,
+            fansNum : that.getImitateUserList[0].fansNum,
+          }
+          that.badgeArrs[activeKey].userList.push(obj);
+        }
+      },
     }
   }
 </script>

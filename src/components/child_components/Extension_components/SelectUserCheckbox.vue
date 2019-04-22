@@ -33,6 +33,16 @@
       'checkboxArr':{
         type: Array,
         default: [],
+      },
+      // 徽章索引
+      'activeIndex': {
+        type: Number,
+        default: 0,
+      },
+      // 父徽章的
+      'badgeArrsParent': {
+        type: Array,
+        default: [],
       }
     },
     components:{
@@ -40,22 +50,74 @@
     name: 'selectUserCheckbox',
     data () {
       return {
-        checkboxList: ['id0001','id0002','id0003','id0004','id0005'],
-        checkboxResult: ['id0001','id0002'],
+        checkboxList: [], // 默认列表
+        checkboxResult: [], // 选中结果
+        userResultList: [], // 传递给父组件的结果
       };
     },
     mounted () {
-
+      this.getUserListByIndex(this.checkboxArr)  // 获取用户列表
     },
     computed: {
+      totalSelectChild: function () {
+        let sum = 0;
+        this.badgeArrsParent.forEach( (val, index) => {
+          sum += val.badgeSelected;
+        })
+        return sum
+      }
     },
     methods: {
       // 复选框
       toggle(index) {
-        this.$refs.checkboxes[index].toggle();
-        // this.$emit('currentCheckUserList','')
+        let that = this;
+        let flag = true;
+        let flagIndex = 0;
+        // 过滤掉已含有的用户
+        if (that.userResultList.length !== 0) {
+          that.userResultList.forEach( (v,i) => {
+            if (v.index === index) {
+              flag = false;
+              flagIndex = i;
+            }
+          })
+        }
+        if (flag) {
+          if (that.totalSelectChild >= 10) {
+            that.$toast('最多添加10个')
+            return;
+          }
+          let obj = {
+            index: index,
+            userId : that.checkboxArr[index].userId,
+            userName : that.checkboxArr[index].userName,
+            userImg : that.checkboxArr[index].userImg,
+          }
+          that.userResultList.push(obj);
+        }else {
+          that.userResultList.splice(flagIndex, 1)
+        }
+        that.$refs.checkboxes[index].toggle();
+        that.$emit('chlidSelectUser',{ userList: that.userResultList, checkboxResult: that.checkboxResult })
+      },
+      // 获取用户列表
+      getUserListByIndex (badgeUserList) {
+        let that = this;
+        that.checkboxList = [];
+        // 当前选中的用户，通过id唯一标识
+        for (var i = 0; i < badgeUserList.length; i++) {
+          that.checkboxList.push('bdId' + that.activeIndex + 'id000' + i.toString());
+        };
       }
-    }
+    },
+    watch:{
+      // 监听当前用户列表，左侧徽章切换的时候，用户列表会随之更换
+      checkboxArr (newData,oldData) {
+        this.checkboxResult = this.badgeArrsParent[this.activeIndex].currentCheckboxResult;
+        this.userResultList = this.badgeArrsParent[this.activeIndex].currentBadgeSelectedList;
+        this.getUserListByIndex(newData) // 获取用户列表
+      }
+    },
   }
 </script>
 <style lang="css" scoped>

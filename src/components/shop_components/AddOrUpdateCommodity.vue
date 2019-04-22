@@ -47,13 +47,6 @@
         placeholder="请输入商品数量"
         />
         <van-field
-        v-model="shippingAddress"
-        required
-        clearable
-        label="发货地"
-        placeholder="请输入商品名称"
-        />
-        <van-field
         v-model="goodsCornerMarker"
         clearable
         label="商品角标"
@@ -174,7 +167,6 @@
         goodsFreight: '', // 商品运费
         goodsFreightRemark: '', // 运费备注
         goodsDec: '', // 商品描述
-        shippingAddress: '深圳·南山',  // 发货地址
         goodsTag: '', // 商品标签
         goodsTagArr: [],  // 商品标签组
       };

@@ -9,9 +9,12 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     />
-    <van-cell title="联系电话" is-link :value="tel" @click="telPop = true" />
     <van-cell title="发货地址" is-link :value="address" @click="areaPopShow = true" />
     <van-cell title="商店类型" is-link :value="shopType === -1 ? '请选择商店类型' : shopTypeName " @click="shopTypePop = true" />
+    <van-cell title="联系电话" is-link :value="tel" @click="telPop = true" />
+    <van-cell-group>
+      <van-switch-cell v-model="showTelChecked" title="是否显示电话" size="0.373333rem" @change="changeTel" />
+    </van-cell-group>
     <!-- 联系电话 -->
     <van-popup v-model="telPop" position="bottom" :overlay="true" class="grayBg">
       <van-nav-bar
@@ -54,7 +57,10 @@
   </div>
 </template>
 <script>
+  import Vue from 'vue';
   import { mapGetters } from 'vuex';
+  import { SwitchCell } from 'vant';
+  Vue.use(SwitchCell);
   export default {
     components:{
     },
@@ -65,6 +71,7 @@
         telPop: false,  // 联系电话弹框
         address: '广东省·深圳市·罗湖区', // 地址
         tel: '18124655386',  // 联系电话
+        showTelChecked: false, // 是否显示电话，默认不显示
         shopTypePop: false, // 商店类型弹框
         shopType: -1, // 商店类型
         shopTypeName: '', // 商店类型中文名
@@ -145,6 +152,10 @@
         this.shopTypeName = this.selectShopTypeRadioName;
         this.shopTypePop = false;
       },
+      // 切换是否显示电话
+      changeTel (checked) {
+        this.$toast('切换状态：'+checked)
+      }
     }
 }
 </script>
