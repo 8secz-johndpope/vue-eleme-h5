@@ -144,28 +144,39 @@
     },
     mounted () {
       this.getImitateUserListByActiveKey(0);  // 通过徽章索引获得每一个徽章下的用户列表数
+      this.badgeArrsInit = JSON.parse(JSON.stringify(this.badgeArrs));
     },
     computed: {
       ...mapGetters([
         'getAreaList',
         'getImitateUserList', // 获取用户列表数据
       ]),
+      // 选择的总数
       totalSelect: function () {
         let sum = 0;
         this.badgeArrs.forEach( (val, index) => {
           sum += val.badgeSelected;
         })
         return sum
+      },
+      // 自定义播放预计播放指数
+      darenBasicMultiplePlaybackVolume () {
+        if (this.hasSelectedUserList.length === 0) {
+          return 1000
+        }else{
+          return 500
+        }
       }
     },
     watch: {
+      // 是否是搜索框
       searchValue (newData,oldData) {
         if (newData !== '') {
           this.isSearch = true;
         }else {
           this.isSearch = false;
         }
-      }
+      },
     },
     methods: {
       // 打开弹框
@@ -198,6 +209,7 @@
           }
         })
         that.badgeArrsInit = JSON.parse(JSON.stringify(that.badgeArrs));
+        this.$emit('childMultiple',this.darenBasicMultiplePlaybackVolume);
       },
       // 删除已经选择的达人
       deleteSelectUser (item,index) {
@@ -207,6 +219,7 @@
         this.badgeArrsInit[obj_p_index].badgeSelected -= 1;
         this.badgeArrsInit[obj_p_index].currentBadgeSelectedList.splice(obj_c_index,1);
         this.badgeArrsInit[obj_p_index].currentCheckboxResult.splice(obj_c_index,1);
+        this.$emit('childMultiple',this.darenBasicMultiplePlaybackVolume);
       },
       // 获取用户选择子组件选择的用户
       getChildSelectUser ({userList, checkboxResult}){

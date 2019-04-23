@@ -2,7 +2,7 @@
   <div class="shopInfo">
     <!-- 顶部 -->
     <van-nav-bar
-      title="商店通用信息"
+      title="橱窗通用信息"
       left-text="返回"
       right-text="提交"
       left-arrow
@@ -10,10 +10,10 @@
       @click-right="onClickRight"
     />
     <van-cell title="发货地址" is-link :value="address" @click="areaPopShow = true" />
-    <van-cell title="商店类型" is-link :value="shopType === -1 ? '请选择商店类型' : shopTypeName " @click="shopTypePop = true" />
+    <van-cell title="橱窗类型" is-link :value="shopType === -1 ? '请选择橱窗类型' : shopTypeName " @click="shopTypePop = true" />
     <van-cell title="联系电话" is-link :value="tel" @click="telPop = true" />
     <van-cell-group>
-      <van-switch-cell v-model="showTelChecked" title="是否显示电话" size="0.373333rem" @change="changeTel" />
+      <van-switch-cell v-model="showTelChecked" title="是否显示电话" size="0.5rem" @change="changeTel" />
     </van-cell-group>
     <!-- 联系电话 -->
     <van-popup v-model="telPop" position="bottom" :overlay="true" class="grayBg">
@@ -72,12 +72,12 @@
         address: '广东省·深圳市·罗湖区', // 地址
         tel: '18124655386',  // 联系电话
         showTelChecked: false, // 是否显示电话，默认不显示
-        shopTypePop: false, // 商店类型弹框
-        shopType: -1, // 商店类型
-        shopTypeName: '', // 商店类型中文名
-        selectShopTypeRadio: -1,  // 选中的商店类型
-        selectShopTypeRadioName: '',   // 选中的商店类型中文名
-        shopTypeList: [ // 商店类型类别
+        shopTypePop: false, // 橱窗类型弹框
+        shopType: -1, // 橱窗类型
+        shopTypeName: '', // 橱窗类型中文名
+        selectShopTypeRadio: -1,  // 选中的橱窗类型
+        selectShopTypeRadioName: '',   // 选中的橱窗类型中文名
+        shopTypeList: [ // 橱窗类型类别
           {
             name: '动漫',
             value: 0,
@@ -113,7 +113,7 @@
         let that = this;
         let errorMsg = '';
         if (that.shopType === -1) {
-          errorMsg = '请选择商店类型'
+          errorMsg = '请选择橱窗类型'
         }else if(!(/^1[34578]\d{9}$/.test(that.tel))){
           errorMsg = '请输入正确的手机号码'
         }
@@ -141,7 +141,7 @@
         this.areaPopShow = false;
         this.address = e[0].name+'·'+e[1].name+'·'+e[2].name;
       },
-      // 选择商店类型
+      // 选择橱窗类型
       selectShopType (item,index) {
         this.selectShopTypeRadio = item.value;
         this.selectShopTypeRadioName = item.name;

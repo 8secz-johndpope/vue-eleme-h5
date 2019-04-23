@@ -26,7 +26,7 @@
             </div>
           </div>
           <div>
-            <router-link :to="{ name: 'shopInfo', params: {} }" class="flex-center">编辑商店<van-icon name="edit" /></router-link>
+            <router-link :to="{ name: 'shopInfo', params: {} }" class="flex-center">编辑橱窗<van-icon name="edit" /></router-link>
           </div>
         </div>
       </van-panel>

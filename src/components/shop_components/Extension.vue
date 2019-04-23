@@ -31,20 +31,20 @@
         <div class="cell-zone">
           <div class="flex-center">
             <span>期望提升</span>
-            <van-icon name="question-o" class="question-icon" @click="qiwangIcon" />
+            <van-icon name="question-o" class="question-icon" @click="helpIcon('qiwangIcon')" />
             <span class="red-color" @click="advertisingTargetActionPop = true">{{currentAdvertisingTarget === 0 ? '视频互动量' : '粉丝增长'}}></span>
           </div>
           <span class="flex-center gray-color vertical-line">|</span>
           <div class="flex-center">
             <span>投放时长</span>
-            <van-icon name="question-o" class="question-icon" @click="shichangIcon"/>
+            <van-icon name="question-o" class="question-icon" @click="helpIcon('shichangIcon')"/>
             <span class="red-color" @click="durationActionPop = true">{{currentDuration === 0 ? '6小时' : currentDuration === 1 ? '12小时' : '24小时'}}></span>
           </div>
         </div>
         <!-- 选择兴趣用户 -->
         <div class="cell-zone">
           <span>把作品推荐给潜在兴趣用户</span>
-          <van-icon name="question-o" class="question-icon" @click="xingquUseIcon" />
+          <van-icon name="question-o" class="question-icon" @click="helpIcon('xingquUseIcon')" />
         </div>
         <!-- 选择潜在用户选项 -->
         <van-radio-group v-model="targetUserRadio">
@@ -56,18 +56,18 @@
               <van-radio name="1" />
             </van-cell>
             <!-- 自定义定向投放 区域 -->
-            <Orientation v-show="targetUserRadio == '1'"></Orientation>
+            <Orientation v-show="targetUserRadio == '1'" @childMultiple="getChildMultiple"></Orientation>
             <van-cell title="达人相似粉丝投放" clickable @click="targetUserRadio = '2'">
               <van-radio name="2" />
             </van-cell>
             <!-- 达人相似粉丝投放 区域 -->
-            <Daren v-show="targetUserRadio == '2'"></Daren>
+            <Daren v-show="targetUserRadio == '2'" @childMultiple="getChildMultiple"></Daren>
           </van-cell-group>
         </van-radio-group>
         <!-- 播放量提升 -->
         <div class="cell-zone">
           <span>预计播放量提升</span>
-          <van-icon name="question-o" class="question-icon" @click="bofangIcon" />
+          <van-icon name="question-o" class="question-icon" @click="helpIcon('bofangIcon')" />
         </div>
         <!-- 播放量提升数 -->
         <div class="flex-center red-color playbackVolume">
@@ -76,12 +76,12 @@
         <!-- 投放金额 -->
         <div class="cell-zone">
           <span>投放金额</span>
-          <van-icon name="question-o" class="question-icon" @click="jineIcon" />
+          <van-icon name="question-o" class="question-icon" @click="helpIcon('jineIcon')" />
         </div>
         <!-- 金额列表区域 -->
         <div class="shopList-zone">
           <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectMoney(index, item)" class="shop-btn">
-            <span v-if="isDefinedMoneyNumRight && index == 5">￥</span><span>{{item.value}}</span><span v-if="isDefinedMoneyNumRight && index == 5">></span>
+            <span>{{item.value}}</span>
           </van-button>
         </div>
         <div class="cell-zone">
@@ -93,13 +93,6 @@
             <span class="gold-color">投放要求</span>
           </div>
         </div>
-        <van-submit-bar
-          :disabled="isShoping"
-          :price="price"
-          button-text="支付"
-          @submit="onSubmit"
-        >
-        </van-submit-bar>
       </div>
     </div>
     <van-submit-bar
@@ -109,19 +102,19 @@
       @submit="onSubmit"
     >
     </van-submit-bar>
-    <!-- 选择广告投放类型上拉菜单 -->
+    <!-- 选择广告投放类型上拉菜单 弹框 -->
     <van-actionsheet v-model="advertisingTargetActionPop" title="投放目标" >
       <div class="select-content">
         <p class="flex-center select-content-item" v-for="(item,index) in advertisingTargetAction" @click="onSelectAdvertisingTargetActionsheet(item)">{{item.name}}</p>
       </div>
     </van-actionsheet>
-    <!-- 当前时长投放目标上拉菜单 -->
+    <!-- 当前时长投放目标上拉菜单 弹框 -->
     <van-actionsheet v-model="durationActionPop" title="选择时长" >
       <div class="select-content">
         <p class="flex-center select-content-item" v-for="(item,index) in durationAction" @click="onSelectDurationActionsheet(item)">{{item.name}}</p>
       </div>
     </van-actionsheet>
-    <!-- 问题弹框 -->
+    <!-- 问题 弹框 -->
     <van-popup v-model="showHelpPop" class="helpPop">
       <div class="pop-content">
         <h3 class="pop-content-title">{{currentPopCentent.title}}</h3>
@@ -146,7 +139,7 @@
         <van-icon name="close" @click="definedMoneyPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
-    <!-- 服务协议 -->
+    <!-- 服务协议 弹框 -->
     <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
       <div class="fixed-top">
         <van-nav-bar
@@ -177,7 +170,6 @@
       return {
         agreeCheckbox: true,  // 同意条款
         isShoping: false, // 是否交易中
-        price: 1990, // 价格，分为单位
         showHelpPop: false,  // 帮助问题弹框
         advertisingTargetActionPop: false,  //逛选项上拉菜单
         showUserAgreementPop: false,  // 隐私协议条款
@@ -240,40 +232,47 @@
                   '视频删除/人工举报，系统将不予退回金额。如遇到系统故障等非用户自身操作，如系统升级，系统会自动延放到下一个版本。',
         },
         targetUserRadio: '0', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
-        playbackVolume: 5000, // 预计播放量
-        isShoping: false, // 是否交易中
-        price: 1990, // 价格，分为单位
+        playbackVolume: 1000, // 预计播放量
+        basicMultiplePlaybackVolume: 1000,  //基本播放量
+        currentMuultiple: 1,  // 当前倍数
+        price: 1000, // 价格，分为单位
         currentSelect: 0,  // 当前选中
         shopList: [
           {
             num: 10,
             value: '￥10',
             isHot: 0, // 是否热选，0-是，1-否
+            multiple: 1,  // 预计播放倍数
+          },
+          {
+            num: 20,
+            value: '￥20',
+            isHot: 1, // 是否热选，0-是，1-否
+            multiple: 2,  // 预计播放倍数
+          },
+          {
+            num: 30,
+            value: '￥30',
+            isHot: 1, // 是否热选，0-是，1-否
+            multiple: 3,  // 预计播放倍数
           },
           {
             num: 50,
             value: '￥50',
             isHot: 1, // 是否热选，0-是，1-否
+            multiple: 5,  // 预计播放倍数
           },
           {
             num: 100,
             value: '￥100',
             isHot: 1, // 是否热选，0-是，1-否
-          },
-          {
-            num: 200,
-            value: '￥200',
-            isHot: 1, // 是否热选，0-是，1-否
-          },
-          {
-            num: 300,
-            value: '￥300',
-            isHot: 1, // 是否热选，0-是，1-否
+            multiple: 10,  // 预计播放倍数
           },
           {
             num: 0,
             value: '自定义',
             isHot: 1, // 是否热选，0-是，1-否
+            multiple: 0,  // 预计播放倍数
           },
         ],
       };
@@ -283,6 +282,7 @@
     computed: {
     },
     watch: {
+      // 自定义输入金额
       definedMoneyNum (curVal, oldVal) {
         if (parseFloat(curVal).toString() !== "NaN" && curVal >= 10 && curVal <= 5000 && curVal % 10 === 0 ) {
           this.isDefinedMoneyNumRight = true;
@@ -291,45 +291,33 @@
         }else{
           this.isDefinedMoneyNumRight = false;
         }
+      },
+      // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
+      targetUserRadio (curVal, oldVal) {
+        if (curVal == 0) {
+          this.basicMultiplePlaybackVolume = 1000;
+        }
+        this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
       }
     },
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
-      // 点击期望icon
-      qiwangIcon () {
-        this.currentPopCentent = this.qiwangDec;
+      // 帮助弹框
+      helpIcon (type) {
+        if (type == 'jineIcon') {  // 投放金额icon
+          this.currentPopCentent = this.jineDec;
+        }else if (type == 'bofangIcon') { // 播放icon
+          this.currentPopCentent = this.bofangDec;
+        }else if (type == 'shichangIcon') { // 时长期望icon
+          this.currentPopCentent = this.shichangDec;
+        }else if (type == 'qiwangIcon') {  // 点击期望icon
+          this.currentPopCentent = this.qiwangDec;
+        }else if (type == 'xingquUseIcon') {  // 点击期望icon
+          this.currentPopCentent = this.xingquUseDec;
+        }
         this.showHelpPop = true;
-      },
-      // 时长期望icon
-      shichangIcon () {
-        this.currentPopCentent = this.shichangDec;
-        this.showHelpPop = true;
-      },
-      // 时长期望icon
-      xingquUseIcon () {
-        this.currentPopCentent = this.xingquUseDec;
-        this.showHelpPop = true;
-      },
-      // 播放icon
-      bofangIcon () {
-        this.currentPopCentent = this.bofangDec;
-        this.showHelpPop = true;
-      },
-      // 投放金额icon
-      jineIcon () {
-        this.currentPopCentent = this.jineDec;
-        this.showHelpPop = true;
-      },
-      // 提交商品
-      onSubmit () {
-        let that = this;
-        that.isShoping = true;
-        setTimeout(() => {
-          that.isShoping = false;
-          that.$router.push('/setting/payment')
-        }, 1000);
       },
       // 选择广告类型
       onSelectAdvertisingTargetActionsheet(item) {
@@ -358,19 +346,35 @@
       },
       // 选择金额
       selectMoney (index, item) {
-        this.currentSelect = index;
-        this.price = item.num * 100;
         if (index === 5) {
+          // 点击的自定义金额
           this.definedMoneyPop = true;
-          this.definedMoneyNum = this.shopList[5].value;
+          this.definedMoneyNum = this.shopList[index].num == 0 ? '' : this.shopList[index].num;
         }else {
-          this.playbackVolume = 5000 * (index + 1);
+          // 点击的非自定义金额
+          this.currentSelect = index; // 高亮的位置
+          this.price = item.num * 100;  // 价格
+          this.definedMoneyNum = '';
+          this.shopList[5].num  = 0;
+          this.shopList[5].value = '自定义';
+          this.currentMuultiple = this.shopList[index].multiple;  // 当前倍数
+          this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
         }
       },
       // 确定自定义金额
       confirmDefineMoney () {
+        this.currentSelect = 5;
         this.definedMoneyPop = false;
-        this.shopList[5].value = this.definedMoneyNum;
+        this.shopList[5].num = this.definedMoneyNum;
+        this.price = this.definedMoneyNum * 100;
+        this.shopList[5].value = '￥'+this.definedMoneyNum+'>';
+        this.currentMuultiple = this.definedMoneyNum / 10; // 自定义倍数
+        this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
+      },
+      // 获取子组件 -- 自定义投放，达人选择 的 播放倍数
+      getChildMultiple (childVolume) {
+        this.basicMultiplePlaybackVolume = childVolume;
+        this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
       }
     }
   }

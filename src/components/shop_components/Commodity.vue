@@ -20,16 +20,16 @@
       </van-cell-group>
 
       <van-cell-group class="goods-cell-group">
-        <van-cell value="进入店铺" icon="shop-o" is-link :to="{ name: 'showcase', params: {'id':'01'} }">
+        <van-cell value="进入橱窗" icon="shop-o" is-link :to="{ name: 'showcase', params: {'id':'01'} }">
           <template slot="title">
-            <span class="van-cell-text">XXX的店</span>
+            <span class="van-cell-text">XXX的橱窗</span>
             <van-tag class="goods-tag" type="danger">官方</van-tag>
           </template>
         </van-cell>
         <van-cell title="发货地址" value="广东省·深圳市·罗湖区" is-link />
         <van-collapse v-model="activeNames">
           <van-collapse-item title="商品详情" name="1">
-            提供多样店铺模板，快速搭建网上商城
+            提供多样橱窗模板，快速搭建网上商城
           </van-collapse-item>
         </van-collapse>
       </van-cell-group>
