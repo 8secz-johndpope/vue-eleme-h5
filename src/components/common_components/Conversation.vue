@@ -37,7 +37,7 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
-        <Comments></Comments>
+        <Comments class="comments-box"></Comments>
       </van-actionsheet>
       <!-- 商品展示页 -->
       <van-actionsheet v-model="goodsShow" title="XXX的推荐">
@@ -239,5 +239,9 @@ export default {
   .goShowcase{
     padding: 0.2rem 0 0.6rem 0;
     font-size: 16px;
+  }
+  .comments-box{
+    height: 13rem;
+    overflow: scroll;
   }
 </style>

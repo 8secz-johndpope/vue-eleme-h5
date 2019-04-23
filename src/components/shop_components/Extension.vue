@@ -105,13 +105,19 @@
     <!-- 选择广告投放类型上拉菜单 弹框 -->
     <van-actionsheet v-model="advertisingTargetActionPop" title="投放目标" >
       <div class="select-content">
-        <p class="flex-center select-content-item" v-for="(item,index) in advertisingTargetAction" @click="onSelectAdvertisingTargetActionsheet(item)">{{item.name}}</p>
+        <p class="flex-center select-content-item" :class=" currentAdvertisingTarget == item.value ? 'select-content-item-selected' : '' "
+          v-for="(item,index) in advertisingTargetAction" @click="onSelectAdvertisingTargetActionsheet(item)">
+            {{item.name}}
+        </p>
       </div>
     </van-actionsheet>
     <!-- 当前时长投放目标上拉菜单 弹框 -->
     <van-actionsheet v-model="durationActionPop" title="选择时长" >
       <div class="select-content">
-        <p class="flex-center select-content-item" v-for="(item,index) in durationAction" @click="onSelectDurationActionsheet(item)">{{item.name}}</p>
+        <p class="flex-center select-content-item" :class=" currentDuration == item.value ? 'select-content-item-selected' : '' "
+           v-for="(item,index) in durationAction" @click="onSelectDurationActionsheet(item)">
+           {{item.name}}
+        </p>
       </div>
     </van-actionsheet>
     <!-- 问题 弹框 -->
@@ -216,7 +222,7 @@
         },
         shichangDec: {
           'title': '投放时长',
-          'dec': '此投放时长为预估时长，订单以实际消耗情况为准。<br />10元以上的订单建议投放6小时以上。',
+          'dec': '播放时间将从您完成订单之后立马生效。<br />此投放时长为最低时长，订单以实际消耗情况为准。<br />10元以上的订单建议投放6小时以上。',
         },
         xingquUseDec: {
           'title': '作品推荐',
@@ -224,7 +230,7 @@
         },
         bofangDec: {
           'title': '预计播放量',
-          'dec': '自定义投放设置越精确，投放成本越高，系统将会根据您的自定义投放设置实时估算预计播放量。',
+          'dec': '数值为播放的最低时长，系统将在达到该顶点的时候结束投放。<br />自定义投放设置越精确，投放成本越高。<br />系统将会根据您的自定义投放设置实时估算预计播放量。',
         },
         jineDec: {
           'title': '投放金额',
@@ -323,13 +329,11 @@
       onSelectAdvertisingTargetActionsheet(item) {
         this.advertisingTargetActionPop = false;
         this.currentAdvertisingTarget = item.value;
-        this.$toast(item.name);
       },
       // 选择时长类型
       onSelectDurationActionsheet(item) {
         this.durationActionPop = false;
         this.currentDuration = item.value;
-        this.$toast(item.name);
       },
       // 提交商品
       onSubmit () {
@@ -431,6 +435,10 @@
   .select-content-item{
     height: 1rem;
     font-size: 0.426667rem;
+  }
+  .select-content-item-selected{
+    background-color: #FEF2F4;
+    color: #C13B66;
   }
   .questionPopDec{
     display: flex;

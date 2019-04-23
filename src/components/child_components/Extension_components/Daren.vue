@@ -256,11 +256,13 @@
     display: flex;
     align-items: center;
     text-align: center;
+    padding: 0.1rem 0;
   }
   .van-avatar-select{
     font-size: 0.533333rem;
     background: #D4BBA7;
     margin: 0 0.4rem 0.1rem 0;
+    line-height: 0.94rem;
   }
   .van-avatar-name{
     max-width: 1.066667rem;
