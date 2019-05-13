@@ -199,7 +199,7 @@ export var imitateMenu = [
     ]
   },
   {
-    levelOneName: '抱美人归', // 分类一级名称
+    levelOneName: '确立关系', // 分类一级名称
     menuList: [
         {
             levelTwoName: '破解抵抗',
@@ -358,6 +358,30 @@ export var imitateMenu = [
         //     linkAddress: 'www.baidu.com',   // 新链接地址
         //     listId: 'id0001',   // 菜单Id
         // },
+    ]
+  },
+  {
+    levelOneName: '装逼技能', // 分类一级名称
+    menuList: [
+        {
+            levelTwoName: '形象穿搭',
+            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
+            openNewLink: true,  // 打开新连接
+            linkAddress: 'www.baidu.com',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
+    ]
+  },
+  {
+    levelOneName: '你问我答', // 分类一级名称
+    menuList: [
+        {
+            levelTwoName: '形象穿搭',
+            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
+            openNewLink: true,  // 打开新连接
+            linkAddress: 'www.baidu.com',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
     ]
   },
 ];

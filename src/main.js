@@ -16,6 +16,12 @@ import 'vant/lib/index.css';
 import instance_ from './api/index';
 Vue.prototype.instance = instance_;  //axios实例
 
+// 引入视频
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
+
 Vue.use(VueClipboards,axios);
 
 Vue.use(Tabbar).use(TabbarItem).use(Cell).use(CellGroup).use(SwipeCell).use(Icon).use(Tab).use(Tabs).use(Popup).use(Button).use(NavBar).use(PullRefresh).use(Panel).use(Actionsheet)

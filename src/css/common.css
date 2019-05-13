@@ -1,6 +1,6 @@
 .van-swipe-cell__right {
   color: #fff;
-  font-size: 15px;
+  font-size: 0.4rem;
   width: 65px;
   height: 44px !important;
   display: inline-block;
@@ -73,13 +73,19 @@
   height: 1rem !important;
 }
 .mg15{
-  margin: 15px;
+  margin: 0.4rem;
+}
+.mg10{
+  margin: 10px;
 }
 .mgt10{
   margin-top: 10px;
 }
+.mgr10{
+  margin-right: 10px;
+}
 .pd15{
-  padding: 15px;
+  padding: 0.4rem;
 }
 .pd10{
   padding: 10px;
@@ -98,6 +104,12 @@
 .flex-space-between{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-space-around{
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
