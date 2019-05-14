@@ -55,7 +55,10 @@
     <div class="space"></div>
     <!-- 固定标签页 -->
     <Fixednav></Fixednav>
-    <van-popup v-model="videoPopShow">
+    <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
+      <div class="closePop">
+        <van-icon name="close" @click="closeVideoPop"/>
+      </div>
       <div class="videoPop">
         <video-player
           class="video-player vjs-custom-skin"
@@ -64,22 +67,21 @@
           @play="onPlayerPlay($event)"
           @pause="onPlayerPause($event)"
           @ended="onPlayerEnded($event)"
+          @loadeddata="onPlayerLoadeddata($event)"
+          @waiting="onPlayerWaiting($event)"
+          @playing="onPlayerPlaying($event)"
+          @timeupdate="onPlayerTimeupdate($event)"
+          @canplay="onPlayerCanplay($event)"
+          @canplaythrough="onPlayerCanplaythrough($event)"
+          @ready="playerReadied"
+          @statechanged="playerStateChanged($event)"
           :options="playerOptions"
-          >
+        >
         </video-player>
       </div>
     </van-popup>
   </div>
 </template>
-<!-- 视频事件
-@loadeddata="onPlayerLoadeddata($event)"
-@waiting="onPlayerWaiting($event)"
-@playing="onPlayerPlaying($event)"
-@timeupdate="onPlayerTimeupdate($event)"
-@canplay="onPlayerCanplay($event)"
-@canplaythrough="onPlayerCanplaythrough($event)"
-@ready="playerReadied"
-@statechanged="playerStateChanged($event)" -->
 <script>
 import Fixednav from './common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
@@ -102,7 +104,7 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: "video/mp4",
-          src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
+          src: "" //你的视频地址（必填）
         }],
         poster: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg", //你的封面地址
         width: document.documentElement.clientWidth,
@@ -147,15 +149,61 @@ export default {
       this.$store.dispatch('setKeywords', this.keywords);
       this.$router.push('/result/'+this.keywords);
     },
+    // 打开弹出层
     openVideoPop () {
-      this.videoPopShow = true;
-      this.playerOptions.autoplay = true;
+      let that = this;
+      const c_toast = this.$toast.loading({
+        duration: 0,       // 持续展示 toast
+        forbidClick: true, // 禁用背景点击
+        loadingType: 'spinner',
+        message: '加载中...'
+      });
+      that.videoPopShow = true;
+      setTimeout( () => {
+        that.$toast.clear();
+        that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
+      },2000)
+    },
+    // 点击遮罩层 关闭弹出层
+    closeVideoPop () {
+      let that = this
+      this.videoPopShow = false;
+      setTimeout( () => {
+        that.playerOptions.sources[0].src =  "" //你的视频地址（必填）
+      },100)
+    },
+    playerReadied () {
+      console.log("onPlayerLoadeddata");
     },
     onPlayerPlay(player) {
-      // alert("play");
+      console.log("onPlayerLoadeddata");
     },
     onPlayerPause(player){
-      // alert("pause");
+      console.log("onPlayerPause");
+    },
+    onPlayerEnded(player) {
+      console.log("onPlayerEnded");
+    },
+    onPlayerLoadeddata(player){
+      console.log("onPlayerLoadeddata");
+    },
+    onPlayerWaiting(player) {
+      console.log("onPlayerWaiting");
+    },
+    onPlayerPlaying(player){
+      console.log("onPlayerPlaying");
+    },
+    onPlayerTimeupdate(player) {
+      console.log("onPlayerTimeupdate");
+    },
+    onPlayerCanplay(player){
+      console.log("onPlayerCanplay");
+    },
+    onPlayerCanplaythrough(player) {
+      console.log("onPlayerCanplaythrough");
+    },
+    playerStateChanged(player){
+      console.log("playerStateChanged");
     },
   },
 };
@@ -201,11 +249,18 @@ export default {
     height: 4.0rem;
     padding: 0.1rem 0.4rem 0 0.4rem;
   }
-  .video-item{
-    width: 3rem;
+  .pop-content{
+    // height: 17.786667rem;
   }
   .videoPop{
-    width: 9rem;
+    width: 10rem;
   }
-
+  .closePop{
+    font-size: 0.6rem;
+    position: fixed;
+    left: 0.6rem;
+    top: 0.2rem;
+    color: #fff;
+    z-index: 9999;
+  }
 </style>
