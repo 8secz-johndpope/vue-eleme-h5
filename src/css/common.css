@@ -81,6 +81,9 @@
 .mgt10{
   margin-top: 10px;
 }
+.mgr5{
+  margin-right: 5px;
+}
 .mgr10{
   margin-right: 10px;
 }
@@ -259,3 +262,9 @@
     font-weight: 500;
 }
 /* 优惠券 -- 结束 */
+
+/* 首页 -- 开始 */
+.home-view .van-search__action{
+  padding: 0 0 0 0.266667rem;
+}
+/* 首页 -- 结束 */

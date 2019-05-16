@@ -1,5 +1,5 @@
 <template>
-  <div class="white-bg">
+  <div class="white-bg home-view">
     <van-search
       v-model="keywords"
       placeholder="请输入搜索关键词"
@@ -7,7 +7,7 @@
       @search="onSearch"
       class="search-box"
     >
-      <div slot="action" @click="onSearch">搜索</div>
+      <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger">搜索</van-button></div>
     </van-search>
     <van-swipe :autoplay="3000" class="swipe">
       <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
@@ -35,17 +35,31 @@
           </div>
         </div>
       </div>
-      <van-cell value="更多" is-link :to="'/recommend'">
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
         <template slot="title">
           <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr10" />
+            <van-icon name="like-o" class="red-color mgr5" />
             <span class="custom-text">推荐话术</span>
           </div>
         </template>
       </van-cell>
-      <van-cell icon="like-o" title="精选视频" is-link value="更多" />
-      <div>
-        <div class="van-avatar" @click="openVideoPop">
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+        <template slot="title">
+          <div class="flex-start">
+            <van-icon name="like-o" class="red-color mgr5" />
+            <span class="custom-text">精选视频</span>
+          </div>
+        </template>
+      </van-cell>
+      <div class="video-list">
+        <div class="video-list-item" v-for="(item, index) in videoList">
+          <div class="img-zone" v-bind:style="{background:'url(' + item.videopic + ') no-repeat 100% 100%' }"  @click="openVideoPop">
+            <div class="img-zone-dec">{{item.title}}</div>
+          </div>
+          <div class="flex-space-between video-desc">
+            <span>@{{item.author}}</span>
+            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
+          </div>
         </div>
       </div>
       <!-- <van-cell icon="like-o" title="优质文章" is-link value="更多" />
@@ -63,7 +77,10 @@
         <video-player
           class="video-player vjs-custom-skin"
           ref="videoPlayer"
+          id="example_video_1"
           :playsinline="true"
+          :options="playerOptions"
+          @fullscreenchange="onPlayerFullScreenchange($event)"
           @play="onPlayerPlay($event)"
           @pause="onPlayerPause($event)"
           @ended="onPlayerEnded($event)"
@@ -73,23 +90,45 @@
           @timeupdate="onPlayerTimeupdate($event)"
           @canplay="onPlayerCanplay($event)"
           @canplaythrough="onPlayerCanplaythrough($event)"
-          @ready="playerReadied"
+          @ready="playerReadied($event)"
           @statechanged="playerStateChanged($event)"
-          :options="playerOptions"
         >
         </video-player>
+        <div class="video-opt">
+        <span class="copy"
+          v-clipboard:copy="currentPlayData.content"
+          v-clipboard:success="onCopy"
+          v-clipboard:error="onError"><!-- 复制 -->
+          <i class="fa fa-files-o" aria-hidden="true"></i>
+        </span>
+        <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': currentPlayData.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.likers)}}</span><!-- 收藏 -->
+        <span @click="openCommentsPop()" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.commentsNum)}}</span><!-- 评论 -->
+        <span @click="share()" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
+      </div>
       </div>
     </van-popup>
+    <!-- 分享选项 -->
+    <van-actionsheet v-model="sharePopShow" title="分享到">
+      <ShareBox :targetId="currentPlayData.targetId" :isShowRoofPlacementChild="currentPlayData.isShowRoofPlacement" :isTopNow="currentPlayData.itemIsTop"></ShareBox>
+    </van-actionsheet>
+    <!-- 评论区 -->
+    <van-actionsheet v-model="commentsShow" title="共999条评论">
+      <Comments class="comments-box"></Comments>
+    </van-actionsheet>
   </div>
 </template>
 <script>
 import Fixednav from './common_components/Fixed_nav';
+import ShareBox from './common_components/ShareBox';
+import Comments from './common_components/Comments';
 import { mapGetters } from 'vuex';
 import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
   name: 'home',
   components: {
     Fixednav,
+    Comments,
+    ShareBox
   },
   data () {
     return {
@@ -116,7 +155,44 @@ export default {
           fullscreenToggle: true  //全屏按钮
         }
       },
+      currentPlayData: {
+        content: '这是视频文本',  // 复制的视频文本
+        isLike: true,  // 是否喜欢
+        likers: 10001,  // 喜欢数
+        commentsNum: 10001,  // 评论数
+        targetId: '', // 选中的id值
+        itemIsTop: 1, // 子项是否置顶中的置顶
+        isShowRoofPlacement: false, // 是否在分享弹框显示置顶按钮
+      },
+      videoList: [
+        {
+          author: '我是作者', // 视频作者
+          likers: 10001,  // 喜欢数
+          videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+          title: '关注我，教你如何日进斗金', // 视频标题
+        },
+        {
+          author: '我是作者', // 视频作者
+          likers: 10001,  // 喜欢数
+          videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+          title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+        },
+        {
+          author: '我是作者', // 视频作者
+          likers: 10001,  // 喜欢数
+          videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+          title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+        },
+        {
+          author: '我是作者', // 视频作者
+          likers: 10001,  // 喜欢数
+          videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+          title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+        },
+      ],
       videoPopShow: false, // 视频弹框
+      commentsShow: false,  // 评论区
+      sharePopShow: false,  // 底部 -- 分享
       keywords: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -159,20 +235,68 @@ export default {
         message: '加载中...'
       });
       that.videoPopShow = true;
+      that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
       setTimeout( () => {
         that.$toast.clear();
-        that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
-      },2000)
+        let myPlayer = that.$refs.videoPlayer.player;
+        myPlayer.play();
+        // myPlayer.requestFullscreen(); // 全屏
+        // myPlayer.exitFullscreen();  // 退出全屏
+      },1000)
     },
     // 点击遮罩层 关闭弹出层
     closeVideoPop () {
       let that = this
       this.videoPopShow = false;
-      setTimeout( () => {
-        that.playerOptions.sources[0].src =  "" //你的视频地址（必填）
-      },100)
+      let myPlayer = that.$refs.videoPlayer.player;
+      myPlayer.pause();
     },
-    playerReadied () {
+    // 点击分享
+    share (index) {
+      this.sharePopShow = true;
+    },
+    // 点击评论
+    openCommentsPop () {
+      this.commentsShow = true;
+    },
+    // 复制成功
+    onCopy: function (e) {
+      this.$toast('复制成功！')
+    },
+    // 复制失败
+    onError: function (e) {
+      this.$toast('复制失败！')
+    },
+    // 加入喜欢
+    addMyLike: function (index) {
+      let that = this;
+      if(that.isLogin){
+        if (that.composition[index].isLike) {
+          that.composition[index].isLike = false;
+          that.composition[index].likers -= 1;
+        }else{
+          that.composition[index].isLike = true;
+          that.composition[index].likers += 1;
+          that.$toast('成功收藏！');
+        }
+      }else {
+        that.$dialog.confirm({
+          title: '未登录',
+          message: '登录后可收藏至您的喜欢',
+          confirmButtonText: '立即登录'
+        }).then(() => {
+          that.$router.push({  //核心语句
+            path:'/login'   //跳转的路径
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    },
+    onPlayerFullScreenchange (player) {
+      console.log("onPlayerFullScreenchange");
+    },
+    playerReadied (player) {
       console.log("onPlayerLoadeddata");
     },
     onPlayerPlay(player) {
@@ -210,8 +334,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .home-view .van-popup{
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    align-items: center;
+  }
   .search-box{
     background-color: #FE7C6C;
+    padding: 0.186667rem 0.266667rem
   }
   .item-linear{
     background: linear-gradient(to right, #f38181, #e46d27, #f31802);
@@ -227,12 +358,10 @@ export default {
     margin: 10px
   }
   .classify-zone{
-    height: 4rem;
   }
   .classify-item{
     width: 25%;
     text-align: center;
-    padding: 10px 0 0 0;
     line-height: 25px;
   }
   .swipe{
@@ -245,12 +374,11 @@ export default {
   .swipe-img{
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    width: 9.333rem;
     height: 4.0rem;
-    padding: 0.1rem 0.4rem 0 0.4rem;
+    padding: 0.266667rem;
   }
-  .pop-content{
-    // height: 17.786667rem;
+  .home-van-cell{
+    padding: 0.266667rem 0;
   }
   .videoPop{
     width: 10rem;
@@ -259,8 +387,61 @@ export default {
     font-size: 0.6rem;
     position: fixed;
     left: 0.6rem;
-    top: 0.2rem;
+    top: 0.4rem;
     color: #fff;
-    z-index: 9999;
+  }
+  .video-opt{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 0.8rem;
+    padding: 0 0.2rem 0 0;
+    font-size: 0.373rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    .copy{
+      width: 0.8rem;
+      text-align: center;
+    }
+    .myLike{
+      width: 1.6rem;
+      text-align: center;
+    }
+    .share{
+      width: 0.533rem;
+      text-align: right;
+    }
+  }
+  .comments-box{
+    height: 13rem;
+    overflow: scroll;
+  }
+  .video-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .video-list-item{
+    height: 3rem;
+    width: 47%;
+    box-shadow: 3px 3px 2px #ddd;
+    margin: 0 0 10px 0
+  }
+  .img-zone{
+    height: 2.5rem;
+    position: relative;
+    color: #fff;
+  }
+  .img-zone-dec{
+    position: absolute;
+    bottom: 0;
+    padding: 0 0.266667rem;
+    height: 0.9rem;
+    align-items: center;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .video-desc{
+    padding: 0 0.266667rem;
   }
 </style>
