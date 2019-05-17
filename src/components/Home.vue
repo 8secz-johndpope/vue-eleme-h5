@@ -95,16 +95,22 @@
         >
         </video-player>
         <div class="video-opt">
-        <span class="copy"
-          v-clipboard:copy="currentPlayData.content"
-          v-clipboard:success="onCopy"
-          v-clipboard:error="onError"><!-- 复制 -->
-          <i class="fa fa-files-o" aria-hidden="true"></i>
-        </span>
-        <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': currentPlayData.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.likers)}}</span><!-- 收藏 -->
-        <span @click="openCommentsPop()" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.commentsNum)}}</span><!-- 评论 -->
-        <span @click="share()" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
-      </div>
+          <div class="gold-color flex-center" @click="goodsShow = true">
+            <van-icon name="cart-o" class="font-gold showcase" />
+            <span class="showcaseDec">撩妹必备</span>
+          </div>
+          <div>
+            <span class="copy"
+              v-clipboard:copy="currentPlayData.content"
+              v-clipboard:success="onCopy"
+              v-clipboard:error="onError"><!-- 复制 -->
+              <i class="fa fa-files-o" aria-hidden="true"></i>
+            </span>
+            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': currentPlayData.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.likers)}}</span><!-- 收藏 -->
+            <span @click="openCommentsPop()" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.commentsNum)}}</span><!-- 评论 -->
+            <span @click="share()" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
+          </div>
+        </div>
       </div>
     </van-popup>
     <!-- 分享选项 -->
@@ -234,9 +240,9 @@ export default {
         loadingType: 'spinner',
         message: '加载中...'
       });
-      that.videoPopShow = true;
-      that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
       setTimeout( () => {
+        that.videoPopShow = true;
+        that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
         that.$toast.clear();
         let myPlayer = that.$refs.videoPlayer.player;
         myPlayer.play();
@@ -392,10 +398,10 @@ export default {
   }
   .video-opt{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     height: 0.8rem;
-    padding: 0 0.2rem 0 0;
+    padding: 0 0.4rem;
     font-size: 0.373rem;
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
