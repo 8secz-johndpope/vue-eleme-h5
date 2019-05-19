@@ -44,7 +44,9 @@
         <!-- 商品组件 -->
         <GoodsCard></GoodsCard>
         <div class="btn-zone">
-          <van-button size="large" round type="danger" @click="toCommodity">去看看</van-button>
+          <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
+            <van-button size="large" round type="danger">去看看</van-button>
+          </router-link>
         </div>
         <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
           <p class="flex-center goShowcase red-color">
@@ -183,10 +185,6 @@ export default {
         }
       }, 500);
     },
-    // 跳转商品详情
-    toCommodity () {
-      this.$router.push({ name: 'commodity', params: { 'id': 'id000000' }})
-    }
   }
 };
 </script>

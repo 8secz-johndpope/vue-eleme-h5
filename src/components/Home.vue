@@ -14,16 +14,6 @@
         <img v-lazy="image" class="swipe-img" />
       </van-swipe-item>
     </van-swipe>
-    <!-- <van-panel class="mg15 pd10" v-for="(menuItem, index) in getImitateMenu">
-      <div slot="header">
-        <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
-      </div>
-      <div class="flex-start">
-        <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
-          <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
-        </router-link>
-      </div>
-    </van-panel> -->
     <div class="content-box">
       <div class="flex-wrap classify-zone">
         <div class="classify-item" v-for="(menuItem, index) in getImitateMenu">
@@ -35,14 +25,7 @@
           </div>
         </div>
       </div>
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">推荐话术</span>
-          </div>
-        </template>
-      </van-cell>
+      <!-- 精选视频 -->
       <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
         <template slot="title">
           <div class="flex-start">
@@ -62,13 +45,52 @@
           </div>
         </div>
       </div>
-      <!-- <van-cell icon="like-o" title="优质文章" is-link value="更多" />
-      <van-cell icon="like-o" title="情感百科" is-link value="更多" /> -->
+      <!-- 优质文章 -->
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+        <template slot="title">
+          <div class="flex-start">
+            <van-icon name="like-o" class="red-color mgr5" />
+            <span class="custom-text">优质文章</span>
+          </div>
+        </template>
+      </van-cell>
+      <div class="video-list">
+        <div class="video-list-item" v-for="(item, index) in videoList">
+          <div class="img-zone" v-bind:style="{background:'url(' + item.videopic + ') no-repeat 100% 100%' }"  @click="openVideoPop">
+            <div class="img-zone-dec">{{item.title}}</div>
+          </div>
+          <div class="flex-space-between video-desc">
+            <span>@{{item.author}}</span>
+            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
+          </div>
+        </div>
+      </div>
+      <!-- 情感百科 -->
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+        <template slot="title">
+          <div class="flex-start">
+            <van-icon name="like-o" class="red-color mgr5" />
+            <span class="custom-text">情感百科</span>
+          </div>
+        </template>
+      </van-cell>
+      <div class="video-list">
+        <div class="video-list-item" v-for="(item, index) in videoList">
+          <div class="img-zone" v-bind:style="{background:'url(' + item.videopic + ') no-repeat 100% 100%' }"  @click="openVideoPop">
+            <div class="img-zone-dec">{{item.title}}</div>
+          </div>
+          <div class="flex-space-between video-desc">
+            <span>@{{item.author}}</span>
+            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
+          </div>
+        </div>
+      </div>
     </div>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定标签页 -->
     <Fixednav></Fixednav>
+    <!-- 视频弹框 -->
     <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
       <div class="closePop">
         <van-icon name="close" @click="closeVideoPop"/>
@@ -97,7 +119,7 @@
         <div class="video-opt">
           <div class="gold-color flex-center" @click="goodsShow = true">
             <van-icon name="cart-o" class="font-gold showcase" />
-            <span class="showcaseDec">撩妹必备</span>
+            <span class="showcaseDec">男神必备</span>
           </div>
           <div>
             <span class="copy"
@@ -121,12 +143,28 @@
     <van-actionsheet v-model="commentsShow" title="共999条评论">
       <Comments class="comments-box"></Comments>
     </van-actionsheet>
+    <!-- 商品展示页 -->
+    <van-actionsheet v-model="goodsShow" title="XXX的推荐">
+      <!-- 商品组件 -->
+      <GoodsCard></GoodsCard>
+      <div class="btn-zone">
+        <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
+          <van-button size="large" round type="danger">去看看</van-button>
+        </router-link>
+      </div>
+      <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
+        <p class="flex-center goShowcase red-color">
+          XXX的商品橱窗
+        </p>
+      </router-link>
+    </van-actionsheet>
   </div>
 </template>
 <script>
 import Fixednav from './common_components/Fixed_nav';
 import ShareBox from './common_components/ShareBox';
 import Comments from './common_components/Comments';
+import GoodsCard from './common_components/GoodsCard';
 import { mapGetters } from 'vuex';
 import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
@@ -134,7 +172,8 @@ export default {
   components: {
     Fixednav,
     Comments,
-    ShareBox
+    ShareBox,
+    GoodsCard
   },
   data () {
     return {
@@ -199,6 +238,7 @@ export default {
       videoPopShow: false, // 视频弹框
       commentsShow: false,  // 评论区
       sharePopShow: false,  // 底部 -- 分享
+      goodsShow: false, //商品弹框
       keywords: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -244,11 +284,13 @@ export default {
         that.videoPopShow = true;
         that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
         that.$toast.clear();
-        let myPlayer = that.$refs.videoPlayer.player;
-        myPlayer.play();
         // myPlayer.requestFullscreen(); // 全屏
         // myPlayer.exitFullscreen();  // 退出全屏
       },1000)
+      setTimeout( () => {
+        let myPlayer = that.$refs.videoPlayer.player;
+        myPlayer.play();
+      },1500)
     },
     // 点击遮罩层 关闭弹出层
     closeVideoPop () {
