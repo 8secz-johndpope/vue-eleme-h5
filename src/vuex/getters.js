@@ -41,4 +41,6 @@ export default {
   getAreaList: (state) => state.areaList,
   // 表情列表
   getEXPSList: (state) => state.EXPSList,
+  // 模拟视频列表
+  getImitateVideoList: (state) => state.imitateVideoList,
 };

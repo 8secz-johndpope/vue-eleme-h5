@@ -618,3 +618,35 @@ export var imitateMyPraiseAndComments = [
     commentsType: 1,  // 评论所属类型， 0-作品，1-文章
   },
 ];
+
+// 模拟视频列表
+export var imitateVideoList = [
+  {
+    author: '我是作者', // 视频作者
+    likers: 10001,  // 喜欢数
+    videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    title: '关注我，教你如何日进斗金', // 视频标题
+  },
+  {
+    author: '我是作者', // 视频作者
+    likers: 10001,  // 喜欢数
+    videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+  },
+  {
+    author: '我是作者', // 视频作者
+    likers: 10001,  // 喜欢数
+    videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+  },
+  {
+    author: '我是作者', // 视频作者
+    likers: 10001,  // 喜欢数
+    videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+  },
+];

@@ -65,13 +65,13 @@ export default {
       };
       // 异步更新数据
       setTimeout(() => {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 1; i++) {
           this.composition.push(obj);
         }
         // 加载状态结束
         this.loading = false;
         // 数据全部加载完成
-        if (this.composition.length >= 10) {
+        if (this.composition.length >= 4) {
           this.finished = true;
         }
       }, 500);

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from 'components/Home';
+import Home from 'view/Home';
 Vue.use(Router);
 
 export default new Router({
@@ -10,14 +10,6 @@ export default new Router({
       name: 'home',
       component: Home,
       redirect: '/index',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-    },
-    {
-      path: '/index',
-      name: 'homes',
-      component: Home,
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -47,174 +39,6 @@ export default new Router({
       component: (resolve) => require(['../components/reference_components/Order'],resolve),
     },
     {
-      path: '/myzone',
-      name: 'myzone',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Myzone'],resolve),
-    },
-    {
-      path: '/userzone',
-      name: 'userzone',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Userzone'],resolve),
-    },
-    {
-      path: '/addConversation',
-      name: 'addConversation',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/AddConversation'],resolve),
-    },
-    {
-      path: '/addConversation/question',
-      name: 'addConversationQuestion',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/AddConversation_components/AddConversationQuestion'],resolve),
-    },
-    {
-      path: '/recommend',
-      name: 'recommend',
-      meta: {
-        keepAlive: true, // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Recommend'],resolve),
-    },
-    {
-      path: '/myfans',
-      name: 'myfans',
-      meta: {
-        keepAlive: true // 需要缓存
-      },
-      component: (resolve) => require(['../components/Myfans'],resolve),
-    },
-    {
-      path: '/myfollows',
-      name: 'Myfollows',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Myfollows'],resolve),
-    },
-    {
-      path: '/message',
-      name: 'message',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Message'],resolve),
-    },
-    // 聊天室
-    {
-      path: '/chat/:id',
-      name: 'chat',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/common_components/Chat'],resolve),
-    },
-    // 个人用户设置 -- 自己的
-    {
-      path: '/setting',
-      name: 'setting',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/Setting'],resolve),
-    },
-    // 其他用户更多
-    {
-      path: '/userSetting',
-      name: 'userSetting',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/UserSetting'],resolve),
-    },
-    {
-      path: '/setting/userinfo',
-      name: 'userinfo',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Userinfo'],resolve),
-    },
-    {
-      path: '/setting/mywallet',
-      name: 'mywallet',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Mywallet'],resolve),
-    },
-    // 购买商品页
-    {
-      path: '/setting/shopping',
-      name: 'shopping',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Shopping'],resolve),
-    },
-    // 支付订单页
-    {
-      path: '/setting/payment',
-      name: 'payment',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Payment'],resolve),
-    },
-    // 邀请分享
-    {
-      path: '/setting/invitation',
-      name: 'invitation',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Invitation'],resolve),
-    },
-    {
-      path: '/setting/feedback',
-      name: 'feedback',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Feedback'],resolve),
-    },
-    {
-      path: '/setting/contact',
-      name: 'contact',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Contact'],resolve),
-    },
-    // 申请开店
-    {
-      path: '/setting/applyOpenShop',
-      name: 'applyOpenShop',
-      meta: {
-        keepAlive: true // 需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/ApplyOpenShop'],resolve),
-    },
-    // 实名认证
-    {
-      path: '/setting/certification',
-      name: 'certification',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['../components/child_components/Setting_components/Certification'],resolve),
-    },
-    {
       path: '/business/:id',
       name: 'business',
       meta: {
@@ -231,12 +55,189 @@ export default new Router({
       component: (resolve) => require(['../components/reference_components/Search'],resolve),
     },
     {
+      path: '/index',
+      name: 'homes',
+      component: Home,
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+    },
+    {
+      path: '/recommend',
+      name: 'recommend',
+      meta: {
+        keepAlive: true, // 不需要缓存
+      },
+      component: (resolve) => require(['view/Recommend'],resolve),
+    },
+    {
+      path: '/addConversation',
+      name: 'addConversation',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/AddConversation'],resolve),
+    },
+    {
+      path: '/message',
+      name: 'message',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/Message'],resolve),
+    },
+    {
+      path: '/myzone',
+      name: 'myzone',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/Myzone'],resolve),
+    },
+
+    {
+      path: '/userzone',
+      name: 'userzone',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/user-common-page/Userzone'],resolve),
+    },
+    {
+      path: '/addConversation/question',
+      name: 'addConversationQuestion',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/AddConversationQuestion'],resolve),
+    },
+    {
+      path: '/myfans',
+      name: 'myfans',
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/user-common-page/Myfans'],resolve),
+    },
+    {
+      path: '/myfollows',
+      name: 'Myfollows',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/user-common-page/Myfollows'],resolve),
+    },
+    // 聊天室
+    {
+      path: '/chat/:id',
+      name: 'chat',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/chat-page/Chat'],resolve),
+    },
+    // 个人用户设置 -- 自己的
+    {
+      path: '/setting',
+      name: 'setting',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Setting'],resolve),
+    },
+    // 其他用户更多
+    {
+      path: '/userSetting',
+      name: 'userSetting',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/UserSetting'],resolve),
+    },
+    {
+      path: '/setting/userinfo',
+      name: 'userinfo',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Userinfo'],resolve),
+    },
+    {
+      path: '/setting/mywallet',
+      name: 'mywallet',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Mywallet'],resolve),
+    },
+    // 购买商品页
+    {
+      path: '/setting/shopping',
+      name: 'shopping',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Shopping'],resolve),
+    },
+    // 支付订单页
+    {
+      path: '/setting/payment',
+      name: 'payment',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Payment'],resolve),
+    },
+    // 邀请分享
+    {
+      path: '/setting/invitation',
+      name: 'invitation',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Invitation'],resolve),
+    },
+    {
+      path: '/setting/feedback',
+      name: 'feedback',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Feedback'],resolve),
+    },
+    {
+      path: '/setting/contact',
+      name: 'contact',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Contact'],resolve),
+    },
+    // 申请开店
+    {
+      path: '/setting/applyOpenShop',
+      name: 'applyOpenShop',
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/ApplyOpenShop'],resolve),
+    },
+    // 实名认证
+    {
+      path: '/setting/certification',
+      name: 'certification',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/Certification'],resolve),
+    },
+    {
       path: '/login',
       name: 'Login',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/login_components/Login'],resolve),
+      component: (resolve) => require(['view/login-page/Login'],resolve),
     },
     {
       path: '/forgot',
@@ -244,7 +245,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/login_components/Forgot'],resolve),
+      component: (resolve) => require(['view/login-page/Forgot'],resolve),
     },
     {
       path: '/register',
@@ -252,7 +253,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/login_components/Register'],resolve),
+      component: (resolve) => require(['view/login-page/Register'],resolve),
     },
     {
       path: '/loginByCheckCode',
@@ -260,7 +261,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/login_components/LoginByCheckCode'],resolve),
+      component: (resolve) => require(['view/login-page/LoginByCheckCode'],resolve),
     },
     {
       path: '/result/:id',
@@ -268,7 +269,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/common_components/Result'],resolve),
+      component: (resolve) => require(['view/search-page/Result'],resolve),
     },
     {
       path: '/articleDetail/:id',
@@ -276,7 +277,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/common_components/ArticleDetail'],resolve),
+      component: (resolve) => require(['view/article-page/ArticleDetail'],resolve),
     },
     {
       path: '/articleComments/:id',
@@ -284,7 +285,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/common_components/ArticleComments'],resolve),
+      component: (resolve) => require(['view/article-page/ArticleComments'],resolve),
     },
     {
       path: '/addFriends',
@@ -292,7 +293,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/AddFriends'],resolve),
+      component: (resolve) => require(['view/user-common-page/AddFriends'],resolve),
     },
     {
       path: '/accusation',
@@ -300,7 +301,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/Accusation'],resolve),
+      component: (resolve) => require(['view/accusation-page/Accusation'],resolve),
     },
     {
       path: '/accusation/report/:id',
@@ -308,7 +309,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/child_components/Accusation_components/Report'],resolve),
+      component: (resolve) => require(['view/accusation-page/Report'],resolve),
     },
     {
       path: '/mypraise',
@@ -316,7 +317,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/Mypraise'],resolve),
+      component: (resolve) => require(['view/user-common-page/Mypraise'],resolve),
     },
     {
       path: '/mycomments',
@@ -324,7 +325,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/Mycomments'],resolve),
+      component: (resolve) => require(['view/user-common-page/Mycomments'],resolve),
     },
     // 回复详情页，定位到被点赞，被评论页
     {
@@ -333,7 +334,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/ReplyDetail'],resolve),
+      component: (resolve) => require(['view/conversation-page/ReplyDetail'],resolve),
     },
     // 商品橱窗
     {
@@ -342,7 +343,7 @@ export default new Router({
       meta: {
         keepAlive: true // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/Showcase'],resolve),
+      component: (resolve) => require(['view/shop-page/Showcase'],resolve),
     },
     // 商品详情
     {
@@ -351,7 +352,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/Commodity'],resolve),
+      component: (resolve) => require(['view/shop-page/Commodity'],resolve),
     },
     // 新增或者修改商品
     {
@@ -360,7 +361,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/AddOrUpdateCommodity'],resolve),
+      component: (resolve) => require(['view/shop-page/AddOrUpdateCommodity'],resolve),
     },
     // 速推+上热门
     {
@@ -369,7 +370,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/Extension'],resolve),
+      component: (resolve) => require(['view/shop-page/Extension'],resolve),
     },
     // 店铺信息
     {
@@ -378,7 +379,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/shop_components/ShopInfo'],resolve),
+      component: (resolve) => require(['view/shop-page/ShopInfo'],resolve),
     },
     /*
       落地页 -- 开始
@@ -389,7 +390,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['../components/landingPage_components/InviteToShare'],resolve),
+      component: (resolve) => require(['view/activity-page/forever-page/InviteToShare'],resolve),
     },
     /*
       落地页 -- 结束
