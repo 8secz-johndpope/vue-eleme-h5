@@ -2,7 +2,7 @@ import { areaList } from '../jsonData/Area.js';
 import { EXPSList } from '../jsonData/EXPSList.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
-         imitateComments, imitateMyPraiseAndComments, imitateVideoList } from '../falsedata/imitateData.js';
+         imitateComments, imitateMyPraiseAndComments, imitateVideoList, imitateEncyclopediasClassfication, imitateEncyclopediasList } from '../falsedata/imitateData.js';
 
 export default {
   // 是否在加载中
@@ -21,6 +21,14 @@ export default {
   recommendHighLightTab: 0,
   // 通用图片
   globalUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+  // 高亮的菜单
+  activeTab: 0,
+  // 关键词
+  keywords: '',
+  // 地址列表
+  areaList,
+  // 表情列表
+  EXPSList,
   // 已完成订单
   falseOrder,
   // 商家简略信息
@@ -43,14 +51,10 @@ export default {
   imitateComments,
   // 模拟视频列表
   imitateVideoList,
-  // 高亮的菜单
-  activeTab: 0,
-  // 关键词
-  keywords: '',
   // 模拟用户相关的点赞、评论和@列表
   imitateMyPraiseAndComments,
-  // 地址列表
-  areaList,
-  // 表情列表
-  EXPSList,
+  // 模拟百科分类
+  imitateEncyclopediasClassfication,
+  // 模拟百科列表
+  imitateEncyclopediasList,
 };

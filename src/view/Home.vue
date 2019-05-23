@@ -54,7 +54,8 @@
           </div>
         </template>
       </van-cell>
-      <div class="video-list">
+      <!-- 文章列表，默认四篇 -->
+      <div>
         <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
       </div>
       <!-- 情感百科 -->
@@ -66,16 +67,20 @@
           </div>
         </template>
       </van-cell>
-      <div class="video-list">
-        <div class="video-list-item" v-for="(item, index) in getImitateVideoList">
-          <div class="img-zone" v-bind:style="{background:'url(' + item.videopic + ') no-repeat 100% 100%' }"  @click="openVideoPop">
-            <div class="img-zone-dec">{{item.title}}</div>
+      <!-- 情感百科列表，默认四篇 -->
+      <div>
+        <van-panel :title="item.title" v-for="(item, index) in getImitateEncyclopediasList" >
+          <div class="encyclopediasList">
+            <div class="flex-between gray-color">
+              <div>
+                {{item.praiseNum}}人觉得有用
+              </div>
+              <div>
+                来自 {{item.belongsClassificationCnName}}
+              </div>
+            </div>
           </div>
-          <div class="flex-space-between video-desc">
-            <span>@{{item.author}}</span>
-            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
-          </div>
-        </div>
+        </van-panel>
       </div>
     </div>
     <!-- 撑开Fixednav挡住的位置 -->
@@ -232,6 +237,8 @@ export default {
       'getFalseHotWord',
       'getImitateArticleList', // 获取模拟文章列表
       'getImitateVideoList', // 获取模拟视频列表
+      'getImitateEncyclopediasClassfication', // 模拟百科分类
+      'getImitateEncyclopediasList', // 模拟百科列表
       'getImitateMenu' // 话术分类信息
     ])
   },
@@ -461,5 +468,8 @@ export default {
   }
   .video-desc{
     padding: 0 0.266667rem;
+  }
+  .encyclopediasList{
+    padding: 0 0.4rem 
   }
 </style>

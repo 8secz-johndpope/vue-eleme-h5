@@ -650,3 +650,127 @@ export var imitateVideoList = [
     title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
   },
 ];
+
+// 模拟百科分类
+export var imitateEncyclopediasClassfication = [
+  {
+    id: 'id', // 该百科词条的id
+    img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
+    name: '单身期',  //  名称
+    list: [
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '聊天搭讪', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '社交撩妹', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '暗恋', // 词条分类名
+      },
+    ]
+  },
+  {
+    id: 'id', // 该百科词条的id
+    img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
+    name: '追求期',  //  名称
+    list: [
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '套路', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '表白', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '约会', // 词条分类名
+      },
+    ]
+  },
+  {
+    id: 'id', // 该百科词条的id
+    img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
+    name: '恋爱期',  //  名称
+    list: [
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '相处技巧', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '吵架', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '异地恋', // 词条分类名
+      },
+    ]
+  },
+  {
+    id: 'id', // 该百科词条的id
+    img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
+    name: '失恋期',  //  名称
+    list: [
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '分手挽回', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '走出失恋', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '自我提升', // 词条分类名
+      },
+    ]
+  },
+  {
+    id: 'id', // 该百科词条的id
+    img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
+    name: '婚后期',  //  名称
+    list: [
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '读懂女性', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '思考总结', // 词条分类名
+      },
+      {
+        itemId: 'itemId', //词条分类id
+        itemName: '挽回婚姻', // 词条分类名
+      },
+    ]
+  },
+];
+
+// 模拟百科列表
+export var imitateEncyclopediasList = [
+  {
+    id: 'id', // 该百科词条的id
+    title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
+    praiseNum: 996, // 点赞人舒
+    belongsClassification: '0', // 所属分类
+    belongsClassificationCnName: '吐槽', // 所属分类名
+  },
+  {
+    id: 'id', // 该百科词条的id
+    title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
+    praiseNum: 996, // 点赞人舒
+    belongsClassification: '0', // 所属分类
+    belongsClassificationCnName: '吐槽', // 所属分类名
+  },
+  {
+    id: 'id', // 该百科词条的id
+    title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
+    praiseNum: 996, // 点赞人舒
+    belongsClassification: '0', // 所属分类
+    belongsClassificationCnName: '吐槽', // 所属分类名
+  },
+];

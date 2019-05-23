@@ -43,4 +43,8 @@ export default {
   getEXPSList: (state) => state.EXPSList,
   // 模拟视频列表
   getImitateVideoList: (state) => state.imitateVideoList,
+  // 模拟百科分类
+  getImitateEncyclopediasClassfication: (state) => state.imitateEncyclopediasClassfication,
+  // 模拟百科列表
+  getImitateEncyclopediasList: (state) => state.imitateEncyclopediasList,
 };
