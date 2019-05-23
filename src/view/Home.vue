@@ -55,7 +55,7 @@
         </template>
       </van-cell>
       <div class="video-list">
-        <Article :composition="getImitateArticleList" class="item-box"></Article>
+        <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
       </div>
       <!-- 情感百科 -->
       <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
@@ -157,7 +157,7 @@ import Fixednav from 'components/common_components/Fixed_nav';
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
-import Article from 'components/common_components/Article';
+import ArticleCard from 'components/common_components/ArticleCard';
 import { mapGetters } from 'vuex';
 import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
@@ -167,7 +167,7 @@ export default {
     Comments,
     ShareBox,
     GoodsCard,
-    Article,
+    ArticleCard,
   },
   data () {
     return {

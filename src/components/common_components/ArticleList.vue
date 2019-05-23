@@ -7,39 +7,24 @@
       :lazy-load="true"
       @load="onLoad"
     >
-      <router-link v-for="(item, index) in composition" :to="'/articleDetail/' + item.id" >
-        <van-card
-            :tag="item.isCarefullyChosen ? '精选' : '' "
-            :thumb="item.imgSrc"
-            @click="goArticleDetail(item.id)"
-          >
-          <div slot="title" class="title">
-            {{item.title}}
-          </div>
-          <div slot="desc" class="desc">
-            {{item.desc}}
-          </div>
-          <div slot="price">
-            <span class="reading-number">阅读数：{{COMMONFUNC.formatterW(item.readingNumbers)}}</span>
-          </div>
-          <div slot="num">
-            <span>阅读全文</span>
-          </div>
-        </van-card>
-      </router-link>
+      <ArticleCard :composition="composition" class="item-box"></ArticleCard>
     </van-list>
   </div>
 </template>
 
 <script>
-
+import ArticleCard from 'components/common_components/ArticleCard';
 export default {
+  name: 'articleList',
   // 父子通信
   props: {
     composition: {
       type: Array,
       default: [],
     }
+  },
+  components: {
+    ArticleCard,
   },
   data () {
     return {

@@ -34,7 +34,7 @@
       <!-- 推荐 -->
       <section class="advertisement">
         <div class="van-recommend">精彩推荐</div>
-        <Article :composition="recommendArticle"></Article>
+        <articleList :composition="recommendArticle"></articleList>
       </section>
       <!-- 评论 -->
       <section class="comments">
@@ -59,7 +59,7 @@
   import ShareBox from 'components/common_components/ShareBox';
   import Advertisement from 'components/common_components/Advertisement';
   import Comments from 'components/common_components/Comments';
-  import Article from 'components/common_components/Article';
+  import articleList from 'components/common_components/articleList';
   import FixedCommentsZone from 'components/common_components/FixedCommentsZone';
   import ArticleHeader from 'components/common_components/ArticleHeader';
   import { mapGetters } from 'vuex';
@@ -67,7 +67,7 @@
     components:{
       ShareBox,
       Advertisement,
-      Article,
+      articleList,
       Comments,
       FixedCommentsZone,
       ArticleHeader,

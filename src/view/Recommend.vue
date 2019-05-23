@@ -5,7 +5,7 @@
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
       <van-tab title="文章">
-        <Article :composition="getImitateArticleList" class="item-box"></Article>
+        <articleList :composition="getImitateArticleList" class="item-box"></articleList>
       </van-tab>
     </van-tabs><!-- 撑开Fixednav挡住的位置 -->
     <div class="search-box">
@@ -19,7 +19,7 @@
 <script>
 import Fixednav from 'components/common_components/Fixed_nav';
 import Conversation from 'components/common_components/Conversation';
-import Article from 'components/common_components/Article';
+import articleList from 'components/common_components/articleList';
 import { mapGetters } from 'vuex';
 export default {
   name: 'recommend',
@@ -47,7 +47,7 @@ export default {
   components: {
     Fixednav,
     Conversation,
-    Article,
+    articleList,
   }
 };
 </script>
