@@ -41,7 +41,6 @@
           </div>
           <div class="flex-space-between video-desc">
             <span>@{{item.author}}</span>
-            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
           </div>
         </div>
       </div>
