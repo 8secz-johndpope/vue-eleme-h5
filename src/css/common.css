@@ -1,3 +1,40 @@
+
+.flex{
+  display: flex;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-wrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.flex-space-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-space-around{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-start{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
 .van-swipe-cell__right {
   color: #fff;
   font-size: 0.4rem;
@@ -76,55 +113,37 @@
   margin: 0.4rem;
 }
 .mg10{
-  margin: 10px;
+  margin: 0.266667rem;
 }
 .mgt10{
-  margin-top: 10px;
+  margin-top: 0.266667rem;
 }
 .mgr5{
-  margin-right: 5px;
+  margin-right: 0.133333rem;
 }
 .mgr10{
-  margin-right: 10px;
+  margin-right: 0.266667rem;
 }
 .pd15{
   padding: 0.4rem;
 }
+.pdb5{
+  padding: 0 0 0.133333rem 0;
+}
+.pdt5{
+  padding: 0.133333rem 0 0 0;
+}
+.pdl5{
+  padding: 0 0 0 0.133333rem;
+}
+.pdl10{
+  padding: 0 0 0 0.266667rem;
+}
+.pdb10{
+  padding: 0 0 0.266667rem 0;
+}
 .pd10{
-  padding: 10px;
-}
-.flex-center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.flex-wrap{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.flex-space-between{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.flex-space-around{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.flex-start{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.flex-column{
-  display: flex;
-  flex-direction: column;
+  padding: 0.266667rem;
 }
 .space{
   width: 100%;

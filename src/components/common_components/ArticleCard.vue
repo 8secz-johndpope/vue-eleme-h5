@@ -5,6 +5,7 @@
           :tag="item.isCarefullyChosen ? '精选' : '' "
           :thumb="item.imgSrc"
           @click="goArticleDetail(item.id)"
+          class="van-card"
         >
         <div slot="title" class="title">
           {{item.title}}
@@ -49,6 +50,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .van-card{
+    background-color: #fff;
+    padding: 0.133333rem 0.266667rem;
+  }
   .title{
     font-weight: 700;
   }

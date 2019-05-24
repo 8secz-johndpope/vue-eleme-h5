@@ -434,7 +434,7 @@ export var imitateConversation = [
 export var imitateArticleList = [
   {
     id: 'zs20190214',
-    title: '网上撩妹怎么聊？老司机给你带路',
+    title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
     imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
     time: '2019.02.13',
@@ -443,7 +443,7 @@ export var imitateArticleList = [
   },
   {
     id: 'zs20190214',
-    title: '网上撩妹怎么聊？老司机给你带路',
+    title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
     imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
     time: '2019.02.13',
@@ -452,7 +452,7 @@ export var imitateArticleList = [
   },
   {
     id: 'zs20190214',
-    title: '网上撩妹怎么聊？老司机给你带路',
+    title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
     imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
     time: '2019.02.13',
@@ -626,7 +626,7 @@ export var imitateVideoList = [
     likers: 10001,  // 喜欢数
     videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
     videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
-    title: '关注我，教你如何日进斗金', // 视频标题
+    title: '关注我，教你日进斗金', // 视频标题
   },
   {
     author: '我是作者', // 视频作者
@@ -654,77 +654,77 @@ export var imitateVideoList = [
 // 模拟百科分类
 export var imitateEncyclopediasClassfication = [
   {
-    id: 'id', // 该百科词条的id
+    id: 'id0', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '单身期',  //  名称
     list: [
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId0', //词条分类id
         itemName: '聊天搭讪', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId1', //词条分类id
         itemName: '社交撩妹', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId2', //词条分类id
         itemName: '暗恋', // 词条分类名
       },
     ]
   },
   {
-    id: 'id', // 该百科词条的id
+    id: 'id1', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '追求期',  //  名称
     list: [
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId3', //词条分类id
         itemName: '套路', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId4', //词条分类id
         itemName: '表白', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId5', //词条分类id
         itemName: '约会', // 词条分类名
       },
     ]
   },
   {
-    id: 'id', // 该百科词条的id
+    id: 'id2', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '恋爱期',  //  名称
     list: [
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId6', //词条分类id
         itemName: '相处技巧', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId7', //词条分类id
         itemName: '吵架', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId8', //词条分类id
         itemName: '异地恋', // 词条分类名
       },
     ]
   },
   {
-    id: 'id', // 该百科词条的id
+    id: 'id3', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '失恋期',  //  名称
     list: [
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId9', //词条分类id
         itemName: '分手挽回', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId10', //词条分类id
         itemName: '走出失恋', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId11', //词条分类id
         itemName: '自我提升', // 词条分类名
       },
     ]
@@ -735,15 +735,15 @@ export var imitateEncyclopediasClassfication = [
     name: '婚后期',  //  名称
     list: [
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId12', //词条分类id
         itemName: '读懂女性', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId13', //词条分类id
         itemName: '思考总结', // 词条分类名
       },
       {
-        itemId: 'itemId', //词条分类id
+        itemId: 'itemId14', //词条分类id
         itemName: '挽回婚姻', // 词条分类名
       },
     ]

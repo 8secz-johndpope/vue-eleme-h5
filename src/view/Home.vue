@@ -45,12 +45,12 @@
           </div>
         </div>
       </div>
-      <!-- 优质文章 -->
+      <!-- 优选文章 -->
       <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">优质文章</span>
+            <span class="custom-text">优选文章</span>
           </div>
         </template>
       </van-cell>
@@ -67,20 +67,9 @@
           </div>
         </template>
       </van-cell>
-      <!-- 情感百科列表，默认四篇 -->
+      <!-- 情感百科列表，默认3篇 -->
       <div>
-        <van-panel :title="item.title" v-for="(item, index) in getImitateEncyclopediasList" >
-          <div class="encyclopediasList">
-            <div class="flex-between gray-color">
-              <div>
-                {{item.praiseNum}}人觉得有用
-              </div>
-              <div>
-                来自 {{item.belongsClassificationCnName}}
-              </div>
-            </div>
-          </div>
-        </van-panel>
+        <EncyclopediasCard></EncyclopediasCard>
       </div>
     </div>
     <!-- 撑开Fixednav挡住的位置 -->
@@ -89,72 +78,8 @@
     <Fixednav></Fixednav>
     <!-- 视频弹框 -->
     <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
-      <div class="closePop">
-        <van-icon name="close" @click="closeVideoPop"/>
-      </div>
-      <div class="videoPop">
-        <video-player
-          class="video-player vjs-custom-skin"
-          ref="videoPlayer"
-          id="example_video_1"
-          :playsinline="true"
-          :options="playerOptions"
-          @fullscreenchange="onPlayerFullScreenchange($event)"
-          @play="onPlayerPlay($event)"
-          @pause="onPlayerPause($event)"
-          @ended="onPlayerEnded($event)"
-          @loadeddata="onPlayerLoadeddata($event)"
-          @waiting="onPlayerWaiting($event)"
-          @playing="onPlayerPlaying($event)"
-          @timeupdate="onPlayerTimeupdate($event)"
-          @canplay="onPlayerCanplay($event)"
-          @canplaythrough="onPlayerCanplaythrough($event)"
-          @ready="playerReadied($event)"
-          @statechanged="playerStateChanged($event)"
-        >
-        </video-player>
-        <div class="video-opt">
-          <div class="gold-color flex-center" @click="goodsShow = true">
-            <van-icon name="cart-o" class="font-gold showcase" />
-            <span class="showcaseDec">男神必备</span>
-          </div>
-          <div>
-            <span class="copy"
-              v-clipboard:copy="currentPlayData.content"
-              v-clipboard:success="onCopy"
-              v-clipboard:error="onError"><!-- 复制 -->
-              <i class="fa fa-files-o" aria-hidden="true"></i>
-            </span>
-            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': currentPlayData.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.likers)}}</span><!-- 收藏 -->
-            <span @click="openCommentsPop()" class="myLike"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{COMMONFUNC.formatterW(currentPlayData.commentsNum)}}</span><!-- 评论 -->
-            <span @click="share()" class="share"><i class="fa fa-share" aria-hidden="true"></i></span><!-- 分享 -->
-          </div>
-        </div>
-      </div>
+      <VideoCard ref="childVideoCard" :playerOptions="playerOptions" :currentPlayData="currentPlayData" @on-close-videoPop="closeVideoPop"></VideoCard>
     </van-popup>
-    <!-- 分享选项 -->
-    <van-actionsheet v-model="sharePopShow" title="分享到">
-      <ShareBox :targetId="currentPlayData.targetId" :isShowRoofPlacementChild="currentPlayData.isShowRoofPlacement" :isTopNow="currentPlayData.itemIsTop"></ShareBox>
-    </van-actionsheet>
-    <!-- 评论区 -->
-    <van-actionsheet v-model="commentsShow" title="共999条评论">
-      <Comments class="comments-box"></Comments>
-    </van-actionsheet>
-    <!-- 商品展示页 -->
-    <van-actionsheet v-model="goodsShow" title="XXX的推荐">
-      <!-- 商品组件 -->
-      <GoodsCard></GoodsCard>
-      <div class="btn-zone">
-        <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
-          <van-button size="large" round type="danger">去看看</van-button>
-        </router-link>
-      </div>
-      <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
-        <p class="flex-center goShowcase red-color">
-          XXX的商品橱窗
-        </p>
-      </router-link>
-    </van-actionsheet>
   </div>
 </template>
 <script>
@@ -163,6 +88,8 @@ import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
 import ArticleCard from 'components/common_components/ArticleCard';
+import VideoCard from 'components/common_components/VideoCard';
+import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
 import { mapGetters } from 'vuex';
 import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
@@ -173,6 +100,8 @@ export default {
     ShareBox,
     GoodsCard,
     ArticleCard,
+    VideoCard,
+    EncyclopediasCard,
   },
   data () {
     return {
@@ -209,9 +138,6 @@ export default {
         isShowRoofPlacement: false, // 是否在分享弹框显示置顶按钮
       },
       videoPopShow: false, // 视频弹框
-      commentsShow: false,  // 评论区
-      sharePopShow: false,  // 底部 -- 分享
-      goodsShow: false, //商品弹框
       keywords: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -263,96 +189,14 @@ export default {
         that.$toast.clear();
         // myPlayer.requestFullscreen(); // 全屏
         // myPlayer.exitFullscreen();  // 退出全屏
+        setTimeout( () => {
+          that.$refs.childVideoCard.videoPlay();  // 触发子组件的方法
+        },300)
       },1000)
-      setTimeout( () => {
-        let myPlayer = that.$refs.videoPlayer.player;
-        myPlayer.play();
-      },1500)
     },
     // 点击遮罩层 关闭弹出层
-    closeVideoPop () {
-      let that = this
-      this.videoPopShow = false;
-      let myPlayer = that.$refs.videoPlayer.player;
-      myPlayer.pause();
-    },
-    // 点击分享
-    share (index) {
-      this.sharePopShow = true;
-    },
-    // 点击评论
-    openCommentsPop () {
-      this.commentsShow = true;
-    },
-    // 复制成功
-    onCopy: function (e) {
-      this.$toast('复制成功！')
-    },
-    // 复制失败
-    onError: function (e) {
-      this.$toast('复制失败！')
-    },
-    // 加入喜欢
-    addMyLike: function (index) {
-      let that = this;
-      if(that.isLogin){
-        if (that.composition[index].isLike) {
-          that.composition[index].isLike = false;
-          that.composition[index].likers -= 1;
-        }else{
-          that.composition[index].isLike = true;
-          that.composition[index].likers += 1;
-          that.$toast('成功收藏！');
-        }
-      }else {
-        that.$dialog.confirm({
-          title: '未登录',
-          message: '登录后可收藏至您的喜欢',
-          confirmButtonText: '立即登录'
-        }).then(() => {
-          that.$router.push({  //核心语句
-            path:'/login'   //跳转的路径
-          })
-        }).catch(() => {
-          // on cancel
-        });
-      }
-    },
-    onPlayerFullScreenchange (player) {
-      console.log("onPlayerFullScreenchange");
-    },
-    playerReadied (player) {
-      console.log("onPlayerLoadeddata");
-    },
-    onPlayerPlay(player) {
-      console.log("onPlayerLoadeddata");
-    },
-    onPlayerPause(player){
-      console.log("onPlayerPause");
-    },
-    onPlayerEnded(player) {
-      console.log("onPlayerEnded");
-    },
-    onPlayerLoadeddata(player){
-      console.log("onPlayerLoadeddata");
-    },
-    onPlayerWaiting(player) {
-      console.log("onPlayerWaiting");
-    },
-    onPlayerPlaying(player){
-      console.log("onPlayerPlaying");
-    },
-    onPlayerTimeupdate(player) {
-      console.log("onPlayerTimeupdate");
-    },
-    onPlayerCanplay(player){
-      console.log("onPlayerCanplay");
-    },
-    onPlayerCanplaythrough(player) {
-      console.log("onPlayerCanplaythrough");
-    },
-    playerStateChanged(player){
-      console.log("playerStateChanged");
+    closeVideoPop (params) {
+      this.videoPopShow = params;
     },
   },
 };
@@ -387,10 +231,10 @@ export default {
   .classify-item{
     width: 25%;
     text-align: center;
-    line-height: 25px;
+    line-height: 0.666667rem;
   }
   .swipe{
-    height: 4.0rem;
+    height: 4.2rem;
   }
   .swipe-img-zone{
     width: 34.375rem;
@@ -403,43 +247,7 @@ export default {
     padding: 0.266667rem;
   }
   .home-van-cell{
-    padding: 0.266667rem 0;
-  }
-  .videoPop{
-    width: 10rem;
-  }
-  .closePop{
-    font-size: 0.6rem;
-    position: fixed;
-    left: 0.6rem;
-    top: 0.4rem;
-    color: #fff;
-  }
-  .video-opt{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 0.8rem;
-    padding: 0 0.4rem;
-    font-size: 0.373rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    .copy{
-      width: 0.8rem;
-      text-align: center;
-    }
-    .myLike{
-      width: 1.6rem;
-      text-align: center;
-    }
-    .share{
-      width: 0.533rem;
-      text-align: right;
-    }
-  }
-  .comments-box{
-    height: 13rem;
-    overflow: scroll;
+    padding: 0.266667rem 0.133333rem;
   }
   .video-list{
     display: flex;
@@ -447,29 +255,29 @@ export default {
     justify-content: space-around;
   }
   .video-list-item{
-    height: 3rem;
+    height: 3.2rem;
     width: 47%;
     box-shadow: 3px 3px 2px #ddd;
     margin: 0 0 10px 0
   }
   .img-zone{
     height: 2.5rem;
+    width: 100%;
+    overflow: hidden;
     position: relative;
     color: #fff;
   }
   .img-zone-dec{
     position: absolute;
+    height: 0.9rem;
+    width: 100%;
     bottom: 0;
     padding: 0 0.266667rem;
-    height: 0.9rem;
     align-items: center;
     display: flex;
     background-color: rgba(0, 0, 0, 0.7);
   }
   .video-desc{
-    padding: 0 0.266667rem;
-  }
-  .encyclopediasList{
-    padding: 0 0.4rem 
+    padding: 0.133333rem 0.266667rem;
   }
 </style>
