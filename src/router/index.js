@@ -395,5 +395,19 @@ export default new Router({
     /*
       落地页 -- 结束
     */
+    /*
+      仿微信、支付宝支付页 -- 开始
+    */
+    {
+      path: '/toolPage/wechatBalance',
+      name: 'wechatBalance',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/WechatBalance'],resolve),
+    },
+    /*
+      仿微信、支付宝支付页 -- 结束
+    */
   ]
 });

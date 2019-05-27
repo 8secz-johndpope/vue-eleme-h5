@@ -15,7 +15,7 @@
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "lib-flexible": "^0.3.2",
-    "vant": "^1.5.7",
+    "vant": "^1.6.19",
     "vue": "^2.1.10",
     "vue-clipboard2": "^0.3.0",
     "vue-router": "^2.2.0",

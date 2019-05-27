@@ -102,13 +102,6 @@ export var imitateMenu = [
             linkAddress: '',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
-        {
-            levelTwoName: '兴趣价值',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
     ]
   },
   {
@@ -189,13 +182,6 @@ export var imitateMenu = [
             linkAddress: 'www.baidu.com',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
-        {
-            levelTwoName: '身体技巧',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
     ]
   },
   {
@@ -227,20 +213,6 @@ export var imitateMenu = [
             level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
             openNewLink: true,  // 打开新连接
             linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '自然亲密',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '旅游外出',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
     ]
@@ -344,20 +316,6 @@ export var imitateMenu = [
             linkAddress: 'www.baidu.com',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
-        {
-            levelTwoName: '热评',    // 奇闻趣事
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        // {
-        //     levelTwoName: '表白吧',    // 奇闻趣事
-        //     level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-        //     openNewLink: true,  // 打开新连接
-        //     linkAddress: 'www.baidu.com',   // 新链接地址
-        //     listId: 'id0001',   // 菜单Id
-        // },
     ]
   },
   {
