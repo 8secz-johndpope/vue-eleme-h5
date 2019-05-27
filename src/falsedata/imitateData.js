@@ -319,7 +319,7 @@ export var imitateMenu = [
     ]
   },
   {
-    levelOneName: '装逼技能', // 分类一级名称
+    levelOneName: '装X技能', // 分类一级名称
     menuList: [
         {
             levelTwoName: '形象穿搭',
