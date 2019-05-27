@@ -399,7 +399,23 @@ export default new Router({
       仿微信、支付宝支付页 -- 开始
     */
     {
-      path: '/toolPage/wechatBalance',
+      path: '/toolPage/ToolList',
+      name: 'toolList',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/ToolList'],resolve),
+    },
+    {
+      path: '/toolPage/InputSetting',
+      name: 'inputSetting',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/InputSetting'],resolve),
+    },
+    {
+      path: '/toolPage/wechatBalance/:amount',
       name: 'wechatBalance',
       meta: {
         keepAlive: false // 不需要缓存

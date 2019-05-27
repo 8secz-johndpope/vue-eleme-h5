@@ -18,7 +18,7 @@
         <img src="../../images/toolPage/payment/weixinqianbao.png" class="pay-icon"/>
         <div>
           <div>钱包</div>
-          <div class="amount">¥800.58</div>
+          <div class="amount">¥{{amount}}</div>
         </div>
       </div>
     </div>
@@ -164,11 +164,11 @@
     name: 'wechatBalance',
     data () {
       return {
-        rulesPopShow: false,
+        amount: 0,  // 金额
       };
     },
     mounted () {
-
+      this.amount = parseFloat(this.$route.params.amount).toFixed(2);
     },
     computed: {
 

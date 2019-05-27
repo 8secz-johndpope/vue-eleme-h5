@@ -11,7 +11,7 @@
     </van-search>
     <van-swipe :autoplay="3000" class="swipe">
       <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
-        <router-link :to="{ name: 'wechatBalance', params: {} }">
+        <router-link :to="{ name: 'toolList', params: {} }">
           <img v-lazy="image" class="swipe-img" />
         </router-link>
       </van-swipe-item>
