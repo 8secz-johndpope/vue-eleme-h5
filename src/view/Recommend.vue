@@ -7,10 +7,11 @@
       <van-tab title="文章">
         <articleList :composition="getImitateArticleList" class="item-box"></articleList>
       </van-tab>
-    </van-tabs><!-- 撑开Fixednav挡住的位置 -->
+    </van-tabs>
     <div class="search-box">
       <router-link :to="{ name: 'result', params: {'id':'o'} }"> <van-icon name="search" /></router-link>
     </div>
+    <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <Fixednav></Fixednav>
   </div>

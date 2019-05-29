@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <van-nav-bar left-arrow @click-left="onClickLeft">
+    <van-nav-bar left-arrow title="文章正文" @click-left="onClickLeft" fixed>
       <van-icon name="ellipsis" slot="right" @click="openMorePop" />
     </van-nav-bar>
     <!-- 文章内容 -->
@@ -34,7 +34,7 @@
       <!-- 推荐 -->
       <section class="advertisement">
         <div class="van-recommend">精彩推荐</div>
-        <articleList :composition="recommendArticle"></articleList>
+        <ArticleCard :composition="recommendArticle"></ArticleCard>
       </section>
       <!-- 评论 -->
       <section class="comments">
@@ -59,7 +59,7 @@
   import ShareBox from 'components/common_components/ShareBox';
   import Advertisement from 'components/common_components/Advertisement';
   import Comments from 'components/common_components/Comments';
-  import articleList from 'components/common_components/articleList';
+  import ArticleCard from 'components/common_components/ArticleCard';
   import FixedCommentsZone from 'components/common_components/FixedCommentsZone';
   import ArticleHeader from 'components/common_components/ArticleHeader';
   import { mapGetters } from 'vuex';
@@ -67,7 +67,7 @@
     components:{
       ShareBox,
       Advertisement,
-      articleList,
+      ArticleCard,
       Comments,
       FixedCommentsZone,
       ArticleHeader,
@@ -122,6 +122,7 @@
   .articleDetail{
       font-size: 0.375rem;
       padding: 0.312rem;
+      margin: 1.066667rem 0 0 0;
   }
   .dec{
     color: #666;

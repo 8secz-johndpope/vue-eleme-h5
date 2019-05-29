@@ -27,27 +27,29 @@
           </div>
         </div>
       </div>
-      <!-- 精选视频 -->
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+      <!-- 精彩视频 -->
+      <van-cell class="home-van-cell">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">精选视频</span>
+            <span class="custom-text">精彩视频</span>
           </div>
         </template>
       </van-cell>
-      <div class="video-list">
+      <!-- 视频 列表，默认四篇 -->
+      <div class="flex-space-around">
         <div class="video-list-item" v-for="(item, index) in getImitateVideoList">
-          <div class="img-zone" v-bind:style="{background:'url(' + item.videopic + ') no-repeat 100% 100%' }"  @click="openVideoPop">
+          <div class="img-zone" v-bind:style="{backgroundImage:'url(' + item.videopic + ')' }"  @click="openVideoPop">
             <div class="img-zone-dec">{{item.title}}</div>
           </div>
-          <div class="flex-space-between video-desc">
+          <div class="flex-space-between card-desc">
             <span>@{{item.author}}</span>
+            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
           </div>
         </div>
       </div>
       <!-- 优选文章 -->
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+      <van-cell class="home-van-cell">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -58,6 +60,20 @@
       <!-- 文章列表，默认四篇 -->
       <div>
         <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
+      </div>
+      <!-- AI导师 -->
+      <van-cell value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="home-van-cell">
+        <template slot="title">
+          <div class="flex-start">
+            <van-icon name="like-o" class="red-color mgr5" />
+            <span class="custom-text">AI导师</span>
+          </div>
+        </template>
+      </van-cell>
+      <!-- AI导师列表，默认四篇 -->
+      <div class="flex-space-around">
+        <!-- AI导师卡片 -->
+        <ImgCard :composition="getImitateVideoList"></ImgCard>
       </div>
       <!-- 情感百科 -->
       <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
@@ -91,6 +107,7 @@ import GoodsCard from 'components/common_components/GoodsCard';
 import ArticleCard from 'components/common_components/ArticleCard';
 import VideoCard from 'components/common_components/VideoCard';
 import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
+import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
 import { mapGetters } from 'vuex';
 import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
@@ -103,6 +120,7 @@ export default {
     ArticleCard,
     VideoCard,
     EncyclopediasCard,
+    ImgCard,
   },
   data () {
     return {
@@ -199,6 +217,32 @@ export default {
     closeVideoPop (params) {
       this.videoPopShow = params;
     },
+    // 加入喜欢
+    addMyLike: function (index) {
+      let that = this;
+      if(that.isLogin){
+        if (that.composition[index].isLike) {
+          that.composition[index].isLike = false;
+          that.composition[index].likers -= 1;
+        }else{
+          that.composition[index].isLike = true;
+          that.composition[index].likers += 1;
+          that.$toast('成功收藏！');
+        }
+      }else {
+        that.$dialog.confirm({
+          title: '未登录',
+          message: '登录后可收藏至您的喜欢',
+          confirmButtonText: '立即登录'
+        }).then(() => {
+          that.$router.push({  //核心语句
+            path:'/login'   //跳转的路径
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    },
   },
 };
 </script>
@@ -250,23 +294,26 @@ export default {
   .home-van-cell{
     padding: 0.266667rem 0.133333rem;
   }
-  .video-list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
   .video-list-item{
     height: 3.2rem;
     width: 47%;
     box-shadow: 3px 3px 2px #ddd;
     margin: 0 0 10px 0
   }
+  .AI-list-item{
+    height: 4rem;
+    width: 100%;
+    box-shadow: 3px 3px 2px #ddd;
+    margin: 0 0 10px 0
+  }
   .img-zone{
-    height: 2.5rem;
+    height: 80%;
     width: 100%;
     overflow: hidden;
     position: relative;
     color: #fff;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
   .img-zone-dec{
     position: absolute;
@@ -278,7 +325,7 @@ export default {
     display: flex;
     background-color: rgba(0, 0, 0, 0.7);
   }
-  .video-desc{
+  .card-desc{
     padding: 0.133333rem 0.266667rem;
   }
 </style>

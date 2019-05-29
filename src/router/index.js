@@ -381,6 +381,30 @@ export default new Router({
       },
       component: (resolve) => require(['view/shop-page/ShopInfo'],resolve),
     },
+
+    /*
+      AI导师 -- 开始
+    */
+    {
+      path: '/AITeaching/AITeachingChatList',
+      name: 'AITeachingChatList',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/AITeaching-page/AITeachingChatList'],resolve),
+    },
+    {
+      path: '/AITeaching/AITeachingChatList/AITeachingChat/:id',
+      name: 'AITeachingChat',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/AITeaching-page/AITeachingChat'],resolve),
+    },
+    /*
+      AI导师 -- 结束
+    */
+
     /*
       落地页 -- 开始
     */
@@ -395,6 +419,7 @@ export default new Router({
     /*
       落地页 -- 结束
     */
+
     /*
       仿微信、支付宝支付页 -- 开始
     */

@@ -585,27 +585,83 @@ export var imitateVideoList = [
     videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
     videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
     title: '关注我，教你日进斗金', // 视频标题
+    isLike: true, // 是否喜欢
+    likers: 9999,   // 喜欢数
+    watchers: 9999,   // 观看数
+    // 标签分类
+    list: [
+      {
+        itemId: 'itemId0', //词条分类id
+        itemName: '聊天搭讪', // 词条分类名
+      },
+      {
+        itemId: 'itemId1', //词条分类id
+        itemName: '社交撩妹', // 词条分类名
+      },
+    ]
   },
   {
     author: '我是作者', // 视频作者
     likers: 10001,  // 喜欢数
     videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
-    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    videoId: 'v00002',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
     title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+    isLike: false, // 是否喜欢
+    likers: 9999,   // 喜欢数
+    watchers: 9999,   // 观看数
+    // 标签分类
+    list: [
+      {
+        itemId: 'itemId0', //词条分类id
+        itemName: '聊天搭讪', // 词条分类名
+      },
+      {
+        itemId: 'itemId1', //词条分类id
+        itemName: '社交撩妹', // 词条分类名
+      },
+    ]
   },
   {
     author: '我是作者', // 视频作者
     likers: 10001,  // 喜欢数
     videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
-    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    videoId: 'v00003',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
     title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+    isLike: false, // 是否喜欢
+    likers: 9999,   // 喜欢数
+    watchers: 9999,   // 观看数
+    // 标签分类
+    list: [
+      {
+        itemId: 'itemId0', //词条分类id
+        itemName: '聊天搭讪', // 词条分类名
+      },
+      {
+        itemId: 'itemId1', //词条分类id
+        itemName: '社交撩妹', // 词条分类名
+      },
+    ]
   },
   {
     author: '我是作者', // 视频作者
     likers: 10001,  // 喜欢数
     videopic: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
-    videoId: 'v00001',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
+    videoId: 'v00004',  // 视频Id，调用视频的时候会通过请求获取链接，防止盗链
     title: '关注我，教你如何日进斗金，走向人生巅峰', // 视频标题
+    isLike: false, // 是否喜欢
+    likers: 9999,   // 喜欢数
+    watchers: 9999,   // 观看数
+    // 标签分类
+    list: [
+      {
+        itemId: 'itemId0', //词条分类id
+        itemName: '聊天搭讪', // 词条分类名
+      },
+      {
+        itemId: 'itemId1', //词条分类id
+        itemName: '社交撩妹', // 词条分类名
+      },
+    ]
   },
 ];
 
