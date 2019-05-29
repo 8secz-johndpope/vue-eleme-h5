@@ -1,5 +1,5 @@
 <template>
-  <div class="white-bg home-view">
+  <div class="home-view">
     <van-search
       v-model="keywords"
       placeholder="请输入搜索关键词"
@@ -9,26 +9,27 @@
     >
       <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger">搜索</van-button></div>
     </van-search>
-    <van-swipe :autoplay="3000" class="swipe">
+    <van-swipe :autoplay="3000" class="swipe white-bg ">
       <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
         <router-link :to="{ name: 'toolList', params: {} }">
           <img v-lazy="image" class="swipe-img" />
         </router-link>
       </van-swipe-item>
     </van-swipe>
-    <div class="content-box">
-      <div class="flex-wrap classify-zone">
-        <div class="classify-item" v-for="(menuItem, index) in getImitateMenu">
-          <div class="van-avatar">
-            <i class="fa fa-handshake-o" aria-hidden="true"></i>
+    <!-- 菜单分类 -->
+    <div class="flex-wrap white-bg classify-zone">
+        <div class="classify-item" v-for="(menuItem, index) in menuList">
+          <div>
+            <img :src="menuItem.img"  class="van-avatar-large" />
           </div>
           <div>
             {{menuItem.levelOneName}}
           </div>
         </div>
       </div>
+    <div class="content-box">
       <!-- 精彩视频 -->
-      <van-cell class="home-van-cell">
+      <van-cell class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -37,7 +38,7 @@
         </template>
       </van-cell>
       <!-- 视频 列表，默认四篇 -->
-      <div class="flex-space-around">
+      <div class="flex-space-around white-bg pd10">
         <div class="video-list-item" v-for="(item, index) in getImitateVideoList">
           <div class="img-zone" v-bind:style="{backgroundImage:'url(' + item.videopic + ')' }"  @click="openVideoPop">
             <div class="img-zone-dec">{{item.title}}</div>
@@ -49,7 +50,7 @@
         </div>
       </div>
       <!-- 优选文章 -->
-      <van-cell class="home-van-cell">
+      <van-cell class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -58,11 +59,11 @@
         </template>
       </van-cell>
       <!-- 文章列表，默认四篇 -->
-      <div>
+      <div class="white-bg pd10">
         <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
       </div>
       <!-- AI导师 -->
-      <van-cell value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="home-van-cell">
+      <van-cell value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -71,12 +72,12 @@
         </template>
       </van-cell>
       <!-- AI导师列表，默认四篇 -->
-      <div class="flex-space-around">
+      <div class="flex-space-around white-bg pd10">
         <!-- AI导师卡片 -->
         <ImgCard :composition="getImitateVideoList"></ImgCard>
       </div>
       <!-- 情感百科 -->
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell">
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -85,7 +86,7 @@
         </template>
       </van-cell>
       <!-- 情感百科列表，默认3篇 -->
-      <div>
+      <div class="white-bg pd10">
         <EncyclopediasCard></EncyclopediasCard>
       </div>
     </div>
@@ -161,13 +162,32 @@ export default {
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
+      ],
+      menuList: [
+        {
+          levelOneName: '恋爱话术', // 分类一级名称
+          linkUrl: '',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '撩妹技巧', // 分类一级名称
+          linkUrl: '',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '情感问答', // 分类一级名称
+          linkUrl: '',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '实用工具', // 分类一级名称
+          linkUrl: '',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
       ]
     };
   },
   mounted () {
-
-  },
-  beforeDestroy () {
 
   },
   computed: {
@@ -184,7 +204,6 @@ export default {
       'getImitateVideoList', // 获取模拟视频列表
       'getImitateEncyclopediasClassfication', // 模拟百科分类
       'getImitateEncyclopediasList', // 模拟百科列表
-      'getImitateMenu' // 话术分类信息
     ])
   },
   methods: {
@@ -268,15 +287,14 @@ export default {
     line-height: 1.094rem;
   }
   .content-box{
-    background-color: #fff;
-    margin: 10px
   }
   .classify-zone{
+    padding: 0.266667rem 0 0 0;
   }
   .classify-item{
     width: 25%;
     text-align: center;
-    line-height: 0.666667rem;
+    line-height: 0.8rem;
   }
   .swipe{
     height: 4.2rem;
@@ -292,17 +310,11 @@ export default {
     padding: 0.266667rem;
   }
   .home-van-cell{
-    padding: 0.266667rem 0.133333rem;
+    padding: 0.266667rem 10px 0 10px;
   }
   .video-list-item{
     height: 3.2rem;
     width: 47%;
-    box-shadow: 3px 3px 2px #ddd;
-    margin: 0 0 10px 0
-  }
-  .AI-list-item{
-    height: 4rem;
-    width: 100%;
     box-shadow: 3px 3px 2px #ddd;
     margin: 0 0 10px 0
   }

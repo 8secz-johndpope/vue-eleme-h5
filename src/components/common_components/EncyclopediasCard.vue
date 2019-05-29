@@ -1,6 +1,9 @@
 <template>
   <div>
-    <van-panel :title="item.title" v-for="(item, index) in getImitateEncyclopediasList" :key="index" class="van-panel">
+    <div v-for="(item, index) in getImitateEncyclopediasList" :key="index" class="van-panel">
+      <div class="title">
+        {{item.title}}
+      </div>
       <div class="encyclopediasList">
         <div class="flex-between gray-color">
           <div>
@@ -11,7 +14,7 @@
           </div>
         </div>
       </div>
-    </van-panel>
+    </div>
     <!-- 词条分类 -->
     <div class="flex encyclopediasItem" v-for="(item, index) in getImitateEncyclopediasClassfication" :key="item.id">
       <!-- 左侧-词条图片 -->
@@ -62,14 +65,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .van-panel .van-cell{
-    padding: 0.266667rem 10px;
+  .title{
+    color: #323233;
+    font-size: 0.373333rem;
+  }
+  .van-panel{
+    padding: 0 0.266667rem;
   }
   .encyclopediasList{
-    padding: 0 0.4rem
+    padding: 10px 0
   }
   .encyclopediasItem{
-    height: 1.2rem;
+    height: 1.3rem;
     margin: 0.266667rem 0 0 0;
     padding: 0.266667rem 0 0 0;
     border-top: 1px solid #ececec;

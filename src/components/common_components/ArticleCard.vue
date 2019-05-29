@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="article">
     <router-link v-for="(item, index) in composition" :to="'/articleDetail/' + item.id" >
       <van-card
           :tag="item.isCarefullyChosen ? '精选' : '' "
@@ -50,9 +50,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .van-card{
+  .article .van-card{
     background-color: #fff;
-    padding: 0.133333rem 0.266667rem;
+    padding: 0.133333rem;
   }
   .title{
     font-weight: 700;

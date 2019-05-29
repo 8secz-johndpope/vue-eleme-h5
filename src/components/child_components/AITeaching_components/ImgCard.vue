@@ -49,9 +49,10 @@ export default {
 <style lang="less" scoped>
   .list-content{
     width: 100%;
+    padding: 0 0.133333rem;
   }
   .AI-list-item{
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     box-shadow: 3px 3px 2px #ddd;
     margin: 0 0 10px 0
