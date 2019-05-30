@@ -18,14 +18,16 @@
     </van-swipe>
     <!-- 菜单分类 -->
     <div class="flex-wrap white-bg classify-zone">
-      <div class="classify-item" v-for="(menuItem, index) in menuList">
-        <div>
-          <img :src="menuItem.img"  class="van-avatar-large" />
+        <div class="classify-item" v-for="(menuItem, index) in menuList">
+          <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
+            <div>
+              <img :src="menuItem.img"  class="van-avatar-large" />
+            </div>
+            <div>
+              {{menuItem.levelOneName}}
+            </div>
+          </router-link>
         </div>
-        <div>
-          {{menuItem.levelOneName}}
-        </div>
-      </div>
     </div>
     <div class="content-box">
       <!-- 精彩视频 -->
@@ -166,22 +168,22 @@ export default {
       menuList: [
         {
           levelOneName: '恋爱话术', // 分类一级名称
-          linkUrl: '',
+          linkUrlName: 'talkingLibrary',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
           levelOneName: '撩妹技巧', // 分类一级名称
-          linkUrl: '',
+          linkUrlName: 'talkingLibrary',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
           levelOneName: '情感问答', // 分类一级名称
-          linkUrl: '',
+          linkUrlName: 'talkingLibrary',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
           levelOneName: '实用工具', // 分类一级名称
-          linkUrl: '',
+          linkUrlName: 'toolList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
       ]

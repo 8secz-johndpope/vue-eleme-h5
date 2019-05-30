@@ -481,5 +481,20 @@ export default new Router({
     /*
       仿微信、支付宝支付页 -- 结束
     */
+
+    /*
+      话术库 -- 开始
+    */
+    {
+      path: '/talkingLibrary/index',
+      name: 'talkingLibrary',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/talkingLibrary-page/Index'],resolve),
+    },
+    /*
+      话术库 -- 结束
+    */
   ]
 });
