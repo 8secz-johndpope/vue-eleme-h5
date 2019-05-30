@@ -77,7 +77,7 @@
         <ImgCard :composition="getImitateVideoList"></ImgCard>
       </div>
       <!-- 情感百科 -->
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell mgt10">
+      <van-cell value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />

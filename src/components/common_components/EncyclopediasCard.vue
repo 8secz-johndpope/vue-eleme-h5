@@ -1,39 +1,43 @@
 <template>
   <div>
-    <div v-for="(item, index) in getImitateEncyclopediasList" :key="index" class="van-panel">
-      <div class="title">
-        {{item.title}}
-      </div>
-      <div class="encyclopediasList">
-        <div class="flex-between gray-color">
-          <div>
-            {{item.praiseNum}}人觉得有用
-          </div>
-          <div>
-            来自 {{item.belongsClassificationCnName}}
+    <router-link :to="{ name: 'encyclopedias', params: {'id': item.id} }" v-for="(item, index) in getImitateEncyclopediasList" :key="index">
+      <div  class="van-panel">
+        <div class="title">
+          {{item.title}}
+        </div>
+        <div class="encyclopediasList">
+          <div class="flex-between gray-color">
+            <div>
+              {{item.praiseNum}}人觉得有用
+            </div>
+            <div>
+              来自 {{item.belongsClassificationCnName}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </router-link>
     <!-- 词条分类 -->
-    <div class="flex encyclopediasItem" v-for="(item, index) in getImitateEncyclopediasClassfication" :key="item.id">
-      <!-- 左侧-词条图片 -->
-      <div class="flex-center pdt5 encyclopediasItem-l">
-        <img class="van-avatar-large" :src="item.img" />
-      </div>
-      <!-- 右侧-分类 -->
-      <div class="flex-space-between encyclopediasItem-r pdl5">
-        <div class="flex-column">
-          <div class="pdb5 encyclopediasItem-title">{{item.name}}</div>
+    <router-link :to="{ name: 'encyclopediasClassification', params: {'id': item.id} }" v-for="(item, index) in getImitateEncyclopediasClassfication" :key="item.id">
+      <div class="flex encyclopediasItem">
+        <!-- 左侧-词条图片 -->
+        <div class="flex-center pdt5 encyclopediasItem-l">
+          <img class="van-avatar-large" :src="item.img" />
+        </div>
+        <!-- 右侧-分类 -->
+        <div class="flex-space-between encyclopediasItem-r pdl5">
+          <div class="flex-column">
+            <div class="pdb5 encyclopediasItem-title">{{item.name}}</div>
+            <div>
+              <van-tag color="#f2826a" class="mgr5" v-for="(c_item, c_index) in item.list" :key="c_item.itemId" v-if="c_index < 3">{{c_item.itemName}}</van-tag>
+            </div>
+          </div>
           <div>
-            <van-tag color="#f2826a" v-for="(c_item, c_index) in item.list" :key="c_item.itemId" class="mgr5">{{c_item.itemName}}</van-tag>
+            <van-icon name="arrow" class="gray-color encyclopediasItem-r-icon" />
           </div>
         </div>
-        <div>
-          <van-icon name="arrow" class="gray-color encyclopediasItem-r-icon" />
-        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>

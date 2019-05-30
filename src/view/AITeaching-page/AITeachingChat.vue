@@ -12,7 +12,7 @@
     <div class="progress-zone">
       <van-progress :percentage="percentage" :show-pivot="false" color="#f2826a" />
     </div>
-    <div class="content" @click="sendMsg">
+    <div class="content" @click="sendMsg" :style="{minHeight: contentHeight + 'px'}">
        <!-- 对话框高度 -->
        <div class="xw-content" ref="xwBody">
          <div class="xw-chat-wrap">
@@ -87,6 +87,7 @@
         userImg2: require('chatSrc/images/female.jpg'),  // 用户图片2
         EXPS: [],
         percentage: 1,  // 进度百分比
+        contentHeight: 0, // 屏幕内容高度
       }
     },
     computed: {
@@ -98,6 +99,7 @@
       this._loadEmojiData();
     },
     mounted () {
+      this.contentHeight = window.innerHeight - 150
     },
     methods: {
       getEmotionData(pageNow, pageSize) {
@@ -117,18 +119,16 @@
       },
       sendMsg(){
         let that = this;
-        setTimeout(() => {
-          that.currentType = that.currentType === 1 ? 2 : 1
-          that.records.push({
-            time: new Date().toLocaleTimeString(),
-            content: that.testContents[Math.floor(Math.random() * 9)],
-            type: that.currentType
-          });
-          if (that.percentage <= 100) {
-            that.percentage += 5;
-          }
-          that.scrollToBottom();
-        }, 300);
+        that.currentType = that.currentType === 1 ? 2 : 1
+        that.records.push({
+          time: new Date().toLocaleTimeString(),
+          content: that.testContents[Math.floor(Math.random() * 9)],
+          type: that.currentType
+        });
+        if (that.percentage <= 100) {
+          that.percentage += 5;
+        }
+        that.scrollToBottom();
       },
       //滚动到底
       scrollToBottom(){

@@ -1,5 +1,5 @@
 <template>
-  <div class="white-bg">
+  <div class="white-bg AITeachingChatList">
     <van-nav-bar
       title="AI导师"
       left-arrow
@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .AITeachingChatList{
+    margin: -0.266667rem 0 0 0;
+    padding: 0.4rem 0 0 0;
+  }
   .content{
     margin: 1.333333rem 0 0 0;
     padding: 0 0.4rem;

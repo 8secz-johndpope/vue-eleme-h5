@@ -668,6 +668,18 @@ export var imitateEncyclopediasClassfication = [
         itemId: 'itemId2', //词条分类id
         itemName: '暗恋', // 词条分类名
       },
+      {
+        itemId: 'itemId14', //词条分类id
+        itemName: '形象改造', // 词条分类名
+      },
+      {
+        itemId: 'itemId15', //词条分类id
+        itemName: '读懂女性', // 词条分类名
+      },
+      {
+        itemId: 'itemId16', //词条分类id
+        itemName: '相亲', // 词条分类名
+      },
     ]
   },
   {

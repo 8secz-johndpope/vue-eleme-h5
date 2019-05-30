@@ -124,6 +124,12 @@
 .mgr10{
   margin-right: 0.266667rem;
 }
+.mgb5{
+  margin-bottom: 0.133333rem;
+}
+.mgb10{
+  margin-bottom: 0.266667rem;
+}
 .pd15{
   padding: 0.4rem;
 }
@@ -141,6 +147,9 @@
 }
 .pdb10{
   padding: 0 0 0.266667rem 0;
+}
+.pdt10{
+  padding: 0.266667rem 0 0 0;
 }
 .pd10{
   padding: 0.266667rem;

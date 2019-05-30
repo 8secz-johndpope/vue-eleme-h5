@@ -406,6 +406,37 @@ export default new Router({
     */
 
     /*
+      情感百科 -- 开始
+    */
+    {
+      path: '/encyclopedias/encyclopediasList',
+      name: 'encyclopediasList',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/Encyclopedias-page/EncyclopediasList'],resolve),
+    },
+    {
+      path: '/encyclopedias/classify/:id',
+      name: 'encyclopediasClassification',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/Encyclopedias-page/EncyclopediasClassification'],resolve),
+    },
+    {
+      path: '/encyclopedias/article/:id',
+      name: 'encyclopedias',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/Encyclopedias-page/Encyclopedias'],resolve),
+    },
+    /*
+      情感百科 -- 结束
+    */
+
+    /*
       落地页 -- 开始
     */
     {
