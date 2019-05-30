@@ -2,7 +2,6 @@
   <div>
     <van-nav-bar
       title="发表对话"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"

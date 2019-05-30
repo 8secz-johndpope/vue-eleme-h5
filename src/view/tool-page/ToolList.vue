@@ -3,7 +3,6 @@
     <div>
       <van-nav-bar
         title="工具列表"
-        left-text="返回"
         left-arrow
         @click-left="onClickLeft"
         >

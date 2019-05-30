@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="举报"
-      left-text="返回"
       right-text="提交"
       left-arrow
       @click-left="onClickLeft"
@@ -154,7 +153,7 @@
     margin-top: 5px;
   }
   .accusation-cell{
-    margin: 0.133333rem 0 0 0; 
+    margin: 0.133333rem 0 0 0;
   }
   .dec{
     padding: 0.166667rem 0.4rem 0.1rem 0.4rem;

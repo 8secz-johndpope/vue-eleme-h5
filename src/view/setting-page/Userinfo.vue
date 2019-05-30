@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="个人信息"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
     />

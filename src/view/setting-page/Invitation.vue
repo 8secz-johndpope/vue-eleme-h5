@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="邀请好友"
-      left-text="返回"
       right-text="活动规则"
       left-arrow
       @click-left="onClickLeft"

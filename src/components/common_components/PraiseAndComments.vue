@@ -4,7 +4,6 @@
     <div class="fixed-top">
       <van-nav-bar
         :title="tabTitle"
-        left-text="返回"
         left-arrow
         @click-left="onClickLeft"
       />

@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="更多"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"

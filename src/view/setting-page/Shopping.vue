@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="购买积分"
-      left-text="返回"
       right-text="充值帮助"
       left-arrow
       @click-left="onClickLeft"

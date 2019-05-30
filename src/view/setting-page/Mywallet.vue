@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="我的钱包"
-      left-text="返回"
       right-text="充值记录"
       left-arrow
       @click-left="onClickLeft"

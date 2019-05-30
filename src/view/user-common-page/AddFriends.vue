@@ -3,7 +3,6 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="添加好友"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
     />

@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div>
+      <van-nav-bar
+        title="恋爱话术"
+        left-arrow
+        @click-left="onClickLeft"
+        >
+      </van-nav-bar>
+    </div>
     <van-search
       v-model="keywords"
       placeholder="请输入搜索关键词"
@@ -61,7 +69,10 @@ export default {
       if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
       this.$store.dispatch('setKeywords', this.keywords);
       this.$router.push('/result/'+this.keywords);
-    }
+    },
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
+    },
   },
   components: {
     Fixednav,

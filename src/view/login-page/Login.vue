@@ -2,7 +2,6 @@
   <div>
     <van-nav-bar
       title="登录"
-      left-text="返回"
       right-text="首页"
       left-arrow
       @click-left="onClickLeft"

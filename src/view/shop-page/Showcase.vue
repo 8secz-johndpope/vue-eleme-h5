@@ -3,7 +3,7 @@
     <div class="fixed-top">
         <van-nav-bar
           title="商品橱窗"
-          left-text="返回"
+          
           right-text="我也要卖货"
           left-arrow
           @click-left="onClickLeft"

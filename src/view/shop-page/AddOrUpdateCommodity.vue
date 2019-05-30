@@ -3,7 +3,7 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="新增商品"
-      left-text="返回"
+      
       right-text="提交"
       :fixed="true"
       left-arrow

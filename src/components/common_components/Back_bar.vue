@@ -3,7 +3,6 @@
   <div>
     <van-nav-bar
       :title="titleName"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
     />

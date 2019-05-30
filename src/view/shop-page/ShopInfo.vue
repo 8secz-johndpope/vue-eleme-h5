@@ -3,7 +3,7 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="橱窗通用信息"
-      left-text="返回"
+      
       right-text="提交"
       left-arrow
       @click-left="onClickLeft"
