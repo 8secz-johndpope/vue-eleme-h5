@@ -11,27 +11,27 @@
     <van-panel title="微信截图">
       <div class="flex-wrap panel-content">
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {} }">
+          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatChange' } }">
             <img src="../../images/toolPage/toolList/wx-balance.png" class="van-avatar-large">
             <div>微信零钱</div>
           </router-link>
         </div>
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {} }">
+          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatChange' } }">
             <img src="../../images/toolPage/toolList/wx-transfer.png" class="van-avatar-large">
             <div>微信转账</div>
           </router-link>
         </div>
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {} }">
+          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatChange' } }">
             <img src="../../images/toolPage/toolList/wx-withdrawal.png" class="van-avatar-large">
             <div>微信提现</div>
           </router-link>
         </div>
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {} }">
+          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatPayment' } }">
             <img src="../../images/toolPage/toolList/wx-wallet.png" class="van-avatar-large">
-            <div>微信钱包</div>
+            <div>微信支付</div>
           </router-link>
         </div>
       </div>

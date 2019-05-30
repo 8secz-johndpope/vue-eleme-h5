@@ -17,7 +17,7 @@
         placeholder="请输入零钱金额（元），会自动格式化"
       />
     </van-cell-group>
-    <router-link :to="{ name: 'wechatBalance', params: { 'amount' : amount } }" class="flex-center">
+    <router-link :to="{ name: routerLink, params: { 'amount' : amount } }" class="flex-center">
       <van-button type="primary" size="large" :disabled="amount === '' ? true : false " class="mgt10 preview-btn">生成预览</van-button>
     </router-link>
   </div>
@@ -32,9 +32,11 @@
     data () {
       return {
         amount: 8888,  // 输入金额
+        routerLink: '', // 路由地址
       };
     },
     mounted () {
+      this.routerLink = this.$route.params.routerLink
     },
     computed: {
     },

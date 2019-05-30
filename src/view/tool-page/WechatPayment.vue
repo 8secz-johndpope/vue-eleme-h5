@@ -161,7 +161,7 @@
     components:{
 
     },
-    name: 'wechatBalance',
+    name: 'wechatPayment',
     data () {
       return {
         amount: 0,  // 金额

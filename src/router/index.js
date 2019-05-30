@@ -463,20 +463,30 @@ export default new Router({
       component: (resolve) => require(['view/tool-page/ToolList'],resolve),
     },
     {
-      path: '/toolPage/InputSetting',
+      path: '/toolPage/InputSetting/:routerLink',
       name: 'inputSetting',
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/InputSetting'],resolve),
     },
+    // 微信支付
     {
-      path: '/toolPage/wechatBalance/:amount',
-      name: 'wechatBalance',
+      path: '/toolPage/wechatPayment/:amount',
+      name: 'wechatPayment',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/tool-page/WechatBalance'],resolve),
+      component: (resolve) => require(['view/tool-page/WechatPayment'],resolve),
+    },
+    // 微信零钱
+    {
+      path: '/toolPage/wechatChange/:amount',
+      name: 'wechatChange',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/WechatChange'],resolve),
     },
     /*
       仿微信、支付宝支付页 -- 结束
