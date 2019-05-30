@@ -1,5 +1,5 @@
 <template>
-  <div class="list-content">
+  <div class="flex-space-between list-content">
     <router-link :to="{ name: 'AITeachingChat', params: {'id': item.videoId} }"  v-for="(item, index) in composition" :key="index">
       <div class="AI-list-item">
       <div class="img-zone" v-bind:style="{backgroundImage:'url(' + item.videopic + ')' }">
@@ -52,10 +52,10 @@ export default {
     padding: 0 0.133333rem;
   }
   .AI-list-item{
-    height: 5rem;
-    width: 100%;
+    height: 3.8rem;
+    width: 4.5rem;
     box-shadow: 3px 3px 2px #ddd;
-    margin: 0 0 10px 0
+    margin: 0 0 0.266667rem 0
   }
   .img-zone{
     height: 80%;
@@ -69,12 +69,13 @@ export default {
   .img-zone-dec{
     position: absolute;
     height: 0.9rem;
-    width: 100%;
+    width: 4.25rem;
     bottom: 0;
     padding: 0 0.266667rem;
     align-items: center;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
+    background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
   }
   .card-desc{
     padding: 0.133333rem 0.266667rem;

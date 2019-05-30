@@ -9,8 +9,10 @@
       >
       </van-nav-bar>
     </div>
+    <div class="progress-zone">
+      <van-progress :percentage="percentage" :show-pivot="false" color="#f2826a" />
+    </div>
     <div class="content" @click="sendMsg">
-       <van-progress :percentage="percentage" :show-pivot="false" color="#f2826a" />
        <!-- 对话框高度 -->
        <div class="xw-content" ref="xwBody">
          <div class="xw-chat-wrap">
@@ -125,7 +127,23 @@
           if (that.percentage <= 100) {
             that.percentage += 5;
           }
+          that.scrollToBottom();
         }, 300);
+      },
+      //滚动到底
+      scrollToBottom(){
+        let that = this;
+        this.$nextTick(() => {
+          document.body.scrollTop = that.getScroll().top + 1000;
+          document.documentElement.scrollTop = that.getScroll().top + 1000;
+          window.pageYOffset = that.getScroll().top + 1000;
+        });
+      },
+      //获得页面向左、向上卷动的距离
+      getScroll () {
+         return {
+             top: window.pageYOffset + 1000 || document.documentElement.scrollTop + 1000 || document.body.scrollTop + 1000 || 0 + 1000
+         };
       },
       _loadEmojiData(){
         let that = this;
@@ -139,6 +157,13 @@
   }
 </script>
 <style lang="css" scoped>
+  .progress-zone{
+    position: fixed;
+    top: 1.226667rem;
+    z-index: 2;
+    width: 100%;
+    height: 0.32rem;
+  }
   .content{
     margin: 1.333333rem 0 0 0;
   }

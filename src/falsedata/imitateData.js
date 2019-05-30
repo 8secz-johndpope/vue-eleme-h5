@@ -591,10 +591,6 @@ export var imitateVideoList = [
     // 标签分类
     list: [
       {
-        itemId: 'itemId0', //词条分类id
-        itemName: '聊天搭讪', // 词条分类名
-      },
-      {
         itemId: 'itemId1', //词条分类id
         itemName: '社交撩妹', // 词条分类名
       },
@@ -615,10 +611,6 @@ export var imitateVideoList = [
         itemId: 'itemId0', //词条分类id
         itemName: '聊天搭讪', // 词条分类名
       },
-      {
-        itemId: 'itemId1', //词条分类id
-        itemName: '社交撩妹', // 词条分类名
-      },
     ]
   },
   {
@@ -636,10 +628,6 @@ export var imitateVideoList = [
         itemId: 'itemId0', //词条分类id
         itemName: '聊天搭讪', // 词条分类名
       },
-      {
-        itemId: 'itemId1', //词条分类id
-        itemName: '社交撩妹', // 词条分类名
-      },
     ]
   },
   {
@@ -656,10 +644,6 @@ export var imitateVideoList = [
       {
         itemId: 'itemId0', //词条分类id
         itemName: '聊天搭讪', // 词条分类名
-      },
-      {
-        itemId: 'itemId1', //词条分类id
-        itemName: '社交撩妹', // 词条分类名
       },
     ]
   },

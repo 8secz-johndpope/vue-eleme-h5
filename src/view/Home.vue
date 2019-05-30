@@ -96,7 +96,7 @@
     <Fixednav></Fixednav>
     <!-- 视频弹框 -->
     <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
-      <VideoCard ref="childVideoCard" :playerOptions="playerOptions" :currentPlayData="currentPlayData" @on-close-videoPop="closeVideoPop"></VideoCard>
+      <VideoModalCard ref="childVideoCard" :playerOptions="playerOptions" :currentPlayData="currentPlayData" @on-close-videoPop="closeVideoPop"></VideoModalCard>
     </van-popup>
   </div>
 </template>
@@ -106,7 +106,7 @@ import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
 import ArticleCard from 'components/common_components/ArticleCard';
-import VideoCard from 'components/common_components/VideoCard';
+import VideoModalCard from 'components/common_components/VideoModalCard';
 import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
 import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
 import { mapGetters } from 'vuex';
@@ -119,7 +119,7 @@ export default {
     ShareBox,
     GoodsCard,
     ArticleCard,
-    VideoCard,
+    VideoModalCard,
     EncyclopediasCard,
     ImgCard,
   },
@@ -313,13 +313,13 @@ export default {
     padding: 0.266667rem 10px 0 10px;
   }
   .video-list-item{
-    height: 3.2rem;
-    width: 47%;
+    height: 5rem;
+    width: 100%;
     box-shadow: 3px 3px 2px #ddd;
     margin: 0 0 10px 0
   }
   .img-zone{
-    height: 80%;
+    height: 4.3rem;
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -335,7 +335,8 @@ export default {
     padding: 0 0.266667rem;
     align-items: center;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
+    background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
   }
   .card-desc{
     padding: 0.133333rem 0.266667rem;

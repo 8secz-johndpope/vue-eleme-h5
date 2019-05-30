@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="white-bg">
     <van-nav-bar
       title="AI导师"
       left-arrow
@@ -15,7 +15,7 @@
 import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'home',
+  name: 'AITeachingChatList',
   components: {
     ImgCard,
   },
@@ -45,5 +45,6 @@ export default {
 <style lang="less" scoped>
   .content{
     margin: 1.333333rem 0 0 0;
+    padding: 0 0.4rem;
   }
 </style>
