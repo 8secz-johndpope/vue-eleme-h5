@@ -5,44 +5,47 @@
         title="恋爱话术"
         left-arrow
         @click-left="onClickLeft"
+        fixed
         >
       </van-nav-bar>
     </div>
-    <van-search
-      v-model="keywords"
-      placeholder="请输入搜索关键词"
-      show-action
-      @search="onSearch"
-    >
-      <div slot="action" @click="onSearch">搜索</div>
-    </van-search>
-    <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
-        <img v-lazy="image" class="swipe-img" />
-      </van-swipe-item>
-    </van-swipe>
-    <van-panel class="mg15 pd10" v-for="(menuItem, index) in getImitateMenu">
-      <div slot="header">
-        <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
-      </div>
-      <div class="flex-start">
-        <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
-          <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
-        </router-link>
-      </div>
-    </van-panel>
+    <div class="fixed-content-box">
+      <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="(image, index) in images" :key="index">
+          <img v-lazy="image" class="swipe-img" />
+        </van-swipe-item>
+      </van-swipe>
+      <van-search
+        v-model="keywords"
+        placeholder="请输入搜索关键词"
+        show-action
+        @search="onSearch"
+        class="mgt10"
+        >
+        <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger">搜索</van-button></div>
+      </van-search>
+      <van-panel class="pd10 mgt10" v-for="(menuItem, index) in getImitateMenu">
+        <div slot="header">
+          <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
+        </div>
+        <div class="flex-space-around">
+          <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
+            <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
+          </router-link>
+        </div>
+      </van-panel>
+    </div>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
-    <!-- 固定标签页 -->
-    <Fixednav></Fixednav>
   </div>
 </template>
 
 <script>
-import Fixednav from 'components/common_components/Fixed_nav';
 import { mapGetters } from 'vuex';
 export default {
   name: 'home',
+  components: {
+  },
   data () {
     return {
       showMe: false, // 是否展示当前页面
@@ -59,8 +62,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getLogin',
-      'getFalseHotWord',
       'getImitateMenu' // 话术分类信息
     ])
   },
@@ -74,9 +75,6 @@ export default {
       this.COMMONFUNC.goBack();
     },
   },
-  components: {
-    Fixednav,
-  }
 };
 </script>
 
@@ -96,15 +94,10 @@ export default {
   .panel-header{
     padding-top: 0.312rem;
   }
-  .swipe-img-zone{
-    width: 34.375rem;
-    height: 13.125rem;
-  }
   .swipe-img{
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    width: 9.333rem;
+    width: 100%;
     height: 4.0rem;
-    padding: 0.1rem 0.4rem 0 0.4rem;
   }
 </style>

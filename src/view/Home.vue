@@ -201,7 +201,6 @@ export default {
     // 能少写不少代码
     ...mapGetters([
       'getLogin',
-      'getFalseHotWord',
       'getImitateArticleList', // 获取模拟文章列表
       'getImitateVideoList', // 获取模拟视频列表
       'getImitateEncyclopediasClassfication', // 模拟百科分类

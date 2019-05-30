@@ -47,24 +47,17 @@ export var imitateMenu = [
     levelOneName: '恋爱话术', // 分类一级名称
     menuList: [
         {
+            levelTwoName: '全部',
+            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
+            openNewLink: false,  // 打开新连接
+            linkAddress: '',   // 新链接地址
+            listId: 'id0001',   // 菜单Id
+        },
+        {
             levelTwoName: '搭讪开场白',  // 分类二级名称
             level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
             openNewLink: false,  // 打开新连接
             linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '暖心情话',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '赞美夸奖',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
         {
@@ -95,13 +88,6 @@ export var imitateMenu = [
             linkAddress: '',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
-        {
-            levelTwoName: '打压调侃',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
     ]
   },
   {
@@ -119,27 +105,6 @@ export var imitateMenu = [
             level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
             openNewLink: true,  // 打开新连接
             linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '约会话术',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '游戏互动',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '约会冷场',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
             listId: 'id0001',   // 菜单Id
         },
         {
@@ -162,13 +127,6 @@ export var imitateMenu = [
             listId: 'id0001',   // 菜单Id
         },
         {
-            levelTwoName: '引导触碰',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
             levelTwoName: '牵手技巧',
             level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
             openNewLink: true,  // 打开新连接
@@ -177,39 +135,6 @@ export var imitateMenu = [
         },
         {
             levelTwoName: '接吻技巧',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-    ]
-  },
-  {
-    levelOneName: '确立关系', // 分类一级名称
-    menuList: [
-        {
-            levelTwoName: '破解抵抗',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '私密互动',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '酒店开房',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '回家诱惑',
             level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
             openNewLink: true,  // 打开新连接
             linkAddress: 'www.baidu.com',   // 新链接地址
@@ -228,34 +153,6 @@ export var imitateMenu = [
             listId: 'id0001',   // 菜单Id
         },
         {
-            levelTwoName: '情话墙',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '哄哄TA',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '奇闻趣事',    // 奇闻趣事
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '名言散文',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
             levelTwoName: '开心一刻',
             level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
             openNewLink: false,  // 打开新连接
@@ -263,54 +160,7 @@ export var imitateMenu = [
             listId: 'id0001',   // 菜单Id
         },
         {
-            levelTwoName: '生活短句', // 起床睡觉困难，为什么要轻易
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '节日话术', // 你知道为什么叫愚人节吗，遇到你，走了心
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-    ]
-  },
-  {
-    levelOneName: '恋爱技巧', // 分类一级名称
-    menuList: [
-        {
-            levelTwoName: '形象穿搭',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '互动游戏',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '角色扮演',
-            level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
-            openNewLink: true,  // 打开新连接
-            linkAddress: 'www.baidu.com',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '小魔术',
-            level: 2,   // 类目级别，接入新的应用，1如商品橱窗，用以广告的商品展示,基本类型
-            openNewLink: false,  // 打开新连接
-            linkAddress: '',   // 新链接地址
-            listId: 'id0001',   // 菜单Id
-        },
-        {
-            levelTwoName: '朋友圈',    // 奇闻趣事
+            levelTwoName: '奇闻趣事',    // 奇闻趣事
             level: 1,   // 类目级别，接入新的应用，如商品橱窗，用以广告的商品展示
             openNewLink: true,  // 打开新连接
             linkAddress: 'www.baidu.com',   // 新链接地址
