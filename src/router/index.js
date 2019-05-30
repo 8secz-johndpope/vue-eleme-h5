@@ -420,7 +420,7 @@ export default new Router({
       path: '/encyclopedias/classify/:id',
       name: 'encyclopediasClassification',
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/Encyclopedias-page/EncyclopediasClassification'],resolve),
     },

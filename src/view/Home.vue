@@ -18,15 +18,15 @@
     </van-swipe>
     <!-- 菜单分类 -->
     <div class="flex-wrap white-bg classify-zone">
-        <div class="classify-item" v-for="(menuItem, index) in menuList">
-          <div>
-            <img :src="menuItem.img"  class="van-avatar-large" />
-          </div>
-          <div>
-            {{menuItem.levelOneName}}
-          </div>
+      <div class="classify-item" v-for="(menuItem, index) in menuList">
+        <div>
+          <img :src="menuItem.img"  class="van-avatar-large" />
+        </div>
+        <div>
+          {{menuItem.levelOneName}}
         </div>
       </div>
+    </div>
     <div class="content-box">
       <!-- 精彩视频 -->
       <van-cell class="home-van-cell mgt10">
