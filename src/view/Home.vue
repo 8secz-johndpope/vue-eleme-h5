@@ -110,7 +110,7 @@ import VideoModalCard from 'components/common_components/VideoModalCard';
 import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
 import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
 import { mapGetters } from 'vuex';
-import "../css/common.css"; // 一次引入，全局使用 ？？？
+// import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
   name: 'home',
   components: {
