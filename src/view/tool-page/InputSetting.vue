@@ -2,7 +2,7 @@
   <div>
     <div>
       <van-nav-bar
-        title="输入零钱"
+        title="输入设置"
         left-arrow
         @click-left="onClickLeft"
         >

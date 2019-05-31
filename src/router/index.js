@@ -454,6 +454,7 @@ export default new Router({
     /*
       仿微信、支付宝支付页 -- 开始
     */
+   // 工具列表
     {
       path: '/toolPage/ToolList',
       name: 'toolList',
@@ -462,6 +463,7 @@ export default new Router({
       },
       component: (resolve) => require(['view/tool-page/ToolList'],resolve),
     },
+    // 输入设置
     {
       path: '/toolPage/InputSetting/:routerLink',
       name: 'inputSetting',
@@ -478,6 +480,15 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/WechatPayment'],resolve),
+    },
+    // 微信红包
+    {
+      path: '/toolPage/wechatRedPacket/:amount',
+      name: 'wechatRedPacket',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/WechatRedPacket'],resolve),
     },
     // 微信零钱
     {
