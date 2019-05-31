@@ -17,7 +17,7 @@
           </router-link>
         </div>
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatChange' } }">
+          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatTransfer' } }">
             <img src="../../images/toolPage/toolList/wx-transfer.png" class="van-avatar-large">
             <div>微信转账</div>
           </router-link>

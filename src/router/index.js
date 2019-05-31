@@ -488,6 +488,15 @@ export default new Router({
       },
       component: (resolve) => require(['view/tool-page/WechatChange'],resolve),
     },
+    // 微信转账
+    {
+      path: '/toolPage/wechatTransfer/:amount',
+      name: 'wechatTransfer',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/WechatTransfer'],resolve),
+    },
     /*
       仿微信、支付宝支付页 -- 结束
     */
