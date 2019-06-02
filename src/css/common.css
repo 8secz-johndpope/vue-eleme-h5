@@ -1,4 +1,3 @@
-
 .flex{
   display: flex;
 }
@@ -96,6 +95,9 @@
 }
 .displayflex-1{
     flex: 1;
+}
+.tlefc{
+    text-align: center;
 }
 .tright{
     text-align: right;

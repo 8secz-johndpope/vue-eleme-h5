@@ -1,14 +1,18 @@
 <template>
   <div class="shareBox">
     <!-- 分享选项 -->
-    <div class="shareBox-item">
+    <div class="shareBox-item" @click="forward">
+      <i class="fa fa-share-alt fa-2x shareBox-icon" aria-hidden="true"></i>
+      <p>转发</p>
+    </div>
+    <!-- <div class="shareBox-item">
       <i class="fa fa-weixin fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>微信</p>
     </div>
     <div class="shareBox-item">
       <i class="fa fa-qq fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>QQ</p>
-    </div>
+    </div> -->
     <!-- <div class="shareBox-item">
       <i class="fa fa-star fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>收藏</p>
@@ -80,6 +84,9 @@ export default {
     // 复制失败
     onError: function (e) {
       this.$toast('复制失败！')
+    },
+    forward: function () {
+      this.$toast('转发成功，自己的动态下展示')
     },
   },
   watch: {
