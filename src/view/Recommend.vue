@@ -1,6 +1,12 @@
 <template>
   <div class="content-box">
-    <van-tabs v-model="activeTab" type="card" @click="changeTab" class="tab" sticky>
+    <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
+      <van-tab title="推荐">
+        <PostCard :composition="getImitatePostList" class="item-box"></PostCard>
+      </van-tab>
+      <van-tab title="视频">
+        <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
+      </van-tab>
       <van-tab title="话术">
         <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
       </van-tab>
@@ -20,6 +26,7 @@
 <script>
 import Fixednav from 'components/common_components/Fixed_nav';
 import Conversation from 'components/common_components/Conversation';
+import PostCard from 'components/common_components/PostCard';
 import articleList from 'components/common_components/articleList';
 import { mapGetters } from 'vuex';
 export default {
@@ -36,6 +43,7 @@ export default {
   computed: {
     ...mapGetters([
       'getImitateConversation', // 获取模拟对话
+      'getImitatePostList', // 获取模拟帖子列表
       'getImitateArticleList', // 获取模拟文章列表
       'getRecommendHighLightTab', // 得到推荐页高亮tab
     ]),
@@ -48,6 +56,7 @@ export default {
   components: {
     Fixednav,
     Conversation,
+    PostCard,
     articleList,
   }
 };

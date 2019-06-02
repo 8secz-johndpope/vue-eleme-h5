@@ -26,6 +26,7 @@
         <van-cell-group class="fieldDiv_long">
           <van-field
             v-model="pwd"
+            @keyup.enter="cheack_n_p"
             type="password"
             left-icon="bag-o"
             placeholder="不少于6位字符"

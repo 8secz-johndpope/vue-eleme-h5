@@ -47,4 +47,6 @@ export default {
   getImitateEncyclopediasClassfication: (state) => state.imitateEncyclopediasClassfication,
   // 模拟百科列表
   getImitateEncyclopediasList: (state) => state.imitateEncyclopediasList,
+  // 模拟帖子列表
+  getImitatePostList: (state) => state.imitatePostList,
 };

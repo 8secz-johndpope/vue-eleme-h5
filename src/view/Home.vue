@@ -92,14 +92,14 @@
         <EncyclopediasCard></EncyclopediasCard>
       </div>
     </div>
-    <!-- 撑开Fixednav挡住的位置 -->
-    <div class="space"></div>
-    <!-- 固定标签页 -->
-    <Fixednav></Fixednav>
     <!-- 视频弹框 -->
     <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
       <VideoModalCard ref="childVideoCard" :playerOptions="playerOptions" :currentPlayData="currentPlayData" @on-close-videoPop="closeVideoPop"></VideoModalCard>
     </van-popup>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="space"></div>
+    <!-- 固定标签页 -->
+    <Fixednav></Fixednav>
   </div>
 </template>
 <script>

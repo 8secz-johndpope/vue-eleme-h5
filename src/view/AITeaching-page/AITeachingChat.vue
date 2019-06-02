@@ -119,15 +119,19 @@
       },
       sendMsg(){
         let that = this;
+        if (that.percentage < 100) {
+          that.percentage += 5;
+          that.percentage = that.percentage >= 100 ? 100 : that.percentage; 
+        }else{
+          that.percentage = 100
+          return
+        }
         that.currentType = that.currentType === 1 ? 2 : 1
         that.records.push({
           time: new Date().toLocaleTimeString(),
           content: that.testContents[Math.floor(Math.random() * 9)],
           type: that.currentType
         });
-        if (that.percentage <= 100) {
-          that.percentage += 5;
-        }
         that.scrollToBottom();
       },
       //滚动到底

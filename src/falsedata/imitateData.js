@@ -591,22 +591,101 @@ export var imitateEncyclopediasList = [
   {
     id: 'id', // 该百科词条的id
     title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
-    praiseNum: 996, // 点赞人舒
+    praiseNum: 996, // 点赞人数
     belongsClassification: '0', // 所属分类
     belongsClassificationCnName: '吐槽', // 所属分类名
   },
   {
     id: 'id', // 该百科词条的id
     title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
-    praiseNum: 996, // 点赞人舒
+    praiseNum: 996, // 点赞人数
     belongsClassification: '0', // 所属分类
     belongsClassificationCnName: '吐槽', // 所属分类名
   },
   {
     id: 'id', // 该百科词条的id
     title: '工作996，生病ICU，年轻人，你的头发还好吗？', // 百科标题
-    praiseNum: 996, // 点赞人舒
+    praiseNum: 996, // 点赞人数
     belongsClassification: '0', // 所属分类
     belongsClassificationCnName: '吐槽', // 所属分类名
+  },
+];
+
+// 模拟帖子列表
+export var imitatePostList = [
+  {
+    id: 'id0', // id
+    postType: 0,    // 帖子类型，0-纯文本，1-含有图片，不含视频，2-只含有视频，不含图片
+    contents: '<p>工作996，生病ICU，年轻人，你的头发还好吗？</p>', // 帖子内容，会包含表情，HTML格式
+    contentsImg: [],    // 帖子图片
+    videoUrl: '',   // 视频URL，备注：图片、视频互斥
+    videoImg: '',   // 视频封面图片
+    praiseNum: 996, // 点赞人数
+    commentsNum: 996, // 评论人数
+    forwardNum: 996, // 转发人数
+    userName: '作者', // 作者名
+    userId: 'userId1',  // 作者Id
+    userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
+    tagsList: [],   // 帖子标签集合
+    isBusiness: 1, // 是否商家 0-是， 1-否
+  },
+  {
+    id: 'id1', // id
+    postType: 1,    // 帖子类型，0-纯文本，1-含有图片，不含视频，2-只含有视频，不含图片
+    contents: '<p>工作996，生病ICU，年轻人，你的头发还好吗？</p>', // 帖子内容，会包含表情，HTML格式
+    // 帖子图片
+    contentsImg: [
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+    ],
+    videoUrl: '',   // 视频URL，备注：图片、视频互斥
+    videoImg: '',   // 视频封面图片
+    praiseNum: 996, // 点赞人数
+    commentsNum: 996, // 评论人数
+    forwardNum: 996, // 转发人数
+    userName: '作者', // 作者名
+    userId: 'userId1',  // 作者Id
+    userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
+    // 帖子标签集合
+    tagsList: [
+        {  
+            tagsName: '美女',
+            id: 'tagsId1',
+        },
+        {  
+            tagsName: '表情包',
+            id: 'tagsId1',
+        },
+    ],
+    isBusiness: 0, // 是否商家 0-是， 1-否
+  },
+  {
+    id: 'id0', // id
+    postType: 0,    // 帖子类型，0-纯文本，1-含有图片，不含视频，2-只含有视频，不含图片
+    contents: '<p>工作996，生病ICU，年轻人，你的头发还好吗？</p>', // 帖子内容，会包含表情，HTML格式
+    contentsImg: [],   // 帖子图片
+    videoUrl: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',   // 视频URL，备注：图片、视频互斥
+    videoImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',   // 视频封面图片
+    praiseNum: 996, // 点赞人数
+    commentsNum: 996, // 评论人数
+    forwardNum: 996, // 转发人数
+    userName: '作者', // 作者名
+    userId: 'userId1',  // 作者Id
+    userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
+    // 帖子标签集合
+    tagsList: [
+        {  
+            tagsName: '美女',
+            id: 'tagsId1',
+        },
+    ],
+    isBusiness: 0, // 是否商家 0-是， 1-否
   },
 ];

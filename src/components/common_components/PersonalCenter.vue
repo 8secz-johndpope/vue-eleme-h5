@@ -78,11 +78,14 @@
         </a>
       </div>
       <!-- 我的作品以及收藏 -->
-      <van-tabs v-model="tabActive" sticky @click="changeTab" class="worksAndFavorite">
-        <van-tab title="我的作品">
+      <van-tabs v-model="tabActive" sticky @click="changeTab" class="worksAndFavorite" swipeable>
+        <van-tab title="作品 999">
           <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
         </van-tab>
-        <van-tab title="我的收藏">
+        <van-tab title="喜欢 999">
+          <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
+        </van-tab>
+        <van-tab title="动态 999">
           <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
         </van-tab>
       </van-tabs>

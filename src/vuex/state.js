@@ -2,7 +2,8 @@ import { areaList } from '../jsonData/Area.js';
 import { EXPSList } from '../jsonData/EXPSList.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
-         imitateComments, imitateMyPraiseAndComments, imitateVideoList, imitateEncyclopediasClassfication, imitateEncyclopediasList } from '../falsedata/imitateData.js';
+         imitateComments, imitateMyPraiseAndComments, imitateVideoList, imitateEncyclopediasClassfication, 
+         imitateEncyclopediasList, imitatePostList } from '../falsedata/imitateData.js';
 
 export default {
   // 是否在加载中
@@ -57,4 +58,6 @@ export default {
   imitateEncyclopediasClassfication,
   // 模拟百科列表
   imitateEncyclopediasList,
+  // 模拟帖子列表
+  imitatePostList,
 };
