@@ -72,6 +72,9 @@ export default {
   .desc{
     height: 2rem;
   }
+  .item-box:first-child{
+    margin-top: 1.4rem;
+  }
   .reading-number{
     color: #3d3d3d;
     font-weight: normal;

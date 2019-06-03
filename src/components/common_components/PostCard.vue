@@ -10,6 +10,7 @@
       <van-panel class="panel-s" v-for="(item,index) in composition">
         <div slot="header" class="flex-space-between header">
           <router-link :to="{ name: 'userzone', params: {} }">
+            <img class="van-avatar" :src="item.userImg">
             <span>{{'@'+item.author}}</span>
           </router-link>
           <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
@@ -25,6 +26,10 @@
             <img :src="imgItem" @click="postImgList(item.imgList, imgIndex)" class="img-item"/>
           </li>
         </ul>
+        <div class="video-zone" v-if="item.postType === 2">
+          <img :src="item.videoImg" class="video-img">
+          <van-icon name="play-circle-o" class="video-play-icon" />
+        </div>
         <div slot="footer" class="flex-space-around">
           <!-- 喜欢收藏 -->
           <span @click="addMyLike(index)" class="myLike">
@@ -214,13 +219,13 @@ export default {
 
 <style lang="less" scoped>
   .panel-s{
-    margin: 0.267rem 0.4rem;
     font-size: 0.373rem;
   }
   .header{
     padding: 0.2rem;
-  }  .panel-s:first-child{
-    margin-top: 0.267rem;
+  }  
+  .panel-s:first-child{
+    margin-top: 1.333333rem;
   }
   .content-box{
     padding: 0 0.4rem;
@@ -263,5 +268,24 @@ export default {
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+  }
+  .video-zone{
+    margin: 0.2rem 0.4rem;
+    position: relative;
+  }
+  .video-img{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .video-play-icon{
+    font-size: 54px;
+    color: rgba(0,0,0,.4);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>

@@ -215,7 +215,7 @@ export default {
     padding: 0.2rem;
   }
   .panel-s:first-child{
-    margin-top: 0.267rem;
+    margin-top: 1.4rem;
   }
   .content-box{
     padding: 0 0.4rem;

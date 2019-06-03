@@ -298,3 +298,15 @@
   padding: 0 0 0 0.266667rem;
 }
 /* 首页 -- 结束 */
+
+/* 推荐页 -- 开始 */
+.recommend-page .recommend-van-search{
+  background: #fff !important;
+}
+.recommend-page .recommend-van-search .van-cell {
+  background-color: rgb(242, 242, 242);
+}
+.recommend-page .van-tabs__wrap {
+  top: 1.333333rem !important
+}
+/* 推荐页 -- 结束 */
