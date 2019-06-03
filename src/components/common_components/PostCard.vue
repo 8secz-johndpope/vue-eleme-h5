@@ -12,26 +12,28 @@
           <router-link :to="{ name: 'userzone', params: {} }">
             <span>{{'@'+item.author}}</span>
           </router-link>
-          <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
+          <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
             <van-icon name="cart-o" class="font-gold showcase" />
             <span class="showcaseDec">撩妹必备</span>
-          </div>
+          </div> -->
         </div>
         <div class="content-box" v-html="item.contents">
           {{item.contents}}
         </div>
-        <div class="flex-space-around content-box" v-if="item.postType === 1">
-          <img v-for="(imgItem, imgIndex) in item.imgList" class="img-cell mgt5" :src="imgItem" @click="postImgList(item.imgList, imgIndex)" />
-        </div>
+        <ul class="img-zone" v-if="item.postType === 1">
+          <li v-for="(imgItem, imgIndex) in item.imgList" class="img-cell">
+            <img :src="imgItem" @click="postImgList(item.imgList, imgIndex)" class="img-item"/>
+          </li>
+        </ul>
         <div slot="footer" class="flex-space-around">
           <!-- 喜欢收藏 -->
           <span @click="addMyLike(index)" class="myLike">
-            <i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> 
+            <i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i>
             {{COMMONFUNC.formatterW(item.likers)}}
           </span>
           <!-- 评论 -->
           <span @click="openCommentsPop(index)" class="myLike">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i> 
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
             {{COMMONFUNC.formatterW(item.commentsNum)}}
           </span>
           <!-- 转发分享 -->
@@ -176,7 +178,7 @@ export default {
         userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
         // 帖子标签集合
         tagsList: [
-            {  
+            {
                 tagsName: '美女',
                 id: 'tagsId1',
             },
@@ -245,7 +247,21 @@ export default {
     height: 13rem;
     overflow: scroll;
   }
+  .img-zone{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0.2rem 0.4rem;
+  }
   .img-cell{
-    width: 33%;
+    box-sizing: border-box;
+    width: 33.33%;
+    padding: 0 0.133333rem 0.133333rem 0;
+  }
+  .img-item{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
   }
 </style>
