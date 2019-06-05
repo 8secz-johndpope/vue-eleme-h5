@@ -611,6 +611,50 @@ export var imitateEncyclopediasList = [
   },
 ];
 
+// 模拟推荐菜单列表
+export var imitateRecommendMenuList = [
+  {
+    name: '推荐',
+    containerid: 0, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '关注',
+    containerid: 1, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '视频',
+    containerid: 2, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '话术',
+    containerid: 3, // 内容分类id
+    cardType: 1,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '文章',
+    containerid: 4, // 内容分类id
+    cardType: 2,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '幽默',
+    containerid: 5, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '电影',
+    containerid: 6, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '文学',
+    containerid: 7, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+];
+
 // 模拟帖子列表
 export var imitatePostList = [
   {
@@ -630,6 +674,7 @@ export var imitatePostList = [
     createTime: 1552838875, // 发表时间
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
+    isFollow: 1,  // 是否关注 0-关注，1-未关注
     isBusiness: 1, // 是否商家 0-是， 1-否
   },
   {
@@ -659,17 +704,18 @@ export var imitatePostList = [
     // 帖子标签集合
     tagsList: [
         {
-            tagsName: '美女',
-            id: 'tagsId1',
+            tagsName: '美女', // 标签分类名
+            containerid: 'tagsId1', // 标签所属id
         },
         {
-            tagsName: '表情包',
-            id: 'tagsId1',
+            tagsName: '文学', // 标签分类名
+            containerid: 'tagsId2', // 标签所属id
         },
     ],
     createTime: 1552838875, // 发表时间
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
+    isFollow: 0,  // 是否关注 0-关注，1-未关注
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
   {
@@ -688,13 +734,14 @@ export var imitatePostList = [
     // 帖子标签集合
     tagsList: [
         {
-            tagsName: '美女',
-            id: 'tagsId1',
+            tagsName: '电影', // 标签分类名
+            containerid: 'tagsId3', // 标签所属id
         },
     ],
     createTime: 1558838875, // 发表时间
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
+    isFollow: 1,  // 是否关注 0-关注，1-未关注
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
 ];

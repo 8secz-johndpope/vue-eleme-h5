@@ -20,10 +20,16 @@
               </div>
             </div>
           </router-link>
-          <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
-            <van-icon name="cart-o" class="font-gold showcase" />
-            <span class="showcaseDec">撩妹必备</span>
-          </div> -->
+          <!-- 右边位置 -->
+          <div class="flex-center">
+            <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
+              <van-icon name="cart-o" class="font-gold showcase" />
+              <span class="showcaseDec">撩妹必备</span>
+            </div> -->
+            <div>
+              <van-button type="default" size="small" v-if="item.isFollow === 1" class="addFollow">+加关注</van-button>
+            </div>
+          </div>
         </div>
         <div class="content-box" v-html="item.contents">
           {{item.contents}}
@@ -41,6 +47,16 @@
           <div class="flex-space-between video-info">
             <div class="mgl10">{{item.watchNum}}次观看</div>
             <div class="mgr10">{{item.duration}}</div>
+          </div>
+        </div>
+        <!-- 标签，商品展示区域 -->
+        <div class="flex-space-between showcase-zone">
+          <div>
+            <van-tag mark v-for="(c_item, c_index) in item.tagsList" class="mgr5">{{c_item.tagsName}}</van-tag>
+          </div>
+          <div class="gold-color flex" v-if="item.isBusiness === 0" @click="goodsShow = true">
+            <van-icon name="cart-o" class="font-gold showcase" />
+            <span class="showcaseDec">撩妹必备</span>
           </div>
         </div>
         <div slot="footer" class="flex-space-around">
@@ -249,6 +265,7 @@ export default {
   }
   .showcase-zone{
     display: flex;
+    margin: 0 0.4rem 0.133333rem 0.4rem;
   }
   .showcase{
     font-size: 0.5rem;
@@ -267,7 +284,6 @@ export default {
   }
   .img-zone{
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     margin: 0.1rem 0.4rem 0.2rem 0.4rem;
   }
@@ -276,10 +292,10 @@ export default {
     width: 33.33%;
     padding: 0 0.133333rem 0.133333rem 0;
   }
-  .img-cell:nth-child(n+7){
+  .img-cell:nth-child(3n){
     box-sizing: border-box;
     width: 33.33%;
-    padding: 0 0.133333rem 0 0;
+    padding: 0 0 0.133333rem 0;
   }
   .img-item{
     background-size: cover;
@@ -323,5 +339,8 @@ export default {
     color: #fff;
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(3%,transparent),color-stop(98%,rgba(0,0,0,.2)));
     background-image: linear-gradient(-180deg,transparent 3%,rgba(0,0,0,.2) 98%);
+  }
+  .addFollow{
+    background-color: #eee;
   }
 </style>

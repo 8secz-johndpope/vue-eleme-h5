@@ -98,6 +98,7 @@
   top: 1.333333rem !important;
   position: fixed;
   z-index: 2;
+  width: calc(100% - 80px);
 }
 .recommend-page .van-panel__footer::after {
   border-top-width: 0;

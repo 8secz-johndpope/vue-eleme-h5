@@ -12,29 +12,19 @@
     </van-search>
     <div class="content-box">
       <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
-        <van-tab title="推荐">
-          <PostCard :composition="getImitatePostList" class="item-box"></PostCard>
-        </van-tab>
-        <van-tab title="关注">
-          <PostCard :composition="getImitatePostList" class="item-box"></PostCard>
-        </van-tab>
-        <van-tab title="视频">
-          <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
-        </van-tab>
-        <van-tab title="话术">
-          <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
-        </van-tab>
-        <van-tab title="文章">
-          <articleList :composition="getImitateArticleList" class="item-box"></articleList>
+        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
+          <PostCard :composition="getImitatePostList" v-if="item.cardType === 0"></PostCard>
+          <Conversation :composition="getImitateConversation" v-if="item.cardType === 1"></Conversation>
+          <articleList :composition="getImitateArticleList" v-if="item.cardType === 2"></articleList>
         </van-tab>
       </van-tabs>
-      <div class="flex-center moreTabs" @click="allTabsShow = !allTabsShow">
-        <van-icon name="arrow-up" v-show="allTabsShow" />
-        <van-icon name="arrow-down" v-show="!allTabsShow" />
+      <div class="moreTabs" @click="allTabsShow = !allTabsShow">
+        <span v-show="allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-up" /></span>
+        <span v-show="!allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-down" /></span>
       </div>
       <div class="allTabs" v-show="allTabsShow">
         <ul>
-          <li v-for="(item, index) in recommendMenuList" :key="item.containerid">
+          <li v-for="(item, index) in getImitateRecommendMenuList" :key="item.containerid">
             <van-button :class=" index === activeTab ? 'recommendMenu-btn-active' : '' " type="default" size="small" class="recommendMenu-btn" @click="selectTab(item,index)">
               {{item.name}}
             </van-button>
@@ -62,28 +52,6 @@ export default {
       activeTab: 0,
       keywords: '', // 搜索关键词
       allTabsShow: false, // 所有tabs
-      recommendMenuList: [
-        {
-          name: '推荐',
-          containerid: 0, // 内容分类id
-        },
-        {
-          name: '关注',
-          containerid: 1, // 内容分类id
-        },
-        {
-          name: '视频',
-          containerid: 2, // 内容分类id
-        },
-        {
-          name: '话术',
-          containerid: 3, // 内容分类id
-        },
-        {
-          name: '文章',
-          containerid: 4, // 内容分类id
-        },
-      ]
     };
   },
   mounted () {
@@ -95,6 +63,7 @@ export default {
       'getImitatePostList', // 获取模拟帖子列表
       'getImitateArticleList', // 获取模拟文章列表
       'getRecommendHighLightTab', // 得到推荐页高亮tab
+      'getImitateRecommendMenuList', // 模拟推荐菜单列表
     ]),
   },
   methods: {
@@ -132,12 +101,20 @@ export default {
   }
   .moreTabs{
     position: fixed;
-    top: 1.4rem;
+    top: 1.333333rem;
     right: 0;
     width: 50px;
-    height: 1rem;
+    height: 1.173333rem;
     z-index: 3;
     background-color: #fff;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 13px;
+    color: #7d7e80;
+  }
+  .more-icon{
+    color: #7d7e80;
   }
   .allTabs{
     position: fixed;

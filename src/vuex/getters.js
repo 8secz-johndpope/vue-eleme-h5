@@ -49,4 +49,6 @@ export default {
   getImitateEncyclopediasList: (state) => state.imitateEncyclopediasList,
   // 模拟帖子列表
   getImitatePostList: (state) => state.imitatePostList,
+  // 模拟推荐菜单列表
+  getImitateRecommendMenuList: (state) => state.imitateRecommendMenuList,
 };
