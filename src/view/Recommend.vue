@@ -15,10 +15,10 @@
         <van-tab title="推荐">
           <PostCard :composition="getImitatePostList" class="item-box"></PostCard>
         </van-tab>
-        <van-tab title="视频">
+        <van-tab title="话术">
           <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
         </van-tab>
-        <van-tab title="话术">
+        <van-tab title="视频">
           <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
         </van-tab>
         <van-tab title="文章">

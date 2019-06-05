@@ -94,45 +94,51 @@ function commentsTimeFormatter(timestamp) {
 
     // 如果本地时间反而小于变量时间
     if (diffValue < 0) {
-        return '不久前';
+        return '刚刚';
     }
 
     // 计算差异时间的量级
     var monthC = diffValue / month;
-    var weekC = diffValue / (7 * day);
     var dayC = diffValue / day;
     var hourC = diffValue / hour;
     var minC = diffValue / minute;
-
-    // 数值补0方法
-    var zero = function (value) {
-        if (value < 10) {
-            return '0' + value;
-        }
-        return value;
-    };
-
     // 使用
     if (monthC > 12) {
         // 超过1年，直接显示年月日
-        return (function () {
+        return (function() {
             var date = new Date(timestamp);
-            return date.getFullYear() + '年' + zero(date.getMonth() + 1) + '月' + zero(date.getDate()) + '日';
+            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate());
         })();
-    } else if (monthC >= 1) {
-        return parseInt(monthC) + "月前";
-    } else if (weekC >= 1) {
-        return parseInt(weekC) + "周前";
     } else if (dayC >= 1) {
-        return parseInt(dayC) + "天前";
-    } else if (hourC >= 1) {
-        return parseInt(hourC) + "小时前";
+        // 超过1天，直接显示年月日 时分秒
+        return (function() {
+            var date = new Date(timestamp);
+            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate()) + ' ' +
+                date.getHours() + ':' + zero(date.getMinutes() + 1);
+        })();
     } else if (minC >= 1) {
-        return parseInt(minC) + "分钟前";
+        let yestdayStr = '';
+        var today = new Date();
+        today.setTime(today.getTime() - 24*60*60*1000);
+        let tt = today.getFullYear() +"-" + (today.getMonth()+1) + "-" + today.getDate();
+        if (format(timestamp) === tt) {
+            yestdayStr = '昨天 ';
+        }
+        // 超过分钟，直接显示 时分秒
+        return (function() {
+            var date = new Date(timestamp);
+            return yestdayStr + date.getHours() + ':' + zero(date.getMinutes() + 1);
+        })();
     }
     return '刚刚';
 };
-
+// 数值补0方法
+function zero(value) {
+    if (value < 10) {
+        return '0' + value;
+    }
+    return value;
+};
 // 时间格式化 -- 转成年月日
 function crtTimeFtt(val) {
     if (val != null) {

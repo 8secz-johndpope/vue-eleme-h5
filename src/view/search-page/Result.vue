@@ -10,7 +10,7 @@
         class="fixed-top"
       />
     </form>
-    <Conversation :composition="getImitateConversation" class="item-box"></Conversation>
+    <Conversation :composition="getImitateConversation"></Conversation>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
   </div>

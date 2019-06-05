@@ -13,10 +13,10 @@
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
         <van-list
-        v-model="listLoading"
-        :finished="finished"
-        finished-text="我也是底线的"
-        @load="onLoadMore"
+          v-model="listLoading"
+          :finished="finished"
+          finished-text="我也是底线的"
+          @load="onLoadMore"
         >
         <div @click="toChat($event)" v-for="(item,index) in arrs">
           <van-swipe-cell :right-width="180" :on-close.stop="onClose" :data-id="item.messageId" class="messageModule">

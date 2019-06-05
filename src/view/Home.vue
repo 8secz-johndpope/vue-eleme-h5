@@ -330,14 +330,15 @@ export default {
   }
   .img-zone-dec{
     position: absolute;
-    height: 0.9rem;
+    font-size: 0.32rem;
+    height: 0.8rem;
     width: 100%;
     bottom: 0;
     padding: 0 0.266667rem;
     align-items: center;
     display: flex;
-    background: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
-    background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.41) 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(3%,transparent),color-stop(98%,rgba(0,0,0,.2)));
+    background-image: linear-gradient(-180deg,transparent 3%,rgba(0,0,0,.2) 98%);
   }
   .card-desc{
     padding: 0.133333rem 0.266667rem;

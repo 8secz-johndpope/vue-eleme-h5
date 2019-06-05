@@ -34,16 +34,6 @@
   display: flex;
   flex-direction: column;
 }
-.van-swipe-cell__right {
-  color: #fff;
-  font-size: 0.4rem;
-  width: 65px;
-  height: 44px !important;
-  display: inline-block;
-  text-align: center;
-  line-height: 44px;
-  background-color: #f44;
-}
 .van-avatar {
     display: inline-block;
     text-align: center;
@@ -105,12 +95,6 @@
 .tleft{
     text-align: left;
 }
-.tab .van-tabs__nav {
-  margin: 0.2rem 3rem 0 3rem;
-}
-.tab .van-tabs__wrap {
-  height: 1rem !important;
-}
 .mg15{
   margin: 0.4rem;
 }
@@ -122,6 +106,9 @@
 }
 .mgr5{
   margin-right: 0.133333rem;
+}
+.mgl10{
+  margin-left: 0.266667rem;
 }
 .mgr10{
   margin-right: 0.266667rem;
@@ -159,24 +146,6 @@
 .space{
   width: 100%;
   height: 1.6rem;
-}
-.selectConverstionType .van-tabs{
-  width: 8rem;
-}
-.selectConverstionType .van-tabs__nav--card{
-  margin: 0 1.6rem;
-}
-.fieldDiv .van-field .van-cell__title {
-    max-width: 0.8rem;
-}
-.fieldDiv_long .van-field .van-cell__title {
-    max-width: 1.5rem;
-}
-.myzone_index .van-pull-refresh{
-  overflow: inherit;
-}
-.cellTop .van-cell__right-icon{
-    line-height: 1rem;
 }
 #app .grayBg {
   background-color: #F2F2F2;
@@ -244,69 +213,3 @@
 .van-content-box{
   margin: 1.226667rem 0 0 0;
 }
-/* 消息模块右滑删除键 -- 开始 */
-.messageModule .van-swipe-cell__right{
-  padding: 0.15rem 0.05rem;
-  text-align: center;
-}
-/* 消息模块右滑删除键 -- 结束 */
-
-/* 举报页举报理由 -- 开始 */
-.accusation-cell .van-cell__title{
-  color: #969799;
-}
-.accusation-cell .van-field__control:disabled{
-  color: #323233;
-}
-/* 举报页举报理由 -- 结束 */
-
-/* 充值页 -- 开始 */
-.mywallet .van-coupon-list__list{
-  padding: 0.2rem 0 0 0;
-}
-.mywallet .van-coupon-list__close {
-    bottom: 0.35rem;
-}
-/* 设置页 -- 结束 */
-
-/* 对话页 -- 开始 */
-.conversationActionsheet .van-actionsheet {
-    max-height: 75%;
-}
-/* 对话页 -- 结束 */
-
-/* 速推计划/达人 -- 开始 */
-.definedMoneyInput>div:first-child{
-  max-width: 0.6rem;
-}
-.darenActionsheet .van-popup {
-    height: 75%;
-}
-/* 速推计划/达人 -- 结束 */
-
-/* 优惠券 -- 开始 */
-.coupon-module .van-coupon-list__close {
-    left: 0;
-    bottom: 0.34rem;
-    position: absolute;
-    font-weight: 500;
-}
-/* 优惠券 -- 结束 */
-
-/* 首页 -- 开始 */
-.home-view .van-search__action{
-  padding: 0 0 0 0.266667rem;
-}
-/* 首页 -- 结束 */
-
-/* 推荐页 -- 开始 */
-.recommend-page .recommend-van-search{
-  background: #fff !important;
-}
-.recommend-page .recommend-van-search .van-cell {
-  background-color: rgb(242, 242, 242);
-}
-.recommend-page .van-tabs__wrap {
-  top: 1.333333rem !important
-}
-/* 推荐页 -- 结束 */

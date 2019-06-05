@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- 空格 -->
+    <div class="top-space"></div>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -72,8 +74,8 @@ export default {
   .desc{
     height: 2rem;
   }
-  .item-box:first-child{
-    margin-top: 1.4rem;
+  .top-space{
+    height: 1.3rem
   }
   .reading-number{
     color: #3d3d3d;

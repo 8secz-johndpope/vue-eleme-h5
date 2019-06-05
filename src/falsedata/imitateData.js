@@ -627,6 +627,9 @@ export var imitatePostList = [
     authorId: 'userId1',  // 作者Id
     userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
     tagsList: [],   // 帖子标签集合
+    createTime: 1552838875, // 发表时间
+    watchNum: 140124, // 观看人数
+    duration: '4:57', // 时长
     isBusiness: 1, // 是否商家 0-是， 1-否
   },
   {
@@ -655,15 +658,18 @@ export var imitatePostList = [
     userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
     // 帖子标签集合
     tagsList: [
-        {  
+        {
             tagsName: '美女',
             id: 'tagsId1',
         },
-        {  
+        {
             tagsName: '表情包',
             id: 'tagsId1',
         },
     ],
+    createTime: 1552838875, // 发表时间
+    watchNum: 140124, // 观看人数
+    duration: '4:57', // 时长
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
   {
@@ -681,11 +687,14 @@ export var imitatePostList = [
     userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
     // 帖子标签集合
     tagsList: [
-        {  
+        {
             tagsName: '美女',
             id: 'tagsId1',
         },
     ],
+    createTime: 1558838875, // 发表时间
+    watchNum: 140124, // 观看人数
+    duration: '4:57', // 时长
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
 ];

@@ -1,5 +1,7 @@
 <template>
-  <div class="conversationActionsheet">
+  <div class="postCard">
+    <!-- 空格 -->
+    <div class="top-space"></div>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -10,8 +12,13 @@
       <van-panel class="panel-s" v-for="(item,index) in composition">
         <div slot="header" class="flex-space-between header">
           <router-link :to="{ name: 'userzone', params: {} }">
-            <img class="van-avatar" :src="item.userImg">
-            <span>{{'@'+item.author}}</span>
+            <div class="flex">
+              <img class="van-avatar" :src="item.userImg">
+              <div class="mgl10">
+                <div>{{'@'+item.author}}</div>
+                <div class="gray-color createTime">{{COMMONFUNC.commentsTimeFormatter(item.createTime)}}</div>
+              </div>
+            </div>
           </router-link>
           <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
             <van-icon name="cart-o" class="font-gold showcase" />
@@ -21,14 +28,20 @@
         <div class="content-box" v-html="item.contents">
           {{item.contents}}
         </div>
+        <!-- 图片区域 -->
         <ul class="img-zone" v-if="item.postType === 1">
           <li v-for="(imgItem, imgIndex) in item.imgList" class="img-cell">
             <img :src="imgItem" @click="postImgList(item.imgList, imgIndex)" class="img-item"/>
           </li>
         </ul>
+        <!-- 视频区域 -->
         <div class="video-zone" v-if="item.postType === 2">
           <img :src="item.videoImg" class="video-img">
           <van-icon name="play-circle-o" class="video-play-icon" />
+          <div class="flex-space-between video-info">
+            <div class="mgl10">{{item.watchNum}}次观看</div>
+            <div class="mgr10">{{item.duration}}</div>
+          </div>
         </div>
         <div slot="footer" class="flex-space-around">
           <!-- 喜欢收藏 -->
@@ -222,13 +235,13 @@ export default {
     font-size: 0.373rem;
   }
   .header{
-    padding: 0.2rem;
-  }  
-  .panel-s:first-child{
-    margin-top: 1.333333rem;
+    padding: 0.4rem;
+  }
+  .top-space{
+    height: 1.3rem
   }
   .content-box{
-    padding: 0 0.4rem;
+    padding: 0 0.4rem 0.2rem 0.4rem;
     line-height: 0.533rem;
   }
   .red-color{
@@ -256,12 +269,17 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 0.2rem 0.4rem;
+    margin: 0.1rem 0.4rem 0.2rem 0.4rem;
   }
   .img-cell{
     box-sizing: border-box;
     width: 33.33%;
     padding: 0 0.133333rem 0.133333rem 0;
+  }
+  .img-cell:nth-child(n+7){
+    box-sizing: border-box;
+    width: 33.33%;
+    padding: 0 0.133333rem 0 0;
   }
   .img-item{
     background-size: cover;
@@ -270,7 +288,7 @@ export default {
     height: 100%;
   }
   .video-zone{
-    margin: 0.2rem 0.4rem;
+    margin: 0.1rem 0.4rem 0.2rem 0.4rem;
     position: relative;
   }
   .video-img{
@@ -287,5 +305,23 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+  .createTime{
+    font-size: 0.32rem;
+    color: #939393;
+  }
+  .video-info{
+    font-size: 0.32rem;
+    position: absolute;
+    height: 0.8rem;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    color: #fff;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(3%,transparent),color-stop(98%,rgba(0,0,0,.2)));
+    background-image: linear-gradient(-180deg,transparent 3%,rgba(0,0,0,.2) 98%);
   }
 </style>

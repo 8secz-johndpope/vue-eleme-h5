@@ -52,7 +52,7 @@ export default {
 <style lang="less" scoped>
   .article .van-card{
     background-color: #fff;
-    padding: 0.133333rem;
+    padding: 0.2rem 0.4rem;
   }
   .title{
     font-weight: 700;
