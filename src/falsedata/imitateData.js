@@ -664,7 +664,7 @@ export var imitatePostList = [
     imgList: [],    // 帖子图片
     videoUrl: '',   // 视频URL，备注：图片、视频互斥
     videoImg: '',   // 视频封面图片
-    praiseNum: 996, // 点赞人数
+    likers: 996, // 点赞人数
     commentsNum: 996, // 评论人数
     forwardNum: 996, // 转发人数
     author: '作者', // 作者名
@@ -674,7 +674,9 @@ export var imitatePostList = [
     createTime: 1552838875, // 发表时间
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
-    isFollow: 1,  // 是否关注 0-关注，1-未关注
+    isFollow: 0,  // 是否关注 0-关注，1-未关注
+    isPraised: 0,   // 是否已顶，0-已顶，1-未顶
+    helpPraiseNum: 102, // 帮顶的人数
     isBusiness: 1, // 是否商家 0-是， 1-否
   },
   {
@@ -695,7 +697,7 @@ export var imitatePostList = [
     ],
     videoUrl: '',   // 视频URL，备注：图片、视频互斥
     videoImg: '',   // 视频封面图片
-    praiseNum: 996, // 点赞人数
+    likers: 996, // 点赞人数
     commentsNum: 996, // 评论人数
     forwardNum: 996, // 转发人数
     author: '作者', // 作者名
@@ -715,7 +717,9 @@ export var imitatePostList = [
     createTime: 1552838875, // 发表时间
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
-    isFollow: 0,  // 是否关注 0-关注，1-未关注
+    isFollow: 1,  // 是否关注 0-关注，1-未关注
+    isPraised: 1,   // 是否已顶，0-已顶，1-未顶
+    helpPraiseNum: 102, // 帮顶的人数
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
   {
@@ -725,7 +729,7 @@ export var imitatePostList = [
     imgList: [],   // 帖子图片
     videoUrl: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',   // 视频URL，备注：图片、视频互斥
     videoImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',   // 视频封面图片
-    praiseNum: 996, // 点赞人数
+    likers: 996, // 点赞人数
     commentsNum: 996, // 评论人数
     forwardNum: 996, // 转发人数
     author: '作者', // 作者名
@@ -742,6 +746,8 @@ export var imitatePostList = [
     watchNum: 140124, // 观看人数
     duration: '4:57', // 时长
     isFollow: 1,  // 是否关注 0-关注，1-未关注
+    isPraised: 1,   // 是否已顶，0-已顶，1-未顶
+    helpPraiseNum: 102, // 帮顶的人数
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
 ];

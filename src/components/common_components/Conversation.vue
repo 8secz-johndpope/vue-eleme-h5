@@ -1,7 +1,5 @@
 <template>
   <div class="conversationActionsheet">
-    <!-- 空格 -->
-    <div class="top-space"></div>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -215,9 +213,6 @@ export default {
   }
   .header{
     padding: 0.2rem;
-  }
-  .top-space{
-    height: 1.3rem
   }
   .content-box{
     padding: 0.2rem 0.4rem 0 0.4rem;

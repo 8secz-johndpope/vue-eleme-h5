@@ -12,7 +12,9 @@
     </van-search>
     <div class="content-box">
       <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
-        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
+        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList"> 
+          <!-- 空格 -->
+          <div v-if="item.cardType === 1" class="top-space"></div>
           <PostCard :composition="getImitatePostList" v-if="item.cardType === 0"></PostCard>
           <Conversation :composition="getImitateConversation" v-if="item.cardType === 1"></Conversation>
           <articleList :composition="getImitateArticleList" v-if="item.cardType === 2"></articleList>
@@ -142,5 +144,8 @@ export default {
   }
   .recommendMenu-btn-active{
     color: #ff8200;
+  }
+  .top-space{
+    height: 1.3rem
   }
 </style>

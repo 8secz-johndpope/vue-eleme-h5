@@ -22,12 +22,12 @@
           </router-link>
           <!-- 右边位置 -->
           <div class="flex-center">
-            <!-- <div class="gold-color showcase-zone" v-if="item.isBusiness === 0" @click="goodsShow = true">
-              <van-icon name="cart-o" class="font-gold showcase" />
-              <span class="showcaseDec">撩妹必备</span>
-            </div> -->
             <div>
-              <van-button type="default" size="small" v-if="item.isFollow === 1" class="addFollow">+加关注</van-button>
+              <van-button @click="addFollow(item, index)" type="default" size="small" v-if="item.isFollow === 1" class="addFollow">+加关注</van-button>
+              <van-button @click="addPraise(item, index)" type="default" size="small" v-if="item.isFollow === 0 && item.isPraised === 1" class="addFollow">
+                <span class="flex-center"><van-icon name="thumb-circle-o" class="mgr5" />帮顶</span>
+              </van-button>
+              <van-button type="default" size="small" v-if="item.isFollow === 0 && item.isPraised === 0" class="addFollow">{{item.helpPraiseNum}}人已顶</van-button>
             </div>
           </div>
         </div>
@@ -185,6 +185,50 @@ export default {
         that.$dialog.confirm({
           title: '未登录',
           message: '登录后可收藏至您的喜欢',
+          confirmButtonText: '立即登录'
+        }).then(() => {
+          that.$router.push({  //核心语句
+            path:'/login'   //跳转的路径
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    },
+    // 加关注
+    addFollow: function (item, index) {
+      let that = this;
+      if(that.isLogin){
+        if (item.isFollow === 1) {
+          item.isFollow = 0;
+          that.$toast('关注成功！');
+        }
+      }else {
+        that.$dialog.confirm({
+          title: '未登录',
+          message: '请先登录',
+          confirmButtonText: '立即登录'
+        }).then(() => {
+          that.$router.push({  //核心语句
+            path:'/login'   //跳转的路径
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    },
+    // 帮顶
+    addPraise: function (item, index) {
+      let that = this;
+      if(that.isLogin){
+        if (item.isPraised === 1) {
+          item.isPraised = 0;
+          that.$toast('帮顶成功，将会有更多的人看到哦！');
+        }
+      }else {
+        that.$dialog.confirm({
+          title: '未登录',
+          message: '请先登录',
           confirmButtonText: '立即登录'
         }).then(() => {
           that.$router.push({  //核心语句

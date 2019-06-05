@@ -10,6 +10,8 @@
         class="fixed-top"
       />
     </form>
+    <!-- 空格 -->
+    <div class="top-space"></div>
     <Conversation :composition="getImitateConversation"></Conversation>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
@@ -57,13 +59,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .item-box{
-    margin-top: 1.2rem;
-  }
   .fixed-top{
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
+  }
+  .top-space{
+    height: 1.3rem
   }
 </style>
