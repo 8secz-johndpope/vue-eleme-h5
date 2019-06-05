@@ -97,6 +97,7 @@
 .recommend-page .van-tabs__wrap {
   top: 1.333333rem !important;
   position: fixed;
+  z-index: 2;
 }
 .recommend-page .van-panel__footer::after {
   border-top-width: 0;
