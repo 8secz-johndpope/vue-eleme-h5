@@ -59,6 +59,7 @@
             <span class="showcaseDec">撩妹必备</span>
           </div>
         </div>
+        <!-- 底部，评论，点赞，转发区域 -->
         <div slot="footer" class="flex-space-around">
           <!-- 喜欢收藏 -->
           <span @click="addMyLike(index)" class="myLike">

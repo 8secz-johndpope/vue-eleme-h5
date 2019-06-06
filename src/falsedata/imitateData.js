@@ -644,7 +644,7 @@ export var imitateRecommendMenuList = [
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
   {
-    name: '电影',
+    name: '影视动漫',
     containerid: 6, // 内容分类id
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },

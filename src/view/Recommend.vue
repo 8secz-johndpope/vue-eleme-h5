@@ -12,7 +12,7 @@
     </van-search>
     <div class="content-box">
       <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
-        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList"> 
+        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
           <!-- 空格 -->
           <div v-if="item.cardType === 1" class="top-space"></div>
           <PostCard :composition="getImitatePostList" v-if="item.cardType === 0"></PostCard>
@@ -112,7 +112,7 @@ export default {
     display: flex;
     justify-content: right;
     align-items: center;
-    font-size: 13px;
+    font-size: 0.373333rem;
     color: #7d7e80;
   }
   .more-icon{
