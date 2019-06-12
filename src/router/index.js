@@ -168,25 +168,25 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Mywallet'],resolve),
+      component: (resolve) => require(['view/setting-page/mywallet-page/Mywallet'],resolve),
     },
     // 购买商品页
     {
-      path: '/setting/shopping',
+      path: '/setting/mywallet/shopping',
       name: 'shopping',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Shopping'],resolve),
+      component: (resolve) => require(['view/setting-page/mywallet-page/Shopping'],resolve),
     },
     // 支付订单页
     {
-      path: '/setting/payment',
+      path: '/setting/mywallet/payment',
       name: 'payment',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Payment'],resolve),
+      component: (resolve) => require(['view/setting-page/mywallet-page/Payment'],resolve),
     },
     // 邀请分享
     {
@@ -238,7 +238,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/RechargeRecord'],resolve),
+      component: (resolve) => require(['view/setting-page/mywallet-page/RechargeRecord'],resolve),
     },
     {
       path: '/login',
