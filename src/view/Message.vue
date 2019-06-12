@@ -3,7 +3,10 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="消息"
+      fixed
     />
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <van-tabbar v-model="messageActive" class="topTabbar" active-color="#7d7e80">
       <van-tabbar-item icon="friends-o" :to="'/myfollows'">关注</van-tabbar-item>
       <van-tabbar-item icon="user-circle-o" info="20" :to="'/myfans'">粉丝</van-tabbar-item>
@@ -127,7 +130,7 @@
           // 加载状态结束
           this.listLoading = false;
           // 数据全部加载完成
-          if (this.arrs.length >= 5) {
+          if (this.arrs.length >= 10) {
             this.finished = true;
           }
         }, 500);

@@ -6,7 +6,7 @@
       right-text="充值记录"
       left-arrow
       @click-left="onClickLeft"
-      @click-right="openRechargePopup"
+      @click-right="toRechargeRecord"
     />
     <van-panel class="panel-self">
       <div class="balance">
@@ -23,21 +23,6 @@
     <Coupon :componentsType="1"></Coupon>
     <van-cell title="积分说明" is-link @click="openIntegralPopup" />
     <van-cell title="常见问题" is-link @click="openHelpPopup" />
-    <!-- 充值记录设置 -->
-    <van-popup v-model="rechargeRecordPopShow" position="bottom" :overlay="true" class="grayBg">
-      <van-nav-bar
-        title="充值记录"
-        @click-left="cancelUpdateAutograph"
-        left-arrow
-        class="grayBarBg"
-      />
-      <van-cell-group>
-        <p class="noData grayBarBg">
-          您还没有充值记录
-        </p>
-        <van-cell :title="item.amount + '元 ' + item.integral + '积分'" :value="item.time" v-for="(item,index) in rechargeRecord" />
-      </van-cell-group>
-    </van-popup>
     <!-- 常见问题设置 -->
     <van-popup v-model="helpPopupShow" position="bottom" :overlay="true">
       <van-nav-bar
@@ -101,21 +86,8 @@
     name: 'mywallet',
     data () {
       return {
-        rechargeRecordPopShow: false,  // 充值记录设置弹框
         helpPopupShow: false, // 常见问题 帮助中心弹框
         integralPopupShow: false, // 积分说明弹框
-        rechargeRecord: [ // 充值记录
-          {
-            amount: 6,  // 金额
-            integral: 20, // 积分
-            time: '2019.02.19', // 充值时间
-          },
-          {
-            amount: 6,  // 金额
-            integral: 20, // 积分
-            time: '2019.02.19', // 充值时间
-          }
-        ],
         helpActiveNames: ['1','2','3'], // 常见问题折叠筐
         integralActiveNames: ['1','2','3'], // 积分说明折叠筐
       }
@@ -130,13 +102,15 @@
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
-      // 打开修改充值记录弹框
-      openRechargePopup () {
-        this.rechargeRecordPopShow = true;
-      },
-      // 取消修改充值记录
-      cancelUpdateAutograph () {
-        this.rechargeRecordPopShow = false;
+      // 前往充值记录
+      toRechargeRecord () {
+        this.$router.push({  //核心语句
+          name:'rechargeRecord'   //跳转的路径
+          // path:'rechargeRecord'   //跳转的路径
+          // query:{           //路由传参时push和query搭配使用 ，作用时传递参数
+          //   id:this.id ,
+          // }
+        })
       },
       // 打开常见问题 帮助中心弹框
       openHelpPopup () {

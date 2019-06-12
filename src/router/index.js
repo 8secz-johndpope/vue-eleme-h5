@@ -231,6 +231,15 @@ export default new Router({
       },
       component: (resolve) => require(['view/setting-page/Certification'],resolve),
     },
+    // 充值记录
+    {
+      path: '/setting/mywallet/rechargeRecord',
+      name: 'rechargeRecord',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/RechargeRecord'],resolve),
+    },
     {
       path: '/login',
       name: 'Login',
