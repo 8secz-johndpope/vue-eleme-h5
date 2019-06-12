@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="encyclopediasClassification">
     <!-- 顶部 -->
     <div class="fixed-top">
       <van-nav-bar

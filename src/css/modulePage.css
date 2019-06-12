@@ -104,3 +104,14 @@
   border-top-width: 0;
 }
 /* 推荐页 -- 结束 */
+
+/* 百科页 -- 开始 */
+.encyclopediasClassification .van-tabs__wrap {
+  top: 1.2rem !important;
+  position: fixed;
+  z-index: 2;
+}
+.encyclopediasClassification.van-panel__footer::after {
+  border-top-width: 0;
+}
+/* 百科页 -- 结束 */
