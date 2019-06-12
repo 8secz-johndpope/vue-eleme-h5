@@ -147,6 +147,9 @@
   width: 100%;
   height: 1.6rem;
 }
+.top-space{
+  height: 1.2rem;
+}
 #app .grayBg {
   background-color: #F2F2F2;
   height: 100%;

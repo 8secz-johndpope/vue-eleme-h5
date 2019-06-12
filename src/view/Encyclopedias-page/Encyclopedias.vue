@@ -6,10 +6,13 @@
         title="工作996，生病ICU，年轻人，你的头发还好吗？"
         left-arrow
         @click-left="onClickLeft"
+        fixed
       >
       </van-nav-bar>
     </div>
-    <div class="content">
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
+    <div class="white-bg">
       <van-cell class="mgt10">
         <template slot="title">
           <div class="flex-start">
@@ -55,9 +58,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .content{
-    margin: 1.2rem 0 0 0;
-  }
   .change{
     margin-top: 0.2px;
   }

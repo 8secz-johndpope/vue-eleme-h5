@@ -1,9 +1,11 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <van-nav-bar left-arrow @click-left="onClickLeft" title="精彩评论">
+    <van-nav-bar left-arrow @click-left="onClickLeft" title="精彩评论" fixed>
       <van-icon name="ellipsis" slot="right" @click="openMorePop" />
     </van-nav-bar>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <!-- 文章内容 -->
     <div class="articleDetail">
       <!-- 文章头部 -->

@@ -5,7 +5,10 @@
       title="举报"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <van-panel title="内容违规">
       <van-cell title="色情低俗" is-link to="/accusation/report/1"/>
       <van-cell title="政治敏感" is-link to="/accusation/report/2"/>

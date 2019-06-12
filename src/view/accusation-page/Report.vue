@@ -7,7 +7,10 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="commitAdvice"
+      fixed
     />
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <van-cell-group class="accusation-cell">
       <van-field
         :value="type"

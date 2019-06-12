@@ -6,6 +6,7 @@
         title="情感百科"
         left-arrow
         @click-left="onClickLeft"
+        fixed
       >
       </van-nav-bar>
     </div>
