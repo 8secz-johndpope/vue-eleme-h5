@@ -535,5 +535,20 @@ export default new Router({
     /*
       话术库 -- 结束
     */
+
+    /*
+      帖子 微博 -- 开始
+    */
+    {
+      path: '/post/postSetting',
+      name: 'postSetting',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostSetting'],resolve),
+    },
+    /*
+      帖子 微博 -- 结束
+    */
   ]
 });

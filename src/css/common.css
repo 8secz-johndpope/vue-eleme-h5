@@ -120,10 +120,7 @@
   margin-bottom: 0.266667rem;
 }
 .mgb15{
-  margin-bottom: 15px;
-}
-.pd15{
-  padding: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 .pdb5{
   padding: 0 0 0.133333rem 0;
@@ -141,13 +138,25 @@
   padding: 0 0 0.266667rem 0;
 }
 .pdb15{
-  padding: 0 0 15px 0;
+  padding: 0 0 0.4rem 0;
 }
 .pdt10{
   padding: 0.266667rem 0 0 0;
 }
 .pd10{
   padding: 0.266667rem;
+}
+.pd15{
+  padding: 0.4rem;
+}
+.pdt15{
+  padding-top: 0.4rem;
+}
+.pdl15{
+  padding-left: 0.4rem;
+}
+.pdr15{
+  padding-right: 0.4rem;
 }
 .space{
   width: 100%;

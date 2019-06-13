@@ -33,7 +33,7 @@
       </van-panel>
       <!-- 分享选项 -->
       <van-actionsheet v-model="sharePopShow" title="分享到">
-        <ShareBox :targetId="targetId" :isShowRoofPlacementChild="isShowRoofPlacement" :isTopNow="itemIsTop"></ShareBox>
+        <ShareBox :targetId="targetId" :isShowRoofPlacementChild="isShowRoofPlacement" :isTopNow="itemIsTop" @on-delete-post="deletePost"></ShareBox>
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
@@ -184,6 +184,11 @@ export default {
           this.finished = true;
         }
       }, 500);
+    },
+    // 删除帖子
+    deletePost (id) {
+      this.$toast('调用接口，删除！' + id);
+      this.sharePopShow = false;
     },
   }
 };

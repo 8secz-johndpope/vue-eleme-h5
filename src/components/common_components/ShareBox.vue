@@ -24,7 +24,7 @@
       <i class="fa fa-clone fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>复制链接</p>
     </div>
-    <router-link :to="{ name: 'accusation', params: {} }">
+    <router-link :to="{ name: 'accusation', params: {} }" v-if="!isShowRoofPlacementChild">
       <div class="shareBox-item">
         <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>
         <p>举报</p>
@@ -36,6 +36,16 @@
         <p>速推计划</p>
       </div>
     </router-link>
+    <router-link :to="{ name: 'postSetting', params: {'id':'001'} }" v-if="isShowRoofPlacementChild">
+      <div class="shareBox-item">
+        <i class="fa fa-cog fa-2x shareBox-icon" aria-hidden="true"></i>
+        <p>设置</p>
+      </div>
+    </router-link>
+    <div class="shareBox-item" v-if="isShowRoofPlacementChild" @click="deletePost">
+      <i class="fa fa-trash-o fa-2x shareBox-icon" aria-hidden="true"></i>
+      <p>删除</p>
+    </div>
     <div class="shareBox-item" v-if="isShowRoofPlacementChild&&isTopNow === 1">
       <i class="fa fa-paper-plane fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>置顶</p>
@@ -87,6 +97,17 @@ export default {
     },
     forward: function () {
       this.$toast('转发成功，自己的动态下展示')
+    },
+    deletePost: function () {
+      let that = this;
+      that.$dialog.confirm({
+        title: '提示',
+        message: '确认删除吗'
+      }).then(() => {
+        that.$emit('on-delete-post', that.targetId)
+      }).catch(() => {
+        // on cancel
+      });
     },
   },
   watch: {
