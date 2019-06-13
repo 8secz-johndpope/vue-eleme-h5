@@ -4,7 +4,6 @@
       <van-card
           :tag="item.isCarefullyChosen ? '精选' : '' "
           :thumb="item.imgSrc"
-          @click="goArticleDetail(item.id)"
           class="van-card"
         >
         <div slot="title" class="title">

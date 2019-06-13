@@ -119,6 +119,9 @@
 .mgb10{
   margin-bottom: 0.266667rem;
 }
+.mgb15{
+  margin-bottom: 15px;
+}
 .pd15{
   padding: 0.4rem;
 }
@@ -136,6 +139,9 @@
 }
 .pdb10{
   padding: 0 0 0.266667rem 0;
+}
+.pdb15{
+  padding: 0 0 15px 0;
 }
 .pdt10{
   padding: 0.266667rem 0 0 0;
