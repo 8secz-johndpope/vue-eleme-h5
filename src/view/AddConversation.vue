@@ -20,7 +20,7 @@
           v-model="message"
           type="textarea"
           placeholder="分享新鲜事"
-          rows="13"
+          :rows="rowsNum"
           ref="postContent"
           @focus="inputFieldFocus"
           />
@@ -49,6 +49,7 @@
           <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9">
             <van-icon name="photo-o" class="footer-icon" />
           </van-uploader>
+          <van-icon name="label-o" class="footer-icon" @click="topicShowPop = !topicShowPop"/>
           <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
         </div>
         <div>
@@ -64,6 +65,10 @@
        </van-swipe-item>
       </van-swipe>
     </footer>
+    <!-- 话题类型 弹框 -->
+    <van-actionsheet v-model="topicShowPop" title="选择话题" >
+      
+    </van-actionsheet>
     <!-- 发布类型上拉菜单 弹框 -->
     <van-actionsheet v-model="publishTypePop" title="选择分享范围" >
       <div class="select-content">
@@ -84,10 +89,12 @@ export default {
   data () {
     return {
       message: '',  // 微博文本内容
+      rowsNum: 15, // 默认显示高度
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
       uploadImgList: [],  // 预览图片区域
       publishTypePop: false,  // 发布类型弹框
+      topicShowPop: false,  // 话题弹框
       currentPublishValue: 0,  // 当前发布类型， 0-公开，默认
       publishTypeList: [ // 选择分享类型
         {
@@ -197,9 +204,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  html,body{
-    background-color: #fff;
-  }
   .input-box{
     position: relative;
   }
@@ -212,15 +216,16 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid #ECECEC;
   }
   .fixed-footer-left{
-    font-size: 0.586667rem;
+    font-size: 0.666667rem;
   }
   .footer-icon{
     width: 1.066667rem;
   }
   .xw-faceEmoji{
-    margin-bottom: 7px;
+    margin-bottom: 0.186667rem;
     width: 20%;
     float: left;
     text-align: center;
@@ -235,13 +240,13 @@ export default {
     flex-basis: 32.3%;
     margin: .5%;
     position: relative;
-    height: 100px;
+    height: 2.666667rem;
     box-sizing: border-box;
-      border: 1px solid #ECECEC;
+    border: 1px solid #ECECEC;
   }
   .upload-img-item:last-child{
     border: 1px dashed #cbd1d7;
-    font-size: 30px;
+    font-size: 1rem;
   }
   .upload-img-item-img{
     display: block;
@@ -250,13 +255,13 @@ export default {
     object-fit: cover;
   }
   .footer-space{
-    margin-bottom: 70px;
+    height: 1.6rem;
   }
   .close-icon{
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 16px;
+    font-size: 0.426667rem;
   }
   .select-content{
     width: 100%;
