@@ -3,7 +3,6 @@
     <div class="fixed-top">
         <van-nav-bar
         title="速推+上热门"
-        
         left-arrow
         @click-left="onClickLeft"
         >

@@ -653,6 +653,62 @@ export var imitateRecommendMenuList = [
     containerid: 7, // 内容分类id
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
+  {
+    name: '美女',
+    containerid: 8, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '校园',
+    containerid: 9, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '电竞',
+    containerid: 10, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+  {
+    name: '星座表情',
+    containerid: 11, // 内容分类id
+    cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
+  },
+];
+
+// 模拟推荐话题列表
+export var imitateTopicList = [
+  {
+    name: '为追女孩子曾经做过的蠢事',   // 话题名称
+    topicId: 0, // 话题id
+    topicTypeName: '美女',    // 话题类型名称
+    topicTypeBelongClassifyId: 0,   //  话题类型所属Id
+    discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
+    topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
+  },
+  {
+    name: '如何用古诗词撩动妹子',   // 话题名称
+    topicId: 1, // 话题id
+    topicTypeName: '文学',    // 话题类型名称
+    topicTypeBelongClassifyId: 1,   //  话题类型所属Id
+    discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
+    topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
+  },
+  {
+    name: '霸道总裁爱上我',   // 话题名称
+    topicId: 2, // 话题id
+    topicTypeName: '影视动漫',    // 话题类型名称
+    topicTypeBelongClassifyId: 2,   //  话题类型所属Id
+    discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
+    topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
+  },
+  {
+    name: '暗恋了多年的校花',   // 话题名称
+    topicId: 3, // 话题id
+    topicTypeName: '校园',    // 话题类型名称
+    topicTypeBelongClassifyId: 2,   //  话题类型所属Id
+    discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
+    topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
+  },
 ];
 
 // 模拟帖子列表

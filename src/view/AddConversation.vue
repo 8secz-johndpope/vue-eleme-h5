@@ -14,7 +14,7 @@
     <div class="top-space"></div>
     <!-- 内容区域 -->
     <div>
-      <div class="input-box">
+      <div class="mgb15 input-box">
         <van-cell-group>
           <van-field
           v-model="message"
@@ -26,6 +26,12 @@
           />
         </van-cell-group>
         <div class="gray-color msglen pdr15" v-if="message.length > 0">字数：{{message.length}}</div>
+      </div>
+      <!-- 话题选择区域 -->
+      <div class="pdl15 pdr15" v-if="selectTopicList.length > 0">
+        <van-tag plain type="danger" v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5">
+          {{item.name}}
+        </van-tag>
       </div>
       <!-- 图片预览区域 -->
       <div class="flex-wrap pd15">
@@ -52,8 +58,8 @@
           <van-icon name="label-o" class="footer-icon" @click="topicShowPop = !topicShowPop"/>
           <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
         </div>
-        <div>
-          <van-tag plain color="#f2826a" @click="publishTypePop = true">
+        <div @click="publishTypePop = true">
+          <van-tag plain color="#f2826a">
             {{ currentPublishValue === 0 ? '公开' : currentPublishValue === 1 ? '相互关注可见' : currentPublishValue === 2 ? '我的粉丝可见' : currentPublishValue === 3 ? '我的关注可见' : '仅自己可见'}}
           </van-tag>
         </div>
@@ -66,9 +72,14 @@
       </van-swipe>
     </footer>
     <!-- 话题类型 弹框 -->
-    <van-actionsheet v-model="topicShowPop" title="选择话题" >
-      
-    </van-actionsheet>
+    <van-popup v-model="topicShowPop" position="bottom" :overlay="true">
+      <TopicList 
+        :topicListData="getImitateTopicList"
+        @on-finished-select="finishedSelect"
+        @on-cancel-select="cancelSelect"
+      >
+      </TopicList>
+    </van-popup>
     <!-- 发布类型上拉菜单 弹框 -->
     <van-actionsheet v-model="publishTypePop" title="选择分享范围" >
       <div class="select-content">
@@ -84,6 +95,7 @@
 <script>
 import Vue from "vue";
 import { mapGetters } from 'vuex';
+import TopicList from 'components/child_components/Topic_components/TopicList';
 export default {
   name: 'add_conversation',
   data () {
@@ -93,6 +105,7 @@ export default {
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
       uploadImgList: [],  // 预览图片区域
+      selectTopicList: [],  // 选择的话题列表，最多选3个
       publishTypePop: false,  // 发布类型弹框
       topicShowPop: false,  // 话题弹框
       currentPublishValue: 0,  // 当前发布类型， 0-公开，默认
@@ -120,12 +133,16 @@ export default {
       ],
     };
   },
+  components: {
+    TopicList,
+  },
   mounted () {
     this.emojiList = this.getEXPSList.EXPS.slice(0);
   },
   computed: {
     ...mapGetters([
-      'getEXPSList',
+      'getEXPSList',  // emoji表情
+      'getImitateTopicList',  // 模拟推荐话题列表
     ])
   },
   watch: {
@@ -199,6 +216,15 @@ export default {
     inputFieldFocus(){
       this.showEmoji = false;
     },
+    // 完成选择
+    finishedSelect (list) {
+      this.topicShowPop = false;
+      this.selectTopicList = list;
+    },
+    // 取消选择
+    cancelSelect () {
+      this.topicShowPop = false;
+    }
   }
 };
 </script>

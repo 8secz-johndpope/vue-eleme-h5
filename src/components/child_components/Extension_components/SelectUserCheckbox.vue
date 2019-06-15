@@ -100,8 +100,8 @@
           })
         }
         if (flag) {
-          if (that.totalSelectChild >= 10) {
-            that.$toast('最多添加10个')
+          if (that.totalSelectChild >= 5) {
+            that.$toast('最多添加5个')
             return;
           }
           let obj = {

@@ -115,3 +115,24 @@
   border-top-width: 0;
 }
 /* 百科页 -- 结束 */
+
+/* 话题页 -- 开始 */
+.topicList .van-cell__value {
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+.topicList .van-cell:first-child{
+  margin: 0.133333rem 0 0 0;
+}
+.topicList .van-cell{
+  padding: 0.133333rem 0.266667rem;
+}
+
+.topicList .van-card__thumb {
+  height: 1.8rem;
+}
+.topicList .van-card__content {
+  height: 1.8rem;
+}
+/* 话题页 -- 结束 */

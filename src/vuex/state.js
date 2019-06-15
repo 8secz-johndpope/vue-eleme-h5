@@ -3,7 +3,8 @@ import { EXPSList } from '../jsonData/EXPSList.js';
 import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '../falsedata/falsedata.js';
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
          imitateComments, imitateMyPraiseAndComments, imitateVideoList, imitateEncyclopediasClassfication,
-         imitateEncyclopediasList, imitatePostList, imitateRecommendMenuList } from '../falsedata/imitateData.js';
+         imitateEncyclopediasList, imitatePostList, imitateRecommendMenuList, imitateTopicList,
+          } from '../falsedata/imitateData.js';
 
 export default {
   // 是否在加载中
@@ -62,4 +63,6 @@ export default {
   imitatePostList,
   // 模拟推荐菜单列表
   imitateRecommendMenuList,
+  // 模拟推荐话题列表
+  imitateTopicList,
 };
