@@ -29,9 +29,12 @@
       </div>
       <!-- 话题选择区域 -->
       <div class="pdl15 pdr15" v-if="selectTopicList.length > 0">
-        <van-tag plain type="danger" v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5">
-          {{item.name}}
-        </van-tag>
+        <span v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5 mgr10 mgb10 display-block position-r" @click="topicShowPop = true">
+          <van-tag plain type="danger" size="medium">
+            {{item.name}}
+          </van-tag>
+          <van-icon name="close" class="gray-color close-icon-tag" @click.stop="deleteTopic(item, index)" />
+        </span>
       </div>
       <!-- 图片预览区域 -->
       <div class="flex-wrap pd15">
@@ -163,6 +166,7 @@ export default {
     // 读取文件
     onRead(file) {
       let that = this;
+      that.showEmoji = false;
       let fileList = [];  // 文件集合，转成数组
       let img = new Image();  //创建对象，这个img就是传给上面的compress
       // 单选和多选图片
@@ -184,6 +188,7 @@ export default {
         that.uploadImgList.push('https://avatars1.githubusercontent.com/u/34303195?s=460&v=4')
       }
       that.$toast('最多上传9张，上传图片至服务器，服务器返回图片地址')
+      that.scrollToBottom();
     },
     // 获取emoji表情
     getEmotionData(pageNow, pageSize) {
@@ -207,6 +212,10 @@ export default {
       this.uploadImgList.splice(index, 1)
       this.$toast('物理删除服务器的图片')
     },
+    // 删除选择的话题
+    deleteTopic(item, index) {
+      this.selectTopicList.splice(index, 1)
+    },
     // 选择发布类型
     changePublishType(item) {
       this.publishTypePop = false;
@@ -224,7 +233,22 @@ export default {
     // 取消选择
     cancelSelect () {
       this.topicShowPop = false;
-    }
+    },
+    //滚动到底
+    scrollToBottom(){
+      let that = this;
+      this.$nextTick(() => {
+        document.body.scrollTop = that.getScroll().top + 1000;
+        document.documentElement.scrollTop = that.getScroll().top + 1000;
+        window.pageYOffset = that.getScroll().top + 1000;
+      });
+    },
+    //获得页面向左、向上卷动的距离
+    getScroll () {
+      return {
+        top: window.pageYOffset + 1000 || document.documentElement.scrollTop + 1000 || document.body.scrollTop + 1000 || 0 + 1000
+      };
+    },
   }
 };
 </script>
@@ -287,6 +311,12 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+    font-size: 0.426667rem;
+  }
+  .close-icon-tag{
+    position: absolute;
+    top: -10px;
+    right: -10px;
     font-size: 0.426667rem;
   }
   .select-content{

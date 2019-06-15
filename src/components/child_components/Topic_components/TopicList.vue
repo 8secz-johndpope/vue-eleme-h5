@@ -143,7 +143,7 @@ export default {
     font-weight: normal;
   }
   .topicList-box{
-    height: 13rem;
+    height: 10rem;
     overflow: scroll;
   }
 </style>
