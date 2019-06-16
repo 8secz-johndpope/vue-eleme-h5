@@ -43,7 +43,7 @@
           <van-icon name="close" class="gray-color close-icon" @click="deleteImg(item, index)" />
         </div>
         <div class="flex-center upload-img-item" v-if="uploadImgList.length < 9 && uploadImgList.length > 0">
-          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple>
+          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png, video/*" :max-count="9" multiple>
             <van-icon name="plus" />
           </van-uploader>
         </div>
