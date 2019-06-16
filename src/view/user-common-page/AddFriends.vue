@@ -5,7 +5,10 @@
       title="添加好友"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <van-search
       v-model="value"
       placeholder="搜索用户昵称/撩撩号"

@@ -103,6 +103,9 @@ export default new Router({
       },
       component: (resolve) => require(['view/user-common-page/Userzone'],resolve),
     },
+    /*
+      文档说明 -- 结束
+    */
     {
       path: '/addConversation/question',
       name: 'addConversationQuestion',
@@ -111,6 +114,27 @@ export default new Router({
       },
       component: (resolve) => require(['view/document-page/AddConversationQuestion'],resolve),
     },
+    // 积分充值说明
+    {
+      path: '/document/integralRechargeDesc',
+      name: 'integralRechargeDesc',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/IntegralRechargeDesc'],resolve),
+    },
+    // 充值帮助
+    {
+      path: '/document/rechargeHelp',
+      name: 'rechargeHelp',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/RechargeHelp'],resolve),
+    },
+    /*
+      文档说明 -- 结束
+    */
     {
       path: '/myfans',
       name: 'myfans',
@@ -540,12 +564,12 @@ export default new Router({
       帖子 微博 -- 开始
     */
     {
-      path: '/post/postSetting',
-      name: 'postSetting',
+      path: '/post/postClassify',
+      name: 'postClassify',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/post-page/PostSetting'],resolve),
+      component: (resolve) => require(['view/post-page/PostClassify'],resolve),
     },
     /*
       帖子 微博 -- 结束

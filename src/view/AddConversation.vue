@@ -63,7 +63,7 @@
         </div>
         <div @click="publishTypePop = true">
           <van-tag plain color="#f2826a">
-            {{ currentPublishValue === 0 ? '公开' : currentPublishValue === 1 ? '相互关注可见' : currentPublishValue === 2 ? '我的粉丝可见' : currentPublishValue === 3 ? '我的关注可见' : '仅自己可见'}}
+            {{ currentPublishValue === 0 ? '公开' : currentPublishValue === 1 ? '相互关注可见' : '仅自己可见'}}
           </van-tag>
         </div>
       </div>
@@ -118,20 +118,12 @@ export default {
           value: 0,
         },
         {
-          name: '相互关注可见',
+          name: '相互关注',
           value: 1
         },
         {
-          name: '我的粉丝可见',
-          value: 2
-        },
-        {
-          name: '我的关注可见',
-          value: 3
-        },
-        {
           name: '仅自己可见',
-          value: 4
+          value: 2
         },
       ],
     };
