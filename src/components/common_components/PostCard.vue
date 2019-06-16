@@ -1,7 +1,5 @@
 <template>
   <div class="postCard">
-    <!-- 空格 -->
-    <div class="top-space"></div>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -51,8 +49,11 @@
         </div>
         <!-- 标签，商品展示区域 -->
         <div class="flex-space-between showcase-zone">
+          <!-- 帖子分类标签 -->
           <div>
-            <van-tag mark v-for="(c_item, c_index) in item.tagsList" class="mgr5">{{c_item.tagsName}}</van-tag>
+            <span v-for="(c_item, c_index) in item.tagsList" v-if="showTag && item.tagsList.length > 0" class="mgr5" @click="toPostClassify(c_item)"> 
+              <van-tag mark class="van-ellipsis tag-ellipsis">{{c_item.tagsName}}</van-tag>
+            </span>
           </div>
           <div class="gold-color flex" v-if="item.isBusiness === 0" @click="goodsShow = true">
             <van-icon name="cart-o" class="font-gold showcase" />
@@ -124,6 +125,11 @@ export default {
     },
     // 是否为推荐的页面
     isRecommend: {
+      type: Boolean,
+      default: true,
+    },
+    // 是否显示标签
+    showTag: {
       type: Boolean,
       default: true,
     }
@@ -287,6 +293,10 @@ export default {
         }
       });
     },
+    // 前往帖子分类
+    toPostClassify (item) {
+      this.$router.push({ name: 'postClassify', params: { containerid: item.containerid }})
+    },
   }
 };
 </script>
@@ -387,5 +397,8 @@ export default {
   }
   .addFollow{
     background-color: #eee;
+  }
+  .tag-ellipsis{
+    max-width: 100px;
   }
 </style>

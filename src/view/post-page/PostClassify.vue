@@ -2,42 +2,42 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="微博设置"
+      title="校花专题"
       left-arrow
       @click-left="onClickLeft"
       fixed
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
-    <van-panel title="分享范围设置">
-      <van-cell title="色情低俗" is-link to="/accusation/report/1"/>
-    </van-panel>
-    <van-panel title="评论设置">
-      <van-cell title="盗用TA人作品" is-link to="/accusation/report/7"/>
-    </van-panel>
+    <PostCard :composition="getImitatePostList" :showTag="false"></PostCard>
   </div>
 </template>
 <script>
-  export default {
-    components:{
-    },
-    name: 'postSetting',
-    data () {
-      return {
-        msg: '1',
-      };
-    },
-    mounted () {
+import { mapGetters } from 'vuex';
+import PostCard from 'components/common_components/PostCard';
+export default {
+  components:{
+    PostCard,
+  },
+  name: 'postSetting',
+  data () {
+    return {
+      msg: '1',
+    };
+  },
+  mounted () {
 
+  },
+  computed: {
+    ...mapGetters([
+      'getImitatePostList', // 获取模拟帖子列表
+    ]),
+  },
+  methods: {
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
     },
-    computed: {
-
-    },
-    methods: {
-      onClickLeft(){
-        this.COMMONFUNC.goBack();
-      },
-    }
+  }
 }
 </script>
 

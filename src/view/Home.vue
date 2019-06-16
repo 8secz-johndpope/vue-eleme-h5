@@ -31,11 +31,11 @@
     </div>
     <div class="content-box">
       <!-- 精彩视频 -->
-      <van-cell class="home-van-cell mgt10">
+      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">精彩视频</span>
+            <span class="custom-text">精彩热点</span>
           </div>
         </template>
       </van-cell>
@@ -52,7 +52,7 @@
         </div>
       </div>
       <!-- 优选文章 -->
-      <van-cell class="home-van-cell mgt10">
+      <van-cell value="更多" is-link :to="'/article/articleList'" class="home-van-cell mgt10">
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />
@@ -63,6 +63,19 @@
       <!-- 文章列表，默认四篇 -->
       <div class="white-bg pd10">
         <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
+      </div>
+      <!-- 情感百科 -->
+      <van-cell value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="home-van-cell mgt10">
+        <template slot="title">
+          <div class="flex-start">
+            <van-icon name="like-o" class="red-color mgr5" />
+            <span class="custom-text">情感百科</span>
+          </div>
+        </template>
+      </van-cell>
+      <!-- 情感百科列表，默认3篇 -->
+      <div class="white-bg pd10">
+        <EncyclopediasCard></EncyclopediasCard>
       </div>
       <!-- AI导师 -->
       <van-cell value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="home-van-cell mgt10">
@@ -77,19 +90,6 @@
       <div class="flex-space-around white-bg pd10">
         <!-- AI导师卡片 -->
         <ImgCard :composition="getImitateVideoList"></ImgCard>
-      </div>
-      <!-- 情感百科 -->
-      <van-cell value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="home-van-cell mgt10">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">情感百科</span>
-          </div>
-        </template>
-      </van-cell>
-      <!-- 情感百科列表，默认3篇 -->
-      <div class="white-bg pd10">
-        <EncyclopediasCard></EncyclopediasCard>
       </div>
     </div>
     <!-- 视频弹框 -->
@@ -172,15 +172,20 @@ export default {
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '撩妹技巧', // 分类一级名称
-          linkUrlName: 'talkingLibrary',
+          levelOneName: '精选文章', // 分类一级名称
+          linkUrlName: 'articleList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '情感问答', // 分类一级名称
-          linkUrlName: 'talkingLibrary',
+          levelOneName: '情感百科', // 分类一级名称
+          linkUrlName: 'encyclopediasList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
+        // {
+        //   levelOneName: '情感问答', // 分类一级名称
+        //   linkUrlName: 'talkingLibrary',
+        //   img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        // },
         {
           levelOneName: '实用工具', // 分类一级名称
           linkUrlName: 'toolList',

@@ -659,7 +659,7 @@ export var imitateRecommendMenuList = [
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
   {
-    name: '校园',
+    name: '星座表情',
     containerid: 9, // 内容分类id
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
@@ -669,7 +669,7 @@ export var imitateRecommendMenuList = [
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
   {
-    name: '星座表情',
+    name: '校园',
     containerid: 11, // 内容分类id
     cardType: 0,  // 0-PostCard, 1-Conversation, 2-articleList
   },
@@ -702,7 +702,7 @@ export var imitateTopicList = [
     topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
   },
   {
-    name: '暗恋了多年的校花',   // 话题名称
+    name: '校花专题',   // 话题名称
     topicId: 3, // 话题id
     topicTypeName: '校园',    // 话题类型名称
     topicTypeBelongClassifyId: 2,   //  话题类型所属Id
@@ -770,11 +770,11 @@ export var imitatePostList = [
     // 帖子标签集合
     tagsList: [
         {
-            tagsName: '美女', // 标签分类名
+            tagsName: '校花专题', // 标签分类名
             containerid: 'tagsId1', // 标签所属id
         },
         {
-            tagsName: '文学', // 标签分类名
+            tagsName: '为追女孩子曾经做过的蠢事', // 标签分类名
             containerid: 'tagsId2', // 标签所属id
         },
     ],
@@ -802,7 +802,7 @@ export var imitatePostList = [
     // 帖子标签集合
     tagsList: [
         {
-            tagsName: '电影', // 标签分类名
+            tagsName: '霸道总裁爱上我', // 标签分类名
             containerid: 'tagsId3', // 标签所属id
         },
     ],

@@ -322,6 +322,15 @@ export default new Router({
       },
       component: (resolve) => require(['view/search-page/Result'],resolve),
     },
+    // 文章列表
+    {
+      path: '/article/articleList',
+      name: 'articleList',
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/article-page/ArticleList'],resolve),
+    },
     {
       path: '/articleDetail/:id',
       name: 'articleDetail',
@@ -582,7 +591,7 @@ export default new Router({
       帖子 微博 -- 开始
     */
     {
-      path: '/post/postClassify',
+      path: '/post/postClassify/:containerid',
       name: 'postClassify',
       meta: {
         keepAlive: false // 不需要缓存

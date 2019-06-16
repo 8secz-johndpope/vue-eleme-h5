@@ -10,14 +10,12 @@
     >
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
+    <!-- 空格 -->
+    <div class="top-space"></div>
     <div class="content-box">
       <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
         <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
-          <!-- 空格 -->
-          <div v-if="item.cardType === 1" class="top-space"></div>
-          <PostCard :composition="getImitatePostList" v-if="item.cardType === 0"></PostCard>
-          <Conversation :composition="getImitateConversation" v-if="item.cardType === 1"></Conversation>
-          <articleList :composition="getImitateArticleList" v-if="item.cardType === 2"></articleList>
+          <PostCard :composition="getImitatePostList"></PostCard>
         </van-tab>
       </van-tabs>
       <div class="moreTabs" @click="allTabsShow = !allTabsShow">
@@ -42,9 +40,7 @@
 
 <script>
 import Fixednav from 'components/common_components/Fixed_nav';
-import Conversation from 'components/common_components/Conversation';
 import PostCard from 'components/common_components/PostCard';
-import articleList from 'components/common_components/articleList';
 import { mapGetters } from 'vuex';
 export default {
   name: 'recommend',
@@ -61,9 +57,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getImitateConversation', // 获取模拟对话
       'getImitatePostList', // 获取模拟帖子列表
-      'getImitateArticleList', // 获取模拟文章列表
       'getRecommendHighLightTab', // 得到推荐页高亮tab
       'getImitateRecommendMenuList', // 模拟推荐菜单列表
     ]),
@@ -86,9 +80,7 @@ export default {
   },
   components: {
     Fixednav,
-    Conversation,
     PostCard,
-    articleList,
   }
 };
 </script>

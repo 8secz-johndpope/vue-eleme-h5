@@ -1,6 +1,13 @@
 <template>
   <div>
-    <!-- 空格 -->
+    <!-- 顶部 -->
+    <van-nav-bar
+      title="文章列表"
+      left-arrow
+      @click-left="onClickLeft"
+      fixed
+    />
+    <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <van-list
       v-model="loading"
@@ -9,37 +16,37 @@
       :lazy-load="true"
       @load="onLoad"
     >
-      <ArticleCard :composition="composition" class="item-box"></ArticleCard>
+      <ArticleCard :composition="articleListData" class="item-box"></ArticleCard>
     </van-list>
   </div>
 </template>
-
 <script>
+import { mapGetters } from 'vuex';
 import ArticleCard from 'components/common_components/ArticleCard';
 export default {
-  name: 'articleList',
-  // 父子通信
-  props: {
-    composition: {
-      type: Array,
-      default: [],
-    }
-  },
-  components: {
+  components:{
     ArticleCard,
   },
+  name: 'articleList',
   data () {
     return {
       loading: false,
-      finished: false
+      finished: false,
+      articleListData: [],  // 文章列表
     };
   },
   mounted () {
+    this.articleListData = JSON.parse(JSON.stringify(this.getImitateArticleList));
   },
   computed: {
-
+    ...mapGetters([
+      'getImitateArticleList', // 获取模拟文章列表
+    ]),
   },
   methods: {
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
+    },
     onLoad() {
       let obj = {
         id: 'zs20190214',
@@ -52,33 +59,20 @@ export default {
       };
       // 异步更新数据
       setTimeout(() => {
-        for (let i = 0; i < 1; i++) {
-          this.composition.push(obj);
+        for (let i = 0; i < 5; i++) {
+          this.articleListData.push(obj);
         }
         // 加载状态结束
         this.loading = false;
         // 数据全部加载完成
-        if (this.composition.length >= 4) {
+        if (this.articleListData.length >= 10) {
           this.finished = true;
         }
       }, 500);
     },
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
-  .title{
-    font-weight: 700;
-  }
-  .desc{
-    height: 2rem;
-  }
-  .top-space{
-    height: 1.3rem
-  }
-  .reading-number{
-    color: #3d3d3d;
-    font-weight: normal;
-  }
 </style>
