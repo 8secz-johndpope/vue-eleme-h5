@@ -125,6 +125,24 @@ export default new Router({
     },
     // 充值帮助
     {
+      path: '/document/invitationRules',
+      name: 'invitationRules',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/InvitationRules'],resolve),
+    },
+    // 服务协议及投放要求
+    {
+      path: '/document/userAgreement',
+      name: 'userAgreement',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/UserAgreement'],resolve),
+    },
+    // 邀请活动规则
+    {
       path: '/document/rechargeHelp',
       name: 'rechargeHelp',
       meta: {

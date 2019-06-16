@@ -86,11 +86,13 @@
         <div class="cell-zone">
           <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
           <span>继续表示同意</span>
-          <div @click="showUserAgreementPop = true">
-            <span class="gold-color">用户服务协议</span>
-            <span>及</span>
-            <span class="gold-color">投放要求</span>
-          </div>
+          <router-link :to="{ name: 'userAgreement', params: {} }">
+            <div>
+              <span class="gold-color">用户服务协议</span>
+              <span>及</span>
+              <span class="gold-color">投放要求</span>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -144,19 +146,6 @@
         <van-icon name="close" @click="definedMoneyPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
-    <!-- 服务协议 弹框 -->
-    <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
-      <div class="fixed-top">
-        <van-nav-bar
-          title="服务协议及投放要求"
-          @click-left="showUserAgreementPop = false"
-          left-arrow
-        />
-      </div>
-      <div class="fixed-content-box">
-        <UserAgreement></UserAgreement>
-      </div>
-    </van-popup>
   </div>
 </template>
 
@@ -177,7 +166,6 @@
         isShoping: false, // 是否交易中
         showHelpPop: false,  // 帮助问题弹框
         advertisingTargetActionPop: false,  //逛选项上拉菜单
-        showUserAgreementPop: false,  // 隐私协议条款
         durationActionPop: false,  // 时长上拉菜单
         definedMoneyPop: false, // 自定义投放金额弹框
         definedMoneyNum: '',  // 自定义金额
@@ -340,7 +328,7 @@
         that.isShoping = true;
         setTimeout(() => {
           that.isShoping = false;
-          that.$router.push('/setting/payment')
+          that.$router.push('/setting/mywallet/payment')
         }, 500);
       },
       // 切换同意条款按钮
