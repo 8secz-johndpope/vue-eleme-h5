@@ -709,6 +709,14 @@ export var imitateTopicList = [
     discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
     topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
   },
+  {
+    name: '为何小可爱不洗碗',   // 话题名称
+    topicId: 4, // 话题id
+    topicTypeName: '校园',    // 话题类型名称
+    topicTypeBelongClassifyId: 2,   //  话题类型所属Id
+    discussNum: 1241575,    // 话题讨论数量（统计的是发帖的数量）
+    topicImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 话题头像
+  },
 ];
 
 // 模拟帖子列表

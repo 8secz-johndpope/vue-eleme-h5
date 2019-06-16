@@ -117,7 +117,7 @@
 /* 百科页 -- 结束 */
 
 /* 话题页 -- 开始 */
-.topicList .van-cell__value {
+.topicList .van-checkbox-group .van-cell__value {
   flex: none;
   display: flex;
   align-items: center;

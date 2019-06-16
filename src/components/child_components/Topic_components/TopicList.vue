@@ -12,35 +12,46 @@
       <van-search
         v-model="searchValue"
         placeholder="请输入搜索关键词"
-        show-action
-        @search="onSearch"
-        @cancel="onCancel"
       />
     </form>
+    <van-cell class="mgt10">
+      <template slot="title">
+        <div class="flex-start">
+          <span class="gray-color">推荐话题（备注：默认十条）</span>
+        </div>
+      </template>
+      <template slot="right-icon">
+        <div class="flex-center gray-color" @click="$toast('刷新下方10条数据')">
+          <van-icon name="replay" class="flex-center"></van-icon>
+          <span>换一批</span>
+        </div>
+      </template>
+    </van-cell>
     <div class="topicList-box">
-      <van-checkbox-group v-model="selectTopicList">
+      <van-checkbox-group v-model="childSelectTopicArrList">
         <van-cell-group>
           <van-cell
-            v-for="(item, index) in topicListData"
+            v-for="(item, index) in topicListArrData"
             clickable
-            :key="item.topicId"
+            :key="topicListObjData[item.topicId]"
+            :max="3"
             @click="toggle(item, index)"
             >
             <template slot="title">
               <van-card
-                :thumb="item.topicImg"
+                :thumb="topicListObjData[index].topicImg"
                 class="van-card"
               >
                 <div slot="title" class="title">
-                  {{item.name}}
+                  {{topicListObjData[index].name}}
                 </div>
                 <div slot="price">
-                  <span class="reading-number">讨论数：{{COMMONFUNC.formatterW(item.discussNum)}}</span>
-                  <span class="reading-number">分类：{{item.topicTypeName}}</span>
+                  <span class="reading-number">讨论数：{{COMMONFUNC.formatterW(topicListObjData[index].discussNum)}}</span>
+                  <span class="reading-number">分类：{{topicListObjData[index].topicTypeName}}</span>
                 </div>
               </van-card>
             </template>
-            <van-checkbox :name="item" ref="checkboxes" class="van-user-item-right"/>
+            <van-checkbox :name="item" ref="checkboxes"/>
           </van-cell>
         </van-cell-group>
       </van-checkbox-group>
@@ -49,30 +60,44 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+// 数组对象vant复选框不主动渲染，故转化成数组形式
 export default {
   name: 'topicList',
   props: {
-    topicListData: {
+    // 选择的话题列表--对象
+    selectTopicList: {
       type: Array,
-      default: [],
+      default: ()=>[]
     },
   },
   data () {
     return {
       searchValue: '',  // 搜索关键词
       checked: true,
-      selectTopicList: [],  // 选择的话题列表
+      topicListArrData: [],  // 话题列表--数组
+      topicListObjData: [],  // 话题列表--对象
+      childSelectTopicArrList: [],  // 选择的话题列表--数组
+      childSelectTopicObjList: [],  // 选择的话题列表--对象
     };
   },
   mounted () {
+    let that = this;
+    that.topicListArrData = [];
+    that.getImitateTopicList.forEach( (val,index)=> {
+      that.topicListArrData.push(val.name)
+      that.topicListObjData.push(val)
+    })
+    let newArr = JSON.parse(JSON.stringify(this.selectTopicList));
   },
   computed: {
-
+    ...mapGetters([
+      'getImitateTopicList',  // 模拟推荐话题列表
+    ])
   },
   methods: {
     // 查找关键词
     onSearch () {
-      this.$emit('closePraisedNumPop-ok')
     },
     onCancel () {
 
@@ -82,31 +107,75 @@ export default {
       let that = this;
       let flag = false; // 所选的话题跟已选话题是否一致
       let topicIndex = null;  // 所选的话题跟已选话题的索引
-      if (that.selectTopicList.length > 0) {
-        that.selectTopicList.forEach( (v, i)=> {
-          if (v.topicId === item.topicId) {
+      if (that.childSelectTopicArrList.length > 0) {
+        that.childSelectTopicArrList.forEach( (v, i)=> {
+          if (v === item) {
             flag = true
             topicIndex = i;
           }
         })
       }
       if (flag) {
-        that.selectTopicList.splice(topicIndex, 1)
+        that.childSelectTopicArrList.splice(topicIndex, 1)
+        that.childSelectTopicObjList.splice(topicIndex, 1)
       }else{
-        if (that.selectTopicList.length > 2) {
+        if (that.childSelectTopicArrList.length > 2) {
           that.$toast('最多选择3个话题')
           return
         }
-        that.selectTopicList.push(item)
+        that.childSelectTopicArrList.push(item)
+        that.childSelectTopicObjList.push(that.topicListObjData[index])
       }
     },
     // 完成选择
     finishedSelect () {
-      this.$emit('on-finished-select',this.selectTopicList);
+      this.$emit('on-finished-select',this.childSelectTopicObjList);
+      this.childSelectTopicObjList = [];
+      this.childSelectTopicArrList = [];
     },
     // 取消选择
     cancelSelect () {
       this.$emit('on-cancel-select',this.selectTopicList);
+      this.childSelectTopicObjList = [];
+      this.childSelectTopicArrList = [];
+    }
+  },
+  watch: {
+    selectTopicList (newVal, oldVal){
+      let that = this;
+      that.childSelectTopicArrList = [];
+      that.childSelectTopicObjList = [];
+      if (newVal.length > 0) {
+        newVal.forEach( (val,index)=> {
+          that.childSelectTopicArrList.push(val.name)
+          that.childSelectTopicObjList.push(val)
+        })
+      }
+    },
+    searchValue (newVal, oldVal) {
+      let that = this;
+      let arr1 = [];
+      let arr2 = [];
+      if (newVal !== '') {
+        that.getImitateTopicList.forEach ( (val,index)=> {
+          if (val.name.indexOf(newVal) !== -1) {
+            arr1.push(val)
+          }
+          if (val.name.indexOf(newVal) !== -1) {
+            arr2.push(val.name)
+          } 
+        })
+        that.topicListArrData = [];
+        that.topicListObjData = [];
+        that.topicListObjData = arr1;
+        that.topicListArrData = arr2;
+      }else{
+        that.topicListObjData = that.getImitateTopicList;
+        that.topicListArrData = [];
+        that.getImitateTopicList.forEach( (val,index)=> {
+          that.topicListArrData.push(val.name)
+        })
+      }
     }
   }
 };

@@ -29,7 +29,7 @@
       </div>
       <!-- 话题选择区域 -->
       <div class="pdl15 pdr15" v-if="selectTopicList.length > 0">
-        <span v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5 mgr10 mgb10 display-block position-r" @click="topicShowPop = true">
+        <span v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5 mgr10 mgb10 display-block position-r" @click="openTopicPop">
           <van-tag plain type="danger" size="medium">
             {{item.name}}
           </van-tag>
@@ -58,7 +58,7 @@
           <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9">
             <van-icon name="photo-o" class="footer-icon" />
           </van-uploader>
-          <van-icon name="label-o" class="footer-icon" @click="topicShowPop = !topicShowPop"/>
+          <van-icon name="label-o" class="footer-icon" @click="openTopicPop"/>
           <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
         </div>
         <div @click="publishTypePop = true">
@@ -77,7 +77,7 @@
     <!-- 话题类型 弹框 -->
     <van-popup v-model="topicShowPop" position="bottom" :overlay="true">
       <TopicList 
-        :topicListData="getImitateTopicList"
+        :selectTopicList="selectTopicList"
         @on-finished-select="finishedSelect"
         @on-cancel-select="cancelSelect"
       >
@@ -145,7 +145,6 @@ export default {
   computed: {
     ...mapGetters([
       'getEXPSList',  // emoji表情
-      'getImitateTopicList',  // 模拟推荐话题列表
     ])
   },
   watch: {
@@ -222,8 +221,16 @@ export default {
       this.currentPublishValue = item.value;
     },
     // 输入框获取焦点
-    inputFieldFocus(){
+    inputFieldFocus() {
       this.showEmoji = false;
+    },
+    // 打开话题弹框
+    openTopicPop () {
+      this.showEmoji = false;
+      this.topicShowPop = true;
+      let newArr = JSON.parse(JSON.stringify(this.selectTopicList));
+      this.selectTopicList = [];
+      this.selectTopicList = newArr
     },
     // 完成选择
     finishedSelect (list) {
@@ -231,8 +238,9 @@ export default {
       this.selectTopicList = list;
     },
     // 取消选择
-    cancelSelect () {
+    cancelSelect (list) {
       this.topicShowPop = false;
+      this.selectTopicList = list;
     },
     //滚动到底
     scrollToBottom(){
