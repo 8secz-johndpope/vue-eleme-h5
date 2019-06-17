@@ -6,7 +6,7 @@
       finished-text="我也是底线的"
       @load="onLoad"
     >
-      <van-cell-group v-for="(item,index) in arrs" class="van-cell-group">
+      <van-cell-group v-for="(item,index) in commentsList" class="van-cell-group">
         <van-cell class="displayflex">
           <div class="img-zone">
             <router-link :to="{ name: 'userzone', params: {} }"><span class="van-avatar"><img :src="item.sendUserImg" alt="" class="van-avatar-img"></span></router-link>
@@ -21,7 +21,7 @@
               </div>
             </div>
             <!-- 评论内容 -->
-            <div class="comments-zone">
+            <div class="comments-zone" @click="moreOpt(item, 'parent')">
               <span class="comments-contents" v-if="item.contentsStatus == 0">{{item.contents}}</span>
               <span class="comments-contents deletedContents" v-if="item.contentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
             </div>
@@ -30,10 +30,6 @@
               <div>
                 <span class="reply-operate">{{item.position}}</span>
                 <span class="reply-operate">{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
-                <span class="reply-operate" @click="replyComments(item.sendUserName, index)">回复TA</span>
-              </div>
-              <div>
-                <van-icon name="more-o" />
               </div>
             </div>
             <!-- 回复内容 -->
@@ -53,11 +49,10 @@
                     <span>{{COMMONFUNC.formatterW(c_item.childPraiseNum)}}</span>
                   </div>
                 </div>
-                <div class="reply-child-zone">
+                <div class="reply-child-zone" @click="moreOpt(c_item, 'child')">
                   <span v-if="c_item.childContentsStatus == 0">{{c_item.childCommentsContents}}</span>
                   <span class="deletedContents" v-if="c_item.childContentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
                   <span class="reply-operate">&nbsp;{{COMMONFUNC.commentsTimeFormatter(c_item.childTime)}}</span>
-                  <span class="reply-operate" @click="childReplyComments(c_item.childUserName, index, c_index)">回复TA</span>
                 </div>
               </div>
               <div v-if="item.childLength >=2 ">
@@ -72,6 +67,22 @@
     <div class="space"></div>
     <!-- 固定评论区 -->
     <FixedCommentsZone :replyWho="replyWho" @on-close-popup="closePopup"></FixedCommentsZone>
+    <!-- 评论更多操作     -->
+    <van-popup
+      v-model="moreOptPopup"
+      position="bottom"
+    >
+    <div class="select-content">
+      <p class="flex-center select-content-item" @click="popupReply()">回复</p>
+      <p class="flex-center select-content-item"
+        v-clipboard:copy="copyText"
+        v-clipboard:success="onCopyUserNo"
+        v-clipboard:error="onCopyUserError">
+        复制
+      </p>
+      <p class="flex-center select-content-item red-color" @click="accusation()">举报</p>
+    </div>
+    </van-popup>
   </div>
 </template>
 
@@ -84,15 +95,18 @@
       return {
         loading: false,
         finished: false,
+        moreOptPopup: false,  // 更多操作弹框
+        copyText: '', // 复制的文本内容
         replyWho: '', // 回复谁
-        arrs: [], // 用来接收 用户列表数据,用来动态新增修改值
+        commentsList: [], // 用来接收 用户列表数据,用来动态新增修改值
+        currentOptObj: {},  // 当前操作对象
       };
     },
     components: {
       FixedCommentsZone,
     },
     mounted () {
-      this.arrs = this.getImitateComments;
+      this.commentsList = JSON.parse(JSON.stringify(this.getImitateComments));  // 深拷贝数组对象
     },
     computed: {
       ...mapGetters([
@@ -111,12 +125,12 @@
       praise: function (index) {
         let that = this;
         if(that.isLogin){
-          if (that.arrs[index].isPraised) {
-            that.arrs[index].isPraised = false;
-            that.arrs[index].praiseNum -= 1;
+          if (that.commentsList[index].isPraised) {
+            that.commentsList[index].isPraised = false;
+            that.commentsList[index].praiseNum -= 1;
           }else{
-            that.arrs[index].isPraised = true;
-            that.arrs[index].praiseNum += 1;
+            that.commentsList[index].isPraised = true;
+            that.commentsList[index].praiseNum += 1;
           }
         }else {
           that.$dialog.confirm({
@@ -154,12 +168,12 @@
         // 异步更新数据
         setTimeout(() => {
           for (let i = 0; i < 5; i++) {
-            this.arrs.push(obj);
+            this.commentsList.push(obj);
           }
           // 加载状态结束
           this.loading = false;
           // 数据全部加载完成
-          if (this.arrs.length >= 10) {
+          if (this.commentsList.length >= 10) {
             this.finished = true;
           }
         }, 500);
@@ -179,7 +193,7 @@
           childContentsStatus: 0,  // 评论内容状态，0-正常，1-被删除， 因为有的评论发动等被后台删除
         };
         for (let i = 0; i < 3; i++) {
-          that.arrs[index].child.push(obj)
+          that.commentsList[index].child.push(obj)
         }
       },
       // 评论回复某人
@@ -190,10 +204,42 @@
       childReplyComments (userName, index, c_index) {
         this.replyWho = userName;
       },
-      // 子组件关闭弹框
+      // 弹框回复
+      popupReply () {
+        this.replyWho = this.currentOptObj.replyName;
+        this.moreOptPopup = false;
+      },
+      // 子组件关闭弹框，将回复的人员名称干掉
       closePopup () {
         this.replyWho = '';
-      }
+      },
+      // 更多操作, 二级评论更多操作
+      moreOpt (item, type) {
+        this.moreOptPopup = true;
+        this.copyText = item.contents;
+        this.currentOptObj = item;
+        if (type === 'parent') {
+          this.copyText = item.contents;
+          this.currentOptObj.replyName = item.sendUserName;
+        }else {
+          this.copyText = item.childCommentsContents;
+          this.currentOptObj.replyName = item.childUserName;
+        }
+      },
+      // 复制成功
+     onCopyUserNo: function (e) {
+       this.moreOptPopup = false;
+       this.$toast('复制成功！')
+     },
+     // 复制失败
+     onCopyUserError: function (e) {
+       this.moreOptPopup = false;
+       this.$toast('复制失败！')
+     },
+     // 举报
+     accusation () {
+       this.$router.push('/accusation')
+     }
     }
   }
 </script>
@@ -241,5 +287,18 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+  }
+  .select-content{
+    width: 100%;
+    text-align: center;
+    padding: 0 0 0.2rem 0;
+  }
+  .select-content-item{
+    height: 1rem;
+    font-size: 0.426667rem;
+    border-bottom: 1px solid #c9c9c9;
+  }
+  .select-content-item:last-child{
+    border-bottom: 0;
   }
 </style>
