@@ -5,7 +5,18 @@
       <div class="flex">
         <div class="input-zone" @click="showCommentsOpt = true"><van-icon name="edit" />写评论，优质评论会优先展示哦</div>
         <div class="comments" :class="showCommentsNum ? 'commentsHasNum' : '' ">
-          <router-link :to="'/articleComments/articleId' " ><van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showCommentsNum"><span class="black-color commentsNum">9999</span></van-icon></router-link>
+          <router-link :to="'/articleComments/articleId' " >
+            <van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showCommentsNum">
+              <span class="black-color commentsNum">9999</span>
+            </van-icon>
+          </router-link>
+        </div>
+        <div class="comments" :class="showMainText ? 'commentsHasNum' : '' ">
+          <router-link :to="'/articleDetail/zs20190214' " >
+            <van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showMainText">
+              <span class="black-color commentsNum">正文</span>
+            </van-icon>
+          </router-link>
         </div>
       </div>
     </footer>
@@ -56,6 +67,11 @@ export default {
     },
     // 是否有评论数
     showCommentsNum: {
+      type: Boolean,
+      default: false,
+    },
+    // 是否显示正文
+    showMainText: {
       type: Boolean,
       default: false,
     }

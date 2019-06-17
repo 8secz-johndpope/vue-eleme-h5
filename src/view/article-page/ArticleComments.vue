@@ -25,7 +25,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone></FixedCommentsZone>
+    <FixedCommentsZone :showMainText="true"></FixedCommentsZone>
   </div>
 </template>
 <script>

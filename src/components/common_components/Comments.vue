@@ -55,7 +55,7 @@
                   <span class="reply-operate">&nbsp;{{COMMONFUNC.commentsTimeFormatter(c_item.childTime)}}</span>
                 </div>
               </div>
-              <div v-if="item.childLength >=2 ">
+              <div v-if="item.childLength >= 2 ">
                 <span class="reply-operate" @click="seeMoreReply(index)">展开{{item.childLength}}条回复>></span>
               </div>
             </div>
