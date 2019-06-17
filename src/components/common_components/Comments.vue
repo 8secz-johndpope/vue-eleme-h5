@@ -30,8 +30,7 @@
               <div>
                 <span class="reply-operate">{{item.position}}</span>
                 <span class="reply-operate">{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
-                <span class="reply-operate" @click="replyComments(item.sendUserName, index)" v-show="item.isShowReply">回复TA</span>
-                <span class="reply-operate" @click="cancelReply(item.sendUserName, index)" v-show="!item.isShowReply">取消回复</span>
+                <span class="reply-operate" @click="replyComments(item.sendUserName, index)">回复TA</span>
               </div>
               <div>
                 <van-icon name="more-o" />
@@ -58,8 +57,7 @@
                   <span v-if="c_item.childContentsStatus == 0">{{c_item.childCommentsContents}}</span>
                   <span class="deletedContents" v-if="c_item.childContentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
                   <span class="reply-operate">&nbsp;{{COMMONFUNC.commentsTimeFormatter(c_item.childTime)}}</span>
-                  <span class="reply-operate" @click="childReplyComments(c_item.childUserName, index, c_index)" v-show="c_item.childIsShowReply">回复TA</span>
-                  <span class="reply-operate" @click="childCancelReply(c_item.childUserName, index, c_index)" v-show="!c_item.childIsShowReply">取消回复</span>
+                  <span class="reply-operate" @click="childReplyComments(c_item.childUserName, index, c_index)">回复TA</span>
                 </div>
               </div>
               <div v-if="item.childLength >=2 ">
@@ -73,7 +71,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone :replyWho="replyWho"></FixedCommentsZone>
+    <FixedCommentsZone :replyWho="replyWho" @on-close-popup="closePopup"></FixedCommentsZone>
   </div>
 </template>
 
@@ -151,12 +149,11 @@
           Id: 'mId000001',  // 消息Id
           postId: 'postId0000121', // 所评论文章，对话的id
           childLength: 0,
-          isShowReply: true,  // 回复框 与 取消回复框
           child: [],
         };
         // 异步更新数据
         setTimeout(() => {
-          for (let i = 0; i < 1; i++) {
+          for (let i = 0; i < 5; i++) {
             this.arrs.push(obj);
           }
           // 加载状态结束
@@ -187,38 +184,15 @@
       },
       // 评论回复某人
       replyComments (userName, index) {
-        this.initArrs();  // 初始化评论的回复
-        this.replyWho = '@'+userName;
-        this.arrs[index].isShowReply = false;
-      },
-      // 取消回复
-      cancelReply (userName, index) {
-        this.replyWho = '';
-        this.arrs[index].isShowReply = true;
+        this.replyWho = userName;
       },
       // 二级 评论回复某人
       childReplyComments (userName, index, c_index) {
-        this.initArrs();  // 初始化评论的回复
-        this.replyWho = '@'+userName;
-        this.arrs[index].child[c_index].childIsShowReply = false;
+        this.replyWho = userName;
       },
-      // 二级 取消回复
-      childCancelReply (userName, index, c_index) {
+      // 子组件关闭弹框
+      closePopup () {
         this.replyWho = '';
-        this.arrs[index].child[c_index].childIsShowReply = true;
-      },
-      // 初始化评论的回复
-      initArrs () {
-        let that = this;
-        // 其他先还原
-        that.arrs.forEach( (v,i) => {
-          v.isShowReply = true;
-          if(v.child !== 0){
-            v.child.forEach( (c_v, c_i) => {
-              c_v.childIsShowReply = true
-            })
-          }
-        })
       }
     }
   }

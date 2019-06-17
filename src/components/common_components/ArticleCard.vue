@@ -57,7 +57,7 @@ export default {
     font-weight: 700;
   }
   .desc{
-    height: 2rem;
+    height: 1.5rem;
   }
   .reading-number{
     color: #3d3d3d;

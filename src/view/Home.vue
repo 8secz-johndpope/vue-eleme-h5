@@ -1,14 +1,12 @@
 <template>
   <div class="home-view">
-    <van-search
-      v-model="keywords"
-      placeholder="请输入搜索关键词"
-      show-action
-      @search="onSearch"
-      class="search-box"
-    >
-      <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger">搜索</van-button></div>
-    </van-search>
+    <!-- 顶部 -->
+    <van-nav-bar
+      title="微撩"
+      fixed
+    />
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <van-swipe :autoplay="3000" class="swipe white-bg ">
       <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
         <router-link :to="{ name: 'toolList', params: {} }">
@@ -160,7 +158,6 @@ export default {
         isShowRoofPlacement: false, // 是否在分享弹框显示置顶按钮
       },
       videoPopShow: false, // 视频弹框
-      keywords: '',  // 搜索词
       images: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -213,11 +210,6 @@ export default {
     ])
   },
   methods: {
-    onSearch () {
-      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
-      this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/result/'+this.keywords);
-    },
     // 打开弹出层
     openVideoPop () {
       let that = this;
