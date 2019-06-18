@@ -1,55 +1,28 @@
 <template>
   <div>
-    <!-- 底部固定区域 -->
-    <footer class="fixed-footer white-bg">
-      <div class="flex">
-        <div class="input-zone" @click="showCommentsOpt = true"><van-icon name="edit" />写评论，优质评论会优先展示哦</div>
-        <div class="comments" :class="showCommentsNum ? 'commentsHasNum' : '' ">
-          <router-link :to="'/articleComments/articleId' " >
-            <van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showCommentsNum">
-              <span class="black-color commentsNum">9999</span>
-            </van-icon>
-          </router-link>
-        </div>
-        <div class="comments" :class="showMainText ? 'commentsHasNum' : '' ">
-          <router-link :to="'/articleDetail/zs20190214' " >
-            <van-icon name="comment-o" class="blue-color commentsNum-zone" v-if="showMainText">
-              <span class="black-color commentsNum">正文</span>
-            </van-icon>
-          </router-link>
-        </div>
-      </div>
-    </footer>
-    <van-popup
-      v-model="showCommentsOpt"
-      position="bottom"
-      class="wx-bg"
-      @closed="closed"
-    >
-      <van-cell-group class="mg15">
-        <form action="javascript:void(0)">
-          <van-field
-            v-model="message"
-            type="textarea"
-            rows="1"
-            :placeholder=" replyWho !== '' ? '回复' + replyWho + '：' :'写评论，优质评论会优先展示哦' "
-            @focus="inputFieldFocus"
-            :autosize = '{ maxHeight: 120, minHeight: 60 }'
+    <van-cell-group class="mg15">
+      <form action="javascript:void(0)">
+        <van-field
+          v-model="message"
+          type="textarea"
+          rows="1"
+          :placeholder=" replyWho !== '' ? '回复' + replyWho + '：' :'写评论，优质评论会优先展示哦' "
+          @focus="inputFieldFocus"
+          :autosize = '{ maxHeight: 120, minHeight: 60 }'
           >
-          </van-field>
-        </form>
-      </van-cell-group>
-      <div class="flex-space-between pdr15 pdl15 pdb10">
-        <van-button type="danger" size="mini" @click="send" :disabled="message.length === 0">发表</van-button>
-        <van-icon name="smile-o" class="smile-o" @click="showEmoji = !showEmoji"></van-icon>
-      </div>
-      <!-- emoji表情 -->
-      <van-swipe :auto="0" v-if="showEmoji">
-        <van-swipe-item v-for="n in Math.ceil(emojiList.length/15)" :key="n" class="mgb15">
-          <li v-for="(item, index) in getEmotionData(n,15)" class="xw-faceEmoji"> <img :src="item.file" :data="item.title" v-on:click="message+=item.title" /> </li>
-        </van-swipe-item>
-      </van-swipe>
-    </van-popup>
+        </van-field>
+      </form>
+    </van-cell-group>
+    <div class="flex-space-between pdr15 pdl15 pdb10">
+      <van-button type="danger" size="mini" @click="send" :disabled="message.length === 0">发表</van-button>
+      <van-icon name="smile-o" class="smile-o" @click="showEmoji = !showEmoji"></van-icon>
+    </div>
+    <!-- emoji表情 -->
+    <van-swipe :auto="0" v-if="showEmoji">
+      <van-swipe-item v-for="n in Math.ceil(emojiList.length/15)" :key="n" class="mgb15">
+        <li v-for="(item, index) in getEmotionData(n,15)" class="xw-faceEmoji"> <img :src="item.file" :data="item.title" v-on:click="message+=item.title" /> </li>
+      </van-swipe-item>
+    </van-swipe>
   </div>
 </template>
 
@@ -81,7 +54,6 @@ export default {
       message: '',  // 评论信息
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
-      showCommentsOpt: false, // 是否评论操作
     };
   },
   mounted () {
@@ -95,7 +67,6 @@ export default {
   methods: {
     send: function () {
       this.$toast("发表成功")
-      this.showCommentsOpt = false;
       this.message = '';
     },
     // 获取emoji表情
@@ -106,14 +77,21 @@ export default {
     inputFieldFocus() {
       this.showEmoji = false;
     },
-    closed () {
-      this.$emit("on-close-popup", '')
-    }
   },
   watch: {
+    message: function (curVal, oldVal) {
+      if (curVal.length > 120) {
+        this.message = this.message.slice(0, 120);
+        this.$toast({
+          position: 'bottom',
+          message: "评论最多120个字符",
+          duration: 1500
+        })
+      }
+    },
     replyWho (newVal, oldVal) {
       if (newVal !== '') {
-        this.showCommentsOpt = true;
+        console.log('l')
       }
     }
   }

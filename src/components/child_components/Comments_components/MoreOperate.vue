@@ -37,17 +37,17 @@
     methods: {
       // 弹框回复
       popupReply () {
-        this.$emit('on-after-more-operate', this.optObj)
+        this.$emit('on-after-more-operate', true, this.optObj)
         this.moreOptPopup = false;
       },
       // 复制成功
      onCopyUserNo: function (e) {
-       this.$emit('on-after-more-operate', this.optObj)
+       this.$emit('on-after-more-operate', false, this.optObj)
        this.$toast('复制成功！')
      },
      // 复制失败
      onCopyUserError: function (e) {
-       this.$emit('on-after-more-operate', this.optObj)
+       this.$emit('on-after-more-operate', false, this.optObj)
        this.$toast('复制失败！')
      },
      // 举报

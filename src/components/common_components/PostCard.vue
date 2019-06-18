@@ -85,9 +85,16 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
-        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate"></Comments>
-        <FixedCommentsZonePopup :showCommentsNum="true" :replyWho="replyWho"></FixedCommentsZonePopup>
+        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate" @on-open-comments-input-popup="commentsInputPopup = true"></Comments>
       </van-actionsheet>
+      <!-- 评论输入框弹框 -->
+      <van-popup
+        v-model="commentsInputPopup"
+        position="bottom"
+        @closed="closeInputPopup"
+      >
+        <FixedCommentsZone :replyWho="replyWho"></FixedCommentsZone>
+      </van-popup>
       <!-- 评论更多操作 -->
       <van-popup
         v-model="moreOptPopup"
@@ -118,7 +125,7 @@
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
-import FixedCommentsZonePopup from 'components/common_components/FixedCommentsZonePopup';
+import FixedCommentsZone from 'components/common_components/FixedCommentsZone';
 import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
 import { ImagePreview } from 'vant';
 export default {
@@ -148,7 +155,7 @@ export default {
     ShareBox,
     Comments,
     GoodsCard,
-    FixedCommentsZonePopup,
+    FixedCommentsZone,
     MoreOperate,
   },
   data () {
@@ -163,6 +170,7 @@ export default {
       replyWho: '', // 回复谁
       moreOptPopup: false,  // 更多操作弹框
       optObj: {}, // 操作对象
+      commentsInputPopup: false,  // 评论输入框
     };
   },
   mounted () {
@@ -316,15 +324,23 @@ export default {
     getReplyWho (user) {
       this.replyWho = user;
     },
+    // 更多操作
     moreOperate (obj) {
       this.moreOptPopup = true;
       this.optObj = obj
     },
     // 更多操作之后
-    afterMoreOperate (obj) {
+    afterMoreOperate (replyFlag, obj) {
       this.moreOptPopup = false;
-      this.replyWho = obj.replyName;
-    }
+      if (replyFlag) {
+        this.commentsInputPopup = true;
+        this.replyWho = obj.replyName;
+      }
+    },
+    // 关闭评论输入框
+    closeInputPopup () {
+      this.replyWho = '';
+    },
   }
 };
 </script>
