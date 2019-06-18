@@ -14,7 +14,7 @@
         placeholder="请输入搜索关键词"
       />
     </form>
-    <van-cell class="mgt10">
+    <van-cell>
       <template slot="title">
         <div class="flex-start">
           <span class="gray-color">推荐话题（备注：默认十条）</span>
@@ -163,7 +163,7 @@ export default {
           }
           if (val.name.indexOf(newVal) !== -1) {
             arr2.push(val.name)
-          } 
+          }
         })
         that.topicListArrData = [];
         that.topicListObjData = [];
@@ -212,7 +212,7 @@ export default {
     font-weight: normal;
   }
   .topicList-box{
-    height: 10rem;
+    height: 8rem;
     overflow: scroll;
   }
 </style>
