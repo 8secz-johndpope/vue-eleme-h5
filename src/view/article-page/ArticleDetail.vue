@@ -42,26 +42,38 @@
         <div class="commentsTotalNumZone">
           <span>全部评论（5400）</span>
         </div>
-        <Comments @on-get-replyWho="getReplyWho"></Comments>
+        <Comments :showCommentsNum="true" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-open-comments-input-popup="commentsInputPopup = true"></Comments>
       </section>
     </div>
+    <!-- 评论输入框弹框 -->
+    <van-popup
+      v-model="commentsInputPopup"
+      position="bottom"
+      @closed="closeInputPopup"
+    >
+      <CommentsInputBox :replyWho="replyWho" @on-send-comments="sendComments"></CommentsInputBox>
+    </van-popup>
+    <!-- 评论更多操作 -->
+    <van-popup
+      v-model="moreOptPopup"
+      position="bottom"
+    >
+      <MoreOperate :optObj="optObj" @on-after-more-operate="afterMoreOperate"></MoreOperate>
+    </van-popup>
     <!-- 分享选项 -->
     <van-actionsheet v-model="sharePopShow" title="分享到">
       <ShareBox :targetId="targetId"></ShareBox>
     </van-actionsheet>
-    <!-- 撑开Fixednav挡住的位置 -->
-    <div class="space"></div>
-    <!-- 固定评论区 -->
-    <FixedCommentsZone :showCommentsNum="true" :replyWho="replyWho" @on-close-popup="closePopup"></FixedCommentsZone>
   </div>
 </template>
 <script>
   import ShareBox from 'components/common_components/ShareBox';
   import Advertisement from 'components/common_components/Advertisement';
-  import Comments from 'components/common_components/Comments';
   import ArticleCard from 'components/common_components/ArticleCard';
-  import FixedCommentsZone from 'components/common_components/FixedCommentsZone';
   import ArticleHeader from 'components/common_components/ArticleHeader';
+  import Comments from 'components/common_components/Comments';
+  import CommentsInputBox from 'components/common_components/CommentsInputBox';
+  import MoreOperate from 'components/common_components/MoreOperate';
   import { mapGetters } from 'vuex';
   export default {
     components:{
@@ -69,8 +81,9 @@
       Advertisement,
       ArticleCard,
       Comments,
-      FixedCommentsZone,
+      CommentsInputBox,
       ArticleHeader,
+      MoreOperate,
     },
     name: 'articleDetail',
     data () {
@@ -81,6 +94,9 @@
         isAttention: false, // 是否已经关注
         recommendArticle: [],
         replyWho: '', // 回复谁
+        optObj: {}, // 操作对象
+        commentsInputPopup: false,  // 评论输入框
+        moreOptPopup: false,  // 更多操作弹框
       };
     },
     mounted () {
@@ -114,6 +130,27 @@
       getReplyWho (user) {
         this.replyWho = user;
       },
+      // 更多操作
+      moreOperate (obj) {
+        this.moreOptPopup = true;
+        this.optObj = obj
+      },
+      // 更多操作之后
+      afterMoreOperate (replyFlag, obj) {
+        this.moreOptPopup = false;
+        if (replyFlag) {
+          this.commentsInputPopup = true;
+          this.replyWho = obj.replyName;
+        }
+      },
+      // 关闭评论输入框
+      closeInputPopup () {
+        this.replyWho = '';
+      },
+      // 发送评论
+      sendComments () {
+        this.commentsInputPopup = false;
+      }
     }
 }
 </script>

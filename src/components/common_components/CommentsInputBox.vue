@@ -1,23 +1,21 @@
 <template>
-  <div class="footer">
-    <div class="flex-space-between">
-      <!-- 底部固定区域 弹框 -->
-      <van-cell-group class="footer-left">
+  <div>
+    <van-cell-group class="mg15">
+      <form action="javascript:void(0)">
         <van-field
           v-model="message"
           type="textarea"
-          :placeholder=" currentReplyWho !== '' ? '回复' + currentReplyWho + '：' :'写评论，优质评论会优先展示哦' "
-          @focus="inputFieldFocus"
           rows="1"
-          ref="commentsInput"
-          :autosize="{ maxHeight: 120, minHeight: 60 }"
-        >
+          :placeholder=" replyWho !== '' ? '回复' + replyWho + '：' :'写评论，优质评论会优先展示哦' "
+          @focus="inputFieldFocus"
+          :autosize = '{ maxHeight: 120, minHeight: 60 }'
+          >
         </van-field>
-      </van-cell-group>
-      <div class="footer-right">
-        <van-button type="danger" size="mini" @click="send" :disabled="message.length === 0" class="mgr5">发表</van-button>
-        <van-icon name="smile-o" class="smile-o mgr10" @click="showEmoji = !showEmoji"></van-icon>
-      </div>
+      </form>
+    </van-cell-group>
+    <div class="flex-space-between pdr15 pdl15 pdb10">
+      <van-button type="danger" size="mini" @click="send" :disabled="message.length === 0">发表</van-button>
+      <van-icon name="smile-o" class="smile-o" @click="showEmoji = !showEmoji"></van-icon>
     </div>
     <!-- emoji表情 -->
     <van-swipe :auto="0" v-if="showEmoji">
@@ -40,22 +38,26 @@ export default {
       type: String,
       default: '',
     },
+    // 是否有评论数
+    showCommentsNum: {
+      type: Boolean,
+      default: false,
+    },
+    // 是否显示正文
+    showMainText: {
+      type: Boolean,
+      default: false,
+    }
   },
   data () {
     return {
       message: '',  // 评论信息
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
-      currentReplyWho: '',  // 当前回复人，避免更改父组件的值
     };
   },
   mounted () {
-    let that = this;
-    this.currentReplyWho = this.replyWho;
     this.emojiList = this.getEXPSList.EXPS.slice(0);
-    document.addEventListener('click', (e) => {
-      if(!that.$el.contains(e.target)) that.currentReplyWho = '';
-    })
   },
   computed: {
     ...mapGetters([
@@ -66,7 +68,7 @@ export default {
     send: function () {
       this.$toast("发表成功")
       this.message = '';
-      this.showEmoji = false;
+      this.$emit('on-send-comments', '');
     },
     // 获取emoji表情
     getEmotionData(pageNow, pageSize) {
@@ -88,30 +90,52 @@ export default {
         })
       }
     },
-    replyWho: function (curVal, oldVal) {
-      this.currentReplyWho = curVal;
-      this.$ref.commentsInput.focus();
-    },
+    replyWho (newVal, oldVal) {
+      if (newVal !== '') {
+        console.log('l')
+      }
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
-  .footer{
+  .input-zone{
+    width: 90%;
+    display: flex;
+    box-sizing: border-box;
+    color: #323233;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #fff;
     padding: 10px 15px;
+    align-items: center;
+  }
+  .comments{
+    width: 10%;
+    background-color: #fff;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .commentsHasNum{
+    width: 35%;
+  }
+  .commentsNum-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .commentsNum{
+    font-size: 0.438rem;
+    padding: 0 0 0.1rem 0.1rem;
+  }
+  .fixed-footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #fff;
-  }
-  .footer-left{
-    width: 75% !important;
-  }
-  .footer-right{
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    border-top: 1px solid #ECECEC;
   }
   .xw-faceEmoji{
     margin-bottom: 0.186667rem;

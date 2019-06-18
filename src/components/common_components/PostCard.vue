@@ -93,7 +93,7 @@
         position="bottom"
         @closed="closeInputPopup"
       >
-        <FixedCommentsZone :replyWho="replyWho"></FixedCommentsZone>
+        <CommentsInputBox :replyWho="replyWho" @on-send-comments="sendComments"></CommentsInputBox>
       </van-popup>
       <!-- 评论更多操作 -->
       <van-popup
@@ -125,8 +125,8 @@
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
-import FixedCommentsZone from 'components/common_components/FixedCommentsZone';
-import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
+import CommentsInputBox from 'components/common_components/CommentsInputBox';
+import MoreOperate from 'components/common_components/MoreOperate';
 import { ImagePreview } from 'vant';
 export default {
   // 父子通信
@@ -155,7 +155,7 @@ export default {
     ShareBox,
     Comments,
     GoodsCard,
-    FixedCommentsZone,
+    CommentsInputBox,
     MoreOperate,
   },
   data () {
@@ -341,6 +341,10 @@ export default {
     closeInputPopup () {
       this.replyWho = '';
     },
+    // 发送评论
+    sendComments () {
+      this.commentsInputPopup = false;
+    }
   }
 };
 </script>
