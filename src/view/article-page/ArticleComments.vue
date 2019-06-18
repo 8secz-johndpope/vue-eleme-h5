@@ -15,7 +15,7 @@
         <div class="commentsTotalNumZone">
           <span>全部评论（5400）</span>
         </div>
-        <Comments></Comments>
+        <Comments @on-get-replyWho="getReplyWho"></Comments>
       </section>
     </div>
     <!-- 分享选项 -->
@@ -25,7 +25,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone :showMainText="true"></FixedCommentsZone>
+    <FixedCommentsZone :showMainText="true" :replyWho="replyWho" @on-close-popup="closePopup"></FixedCommentsZone>
   </div>
 </template>
 <script>
@@ -48,6 +48,7 @@
         sharePopShow: false,  // 更多选项
         targetId: '', // 文章Id
         isAttention: false, // 是否已经关注
+        replyWho: '', // 回复谁
       };
     },
     mounted () {
@@ -71,6 +72,14 @@
       // 打开更多弹框
       openMorePop () {
         this.sharePopShow = true;
+      },
+      // 子组件关闭弹框，将回复的人员名称干掉
+      closePopup () {
+        this.replyWho = '';
+      },
+      // 获取回复的人
+      getReplyWho (user) {
+        this.replyWho = user;
       },
     }
 }

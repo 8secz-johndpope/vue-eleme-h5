@@ -85,8 +85,16 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
-        <Comments class="comments-box"></Comments>
+        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate"></Comments>
+        <FixedCommentsZonePopup :showCommentsNum="true" :replyWho="replyWho"></FixedCommentsZonePopup>
       </van-actionsheet>
+      <!-- 评论更多操作 -->
+      <van-popup
+        v-model="moreOptPopup"
+        position="bottom"
+      >
+        <MoreOperate :optObj="optObj" @on-after-more-operate="afterMoreOperate"></MoreOperate>
+      </van-popup>
       <!-- 商品展示页 -->
       <van-actionsheet v-model="goodsShow" title="XXX的推荐">
         <!-- 商品组件 -->
@@ -107,9 +115,11 @@
 </template>
 
 <script>
-import ShareBox from './ShareBox';
-import Comments from './Comments';
-import GoodsCard from './GoodsCard';
+import ShareBox from 'components/common_components/ShareBox';
+import Comments from 'components/common_components/Comments';
+import GoodsCard from 'components/common_components/GoodsCard';
+import FixedCommentsZonePopup from 'components/common_components/FixedCommentsZonePopup';
+import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
 import { ImagePreview } from 'vant';
 export default {
   // 父子通信
@@ -138,6 +148,8 @@ export default {
     ShareBox,
     Comments,
     GoodsCard,
+    FixedCommentsZonePopup,
+    MoreOperate,
   },
   data () {
     return {
@@ -148,6 +160,9 @@ export default {
       targetId: '', // 选中的id值
       itemIsTop: 1, // 子项是否置顶中的置顶
       goodsShow: false, //商品弹框
+      replyWho: '', // 回复谁
+      moreOptPopup: false,  // 更多操作弹框
+      optObj: {}, // 操作对象
     };
   },
   mounted () {
@@ -272,7 +287,7 @@ export default {
       };
       // 异步更新数据
       setTimeout(() => {
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
           this.composition.push(obj);
         }
         // 加载状态结束
@@ -297,6 +312,19 @@ export default {
     toPostClassify (item) {
       this.$router.push({ name: 'postClassify', params: { containerid: item.containerid }})
     },
+    // 获取回复的人
+    getReplyWho (user) {
+      this.replyWho = user;
+    },
+    moreOperate (obj) {
+      this.moreOptPopup = true;
+      this.optObj = obj
+    },
+    // 更多操作之后
+    afterMoreOperate (obj) {
+      this.moreOptPopup = false;
+      this.replyWho = obj.replyName;
+    }
   }
 };
 </script>

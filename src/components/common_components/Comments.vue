@@ -66,38 +66,20 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <!-- 评论更多操作     -->
-    <van-popup
-      v-model="moreOptPopup"
-      position="bottom"
-    >
-    <div class="select-content">
-      <p class="flex-center select-content-item" @click="popupReply()">回复</p>
-      <p class="flex-center select-content-item"
-        v-clipboard:copy="copyText"
-        v-clipboard:success="onCopyUserNo"
-        v-clipboard:error="onCopyUserError">
-        复制
-      </p>
-      <p class="flex-center select-content-item red-color" @click="accusation()">举报</p>
-    </div>
-    </van-popup>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex';
   export default {
-    name: 'myfans',
+    name: 'comments',
     data () {
       return {
         loading: false,
         finished: false,
         moreOptPopup: false,  // 更多操作弹框
-        copyText: '', // 复制的文本内容
         replyWho: '', // 回复谁
         commentsList: [], // 用来接收 用户列表数据,用来动态新增修改值
-        currentOptObj: {},  // 当前操作对象
       };
     },
     components: {
@@ -195,37 +177,24 @@
       },
       // 弹框回复
       popupReply () {
-        this.replyWho = this.currentOptObj.replyName;
         this.$emit('on-get-replyWho', this.replyWho)
         this.moreOptPopup = false;
       },
       // 更多操作, 二级评论更多操作
       moreOpt (item, type) {
+        let obj = {};
         this.moreOptPopup = true;
-        this.copyText = item.contents;
-        this.currentOptObj = item;
         if (type === 'parent') {
-          this.copyText = item.contents;
-          this.currentOptObj.replyName = item.sendUserName;
+          obj.copyText = item.contents;
+          obj.replyName = item.sendUserName;
+          this.replyWho = item.sendUserName;
         }else {
-          this.copyText = item.childCommentsContents;
-          this.currentOptObj.replyName = item.childUserName;
+          obj.copyText = item.childCommentsContents;
+          obj.replyName = item.childUserName;
+          this.replyWho = item.childUserName;
         }
+        this.$emit('on-more-operate', obj)
       },
-      // 复制成功
-     onCopyUserNo: function (e) {
-       this.moreOptPopup = false;
-       this.$toast('复制成功！')
-     },
-     // 复制失败
-     onCopyUserError: function (e) {
-       this.moreOptPopup = false;
-       this.$toast('复制失败！')
-     },
-     // 举报
-     accusation () {
-       this.$router.push('/accusation')
-     }
     }
   }
 </script>

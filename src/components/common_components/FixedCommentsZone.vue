@@ -121,12 +121,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .fixedBottom{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-  }
   .input-zone{
     width: 90%;
     display: flex;
