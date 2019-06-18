@@ -10,7 +10,7 @@
     />
     <van-panel class="panel-self">
       <div class="balance">
-        <van-icon name="gold-coin-o" class="balance-icon"></van-icon><span>账户余额</span>
+        <van-icon name="gold-coin-o" class="balance-icon"></van-icon><span>账户余额（金币：枚）</span>
       </div>
       <div class="flex-space-between amount">
         <span>1，000</span>
@@ -21,7 +21,7 @@
     </van-panel>
     <!-- 优惠券单元格 -->
     <Coupon :componentsType="1"></Coupon>
-    <van-cell title="积分说明" is-link to="/document/integralRechargeDesc" />
+    <van-cell title="金币说明" is-link to="/document/goldCoinRechargeDesc" />
     <van-cell title="常见问题" is-link to="/document/rechargeHelp" />
   </div>
 </template>

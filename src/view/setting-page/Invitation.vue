@@ -13,8 +13,8 @@
         <img src="http://img.zcool.cn/community/031aa6a567797a900000138c4216392.jpg" class="img" />
       </div>
       <div class="txt-zone">
-        <p class="flex-center giveIntegral">
-          邀请成功，您将获得<span class="red-color num">30</span>积分
+        <p class="flex-center giveGoldCoin">
+          邀请成功，您将获得<span class="red-color num">30</span>金币
         </p>
         <p class="flex-center allHas">
           邀请好友 你我都有
@@ -31,7 +31,7 @@
           </p>
           <p class="detail">
             累计邀请<span class="red-color prominent">10</span>人，
-            共获得<span class="red-color prominent">300</span>积分
+            共获得<span class="red-color prominent">300</span>金币
           </p>
         </div>
       </div>
@@ -89,7 +89,7 @@
     height: 2rem;
     text-align: center;
   }
-  .giveIntegral{
+  .giveGoldCoin{
     font-size: 0.586667rem;
     color: #333;
     height: 1.2rem;

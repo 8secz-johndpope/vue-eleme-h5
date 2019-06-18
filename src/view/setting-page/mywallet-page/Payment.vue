@@ -14,7 +14,7 @@
           <span>订单号：</span><span>{{orderNum}}</span>
         </div>
         <div class="item">
-          <span>订单详情：</span><span>166积分</span>
+          <span>订单详情：</span><span>166金币</span>
         </div>
       </div>
     </div>

@@ -114,14 +114,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/document-page/AddConversationQuestion'],resolve),
     },
-    // 积分充值说明
+    // 金币充值说明
     {
-      path: '/document/integralRechargeDesc',
-      name: 'integralRechargeDesc',
+      path: '/document/goldCoinRechargeDesc',
+      name: 'goldCoinRechargeDesc',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/document-page/IntegralRechargeDesc'],resolve),
+      component: (resolve) => require(['view/document-page/GoldCoinRechargeDesc'],resolve),
     },
     // 充值帮助
     {

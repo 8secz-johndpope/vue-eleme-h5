@@ -39,7 +39,7 @@
           <div class="myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
-            <van-button type="danger" class="zone-btn" size="small" @click.stop="goIntegral" v-if="centerType === 0 "><van-icon name="integral" class="iconType" />积分：{{COMMONFUNC.formatterW(getImitateUser.integral)}}</van-button>
+            <van-button type="danger" class="zone-btn" size="small" @click.stop="goGoldCoin" v-if="centerType === 0 "><van-icon name="gold-coin-o" class="iconType" />{{COMMONFUNC.formatterW(getImitateUser.goldCoin)}}</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
@@ -141,10 +141,10 @@ export default {
     // 签到
     sign () {
       if (this.isSign) {
-        this.$toast('已签到，每天签到都会获得积分哦')
+        this.$toast('已签到，每天签到都会获得金币哦')
       }else {
         this.$dialog.alert({
-          message: '签到成功，获得2积分'
+          message: '签到成功，获得2枚金币'
         }).then(() => {
           // on close
         });
@@ -190,8 +190,8 @@ export default {
     goUserSetting () {
       this.$router.push('/userSetting')
     },
-    // 前往积分页
-    goIntegral () {
+    // 前往金币页
+    goGoldCoin () {
       this.$router.push('/setting/mywallet')
     },
     // 发消息

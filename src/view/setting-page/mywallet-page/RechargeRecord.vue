@@ -12,7 +12,7 @@
     <p class="noData grayBarBg">
       您还没有充值记录
     </p>
-    <van-cell :title="item.amount + '元 ' + item.integral + '积分'" :value="item.time" v-for="(item,index) in rechargeRecord" />
+    <van-cell :title="item.amount + '元 ' + item.goldCoin + '金币'" :value="item.time" v-for="(item,index) in rechargeRecord" />
   </div>
 </template>
 <script>
@@ -25,12 +25,12 @@
         rechargeRecord: [ // 充值记录
           {
             amount: 6,  // 金额
-            integral: 20, // 积分
+            goldCoin: 20, // 金币
             time: '2019.02.19', // 充值时间
           },
           {
             amount: 6,  // 金额
-            integral: 20, // 积分
+            goldCoin: 20, // 金币
             time: '2019.02.19', // 充值时间
           }
         ],

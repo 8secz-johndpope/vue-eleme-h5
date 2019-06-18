@@ -9,7 +9,7 @@ export var imitateUser = {
     birthday: '1993-04-26',     // 生日，应该用时间戳表示
     userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 用户头像
     tel: '18124655386', // 用户电话
-    integral: 100,  // 用户积分
+    goldCoin: 1000,  // 用户金币
     getPraised: 9999, // 用户获赞
     year: 26, // 用户年龄，与生日时间戳重复了
     fans: 9999, // 用户粉丝

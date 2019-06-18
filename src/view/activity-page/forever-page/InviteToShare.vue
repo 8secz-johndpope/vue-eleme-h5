@@ -6,7 +6,7 @@
       </div>
       <div class="content">
         <div class="txt-zone">
-          <p class="flex-center giveIntegral">
+          <p class="flex-center giveGoldCoin">
             恭喜获得<span class="red-color num">5元</span>红包
           </p>
           <p class="flex-center allHas">
@@ -158,7 +158,7 @@
     height: 2rem;
     text-align: center;
   }
-  .giveIntegral{
+  .giveGoldCoin{
     padding-top: 0.2rem;
     font-size: 0.586667rem;
     color: #333;

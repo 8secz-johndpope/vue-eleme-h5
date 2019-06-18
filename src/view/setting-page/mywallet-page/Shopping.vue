@@ -2,14 +2,14 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="购买积分"
+      title="购买金币"
       right-text="充值帮助"
       left-arrow
       @click-left="onClickLeft"
       @click-right="toRechargeHelp"
     />
     <van-notice-bar
-      text="开业大酬宾，充值积分满100送10，充的越多，送的越多，快快参加吧"
+      text="开业大酬宾，充值金币满100送10，充的越多，送的越多，快快参加吧"
       left-icon="volume-o"
     />
     <!-- 充值列表区域 -->
@@ -30,7 +30,7 @@
       :tip="shopTips"
       @submit="onSubmit"
     >
-      <!-- <div>共：166积分</div> -->
+      <!-- <div>共：166金币</div> -->
     </van-submit-bar>
   </div>
 </template>
@@ -47,65 +47,65 @@
         shopList: [
           {
             num: 9.9,
-            value: '66积分（￥9.9）',
+            value: '66金币（￥9.9）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '66积分', // 价值积分
-            extraIntegral: 0,  // 赠送积分
+            goldCoin: '66金币', // 价值金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 19.9,
-            value: '166积分（￥19.9）',
+            value: '166金币（￥19.9）',
             isHot: 0, // 是否热选，0-是，1-否
-            integral: '166积分', // 价值积分
-            extraIntegral: 10,  // 赠送积分
+            goldCoin: '166金币', // 价值金币
+            extraGoldCoin: 10,  // 赠送金币
           },
           {
             num: 38,
-            value: '466积分（￥38）',
+            value: '466金币（￥38）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '466积分', // 价值积分
-            extraIntegral: 50,  // 赠送积分
+            goldCoin: '466金币', // 价值金币
+            extraGoldCoin: 50,  // 赠送金币
           },
           {
             num: 68,
-            value: '1266积分（￥68）',
+            value: '1266金币（￥68）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '1266积分', // 价值积分
-            extraIntegral: 150,  // 赠送积分
+            goldCoin: '1266金币', // 价值金币
+            extraGoldCoin: 150,  // 赠送金币
           },
           {
             num: 28,
             value: '1个月（￥28）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '1个月', // 价值积分
-            extraIntegral: 0,  // 赠送积分
+            goldCoin: '1个月', // 价值金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 66,
             value: '3个月（￥66）',
             isHot: 0, // 是否热选，0-是，1-否
-            integral: '3个月', // 价值积分
-            extraIntegral: 0,  // 赠送积分
+            goldCoin: '3个月', // 价值金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 98,
             value: '6个月（￥98）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '6个月', // 价值积分
-            extraIntegral: 0,  // 赠送积分
+            goldCoin: '6个月', // 价值金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 188,
             value: '一年（￥188）',
             isHot: 1, // 是否热选，0-是，1-否
-            integral: '1年', // 价值积分
-            extraIntegral: 0,  // 赠送积分
+            goldCoin: '1年', // 价值金币
+            extraGoldCoin: 0,  // 赠送金币
           },
         ],
         currentSelect: 1,  // 当前选中
         isShoping: false, // 是否交易中
         price: 1990, // 价格，分为单位
-        shopTips: '166积分权益，额外再赠送：10积分', // 充值提示
+        shopTips: '166金币权益，额外再赠送：10金币', // 充值提示
         isCounponed: 1, // 是否已经优惠，0-是，1-否
         couponNum: 0, // 优惠金额
         msg: 0,
@@ -132,7 +132,7 @@
         this.currentSelect = index;
         this.price = item.num * 100;
         this.price -= this.couponNum;
-        this.shopTips = item.integral + '权益，额外再赠送：' + item.extraIntegral + '积分';
+        this.shopTips = item.goldCoin + '权益，额外再赠送：' + item.extraGoldCoin + '金币';
       },
       // 获取优惠金额
       getCouponNum (msg) {
@@ -143,7 +143,7 @@
       },
       // 前往帮助中心
       toRechargeHelp () {
-        this.$router.push('/document/integralRechargeDesc')
+        this.$router.push('/document/goldCoinRechargeDesc')
       }
     }
 }
