@@ -83,8 +83,8 @@
             </van-icon>
           </router-link>
         </div>
-        <div class="flex-center">
-          <van-icon name="smile-o" class="smile-o mgr10" @click="openCommentsInputPopup"></van-icon>
+        <div class="flex-start smile-o">
+          <van-icon name="smile-o" class="mgr10" @click="openCommentsInputPopup"></van-icon>
         </div>
       </div>
     </footer>
@@ -301,7 +301,7 @@
     border-top: 1px solid #ECECEC;
   }
   .input-zone{
-    width: 90%;
+    width: 65%;
     display: flex;
     box-sizing: border-box;
     color: #323233;
@@ -320,7 +320,7 @@
     justify-content: space-around;
   }
   .commentsHasNum{
-    width: 35%;
+    width: 80px;
   }
   .commentsNum-zone{
     display: flex;
@@ -332,6 +332,7 @@
     padding: 0 0 0.1rem 0.1rem;
   }
   .smile-o{
-    font-size: 18px;
+    font-size: 0.6rem;
+    width: 50px;
   }
 </style>
