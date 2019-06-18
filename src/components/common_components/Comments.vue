@@ -66,7 +66,6 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定评论区 -->
-    <FixedCommentsZone :replyWho="replyWho" @on-close-popup="closePopup"></FixedCommentsZone>
     <!-- 评论更多操作     -->
     <van-popup
       v-model="moreOptPopup"
@@ -88,7 +87,6 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import FixedCommentsZone from './FixedCommentsZone';
   export default {
     name: 'myfans',
     data () {
@@ -103,7 +101,6 @@
       };
     },
     components: {
-      FixedCommentsZone,
     },
     mounted () {
       this.commentsList = JSON.parse(JSON.stringify(this.getImitateComments));  // 深拷贝数组对象
@@ -196,22 +193,11 @@
           that.commentsList[index].child.push(obj)
         }
       },
-      // 评论回复某人
-      replyComments (userName, index) {
-        this.replyWho = userName;
-      },
-      // 二级 评论回复某人
-      childReplyComments (userName, index, c_index) {
-        this.replyWho = userName;
-      },
       // 弹框回复
       popupReply () {
         this.replyWho = this.currentOptObj.replyName;
+        this.$emit('on-get-replyWho', this.replyWho)
         this.moreOptPopup = false;
-      },
-      // 子组件关闭弹框，将回复的人员名称干掉
-      closePopup () {
-        this.replyWho = '';
       },
       // 更多操作, 二级评论更多操作
       moreOpt (item, type) {

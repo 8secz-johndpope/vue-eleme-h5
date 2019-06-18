@@ -51,7 +51,7 @@
         <div class="flex-space-between showcase-zone">
           <!-- 帖子分类标签 -->
           <div>
-            <span v-for="(c_item, c_index) in item.tagsList" v-if="showTag && item.tagsList.length > 0" class="mgr5" @click="toPostClassify(c_item)"> 
+            <span v-for="(c_item, c_index) in item.tagsList" v-if="showTag && item.tagsList.length > 0" class="mgr5" @click="toPostClassify(c_item)">
               <van-tag mark class="van-ellipsis tag-ellipsis">{{c_item.tagsName}}</van-tag>
             </span>
           </div>
@@ -334,7 +334,7 @@ export default {
     font-size: 16px;
   }
   .comments-box{
-    height: 13rem;
+    height: 11rem;
     overflow: scroll;
   }
   .img-zone{

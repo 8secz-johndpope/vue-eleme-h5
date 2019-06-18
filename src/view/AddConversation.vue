@@ -76,7 +76,7 @@
     </footer>
     <!-- 话题类型 弹框 -->
     <van-popup v-model="topicShowPop" position="bottom" :overlay="true">
-      <TopicList 
+      <TopicList
         :selectTopicList="selectTopicList"
         @on-finished-select="finishedSelect"
         @on-cancel-select="cancelSelect"
