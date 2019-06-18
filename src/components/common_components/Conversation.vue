@@ -33,7 +33,17 @@
       </van-panel>
       <!-- 分享选项 -->
       <van-actionsheet v-model="sharePopShow" title="分享到">
-        <ShareBox :targetId="targetId" :isShowRoofPlacementChild="isShowRoofPlacement" :isTopNow="itemIsTop" @on-delete-post="deletePost"></ShareBox>
+        <ShareBox
+          :targetId="targetId"
+          :isShowRoofPlacementChild="isShowRoofPlacement"
+          :isTopNow="itemIsTop"
+          @on-delete-post="deletePost"
+          @on-open-share-range-setting="shareRangeSettingPopup = true">
+        </ShareBox>
+      </van-actionsheet>
+      <!-- 分享范围设置 -->
+      <van-actionsheet v-model="shareRangeSettingPopup" title="分享范围设置">
+        <ShareRangeSetting @on-finished-select-share-range="finishedSelectShareRange"></ShareRangeSetting>
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
@@ -62,6 +72,7 @@
 import ShareBox from './ShareBox';
 import Comments from './Comments';
 import GoodsCard from './GoodsCard';
+import ShareRangeSetting from 'components/child_components/Share_components/ShareRangeSetting';
 export default {
   // 父子通信
   props: {
@@ -84,6 +95,7 @@ export default {
     ShareBox,
     Comments,
     GoodsCard,
+    ShareRangeSetting,
   },
   data () {
     return {
@@ -94,6 +106,7 @@ export default {
       targetId: '', // 选中的id值
       itemIsTop: 1, // 子项是否置顶中的置顶
       goodsShow: false, //商品弹框
+      shareRangeSettingPopup: false,  //  分享范围设置弹框
     };
   },
   mounted () {
@@ -190,6 +203,11 @@ export default {
       this.$toast('调用接口，删除！' + id);
       this.sharePopShow = false;
     },
+    // 结束选择分享范围设置
+    finishedSelectShareRange () {
+      this.sharePopShow = false;
+      this.shareRangeSettingPopup = false;
+    }
   }
 };
 </script>

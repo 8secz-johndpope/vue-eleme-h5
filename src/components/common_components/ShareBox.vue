@@ -36,7 +36,7 @@
         <p>速推计划</p>
       </div>
     </router-link>
-    <div class="shareBox-item" v-if="isShowRoofPlacementChild" @click="publishTypePop = true">
+    <div class="shareBox-item" v-if="isShowRoofPlacementChild" @click="openShareRangeSetting">
       <i class="fa fa-cog fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>设置</p>
     </div>
@@ -52,21 +52,12 @@
       <i class="fa fa-paper-plane-o fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>取消置顶</p>
     </div>
-    <!-- 发布类型上拉菜单 弹框 -->
-    <van-actionsheet v-model="publishTypePop" title="选择分享范围" >
-      <div class="select-content">
-        <p class="flex-center select-content-item" :class=" currentPublishValue == item.value ? 'select-content-item-selected' : '' "
-          v-for="(item,index) in publishTypeList" @click="changePublishType(item)">
-            {{item.name}}
-        </p>
-      </div>
-    </van-actionsheet>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'share',
+  name: 'shareBox',
    // 父子通信
   props: {
     targetId: {
@@ -86,23 +77,7 @@ export default {
   },
   data () {
     return {
-      copyContent: '复制内容（可以是链接，文本等）',  // 复制内容 
-      publishTypePop: false,  // 发布类型弹框
-      currentPublishValue: 0,  // 当前发布类型， 0-公开，默认
-      publishTypeList: [ // 选择分享类型
-        {
-          name: '公开',
-          value: 0,
-        },
-        {
-          name: '相互关注',
-          value: 1
-        },
-        {
-          name: '仅自己可见',
-          value: 2
-        },
-      ],
+      copyContent: '复制内容（可以是链接，文本等）',  // 复制内容
     };
   },
   mounted () {
@@ -132,11 +107,10 @@ export default {
         // on cancel
       });
     },
-    // 选择发布类型
-    changePublishType(item) {
-      this.publishTypePop = false;
-      this.currentPublishValue = item.value;
-    },
+    // 打开分享范围选择框
+    openShareRangeSetting () {
+      this.$emit('on-open-share-range-setting', '')
+    }
   },
   watch: {
   }
@@ -158,13 +132,5 @@ export default {
   }
   .shareBox-icon{
     margin: 0 0.1rem 0 0;
-  }
-  .select-content-item{
-    height: 1rem;
-    font-size: 0.426667rem;
-  }
-  .select-content-item-selected{
-    background-color: #FEF2F4;
-    color: #C13B66;
   }
 </style>
