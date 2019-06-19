@@ -80,13 +80,13 @@
       <!-- 我的作品以及收藏 -->
       <van-tabs v-model="tabActive" sticky @click="changeTab" class="worksAndFavorite" swipeable>
         <van-tab title="作品 999">
-          <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
+          <PostCard :composition="getImitatePostList"></PostCard>
         </van-tab>
         <van-tab title="喜欢 999">
-          <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
+          <PostCard :composition="getImitatePostList"></PostCard>
         </van-tab>
         <van-tab title="动态 999">
-          <Conversation :composition="getImitateConversation" :isShowRoofPlacement="true"></Conversation>
+          <PostCard :composition="getImitatePostList"></PostCard>
         </van-tab>
       </van-tabs>
       <GetPraisedNum :praisedNumPopup="praisedNumPopup" @closePraisedNumPop-ok="closePraisedNumPop"></GetPraisedNum>
@@ -94,14 +94,14 @@
 </template>
 
 <script>
-import Conversation from './Conversation';
-import GetPraisedNum from '../child_components/Myzone_components/GetPraisedNum';
+import PostCard from 'components/common_components/PostCard';
+import GetPraisedNum from 'components/child_components/Myzone_components/GetPraisedNum';
 import { ImagePreview } from 'vant';
 import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
   components: {
-    Conversation,
+    PostCard,
     GetPraisedNum
   },
   props: {
@@ -130,7 +130,7 @@ export default {
     ...mapGetters([
       'setWhichpage',
       'getImitateUser', // 获取用户数据
-      'getImitateConversation', // 获取模拟对话
+      'getImitatePostList', // 获取模拟帖子列表
     ])
   },
   methods: {
@@ -285,7 +285,7 @@ export default {
 .user-dec{
   color: #fff;
   background-color: #006599;
-  padding: 0 0.58rem 0.2rem 0.58rem;
+  padding: 0 0.58rem;
   font-size: 0.34rem;
   position: relative;
   margin-top: -1px;
@@ -293,7 +293,7 @@ export default {
 .three_lan{
   display: table;
   width: 100%;
-  height: 1.2rem;
+  height: 1rem;
   color: #fff;
   background-color: #006599;
   position: relative;
@@ -308,7 +308,7 @@ export default {
     }
     .index-2FmrF_0 {
         padding: .4rem 0 0;
-        font-size: .6rem;
+        font-size: .5rem;
         line-height: .6rem;
         color: #fff;
     }
@@ -346,7 +346,7 @@ export default {
   align-items: center;
 }
 .showcaseDec{
-  font-size: 20px;
+  font-size: 18px;
   padding: 0 0.04rem 0 0;
 }
 </style>
