@@ -85,7 +85,8 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsShow" title="共999条评论">
-        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate" @on-open-comments-input-popup="commentsInputPopup = true"></Comments>
+        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate"></Comments>
+        <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
       </van-actionsheet>
       <!-- 评论输入框弹框 -->
       <van-popup
@@ -125,8 +126,10 @@
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
-import CommentsInputBox from 'components/common_components/CommentsInputBox';
-import MoreOperate from 'components/common_components/MoreOperate';
+
+import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
+import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
+import CommentsBottomGuide from 'components/child_components/Comments_components/CommentsBottomGuide';
 import { ImagePreview } from 'vant';
 export default {
   // 父子通信
@@ -157,6 +160,7 @@ export default {
     GoodsCard,
     CommentsInputBox,
     MoreOperate,
+    CommentsBottomGuide,
   },
   data () {
     return {

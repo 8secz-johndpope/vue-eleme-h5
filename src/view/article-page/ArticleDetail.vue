@@ -36,15 +36,16 @@
         <div class="van-recommend">精彩推荐</div>
         <ArticleCard :composition="recommendArticle"></ArticleCard>
       </section>
-      <!-- 评论 -->
-      <section class="comments">
-        <div class="van-recommend">精彩评论</div>
-        <div class="commentsTotalNumZone">
-          <span>全部评论（5400）</span>
-        </div>
-        <Comments :showCommentsNum="true" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-open-comments-input-popup="commentsInputPopup = true"></Comments>
-      </section>
     </div>
+    <!-- 评论 -->
+    <section class="comments">
+      <div class="van-recommend">精彩评论</div>
+      <div class="commentsTotalNumZone pdl15">
+        <span>全部评论（5400）</span>
+      </div>
+      <Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
+      <CommentsBottomGuide :showCommentsNum="true" @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
+    </section>
     <!-- 评论输入框弹框 -->
     <van-popup
       v-model="commentsInputPopup"
@@ -72,8 +73,9 @@
   import ArticleCard from 'components/common_components/ArticleCard';
   import ArticleHeader from 'components/common_components/ArticleHeader';
   import Comments from 'components/common_components/Comments';
-  import CommentsInputBox from 'components/common_components/CommentsInputBox';
-  import MoreOperate from 'components/common_components/MoreOperate';
+  import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
+  import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
+  import CommentsBottomGuide from 'components/child_components/Comments_components/CommentsBottomGuide';
   import { mapGetters } from 'vuex';
   export default {
     components:{
@@ -84,6 +86,7 @@
       CommentsInputBox,
       ArticleHeader,
       MoreOperate,
+      CommentsBottomGuide,
     },
     name: 'articleDetail',
     data () {

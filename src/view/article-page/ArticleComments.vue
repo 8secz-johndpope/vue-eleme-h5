@@ -10,14 +10,15 @@
     <div class="articleDetail">
       <!-- 文章头部 -->
       <ArticleHeader></ArticleHeader>
-      <!-- 评论 -->
-      <section class="comments">
-        <div class="commentsTotalNumZone">
-          <span>全部评论（5400）</span>
-        </div>
-        <Comments :showMainText="true" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-open-comments-input-popup="commentsInputPopup = true"></Comments>
-      </section>
     </div>
+    <!-- 评论 -->
+    <section class="comments">
+      <div class="commentsTotalNumZone pdl15">
+        <span>全部评论（5400）</span>
+      </div>
+      <Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
+      <CommentsBottomGuide :showMainText="true" @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
+    </section>
     <!-- 评论输入框弹框 -->
     <van-popup
       v-model="commentsInputPopup"
@@ -44,9 +45,10 @@
 <script>
   import ShareBox from 'components/common_components/ShareBox';
   import Comments from 'components/common_components/Comments';
-  import CommentsInputBox from 'components/common_components/CommentsInputBox';
-  import MoreOperate from 'components/common_components/MoreOperate';
   import ArticleHeader from 'components/common_components/ArticleHeader';
+  import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
+  import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
+  import CommentsBottomGuide from 'components/child_components/Comments_components/CommentsBottomGuide';
   import { mapGetters } from 'vuex';
   export default {
     components:{
@@ -55,6 +57,7 @@
       CommentsInputBox,
       ArticleHeader,
       MoreOperate,
+      CommentsBottomGuide,
     },
     name: 'articleComments',
     data () {
