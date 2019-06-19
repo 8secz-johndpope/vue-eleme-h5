@@ -52,6 +52,11 @@ export default {
       allTabsShow: false, // 所有tabs
     };
   },
+  // beforeRouteLeave(to, from, next) {
+  //   // 设置下一个路由的 meta
+  //   to.meta.keepAlive = false;  // 让 下一个路由 不缓存，即刷新
+  //   next();
+  // },
   mounted () {
     this.activeTab = this.getRecommendHighLightTab;
   },
@@ -76,7 +81,7 @@ export default {
     selectTab (item, index) {
       this.activeTab = index;
       this.allTabsShow = false;
-    }
+    },
   },
   components: {
     Fixednav,

@@ -4,6 +4,14 @@ import Home from 'view/Home';
 Vue.use(Router);
 
 export default new Router({
+  scrollBehavior(to,from,savePosition){ // 在点击浏览器的“前进/后退”，或者切换导航的时候触发。
+    // to：要进入的目标路由对象，到哪里去  from：离开的路由对象，哪里来 savePosition：会记录滚动条的坐标，点击前进/后退的时候记录值{x:?,y:?}
+    if(savePosition) {
+      return savePosition;
+    }else{
+      return {x:0,y:0}
+    }
+  },
   routes: [
     {
       path: '/',
@@ -66,7 +74,7 @@ export default new Router({
       path: '/recommend',
       name: 'recommend',
       meta: {
-        keepAlive: true, // 不需要缓存
+        keepAlive: true, // 需要缓存
       },
       component: (resolve) => require(['view/Recommend'],resolve),
     },

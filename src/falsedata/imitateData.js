@@ -787,7 +787,7 @@ export var imitatePostList = [
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
   {
-    id: 'id0', // id
+    id: 'id2', // id
     postType: 2,    // 帖子类型，0-纯文本，1-含有图片，不含视频，2-只含有视频，不含图片
     contents: '<p>工作996，生病ICU，年轻人，你的头发还好吗？</p>', // 帖子内容，会包含表情，HTML格式
     imgList: [],   // 帖子图片
