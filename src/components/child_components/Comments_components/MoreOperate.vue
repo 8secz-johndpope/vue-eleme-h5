@@ -64,7 +64,7 @@
     padding: 0 0 0.2rem 0;
   }
   .select-content-item{
-    height: 1rem;
+    height: 1.2rem;
     font-size: 0.426667rem;
     border-bottom: 1px solid #c9c9c9;
   }
