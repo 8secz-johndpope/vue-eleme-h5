@@ -1,5 +1,5 @@
 <template>
-  <van-tabbar v-model="active" style="z-index:999" @change="changeTab">
+  <van-tabbar v-model="active" style="z-index:999" @change="changeTab" active-color="#000">
     <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
     <van-tabbar-item icon="browsing-history-o" :to="'/recommend'">推荐</van-tabbar-item>
     <van-tabbar-item icon="add" :to="'/addConversation'">发表</van-tabbar-item>

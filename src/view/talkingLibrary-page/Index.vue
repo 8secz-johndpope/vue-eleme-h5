@@ -26,7 +26,7 @@
       </van-search>
       <van-panel class="pd10 mgt10" v-for="(menuItem, index) in getImitateMenu">
         <div slot="header">
-          <i class="fa fa-heart red-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
+          <i class="fa fa-heart rose-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
         </div>
         <div class="flex-space-around">
           <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
@@ -80,7 +80,7 @@ export default {
 
 <style lang="less" scoped>
   .item-linear{
-    background: linear-gradient(to right, #f38181, #e46d27, #f31802);
+    background: #FF6766;
     border: 0;
     margin: 0.312rem 0.156rem 0 0.156rem;
     width: 2.57rem;
