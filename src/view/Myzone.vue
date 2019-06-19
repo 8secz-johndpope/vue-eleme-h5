@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- 空格 -->
-    <div class="top-space"></div>
     <PersonalCenter :centerType="0" v-if="isLogin"></PersonalCenter>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
@@ -47,7 +45,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .top-space{
-    height: 1.3rem
-  }
+
 </style>
