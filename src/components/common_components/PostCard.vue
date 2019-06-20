@@ -54,17 +54,17 @@
     <!-- 底部，评论，点赞，转发区域 -->
     <div slot="footer" class="flex-space-around" v-if="showFooterGuide">
       <!-- 喜欢收藏 -->
-      <span @click.stop="addMyLike(postObj)">
+      <span @click.stop="addMyLike(postObj)" class="footer-item">
         <i class="fa fa-heart-o" :class="{ 'red-color': postObj.isLike }" aria-hidden="true"></i>
         {{COMMONFUNC.formatterW(postObj.likers)}}
       </span>
       <!-- 评论 -->
-      <span @click.stop="openCommentsPop(postObj)">
+      <span @click.stop="openCommentsPop(postObj)" class="footer-item">
         <i class="fa fa-commenting-o" aria-hidden="true"></i>
         {{COMMONFUNC.formatterW(postObj.commentsNum)}}
       </span>
       <!-- 转发分享 -->
-      <span @click.stop="sharePost(postObj)" >
+      <span @click.stop="sharePost(postObj)" class="footer-item">
         <i class="fa fa-share" aria-hidden="true"></i>
         {{COMMONFUNC.formatterW(postObj.forwardNum)}}
       </span>
@@ -307,5 +307,9 @@ export default {
   }
   .footer-space{
     height: 10px;
+  }
+  .footer-item{
+    width: 33%;
+    text-align: center;
   }
 </style>
