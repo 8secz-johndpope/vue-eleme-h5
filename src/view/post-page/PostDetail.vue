@@ -10,7 +10,21 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <!-- 列表单个 -->
-    <PostCard :postObj="getImitatePostList[1]" :showTag="true" @on-open-comments-popup="commentsPopup = true" @on-open-showcase="showcasePopup = true"></PostCard>
+    <PostCard
+      :postObj="getImitatePostList[1]"
+      :showTag="true"
+      @on-open-comments-popup="commentsPopup = true"
+      @on-share-post="sharePost"
+      @on-open-showcase="showcasePopup = true">
+    </PostCard>
+    <van-tabs v-model="tabActive" sticky swipeable>
+      <van-tab title="喜欢">
+        <Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
+      </van-tab>
+      <van-tab title="评论"><Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments></van-tab>
+      <van-tab title="转发"><Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments></van-tab>
+    </van-tabs>
+    <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
     <!-- 分享选项 -->
     <van-actionsheet v-model="sharePopup" title="分享到">
       <ShareBox :targetId="targetId" :isShowRoofPlacementChild="false" :isTopNow="itemIsTop"></ShareBox>
@@ -87,6 +101,7 @@ export default {
       moreOptPopup: false,  // 更多操作弹框
       optObj: {}, // 操作对象
       commentsInputPopup: false,  // 评论输入框
+      tabActive: 1, // 高亮的tab
     };
   },
   mounted () {
@@ -131,7 +146,12 @@ export default {
     // 发送评论
     sendComments () {
       this.commentsInputPopup = false;
-    }
+    },
+    // 点击分享
+    sharePost (sharePopup, itemIsTop) {
+      this.sharePopup = sharePopup;
+      // this.itemIsTop = this.composition[index].isTop;
+    },
   }
 };
 </script>

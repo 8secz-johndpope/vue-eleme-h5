@@ -98,7 +98,13 @@ export default {
 
   },
   computed: {
-
+    isLogin () {
+      if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
+        return true;
+      }else {
+        return false;
+      }
+    },
   },
   methods: {
     // 点击分享

@@ -8,7 +8,13 @@
     >
       <!-- 列表单个 -->
       <div v-for="(item,index) in composition" @click="toPostDetail(item)">
-        <PostCard :postObj="item" :showTag="showTag" @on-open-comments-popup="commentsPopup = true" @on-share-post="sharePost" @on-open-showcase="showcasePopup = true"></PostCard>
+        <PostCard
+          :postObj="item"
+          :showTag="showTag"
+          @on-open-comments-popup="commentsPopup = true"
+          @on-share-post="sharePost"
+          @on-open-showcase="showcasePopup = true">
+        </PostCard>
       </div>
       <!-- 分享选项 -->
       <van-actionsheet v-model="sharePopup" title="分享到">

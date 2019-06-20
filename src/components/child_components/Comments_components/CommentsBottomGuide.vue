@@ -62,6 +62,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 100;
     border-top: 1px solid #ECECEC;
   }
   .input-zone{
