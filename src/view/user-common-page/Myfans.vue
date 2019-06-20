@@ -1,7 +1,20 @@
 <template>
   <div>
+    <!-- 顶部 -->
+    <div>
+      <van-nav-bar
+      title="我的粉丝"
+      right-text="添加"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+      fixed
+      />
+    </div>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <!-- 用户列表组件 -->
-    <UserList :userType="0"></UserList>
+    <UserList></UserList>
   </div>
 </template>
 
@@ -13,7 +26,7 @@
     components:{
        UserList,
     },
-    name: 'myfollows',
+    name: 'myfans',
     data () {
       return {
       };
@@ -23,6 +36,12 @@
     computed: {
     },
     methods: {
+      onClickLeft(){
+        this.COMMONFUNC.goBack();
+      },
+      onClickRight() {
+        this.$router.push('/addFriends');
+      },
     }
   }
 </script>

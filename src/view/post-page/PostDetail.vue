@@ -13,18 +13,22 @@
     <PostCard
       :postObj="getImitatePostList[1]"
       :showTag="true"
+      :showFooterGuide="false"
       @on-open-comments-popup="commentsPopup = true"
       @on-share-post="sharePost"
       @on-open-showcase="showcasePopup = true">
     </PostCard>
     <van-tabs v-model="tabActive" sticky swipeable>
-      <van-tab title="喜欢">
-        <Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
-      </van-tab>
-      <van-tab title="评论"><Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments></van-tab>
-      <van-tab title="转发"><Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments></van-tab>
+      <van-tab title="喜欢 999"><UserList></UserList></van-tab>
+      <van-tab title="评论 999"><Comments @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments></van-tab>
+      <van-tab title="转发 999"><UserList></UserList></van-tab>
     </van-tabs>
-    <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
+    <!-- 帖子详情底部喜欢、评论、分享框 -->
+    <PostDetailBottomGuide
+      :postObj="getImitatePostList[1]"
+      @on-share-post="sharePost"
+      @on-open-comments-input-popup="commentsInputPopup = true">
+    </PostDetailBottomGuide>
     <!-- 分享选项 -->
     <van-actionsheet v-model="sharePopup" title="分享到">
       <ShareBox :targetId="targetId" :isShowRoofPlacementChild="false" :isTopNow="itemIsTop"></ShareBox>
@@ -72,10 +76,12 @@ import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
 import GoodsCard from 'components/common_components/GoodsCard';
 import PostCard from 'components/common_components/PostCard';
+import UserList from 'components/common_components/UserList';
 
 import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
 import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
 import CommentsBottomGuide from 'components/child_components/Comments_components/CommentsBottomGuide';
+import PostDetailBottomGuide from 'components/child_components/Comments_components/PostDetailBottomGuide';
 import { ImagePreview } from 'vant';
 import { mapGetters } from 'vuex';
 export default {
@@ -83,10 +89,12 @@ export default {
     ShareBox,
     Comments,
     GoodsCard,
+    PostCard,
+    UserList,
     CommentsInputBox,
     MoreOperate,
     CommentsBottomGuide,
-    PostCard,
+    PostDetailBottomGuide,
   },
   data () {
     return {

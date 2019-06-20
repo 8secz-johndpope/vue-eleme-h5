@@ -1,15 +1,26 @@
 <template>
   <div>
+    <!-- 顶部 -->
+    <div>
+      <van-nav-bar
+      title="我的关注"
+      right-text="添加"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+      fixed
+      />
+    </div>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <!-- 用户列表组件 -->
-    <UserList :userType="1"></UserList>
+    <UserList></UserList>
   </div>
 </template>
 
 <script>
-
   import UserList from 'components/common_components/UserList';
   import { mapGetters } from 'vuex';
-
   // import "../css/common.css";
   export default {
     components:{
@@ -25,6 +36,12 @@
     computed: {
     },
     methods: {
+      onClickLeft(){
+        this.COMMONFUNC.goBack();
+      },
+      onClickRight() {
+        this.$router.push('/addFriends');
+      },
     }
   }
 </script>

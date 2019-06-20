@@ -52,7 +52,7 @@
       </div>
     </div>
     <!-- 底部，评论，点赞，转发区域 -->
-    <div slot="footer" class="flex-space-around">
+    <div slot="footer" class="flex-space-around" v-if="showFooterGuide">
       <!-- 喜欢收藏 -->
       <span @click.stop="addMyLike(postObj)">
         <i class="fa fa-heart-o" :class="{ 'red-color': postObj.isLike }" aria-hidden="true"></i>
@@ -69,6 +69,7 @@
         {{COMMONFUNC.formatterW(postObj.forwardNum)}}
       </span>
     </div>
+    <div class="footer-space" v-if="!showFooterGuide"></div>
   </van-panel>
 </template>
 
@@ -83,6 +84,11 @@ export default {
     },
     // 是否显示标签
     showTag: {
+      type: Boolean,
+      default: true,
+    },
+    // 是否显示底部底栏，喜欢，评论，转发
+    showFooterGuide: {
       type: Boolean,
       default: true,
     }
@@ -298,5 +304,8 @@ export default {
   }
   .tag-ellipsis{
     max-width: 100px;
+  }
+  .footer-space{
+    height: 10px;
   }
 </style>
