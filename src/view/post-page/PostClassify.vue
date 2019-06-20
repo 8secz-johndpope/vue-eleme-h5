@@ -9,15 +9,15 @@
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
-    <PostCard :composition="getImitatePostList" :showTag="false"></PostCard>
+    <PostList :composition="getImitatePostList" :showTag="false"></PostList>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import PostCard from 'components/common_components/PostCard';
+import PostList from 'components/common_components/PostList';
 export default {
   components:{
-    PostCard,
+    PostList,
   },
   name: 'postSetting',
   data () {

@@ -80,13 +80,13 @@
       <!-- 我的作品以及收藏 -->
       <van-tabs v-model="tabActive" sticky @click="changeTab" class="worksAndFavorite" swipeable>
         <van-tab title="作品 999">
-          <PostCard :composition="getImitatePostList"></PostCard>
+          <PostList :composition="getImitatePostList"></PostList>
         </van-tab>
         <van-tab title="喜欢 999">
-          <PostCard :composition="getImitatePostList"></PostCard>
+          <PostList :composition="getImitatePostList"></PostList>
         </van-tab>
         <van-tab title="动态 999">
-          <PostCard :composition="getImitatePostList"></PostCard>
+          <PostList :composition="getImitatePostList"></PostList>
         </van-tab>
       </van-tabs>
       <GetPraisedNum :praisedNumPopup="praisedNumPopup" @closePraisedNumPop-ok="closePraisedNumPop"></GetPraisedNum>
@@ -94,14 +94,14 @@
 </template>
 
 <script>
-import PostCard from 'components/common_components/PostCard';
+import PostList from 'components/common_components/PostList';
 import GetPraisedNum from 'components/child_components/Myzone_components/GetPraisedNum';
 import { ImagePreview } from 'vant';
 import { mapGetters } from 'vuex';
 export default {
   name: 'myzone',
   components: {
-    PostCard,
+    PostList,
     GetPraisedNum
   },
   props: {

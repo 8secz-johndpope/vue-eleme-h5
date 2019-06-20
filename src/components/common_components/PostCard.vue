@@ -1,152 +1,85 @@
 <template>
-  <div class="postCard">
-    <van-list
-      v-model="loading"
-      :finished="finished"
-      :finished-text=" isRecommend ? '我也是底线的' : '' "
-      @load="onLoad"
-    >
-      <!-- 列表单个 -->
-      <van-panel class="panel-s" v-for="(item,index) in composition">
-        <div slot="header" class="flex-space-between header">
-          <router-link :to="{ name: 'userzone', params: {} }">
-            <div class="flex">
-              <img class="van-avatar" :src="item.userImg">
-              <div class="mgl10">
-                <div>{{'@'+item.author}}</div>
-                <div class="gray-color createTime">{{COMMONFUNC.commentsTimeFormatter(item.createTime)}}</div>
-              </div>
-            </div>
-          </router-link>
-          <!-- 右边位置 -->
-          <div class="flex-center">
-            <div>
-              <van-button @click="addFollow(item, index)" type="default" size="small" v-if="item.isFollow === 1" class="addFollow">+加关注</van-button>
-              <van-button @click="addPraise(item, index)" type="default" size="small" v-if="item.isFollow === 0 && item.isPraised === 1" class="addFollow">
-                <span class="flex-center"><van-icon name="thumb-circle-o" class="mgr5" />帮顶</span>
-              </van-button>
-              <van-button type="default" size="small" v-if="item.isFollow === 0 && item.isPraised === 0" class="addFollow">{{item.helpPraiseNum}}人已顶</van-button>
-            </div>
-          </div>
+  <!-- 列表单个 -->
+  <van-panel class="panel-s">
+    <div slot="header" class="flex-space-between header">
+      <div class="flex" @click.stop="toUserZone">
+        <img class="van-avatar" :src="postObj.userImg">
+        <div class="mgl10">
+          <div>{{'@'+postObj.author}}</div>
+          <div class="gray-color createTime">{{COMMONFUNC.commentsTimeFormatter(postObj.createTime)}}</div>
         </div>
-        <div class="content-box" v-html="item.contents">
-          {{item.contents}}
+      </div>
+      <!-- 右边位置 -->
+      <div class="flex-center">
+        <div>
+          <van-button @click.stop="addFollow(postObj)" type="default" size="small" v-if="postObj.isFollow === 1" class="addFollow">+加关注</van-button>
+          <van-button @click.stop="addPraise(postObj)" type="default" size="small" v-if="postObj.isFollow === 0 && postObj.isPraised === 1" class="addFollow">
+            <span class="flex-center"><van-icon name="thumb-circle-o" class="mgr5" />帮顶</span>
+          </van-button>
+          <van-button type="default" size="small" v-if="postObj.isFollow === 0 && postObj.isPraised === 0" class="addFollow">{{postObj.helpPraiseNum}}人已顶</van-button>
         </div>
-        <!-- 图片区域 -->
-        <ul class="img-zone" v-if="item.postType === 1">
-          <li v-for="(imgItem, imgIndex) in item.imgList" class="img-cell">
-            <img :src="imgItem" @click="postImgList(item.imgList, imgIndex)" class="img-item"/>
-          </li>
-        </ul>
-        <!-- 视频区域 -->
-        <div class="video-zone" v-if="item.postType === 2">
-          <img :src="item.videoImg" class="video-img">
-          <van-icon name="play-circle-o" class="video-play-icon" />
-          <div class="flex-space-between video-info">
-            <div class="mgl10">{{item.watchNum}}次观看</div>
-            <div class="mgr10">{{item.duration}}</div>
-          </div>
-        </div>
-        <!-- 标签，商品展示区域 -->
-        <div class="flex-space-between showcase-zone">
-          <!-- 帖子分类标签 -->
-          <div>
-            <span v-for="(c_item, c_index) in item.tagsList" v-if="showTag && item.tagsList.length > 0" class="mgr5" @click="toPostClassify(c_item)">
-              <van-tag mark class="van-ellipsis tag-ellipsis">{{c_item.tagsName}}</van-tag>
-            </span>
-          </div>
-          <div class="gold-color flex" v-if="item.isBusiness === 0" @click="goodsShow = true">
-            <van-icon name="cart-o" class="font-gold showcase" />
-            <span class="showcaseDec">撩妹必备</span>
-          </div>
-        </div>
-        <!-- 底部，评论，点赞，转发区域 -->
-        <div slot="footer" class="flex-space-around">
-          <!-- 喜欢收藏 -->
-          <span @click="addMyLike(index)" class="myLike">
-            <i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i>
-            {{COMMONFUNC.formatterW(item.likers)}}
-          </span>
-          <!-- 评论 -->
-          <span @click="openCommentsPop(index)" class="myLike">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
-            {{COMMONFUNC.formatterW(item.commentsNum)}}
-          </span>
-          <!-- 转发分享 -->
-          <span @click="share(index)" class="share">
-            <i class="fa fa-share" aria-hidden="true"></i>
-            {{COMMONFUNC.formatterW(item.forwardNum)}}
-          </span>
-        </div>
-      </van-panel>
-      <!-- 分享选项 -->
-      <van-actionsheet v-model="sharePopShow" title="分享到">
-        <ShareBox :targetId="targetId" :isShowRoofPlacementChild="isShowRoofPlacement" :isTopNow="itemIsTop"></ShareBox>
-      </van-actionsheet>
-      <!-- 评论区 -->
-      <van-actionsheet v-model="commentsShow" title="共999条评论">
-        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate"></Comments>
-        <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
-      </van-actionsheet>
-      <!-- 评论输入框弹框 -->
-      <van-popup
-        v-model="commentsInputPopup"
-        position="bottom"
-        @closed="closeInputPopup"
-      >
-        <CommentsInputBox :replyWho="replyWho" @on-send-comments="sendComments"></CommentsInputBox>
-      </van-popup>
-      <!-- 评论更多操作 -->
-      <van-popup
-        v-model="moreOptPopup"
-        position="bottom"
-      >
-        <MoreOperate :optObj="optObj" @on-after-more-operate="afterMoreOperate"></MoreOperate>
-      </van-popup>
-      <!-- 商品展示页 -->
-      <van-actionsheet v-model="goodsShow" title="XXX的推荐">
-        <!-- 商品组件 -->
-        <GoodsCard></GoodsCard>
-        <div class="btn-zone">
-          <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
-            <van-button size="large" round type="danger">去看看</van-button>
-          </router-link>
-        </div>
-        <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
-          <p class="flex-center goShowcase red-color">
-            XXX的商品橱窗
-          </p>
-        </router-link>
-      </van-actionsheet>
-    </van-list>
-  </div>
+      </div>
+    </div>
+    <div class="content-box" v-html="postObj.contents">
+      {{postObj.contents}}
+    </div>
+    <!-- 图片区域 -->
+    <ul class="img-zone" v-if="postObj.postType === 1">
+      <li v-for="(imgItem, imgIndex) in postObj.imgList" class="img-cell">
+        <img :src="imgItem" @click.stop="postImgList(postObj.imgList, imgIndex)" class="img-item"/>
+      </li>
+    </ul>
+    <!-- 视频区域 -->
+    <div class="video-zone" v-if="postObj.postType === 2">
+      <img :src="postObj.videoImg" class="video-img">
+      <van-icon name="play-circle-o" class="video-play-icon" />
+      <div class="flex-space-between video-info">
+        <div class="mgl10">{{postObj.watchNum}}次观看</div>
+        <div class="mgr10">{{postObj.duration}}</div>
+      </div>
+    </div>
+    <!-- 标签，商品展示区域 -->
+    <div class="flex-space-between showcase-zone">
+      <!-- 帖子分类标签 -->
+      <div>
+        <span v-for="(c_postObj, c_index) in postObj.tagsList" v-if="showTag && postObj.tagsList.length > 0" class="mgr5" @click.stop="toPostClassify(c_postObj)">
+          <van-tag mark class="van-ellipsis tag-ellipsis">{{c_postObj.tagsName}}</van-tag>
+        </span>
+      </div>
+      <div class="gold-color flex" v-if="postObj.isBusiness === 0" @click.stop="openShowcase">
+        <van-icon name="cart-o" class="font-gold showcase" />
+        <span class="showcaseDec">撩妹必备</span>
+      </div>
+    </div>
+    <!-- 底部，评论，点赞，转发区域 -->
+    <div slot="footer" class="flex-space-around">
+      <!-- 喜欢收藏 -->
+      <span @click.stop="addMyLike(postObj)">
+        <i class="fa fa-heart-o" :class="{ 'red-color': postObj.isLike }" aria-hidden="true"></i>
+        {{COMMONFUNC.formatterW(postObj.likers)}}
+      </span>
+      <!-- 评论 -->
+      <span @click.stop="openCommentsPop(postObj)">
+        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+        {{COMMONFUNC.formatterW(postObj.commentsNum)}}
+      </span>
+      <!-- 转发分享 -->
+      <span @click.stop="sharePost(postObj)" >
+        <i class="fa fa-share" aria-hidden="true"></i>
+        {{COMMONFUNC.formatterW(postObj.forwardNum)}}
+      </span>
+    </div>
+  </van-panel>
 </template>
 
 <script>
-import ShareBox from 'components/common_components/ShareBox';
-import Comments from 'components/common_components/Comments';
-import GoodsCard from 'components/common_components/GoodsCard';
-
-import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
-import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
-import CommentsBottomGuide from 'components/child_components/Comments_components/CommentsBottomGuide';
 import { ImagePreview } from 'vant';
 export default {
   // 父子通信
   props: {
-    composition: {
-      type: Array,
-      default: [],
-    },
-    // 是否在分享弹框显示置顶按钮
-    isShowRoofPlacement: {
-      type: Boolean,
-      default: false,
-    },
-    // 是否为推荐的页面
-    isRecommend: {
-      type: Boolean,
-      default: true,
+    postObj: {
+      type: Object,
+      default: {}
     },
     // 是否显示标签
     showTag: {
@@ -155,64 +88,39 @@ export default {
     }
   },
   components : {
-    ShareBox,
-    Comments,
-    GoodsCard,
-    CommentsInputBox,
-    MoreOperate,
-    CommentsBottomGuide,
   },
   data () {
     return {
-      sharePopShow: false,  // 底部 -- 分享
-      loading: false,   //  是否处于加载状态，加载过程中不触发load事件, 默认false
-      finished: false,  // 	是否已加载完成，加载完成后不再触发load事件, 默认false
-      commentsShow: false,  // 评论区 弹框
-      targetId: '', // 选中的id值
-      itemIsTop: 1, // 子项是否置顶中的置顶
-      goodsShow: false, //商品弹框
-      replyWho: '', // 回复谁
-      moreOptPopup: false,  // 更多操作弹框
-      optObj: {}, // 操作对象
-      commentsInputPopup: false,  // 评论输入框
+
     };
   },
   mounted () {
-    // 如果不是推荐页，而是回复详情页
-    if(!this.isRecommend){
-      this.finished = true;
-      this.commentsShow = true;
-    }
+
   },
   computed: {
-    isLogin () {
-      if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
-        return true;
-      }else {
-        return false;
-      }
-    },
+
   },
   methods: {
     // 点击分享
-    share (index) {
-      this.sharePopShow = true;
-      this.itemIsTop = this.composition[index].isTop;
+    sharePost (item) {
+      let sharePopShow = true;
+      let itemIsTop = true;
+      this.$emit('on-share-post', sharePopShow, itemIsTop)
     },
     // 点击评论
-    openCommentsPop () {
-      this.commentsShow = true;
+    openCommentsPop (item) {
+      this.$emit('on-open-comments-popup', item)
     },
     // 加入喜欢
-    addMyLike: function (index) {
+    addMyLike: function (item) {
       let that = this;
       if(that.isLogin){
-        if (that.composition[index].isLike) {
-          that.composition[index].isLike = false;
-          that.composition[index].likers -= 1;
+        if (item.isLike) {
+          item.isLike = false;
+          item.likers -= 1;
         }else{
-          that.composition[index].isLike = true;
-          that.composition[index].likers += 1;
+          item.isLike = true;
+          item.likers += 1;
           that.$toast('成功收藏！');
         }
       }else {
@@ -230,7 +138,7 @@ export default {
       }
     },
     // 加关注
-    addFollow: function (item, index) {
+    addFollow: function (item) {
       let that = this;
       if(that.isLogin){
         if (item.isFollow === 1) {
@@ -252,7 +160,7 @@ export default {
       }
     },
     // 帮顶
-    addPraise: function (item, index) {
+    addPraise: function (item) {
       let that = this;
       if(that.isLogin){
         if (item.isPraised === 1) {
@@ -273,43 +181,6 @@ export default {
         });
       }
     },
-    // 下拉加载更多
-    onLoad() {
-      let obj = {
-        id: 'id0', // id
-        postType: 0,    // 帖子类型，0-纯文本，1-含有图片，不含视频，2-只含有视频，不含图片
-        contents: '<p>工作996，生病ICU，年轻人，你的头发还好吗？</p>', // 帖子内容，会包含表情，HTML格式
-        contentsImg: [],   // 帖子图片
-        videoUrl: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',   // 视频URL，备注：图片、视频互斥
-        videoImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',   // 视频封面图片
-        praiseNum: 996, // 点赞人数
-        commentsNum: 996, // 评论人数
-        forwardNum: 996, // 转发人数
-        userName: '作者', // 作者名
-        userId: 'userId1',  // 作者Id
-        userImg: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 用户头像
-        // 帖子标签集合
-        tagsList: [
-            {
-                tagsName: '美女',
-                id: 'tagsId1',
-            },
-        ],
-        isBusiness: 0, // 是否商家 0-是， 1-否
-      };
-      // 异步更新数据
-      setTimeout(() => {
-        for (let i = 0; i < 5; i++) {
-          this.composition.push(obj);
-        }
-        // 加载状态结束
-        this.loading = false;
-        // 数据全部加载完成
-        if (this.composition.length >= 10) {
-          this.finished = true;
-        }
-      }, 500);
-    },
     // 图片预览
     postImgList (list, imgIndex) {
       ImagePreview({
@@ -320,34 +191,17 @@ export default {
         }
       });
     },
+    // 前往用户主页
+    toUserZone () {
+      this.$router.push({ name: 'userzone', params: '' })
+    },
     // 前往帖子分类
     toPostClassify (item) {
       this.$router.push({ name: 'postClassify', params: { containerid: item.containerid }})
     },
-    // 获取回复的人
-    getReplyWho (user) {
-      this.replyWho = user;
-    },
-    // 更多操作
-    moreOperate (obj) {
-      this.moreOptPopup = true;
-      this.optObj = obj
-    },
-    // 更多操作之后
-    afterMoreOperate (replyFlag, obj) {
-      this.moreOptPopup = false;
-      if (replyFlag) {
-        this.commentsInputPopup = true;
-        this.replyWho = obj.replyName;
-      }
-    },
-    // 关闭评论输入框
-    closeInputPopup () {
-      this.replyWho = '';
-    },
-    // 发送评论
-    sendComments () {
-      this.commentsInputPopup = false;
+    // 打开橱窗
+    openShowcase () {
+      this.$emit('on-open-showcase', true)
     }
   }
 };
@@ -367,9 +221,6 @@ export default {
     padding: 0 0.4rem 0.2rem 0.4rem;
     line-height: 0.533rem;
   }
-  .red-color{
-    color: red;
-  }
   .showcase-zone{
     display: flex;
     margin: 0 0.4rem 0.133333rem 0.4rem;
@@ -377,17 +228,6 @@ export default {
   .showcase{
     font-size: 0.5rem;
     padding: 0 0.1rem 0 0;
-  }
-  .btn-zone{
-    padding: 0.2rem 1rem;
-  }
-  .goShowcase{
-    padding: 0.2rem 0 0.6rem 0;
-    font-size: 16px;
-  }
-  .comments-box{
-    height: 11rem;
-    overflow: scroll;
   }
   .img-zone{
     display: flex;

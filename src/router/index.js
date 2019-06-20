@@ -600,11 +600,19 @@ export default new Router({
     */
     {
       path: '/post/postClassify/:containerid',
-      name: 'postClassify',
+      name: 'postClassify', // 帖子分类
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/post-page/PostClassify'],resolve),
+    },
+    {
+      path: '/post/postDetail/:postId',
+      name: 'postDetail', // 帖子详情
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostDetail'],resolve),
     },
     /*
       帖子 微博 -- 结束

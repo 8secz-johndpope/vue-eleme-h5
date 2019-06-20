@@ -15,7 +15,7 @@
     <div class="content-box">
       <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
         <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
-          <PostCard :composition="getImitatePostList"></PostCard>
+          <PostList :composition="getImitatePostList"></PostList>
         </van-tab>
       </van-tabs>
       <div class="moreTabs" @click="allTabsShow = !allTabsShow">
@@ -40,7 +40,7 @@
 
 <script>
 import Fixednav from 'components/common_components/Fixed_nav';
-import PostCard from 'components/common_components/PostCard';
+import PostList from 'components/common_components/PostList';
 import { mapGetters } from 'vuex';
 export default {
   name: 'recommend',
@@ -85,7 +85,7 @@ export default {
   },
   components: {
     Fixednav,
-    PostCard,
+    PostList,
   }
 };
 </script>
