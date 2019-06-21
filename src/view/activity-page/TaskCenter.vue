@@ -68,7 +68,7 @@ export default {
             "totalNumber": 3,
             "taskDetailType": 1,
             "taskType": 1,
-            "taskLink": "www.baidu.com",
+            "taskLink": "publishPost",
             "taskTitle": "写微博",
             "taskStatus": 2,
             "taskId": 14,
@@ -79,7 +79,7 @@ export default {
             "totalNumber": 1,
             "taskDetailType": 1,
             "taskType": 1,
-            "taskLink": "www.baidu.com",
+            "taskLink": "postClassify",
             "taskTitle": "评论",
             "taskStatus": 1,
             "taskId": 15,
@@ -90,7 +90,7 @@ export default {
             "totalNumber": 1,
             "taskDetailType": 1,
             "taskType": 1,
-            "taskLink": "www.baidu.com",
+            "taskLink": "postClassify",
             "taskTitle": "转发微博",
             "taskStatus": 2,
             "taskId": 16,
@@ -101,22 +101,22 @@ export default {
             "totalNumber": 1,
             "taskDetailType": 4,
             "taskType": 1,
-            "taskLink": "www.baidu.com",
-            "taskTitle": "点赞",
+            "taskLink": "postClassify",
+            "taskTitle": "帮顶",
             "taskStatus": 2,
             "taskId": 17,
-            "taskReward": 100,
+            "taskReward": 2,
             "completeNumber": 0
         },
         {
             "totalNumber": 1,
             "taskDetailType": 5,
             "taskType": 1,
-            "taskLink": "www.baidu.com",
+            "taskLink": "addFriends",
             "taskTitle": "关注用户",
             "taskStatus": 3,
             "taskId": 18,
-            "taskReward": 300,
+            "taskReward": 2,
             "completeNumber": 0
         },
       ]
@@ -148,9 +148,12 @@ export default {
         duration: '1500',
       })
     },
-    // 任务列表
-    taskLink(taskType) {
-
+    // 跳转任务
+    taskLink(item) {
+      this.$router.push({
+        name: item.taskLink,
+        params: ''
+      })
     }
   },
 };
