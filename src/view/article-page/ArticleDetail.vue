@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <van-nav-bar left-arrow title="文章正文" @click-left="onClickLeft" fixed>
-      <van-icon name="ellipsis" slot="right" @click="openMorePop" />
-    </van-nav-bar>
+    <van-nav-bar left-arrow title="文章正文" @click-left="onClickLeft" fixed></van-nav-bar>
     <!-- 文章内容 -->
     <div class="articleDetail">
       <!-- 文章头部 -->
@@ -62,13 +60,9 @@
       <MoreOperate :optObj="optObj" @on-after-more-operate="afterMoreOperate"></MoreOperate>
     </van-popup>
     <!-- 分享选项 -->
-    <van-actionsheet v-model="sharePopShow" title="分享到">
-      <ShareBox :targetId="targetId"></ShareBox>
-    </van-actionsheet>
   </div>
 </template>
 <script>
-  import ShareBox from 'components/common_components/ShareBox';
   import Advertisement from 'components/common_components/Advertisement';
   import ArticleCard from 'components/common_components/ArticleCard';
   import ArticleHeader from 'components/common_components/ArticleHeader';
@@ -79,7 +73,6 @@
   import { mapGetters } from 'vuex';
   export default {
     components:{
-      ShareBox,
       Advertisement,
       ArticleCard,
       Comments,
@@ -92,8 +85,6 @@
     data () {
       return {
         msg: '1',
-        sharePopShow: false,  // 更多选项
-        targetId: '', // 文章Id
         isAttention: false, // 是否已经关注
         recommendArticle: [],
         replyWho: '', // 回复谁
@@ -120,14 +111,6 @@
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
-      },
-      // 打开更多弹框
-      openMorePop () {
-        this.sharePopShow = true;
-      },
-      // 子组件关闭弹框，将回复的人员名称干掉
-      closePopup () {
-        this.replyWho = '';
       },
       // 获取回复的人
       getReplyWho (user) {

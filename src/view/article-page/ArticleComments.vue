@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <van-nav-bar left-arrow @click-left="onClickLeft" title="精彩评论" fixed>
-      <van-icon name="ellipsis" slot="right" @click="openMorePop" />
-    </van-nav-bar>
+    <van-nav-bar left-arrow @click-left="onClickLeft" title="精彩评论" fixed></van-nav-bar>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <!-- 文章内容 -->
@@ -34,16 +32,11 @@
     >
       <MoreOperate :optObj="optObj" @on-after-more-operate="afterMoreOperate"></MoreOperate>
     </van-popup>
-    <!-- 分享选项 -->
-    <van-actionsheet v-model="sharePopShow" title="分享到">
-      <ShareBox :targetId="targetId"></ShareBox>
-    </van-actionsheet>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
   </div>
 </template>
 <script>
-  import ShareBox from 'components/common_components/ShareBox';
   import Comments from 'components/common_components/Comments';
   import ArticleHeader from 'components/common_components/ArticleHeader';
   import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
@@ -52,7 +45,6 @@
   import { mapGetters } from 'vuex';
   export default {
     components:{
-      ShareBox,
       Comments,
       CommentsInputBox,
       ArticleHeader,
@@ -63,8 +55,6 @@
     data () {
       return {
         msg: '1',
-        sharePopShow: false,  // 更多选项
-        targetId: '', // 文章Id
         isAttention: false, // 是否已经关注
         replyWho: '', // 回复谁
         optObj: {}, // 操作对象
@@ -89,14 +79,6 @@
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
-      },
-      // 打开更多弹框
-      openMorePop () {
-        this.sharePopShow = true;
-      },
-      // 子组件关闭弹框，将回复的人员名称干掉
-      closePopup () {
-        this.replyWho = '';
       },
       // 获取回复的人
       getReplyWho (user) {
