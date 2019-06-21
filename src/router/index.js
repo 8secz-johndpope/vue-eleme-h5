@@ -78,13 +78,23 @@ export default new Router({
       },
       component: (resolve) => require(['view/Recommend'],resolve),
     },
+    // 发微博
     {
-      path: '/addConversation',
-      name: 'addConversation',
+      path: '/publishPost',
+      name: 'publishPost',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/AddConversation'],resolve),
+      component: (resolve) => require(['view/PublishPost'],resolve),
+    },
+    // 转发微博
+    {
+      path: '/retransmission/:postId',
+      name: 'retransmission',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/publish-page/Retransmission'],resolve),
     },
     {
       path: '/message',

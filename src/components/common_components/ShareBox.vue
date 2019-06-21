@@ -1,7 +1,7 @@
 <template>
   <div class="shareBox">
     <!-- 分享选项 -->
-    <div class="shareBox-item" @click="forward">
+    <div class="shareBox-item" @click="retransmission">
       <i class="fa fa-share-alt fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>转发</p>
     </div>
@@ -93,8 +93,11 @@ export default {
     onError: function (e) {
       this.$toast('复制失败！')
     },
-    forward: function () {
-      this.$toast('转发成功，自己的动态下展示')
+    retransmission: function () {
+      this.$router.push({
+        name: 'retransmission',
+         params: { postId: '01' },
+      })
     },
     deletePost: function () {
       let that = this;

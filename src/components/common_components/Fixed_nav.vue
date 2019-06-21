@@ -2,7 +2,7 @@
   <van-tabbar v-model="active" style="z-index:999" @change="changeTab" active-color="#000">
     <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
     <van-tabbar-item icon="browsing-history-o" :to="'/recommend'">推荐</van-tabbar-item>
-    <van-tabbar-item icon="add" :to="'/addConversation'">发表</van-tabbar-item>
+    <van-tabbar-item icon="add" :to="'/publishPost'">发表</van-tabbar-item>
     <van-tabbar-item icon="chat-o" info="25" :to="'/message'">消息</van-tabbar-item>
     <van-tabbar-item icon="manager-o" :to="'/myzone'">我的</van-tabbar-item>
   </van-tabbar>

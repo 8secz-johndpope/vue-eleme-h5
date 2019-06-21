@@ -1,13 +1,14 @@
 <template>
   <div class="white-bg">
     <van-nav-bar
-      title="发微博"
+      :title="isRetransmission ? '转发微博' : '发微博'"
       left-arrow
       @click-left="onClickLeft"
       fixed
     >
       <div slot="right" @click="onClickRight">
-        <van-button type="danger" size="small" :disabled=" uploadImgList.length === 0 && message.length === 0">发表</van-button>
+        <van-button type="danger" size="small" :disabled=" uploadImgList.length === 0 && message.length === 0" v-if="!isRetransmission">发表</van-button>
+        <van-button type="danger" size="small" v-if="isRetransmission">发表</van-button>
       </div>
     </van-nav-bar>
     <!-- 撑开Fixednav挡住的位置 -->
@@ -20,13 +21,15 @@
           v-model="message"
           type="textarea"
           placeholder="分享新鲜事"
-          :rows="rowsNum"
+          :rows="isRetransmission ? 12 : 15"
           ref="postContent"
           @focus="inputFieldFocus"
           />
         </van-cell-group>
         <div class="gray-color msglen pdr15" v-if="message.length > 0">字数：{{message.length}}</div>
       </div>
+      <!-- 转发帖子 -->
+      <RetransmissionCard v-if="isRetransmission"></RetransmissionCard>
       <!-- 话题选择区域 -->
       <div class="pdl15 pdr15" v-if="selectTopicList.length > 0">
         <span v-for="(item, index) in selectTopicList" :key="item.topicId" class="mg5 mgr10 mgb10 display-block position-r" @click="openTopicPop">
@@ -55,10 +58,10 @@
     <footer class="fixed-footer white-bg">
       <div class="flex-space-between pd15">
         <div class="fixed-footer-left">
-          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9">
+          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9 && !isRetransmission">
             <van-icon name="photo-o" class="footer-icon" />
           </van-uploader>
-          <van-icon name="label-o" class="footer-icon" @click="openTopicPop"/>
+          <van-icon name="label-o" class="footer-icon" @click="openTopicPop" v-if="!isRetransmission"/>
           <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
         </div>
         <div @click="publishTypePop = true">
@@ -96,15 +99,21 @@
 </template>
 
 <script>
-import Vue from "vue";
 import { mapGetters } from 'vuex';
 import TopicList from 'components/child_components/Topic_components/TopicList';
+import RetransmissionCard from 'components/child_components/Publish_components/RetransmissionCard';
 export default {
   name: 'add_conversation',
+  props: {
+    // 是否为转发帖子
+    isRetransmission: {
+      type: Boolean,
+      default: false,
+    }
+  },
   data () {
     return {
       message: '',  // 微博文本内容
-      rowsNum: 15, // 默认显示高度
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
       uploadImgList: [],  // 预览图片区域
@@ -130,6 +139,7 @@ export default {
   },
   components: {
     TopicList,
+    RetransmissionCard,
   },
   mounted () {
     this.emojiList = this.getEXPSList.EXPS.slice(0);
@@ -148,7 +158,14 @@ export default {
     },
     // 发表微博
     onClickRight () {
-      this.$toast('发表成功，已转至后台审核')
+      let that = this;
+      this.$toast.success({
+        message: '发表成功',
+        duration: 1000,
+      })
+      setTimeout( ()=> {
+        that.onClickLeft();
+      },1000)
     },
     // 草稿箱
     draft () {
