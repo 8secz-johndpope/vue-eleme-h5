@@ -140,15 +140,10 @@ export default {
     },
     // 签到
     sign () {
-      if (this.isSign) {
-        this.$toast('已签到，每天签到都会获得金币哦')
-      }else {
-        this.$dialog.alert({
-          message: '签到成功，获得2枚金币'
-        }).then(() => {
-          // on close
-        });
-      }
+      this.$router.push({
+        name: 'taskCenter',
+        params: '',
+      })
       this.isSign = true;
     },
     // 加关注

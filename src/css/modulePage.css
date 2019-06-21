@@ -136,3 +136,9 @@
   height: 1.8rem;
 }
 /* 话题页 -- 结束 */
+
+/* 活动页 -- 开始 */
+.taskCenter .van-step--finish .van-step__circle, .taskCenter .van-step--finish .van-step__line{
+  background-color: #FF6766;
+}
+/* 活动页 -- 结束 */

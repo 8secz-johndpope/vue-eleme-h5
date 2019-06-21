@@ -291,10 +291,9 @@ export default new Router({
       },
       component: (resolve) => require(['view/setting-page/Certification'],resolve),
     },
-    // 充值记录
     {
       path: '/setting/mywallet/rechargeRecord',
-      name: 'rechargeRecord',
+      name: 'rechargeRecord', // 充值记录
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -515,7 +514,7 @@ export default new Router({
     */
 
     /*
-      落地页 -- 开始
+      活动页 -- 开始
     */
     {
       path: '/activity/inviteToShare',
@@ -525,8 +524,16 @@ export default new Router({
       },
       component: (resolve) => require(['view/activity-page/forever-page/InviteToShare'],resolve),
     },
+    {
+      path: '/activity/taskCenter',
+      name: 'taskCenter',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/activity-page/TaskCenter'],resolve),
+    },
     /*
-      落地页 -- 结束
+      活动页 -- 结束
     */
 
     /*

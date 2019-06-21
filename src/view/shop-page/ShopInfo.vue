@@ -2,8 +2,7 @@
   <div class="shopInfo">
     <!-- 顶部 -->
     <van-nav-bar
-      title="橱窗通用信息"
-      
+      title="橱窗通用信息"    
       right-text="提交"
       left-arrow
       @click-left="onClickLeft"
