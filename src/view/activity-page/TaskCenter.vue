@@ -1,6 +1,13 @@
 <template>
   <div class="taskCenter">
-    <van-nav-bar left-arrow @click-left="onClickLeft" title="任务中心" fixed />
+    <van-nav-bar 
+      left-arrow 
+      @click-left="onClickLeft" 
+      title="任务中心" 
+      right-text="兑换商城"
+      @click-right="onClickRight"
+      fixed 
+    />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <!-- 当前金币 -->
@@ -138,6 +145,12 @@ export default {
   methods: {
     onClickLeft(){
       this.COMMONFUNC.goBack();
+    },
+    onClickRight() {
+      this.$router.push({
+        name: 'goodsList',
+        params: '',
+      })
     },
     // 领取奖励
     getReward (item, index) {

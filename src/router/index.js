@@ -634,5 +634,36 @@ export default new Router({
     /*
       帖子 微博 -- 结束
     */
+
+    /*
+      商城 -- 开始
+    */
+    {
+      path: '/shoppingMall/goodsList',
+      name: 'goodsList', // 商品列表
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/shoppingMall-page/GoodsList'],resolve),
+    },
+    {
+      path: '/shoppingMall/goodsClassify/:classifyId',
+      name: 'goodsClassify', // 商品分类列表
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/shoppingMall-page/GoodsClassify'],resolve),
+    },
+    {
+      path: '/shoppingMall/goodsDetail/:goodsId',
+      name: 'goodsDetail', // 商品详情
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/shoppingMall-page/GoodsDetail'],resolve),
+    },
+    /*
+      商城 -- 结束
+    */
   ]
 });

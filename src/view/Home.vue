@@ -8,7 +8,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <van-swipe :autoplay="3000" class="swipe white-bg ">
-      <van-swipe-item v-for="(image, index) in images" :key="index" class="flex-center swipe-img-zone">
+      <van-swipe-item v-for="(image, index) in swiptImages" :key="index" class="flex-center swipe-img-zone">
         <router-link :to="{ name: 'toolList', params: {} }">
           <img v-lazy="image" class="swipe-img" />
         </router-link>
@@ -158,7 +158,7 @@ export default {
         isShowRoofPlacement: false, // 是否在分享弹框显示置顶按钮
       },
       videoPopShow: false, // 视频弹框
-      images: [
+      swiptImages: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
       ],
