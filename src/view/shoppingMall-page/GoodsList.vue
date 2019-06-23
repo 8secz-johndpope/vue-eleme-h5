@@ -1,5 +1,5 @@
 <template>
-  <div class="goodsList">
+  <div class="white-bg goodsList">
     <van-nav-bar 
       left-arrow 
       @click-left="onClickLeft" 
@@ -11,14 +11,14 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
-    <van-swipe :autoplay="3000" class="white-bg">
+    <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in swiptImages" :key="index" >
         <router-link :to="{ name: 'goodsDetail', params: { goodsId: 'goodsId00001'} }">
           <img v-lazy="image" class="swipe-img" />
         </router-link>
       </van-swipe-item>
     </van-swipe>
-    <div class="white-bg mgt10">
+    <div class="mgt10">
       <router-link :to="{ name: 'goodsDetail', params: { goodsId: 'goodsId00001'} }" v-for="(item, index) in getImitateGoodsClassifyList"> 
         <div class="mgb10 classify-item">
           <img class="van-avatar" src="http://img4.imgtn.bdimg.com/it/u=1150747124,801627506&fm=26&gp=0.jpg"></img>
@@ -27,18 +27,21 @@
       </router-link>
     </div>
     <!-- 推荐商品展示区 标题-->
-    <van-cell is-link value="更多">
+    <van-cell is-link value="更多" class="mgt15">
       <template slot="title">
         <span class="classify-title">每日精选</span>
       </template>
     </van-cell>
     <!-- 推荐商品展示区 列表-->
-    <div class="recommend-goodList">
-      <div v-for="(item, index) in getImitateGoodsList">
-        <img class="goods-image" src="https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg"></img>
-        <div class="van-ellipsis">SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯</div>
-        <div>500金币+100元</div>
-        <van-button plain round type="warning" size="mini">立即兑换</van-button>
+    <div>
+      <div v-for="(item, index) in getImitateGoodsList" class="white-bg goods-item">
+        <div class="goods-item-box">
+          <img class="goods-image" :src="item.image"></img>
+          <div class="van-ellipsis mgt5">{{item.name}}</div>
+          <div class="mgt5 gold-color" v-if="item.needMoney > 0">{{item.needGoldCoin}}金币+{{item.needMoney}}元</div>
+          <div class="mgt5 gold-color" v-else>{{item.needGoldCoin}}金币</div>
+          <van-button plain round type="warning" size="mini" class="mgt5">立即兑换</van-button>
+        </div>
       </div>
     </div>
   </div>
@@ -93,12 +96,31 @@ export default {
   }
   .classify-item{
     width: 25%;
-    height: 1.6rem;
+    height: 1.8rem;
     float: left;
     text-align: center;
     line-height: 30px;
   }
   .classify-title{
     font-size: 18px;
+  }
+  .goods-item{
+    float: left;
+    width: 33%;
+    height: 5rem;
+    text-align: center;
+  }
+  .goods-item-box{
+    padding: 0 10px 10px 10px;
+  }
+  .van-ellipsis{
+    max-width: 3rem;
+    margin: 0 auto;
+  }
+  .goods-image{
+    width: 3rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 </style>

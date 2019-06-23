@@ -104,11 +104,14 @@
 .mg5{
   margin: 0.133333rem;
 }
-.mgt10{
-  margin-top: 0.266667rem;
-}
 .mgr5{
   margin-right: 0.133333rem;
+}
+.mgt5{
+  margin-top: 0.133333rem;
+}
+.mgt10{
+  margin-top: 0.266667rem;
 }
 .mgl10{
   margin-left: 0.266667rem;
@@ -125,29 +128,32 @@
 .mgb15{
   margin-bottom: 0.4rem;
 }
+.mgt15{
+  margin-top: 0.4rem;
+}
 .pdb5{
   padding-bottom: 0 0 0.133333rem 0;
 }
 .pdt5{
-  padding: 0.133333rem 0 0 0;
+  padding-top: 0.133333rem;
 }
 .pdl5{
-  padding: 0 0 0 0.133333rem;
+  padding-left: 0.133333rem;
 }
 .pdl10{
-  padding: 0 0 0 0.266667rem;
+  padding-left: 0.266667rem;
 }
 .pdb10{
-  padding: 0 0 0.266667rem 0;
+  padding-bottom: 0.266667rem;
 }
 .pdr10{
-  padding: 0 0.266667rem 0 0;
+  padding-right:  0.266667rem;
 }
 .pdb15{
-  padding: 0 0 0.4rem 0;
+  padding-bottom:  0.4rem;
 }
 .pdt10{
-  padding: 0.266667rem 0 0 0;
+  padding-top: 0.266667rem;
 }
 .pd10{
   padding: 0.266667rem;

@@ -850,9 +850,9 @@ export var imitateGoodsList = [
     {
       id: '01',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
-      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
       needGoldCoin: 500,  //  需要金币
-      needMoney: 100, // 需要金额
+      needMoney: 0, // 需要金额
       stock: 1000, // 库存
       belongsClassifyName: '精美饰品',  // 所属类目名称
       belongsClassifyId: '01',  // 所属类目Id
@@ -860,7 +860,7 @@ export var imitateGoodsList = [
     {
       id: '02',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
-      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
       needGoldCoin: 500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
@@ -870,7 +870,7 @@ export var imitateGoodsList = [
     {
       id: '03',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
-      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
       needGoldCoin: 500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
@@ -880,7 +880,27 @@ export var imitateGoodsList = [
     {
       id: '04',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
-      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 100, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+    {
+      id: '05',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 0, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+    {
+      id: '06',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
       needGoldCoin: 500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
