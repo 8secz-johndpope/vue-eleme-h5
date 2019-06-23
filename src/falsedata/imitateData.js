@@ -815,3 +815,76 @@ export var imitatePostList = [
     isBusiness: 0, // 是否商家 0-是， 1-否
   },
 ];
+
+// 模拟商品分类列表
+export var imitateGoodsClassifyList = [
+    {
+      name: '精美饰品',
+      id: '01',
+    },{
+      name: '休闲零食',
+      id: '02',
+    },{
+      name: '运动健身',
+      id: '03',
+    },{
+      name: '美妆护肤',
+      id: '04',
+    },{
+      name: '鲜花玩偶',
+      id: '05',
+    },{
+      name: '手机数码',
+      id: '06',
+    },{
+      name: '卡券票券',
+      id: '07',
+    },{
+      name: '养生保健',
+      id: '08',
+    }
+];
+
+// 模拟商品列表
+export var imitateGoodsList = [
+    {
+      id: '01',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 100, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+    {
+      id: '02',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 100, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+    {
+      id: '03',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 100, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+    {
+      id: '04',
+      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      image: 'https://img10.360buyimg.com/n7/jfs/t21475/25/97766133/165868/d9274a4b/5afba03aN8b830b94.jpg',
+      needGoldCoin: 500,  //  需要金币
+      needMoney: 100, // 需要金额
+      stock: 1000, // 库存
+      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyId: '01',  // 所属类目Id
+    },
+];

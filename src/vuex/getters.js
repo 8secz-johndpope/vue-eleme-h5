@@ -53,4 +53,8 @@ export default {
   getImitateRecommendMenuList: (state) => state.imitateRecommendMenuList,
   // 模拟推荐话题列表
   getImitateTopicList: (state) => state.imitateTopicList,
+  // 模拟商品分类列表
+  getImitateGoodsClassifyList: (state) => state.imitateGoodsClassifyList,
+  // 模拟商品列表
+  getImitateGoodsList: (state) => state.imitateGoodsList,
 };
