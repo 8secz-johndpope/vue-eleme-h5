@@ -639,12 +639,12 @@ export default new Router({
       商城 -- 开始
     */
     {
-      path: '/shoppingMall/goodsList',
-      name: 'goodsList', // 商品列表
+      path: '/shoppingMall/shoppingMallIndex',
+      name: 'shoppingMallIndex', // 商品商城首页
       meta: {
         keepAlive: true // 需要缓存
       },
-      component: (resolve) => require(['view/shoppingMall-page/GoodsList'],resolve),
+      component: (resolve) => require(['view/shoppingMall-page/ShoppingMallIndex'],resolve),
     },
     {
       path: '/shoppingMall/goodsClassify/:classifyId',
@@ -661,6 +661,14 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/shoppingMall-page/GoodsDetail'],resolve),
+    },
+    {
+      path: '/shoppingMall/exchangeRecord/:userId',
+      name: 'exchangeRecord', // 兑换记录
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/shoppingMall-page/ExchangeRecord'],resolve),
     },
     /*
       商城 -- 结束

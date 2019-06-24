@@ -1,148 +1,147 @@
 <template>
-  <div class="recommend-page">
-    <van-search
-      v-model="keywords"
-      placeholder="请输入搜索关键词"
-      show-action
-      shape="round"
-      @search="onSearch"
-      class="recommend-van-search"
-    >
-      <div slot="action" @click="onSearch">搜索</div>
-    </van-search>
-    <!-- 空格 -->
-    <div class="top-space"></div>
-    <div class="content-box">
-      <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
-        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
-          <PostList :composition="getImitatePostList"></PostList>
-        </van-tab>
-      </van-tabs>
-      <div class="moreTabs" @click="allTabsShow = !allTabsShow">
-        <span v-show="allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-up" /></span>
-        <span v-show="!allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-down" /></span>
-      </div>
-      <div class="allTabs" v-show="allTabsShow">
-        <ul>
-          <li v-for="(item, index) in getImitateRecommendMenuList" :key="item.containerid">
-            <van-button :class=" index === activeTab ? 'recommendMenu-btn-active' : '' " type="default" size="small" class="recommendMenu-btn" @click="selectTab(item,index)">
-              {{item.name}}
-            </van-button>
-          </li>
-        </ul>
-      </div>
+  <div>
+    <van-nav-bar left-arrow @click-left="onClickLeft" :fixed="true" class="van-nav-bar"/>
+    <div class="goods">
+      <van-swipe class="goods-swipe" :autoplay="3000">
+        <van-swipe-item v-for="thumb in goods.thumb" :key="thumb" :height="300">
+          <img :src="thumb" >
+        </van-swipe-item>
+      </van-swipe>
+
+      <van-cell-group>
+        <van-cell>
+          <div class="goods-title">{{ goods.title }}</div>
+          <div class="goods-price">{{ formatPrice(goods.price) }}</div>
+        </van-cell>
+        <van-cell class="goods-express">
+          <van-col span="10">运费：{{ goods.express }}</van-col>
+          <van-col span="14">剩余：{{ goods.remain }}</van-col>
+        </van-cell>
+      </van-cell-group>
+
+      <van-cell-group class="goods-cell-group">
+        <van-cell value="进入橱窗" icon="shop-o" is-link :to="{ name: 'showcase', params: {'id':'01'} }">
+          <template slot="title">
+            <span class="van-cell-text">XXX的橱窗</span>
+            <van-tag class="goods-tag" type="danger">官方</van-tag>
+          </template>
+        </van-cell>
+        <van-cell title="发货地址" value="广东省·深圳市·罗湖区" is-link />
+        <van-collapse v-model="activeNames">
+          <van-collapse-item title="商品详情" name="1">
+            提供多样橱窗模板，快速搭建网上商城
+          </van-collapse-item>
+        </van-collapse>
+      </van-cell-group>
+
+
+      <van-goods-action>
+        <van-goods-action-big-btn icon="chat-o" to="/chat/userId">
+          客服
+        </van-goods-action-big-btn>
+        <van-goods-action-big-btn primary @click="toTaobao">
+          去淘宝看看
+        </van-goods-action-big-btn>
+      </van-goods-action>
     </div>
-    <!-- 撑开Fixednav挡住的位置 -->
-    <div class="space"></div>
-    <Fixednav></Fixednav>
   </div>
 </template>
 
 <script>
-import Fixednav from 'components/common_components/Fixed_nav';
-import PostList from 'components/common_components/PostList';
-import { mapGetters } from 'vuex';
+import {
+  Tag,
+  Col,
+  Icon,
+  Cell,
+  CellGroup,
+  Swipe,
+  Toast,
+  SwipeItem,
+  GoodsAction,
+  GoodsActionBigBtn,
+  GoodsActionMiniBtn,
+  Collapse,
+  CollapseItem,
+} from 'vant';
 export default {
-  name: 'recommend',
-  data () {
+  components: {
+    [Tag.name]: Tag,
+    [Col.name]: Col,
+    [Icon.name]: Icon,
+    [Cell.name]: Cell,
+    [CellGroup.name]: CellGroup,
+    [Swipe.name]: Swipe,
+    [SwipeItem.name]: SwipeItem,
+    [GoodsAction.name]: GoodsAction,
+    [GoodsActionBigBtn.name]: GoodsActionBigBtn,
+    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
+    [Collapse.name]: Collapse,
+    [CollapseItem.name]: CollapseItem,
+  },
+  data() {
     return {
-      uname: '',
-      activeTab: 0,
-      keywords: '', // 搜索关键词
-      allTabsShow: false, // 所有tabs
+      goods: {
+        title: '美国伽力果（约680g/3个）',
+        price: 2680,
+        express: '免运费',
+        remain: 19,
+        thumb: [
+          'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
+          'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
+        ]
+      },
+      activeNames: ['1'],
     };
   },
-  // beforeRouteLeave(to, from, next) {
-  //   // 设置下一个路由的 meta
-  //   to.meta.keepAlive = false;  // 让 下一个路由 不缓存，即刷新
-  //   next();
-  // },
-  mounted () {
-    this.activeTab = this.getRecommendHighLightTab;
-  },
-  computed: {
-    ...mapGetters([
-      'getImitatePostList', // 获取模拟帖子列表
-      'getRecommendHighLightTab', // 得到推荐页高亮tab
-      'getImitateRecommendMenuList', // 模拟推荐菜单列表
-    ]),
-  },
   methods: {
-    changeTab(index, title) {
-      this.$store.dispatch('setRcommendHighLightTab', index);
-      this.allTabsShow = false;
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
     },
-    onSearch () {
-      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
-      this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/result/'+this.keywords);
+    formatPrice() {
+      return '¥' + (this.goods.price / 100).toFixed(2);
     },
-    // 菜单选择
-    selectTab (item, index) {
-      this.activeTab = index;
-      this.allTabsShow = false;
-    },
-  },
-  components: {
-    Fixednav,
-    PostList,
+    toTaobao() {
+      Toast('跳转商品的淘宝链接');
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
-  .recommend-van-search{
-    position: fixed;
-    height: 1.333333rem;
-    z-index: 2;
-    widtH: 100%;
-    top: 0 !important;
+  .goods {
+    padding-bottom: 50px;
+    &-swipe {
+      img {
+        width: 100%;
+        height: 8.4rem;
+        display: block;
+      }
+    }
+    &-title {
+      font-size: 16px;
+    }
+    &-price {
+      color: #f44;
+    }
+    &-express {
+      color: #999;
+      font-size: 12px;
+      padding: 5px 15px;
+    }
+    &-cell-group {
+      margin: 15px 0;
+      .van-cell__value {
+        color: #999;
+      }
+    }
+    &-tag {
+      margin-left: 5px;
+    }
   }
-  .moreTabs{
-    position: fixed;
-    top: 1.333333rem;
-    right: 0;
-    width: 50px;
-    height: 1.173333rem;
-    z-index: 3;
-    background-color: #fff;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 0.373333rem;
-    color: #7d7e80;
+  .van-nav-bar{
+    background: none;
   }
-  .more-icon{
-    color: #7d7e80;
-  }
-  .allTabs{
-    position: fixed;
-    top: 2.5rem;
-    left: 0;
-    right: 0;
-    text-align: left;
-    padding: 10px 0.426667rem 5px 0.426667rem;
-    color: #333;
-    background-color: #fafafa;
-    z-index: 3;
-  }
-  .allTabs ul{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .allTabs ul li{
-    width: 25%;
-    text-align: center;
-    margin: 0 0 10px 0;
-  }
-  .recommendMenu-btn{
-    background-color: #eee;
-    width: 90%;
-  }
-  .recommendMenu-btn-active{
-    color: #ff8200;
-  }
-  .top-space{
-    height: 1.3rem
+  .van-nav-bar::after{
+    border-bottom-width: 0;
   }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <div class="taskCenter">
-    <van-nav-bar 
-      left-arrow 
-      @click-left="onClickLeft" 
-      title="任务中心" 
+    <van-nav-bar
+      left-arrow
+      @click-left="onClickLeft"
+      title="任务中心"
       right-text="兑换商城"
       @click-right="onClickRight"
-      fixed 
+      fixed
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
@@ -148,7 +148,7 @@ export default {
     },
     onClickRight() {
       this.$router.push({
-        name: 'goodsList',
+        name: 'shoppingMallIndex',
         params: '',
       })
     },
