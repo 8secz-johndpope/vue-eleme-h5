@@ -55,7 +55,7 @@
     <!-- 推荐商品展示区 标题-->
     <van-cell is-link value="更多" class="mgt15" @click="toGoodsClassify">
       <template slot="title">
-        <span class="classify-title">精选热销</span>
+        <span class="classify-title">精选爆款</span>
       </template>
     </van-cell>
     <!-- 推荐商品展示区 列表-->

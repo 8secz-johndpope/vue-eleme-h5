@@ -2,12 +2,12 @@
 <template>
   <div>
     <div v-for="(item, index) in goodsList" class="white-bg goods-item">
-      <div class="goods-item-box">
+      <div class="goods-item-box" @click="toGoodsDetail(item)">
         <img class="goods-image" :src="item.image"></img>
         <div class="van-ellipsis mgt5">{{item.name}}</div>
         <div class="mgt5 gold-color" v-if="item.needMoney > 0">{{item.needGoldCoin}}金币+{{item.needMoney}}元</div>
         <div class="mgt5 gold-color" v-else>{{item.needGoldCoin}}金币</div>
-        <van-button plain round type="warning" size="mini" class="mgt5" @click="exchange(item)">立即兑换</van-button>
+        <van-button plain round type="warning" size="mini" class="mgt5" @click.stop="exchange(item)">立即兑换</van-button>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-
+      currentCoin: 100, // 当前拥有金币
     };
   },
   mounted () {
@@ -39,7 +39,29 @@ export default {
   methods: {
     // 兑换商品
     exchange(item) {
-      
+      let that = this;
+      that.$dialog.confirm({
+        title: '提示',
+        message: '金币不足，前往任务中心赚钱积分',
+        confirmButtonText: '立即前往',
+        cancelButtonText: '取消'
+      }).then(() => {
+        that.$router.push( {
+          name: 'taskCenter',
+          params: ''
+        })
+      }).catch(() => {
+        // on cancel
+      });;
+    },
+    // 前往商品详情
+    toGoodsDetail (item) {
+      this.$router.push( {
+        name: 'goodsDetail',
+        params: {
+          goodsId: 'goodsId00001'
+        }
+      })
     }
   },
   watch: {
