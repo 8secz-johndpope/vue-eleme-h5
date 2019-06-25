@@ -851,7 +851,7 @@ export var imitateGoodsList = [
       id: '01',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
-      needGoldCoin: 500,  //  需要金币
+      needGoldCoin: 5000,  //  需要金币
       needMoney: 0, // 需要金额
       stock: 1000, // 库存
       belongsClassifyName: '精美饰品',  // 所属类目名称
@@ -871,7 +871,7 @@ export var imitateGoodsList = [
       id: '03',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
-      needGoldCoin: 500,  //  需要金币
+      needGoldCoin: 1500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
       belongsClassifyName: '精美饰品',  // 所属类目名称
@@ -881,7 +881,7 @@ export var imitateGoodsList = [
       id: '04',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
-      needGoldCoin: 500,  //  需要金币
+      needGoldCoin: 2500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
       belongsClassifyName: '精美饰品',  // 所属类目名称
@@ -891,7 +891,7 @@ export var imitateGoodsList = [
       id: '05',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
-      needGoldCoin: 500,  //  需要金币
+      needGoldCoin: 800,  //  需要金币
       needMoney: 0, // 需要金额
       stock: 1000, // 库存
       belongsClassifyName: '精美饰品',  // 所属类目名称

@@ -21,6 +21,7 @@
     </van-panel>
     <!-- 优惠券单元格 -->
     <Coupon :componentsType="1"></Coupon>
+    <van-cell title="兑换商城" is-link to="/shoppingMall/shoppingMallIndex" />
     <van-cell title="金币说明" is-link to="/document/goldCoinRechargeDesc" />
     <van-cell title="常见问题" is-link to="/document/rechargeHelp" />
   </div>

@@ -4,36 +4,20 @@
       left-arrow
       @click-left="onClickLeft"
       title="兑换商城"
-      right-text="品牌入驻"
+      right-text="兑换记录"
       @click-right="onClickRight"
       fixed
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
-    <!-- 个人信息 -->
-    <div class="pd15 personal-zone">
-      <div>
-        <span class="goldCoin">135</span>
-        <van-icon name="gold-coin-o" class="gold-color" />
-      </div>
-      <div>
-        <router-link :to="{ name: 'exchangeRecord', params: { userId: 'userId0001'} }">
-          <van-button plain round type="warning" size="mini" class="personal-btn" @click="exchange(item)">
-            <div class="flex-center">
-              <van-icon name="records" />
-              <span>兑换记录</span>
-            </div>
-          </van-button>
-        </router-link>
-        <router-link :to="{ name: 'taskCenter', params: {} }">
-          <van-button plain round type="warning" size="mini" class="personal-btn" @click="exchange(item)">
-            <div class="flex-center">
-              <van-icon name="gold-coin-o" />
-              <span>获取金币</span>
-            </div>
-          </van-button>
-        </router-link>
-      </div>
+    <!-- 当前金币 -->
+    <div class="flex-center pd15 userGold">
+      <router-link :to="{ name: 'taskCenter', params: {} }">
+        <div class="gold-color">
+          <van-icon name="gold-coin-o" class="gold-color" />
+          <span class="goldCoin">{{goldCoin}}</span>
+        </div>
+      </router-link>
     </div>
     <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
     <van-swipe :autoplay="3000">
@@ -82,6 +66,7 @@ export default {
   data () {
     return {
       searchValue: '',  // 搜索关键词
+      goldCoin: 100,
       swiptImages: [
         'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=32246159,1850476516&fm=26&gp=0.jpg',
         'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2412391619,1402500369&fm=26&gp=0.jpg',
@@ -104,9 +89,9 @@ export default {
     },
     onClickRight() {
       this.$router.push({
-        name: 'goodsClassify',
+        name: 'exchangeRecord',
         params: {
-          classifyId: 'classifyId0001',
+          userId: 'userId0001',
         },
       })
     },
@@ -137,23 +122,14 @@ export default {
     text-align: center;
     line-height: 30px;
   }
-  .classify-title{
-    font-size: 18px;
-  }
-  .personal-zone{
+  .userGold{
     background-color: #006599;
-    color: #fff;
+  }
+  .myGold{
     font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    color: #fff;
   }
   .goldCoin{
     font-size: 32px;
-  }
-  .personal-btn{
-    width: 90px;
-    height: 25px;
-    font-size: 14px;
   }
 </style>

@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      currentCoin: 100, // 当前拥有金币
+      currentCoin: 1000, // 当前拥有金币
     };
   },
   mounted () {
@@ -40,19 +40,33 @@ export default {
     // 兑换商品
     exchange(item) {
       let that = this;
-      that.$dialog.confirm({
-        title: '提示',
-        message: '金币不足，前往任务中心赚钱积分',
-        confirmButtonText: '立即前往',
-        cancelButtonText: '取消'
-      }).then(() => {
-        that.$router.push( {
-          name: 'taskCenter',
-          params: ''
-        })
-      }).catch(() => {
-        // on cancel
-      });;
+      if(item.needGoldCoin > that.currentCoin){
+        that.$dialog.confirm({
+          title: '提示',
+          message: '金币不足，前往任务中心赚钱积分',
+          confirmButtonText: '立即前往',
+          cancelButtonText: '取消'
+        }).then(() => {
+          that.$router.push( {
+            name: 'taskCenter',
+            params: ''
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }else {
+        that.$dialog.confirm({
+          title: '注意！',
+          message: '如果是虚拟商品，如兑换码，优惠券等，则不需要填写地址',
+        }).then(() => {
+          that.$router.push( {
+            name: 'receivingAddress',
+            params: ''
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }
     },
     // 前往商品详情
     toGoodsDetail (item) {
