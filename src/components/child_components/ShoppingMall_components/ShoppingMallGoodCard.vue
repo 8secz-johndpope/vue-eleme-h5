@@ -72,6 +72,7 @@ export default {
 
 <style lang="less" scoped>
   .goods-item{
+    display: flex;
     float: left;
     width: 33%;
     height: 5rem;

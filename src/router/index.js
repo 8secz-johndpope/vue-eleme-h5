@@ -282,14 +282,29 @@ export default new Router({
       },
       component: (resolve) => require(['view/setting-page/ApplyOpenShop'],resolve),
     },
-    // 实名认证
     {
       path: '/setting/certification',
-      name: 'certification',
+      name: 'certification',   // 实名认证
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/setting-page/Certification'],resolve),
+    },
+    {
+      path: '/setting/receivingAddress',
+      name: 'receivingAddress',  // 地址列表
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/ReceivingAddress'],resolve),
+    },
+    {
+      path: '/setting/addorUpAddress',
+      name: 'addorUpAddress',  // 新增或修改地址
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/AddorUpAddress'],resolve),
     },
     {
       path: '/setting/mywallet/rechargeRecord',
