@@ -547,6 +547,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/activity-page/TaskCenter'],resolve),
     },
+    {
+      path: '/activity/brandAlliance',
+      name: 'brandAlliance',  // 品牌联盟活动公告
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/activity-page/BrandAlliance'],resolve),
+    },
     /*
       活动页 -- 结束
     */

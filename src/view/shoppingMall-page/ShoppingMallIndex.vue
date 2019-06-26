@@ -22,7 +22,7 @@
     <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in swiptImages" :key="index" >
-        <router-link :to="{ name: 'goodsDetail', params: { goodsId: 'goodsId00001'} }">
+        <router-link :to="{ name: 'brandAlliance' }">
           <img v-lazy="image" class="swipe-img" />
         </router-link>
       </van-swipe-item>
