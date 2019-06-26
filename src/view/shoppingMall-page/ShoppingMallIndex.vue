@@ -4,7 +4,7 @@
       left-arrow
       @click-left="onClickLeft"
       title="兑换商城"
-      right-text="兑换记录"
+      right-text="我的兑换"
       @click-right="onClickRight"
       fixed
     />
@@ -89,7 +89,7 @@ export default {
     },
     onClickRight() {
       this.$router.push({
-        name: 'exchangeRecord',
+        name: 'myExchange',
         params: {
           userId: 'userId0001',
         },

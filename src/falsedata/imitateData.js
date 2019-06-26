@@ -851,6 +851,7 @@ export var imitateGoodsList = [
       id: '01',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 5000,  //  需要金币
       needMoney: 0, // 需要金额
       stock: 1000, // 库存
@@ -859,18 +860,20 @@ export var imitateGoodsList = [
     },
     {
       id: '02',
-      name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
+      name: '淘票票5元观影券',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 1, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
-      belongsClassifyName: '精美饰品',  // 所属类目名称
+      belongsClassifyName: '卡券票券',  // 所属类目名称
       belongsClassifyId: '01',  // 所属类目Id
     },
     {
       id: '03',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 1500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
@@ -881,16 +884,18 @@ export var imitateGoodsList = [
       id: '04',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 2500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存
-      belongsClassifyName: '精美饰品',  // 所属类目名称
-      belongsClassifyId: '01',  // 所属类目Id
+      belongsClassifyName: '卡券票券',  // 所属类目名称
+      belongsClassifyId: '02',  // 所属类目Id
     },
     {
       id: '05',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 800,  //  需要金币
       needMoney: 0, // 需要金额
       stock: 1000, // 库存
@@ -901,6 +906,7 @@ export var imitateGoodsList = [
       id: '06',
       name: 'SWAROVSKI(施华洛世奇) DUO EVIL EYE 玫瑰金色恶魔之眼手镯',
       image: 'https://img14.360buyimg.com/n7/jfs/t8089/8/1792179428/262248/7b596735/59bf8e42N3e97209f.jpg',
+      goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
       needGoldCoin: 500,  //  需要金币
       needMoney: 100, // 需要金额
       stock: 1000, // 库存

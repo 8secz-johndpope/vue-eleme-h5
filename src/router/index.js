@@ -678,6 +678,14 @@ export default new Router({
       component: (resolve) => require(['view/shoppingMall-page/GoodsDetail'],resolve),
     },
     {
+      path: '/shoppingMall/myExchange/:userId',
+      name: 'myExchange', // 我的兑换
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/shoppingMall-page/MyExchange'],resolve),
+    },
+    {
       path: '/shoppingMall/exchangeRecord/:userId',
       name: 'exchangeRecord', // 兑换记录
       meta: {
