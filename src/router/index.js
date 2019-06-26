@@ -291,7 +291,7 @@ export default new Router({
       component: (resolve) => require(['view/setting-page/Certification'],resolve),
     },
     {
-      path: '/setting/receivingAddress',
+      path: '/setting/receivingAddress/:userId',
       name: 'receivingAddress',  // 地址列表
       meta: {
         keepAlive: false // 不需要缓存

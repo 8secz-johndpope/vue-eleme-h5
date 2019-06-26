@@ -10,8 +10,8 @@
     <div class="top-space"></div>
     <img class="user-poster" src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png">
     <van-cell-group>
-      <van-cell title="兑换记录" icon="records" is-link @click="exchangeRecord" />
-      <van-cell title="收货地址" icon="location-o" is-link to="/setting/receivingAddress" />
+      <van-cell title="兑换记录" icon="records" is-link @click="toExchangeRecord" />
+      <van-cell title="收货地址" icon="location-o" is-link @click="toReceivingAddress" />
     </van-cell-group>
   </div>
 </template>
@@ -30,14 +30,24 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
-    exchangeRecord () {
+    // 前往兑换记录
+    toExchangeRecord () {
       this.$router.push({
         name: 'exchangeRecord',
         params: {
           userId: 'userId0001',
         },
       })
-    }
+    },
+    // 前往收货地址
+    toReceivingAddress () {
+      this.$router.push({
+        name: 'receivingAddress',
+        params: {
+          userId: 'userId0001',
+        },
+      })
+    },
   }
 };
 </script>

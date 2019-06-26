@@ -61,7 +61,7 @@ export default {
         }).then(() => {
           that.$router.push( {
             name: 'receivingAddress',
-            params: ''
+            params: { userId: item.userId },
           })
         }).catch(() => {
           // on cancel
@@ -72,9 +72,8 @@ export default {
     toGoodsDetail (item) {
       this.$router.push( {
         name: 'goodsDetail',
-        params: {
-          goodsId: 'goodsId00001'
-        }
+        params: { goodsId: 'userId0001' },
+        query: { goodsType: item.goodsType }
       })
     }
   },

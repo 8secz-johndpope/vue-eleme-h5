@@ -5,6 +5,8 @@
       title="收货地址列表"
       left-arrow
       @click-left="onClickLeft"
+      right-text="保存并使用"
+      @click-right="onClickRight"
     />
     <van-address-list
       v-model="chosenAddressId"
@@ -16,8 +18,6 @@
 </template>
 <script>
   import Vue from 'vue';
-  import { AddressList } from 'vant';
-  Vue.use(AddressList);
   export default {
     components:{
     },
@@ -49,6 +49,11 @@
     },
     methods: {
       onClickLeft(){
+        this.COMMONFUNC.goBack();
+      },
+      // 保存收货地址
+      onClickRight () {
+        this.$toast('保存并使用选中的收货地址')
         this.COMMONFUNC.goBack();
       },
       onAdd() {
