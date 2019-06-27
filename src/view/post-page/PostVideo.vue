@@ -29,11 +29,11 @@
     <!-- 底部下方描述区 -->
     <div class="pd15 white-color footer-zone">
       <!-- 商品橱窗 -->
-      <div class="vant-popup-bg showcase-zone" @click="showcasePopup = true">
-        <van-icon name="cart-o" class="gold-color cart-icon mgr5" />
-        <span class="showcaseDec">男神必备</span>
+      <div class="vant-popup-bg showcase-zone">
+        <van-icon name="cart-o" class="gold-color cart-icon mgr5" @click="showcasePopup = true" />
+        <span class="showcaseDec" @click="showcasePopup = true">男神必备</span>
       </div>
-      <div class="userName" @click="toUserZone">@大头儿子</div>
+      <div class="userName"><span @click="toUserZone">@大头儿子</span></div>
       <div class="video-desc">
         这是一段极其不通对的沙发发呆了解了解安抚；啊阿斯顿发阿暗示法啊方式阿发 啊所发生的发撒旦法大阿斯顿发
       </div>
