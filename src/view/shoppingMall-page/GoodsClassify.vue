@@ -8,7 +8,6 @@
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
-    <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
     <!-- 推荐商品展示区 列表-->
     <div>
       <ShoppingMallGoodCard :goodsList="getImitateGoodsList"></ShoppingMallGoodCard>
@@ -26,7 +25,6 @@ export default {
   },
   data () {
     return {
-      searchValue: '',  // 搜索关键词
     };
   },
   mounted () {

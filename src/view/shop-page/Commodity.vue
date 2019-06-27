@@ -1,6 +1,10 @@
 <template>
   <div>
-    <van-nav-bar left-arrow @click-left="onClickLeft" :fixed="true" class="van-nav-bar"/>
+    <van-nav-bar left-arrow @click-left="onClickLeft" @click-right="onClickRight" fixed :title="goods.title">
+      <van-icon name="ellipsis" slot="right" />
+    </van-nav-bar>
+    <!-- 撑开Fixednav挡住的位置 -->
+    <div class="top-space"></div>
     <div class="goods">
       <van-swipe class="goods-swipe" :autoplay="3000">
         <van-swipe-item v-for="thumb in goods.thumb" :key="thumb" :height="300">
@@ -44,39 +48,38 @@
         </van-goods-action-big-btn>
       </van-goods-action>
     </div>
+    <!-- 更多操作——举报 -->
+    <van-popup
+      v-model="moreOptPopup"
+      position="bottom"
+    >
+      <div class="select-content">
+        <p class="flex-center select-content-item red-color"
+        v-clipboard:copy="copyText"
+        v-clipboard:success="onCopySuccess"
+        v-clipboard:error="onCopyError">
+        复制商品淘宝链接
+      </p>
+      </div>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import {
-  Tag,
   Col,
-  Icon,
-  Cell,
-  CellGroup,
-  Swipe,
-  Toast,
-  SwipeItem,
   GoodsAction,
   GoodsActionBigBtn,
   GoodsActionMiniBtn,
-  Collapse,
-  CollapseItem,
 } from 'vant';
+import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
 export default {
   components: {
-    [Tag.name]: Tag,
     [Col.name]: Col,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
     [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
-    [Collapse.name]: Collapse,
-    [CollapseItem.name]: CollapseItem,
+    MoreOperate,
   },
   data() {
     return {
@@ -91,18 +94,33 @@ export default {
         ]
       },
       activeNames: ['1'],
+      moreOptPopup: false,  // 更多操作弹框
+      copyText: '用户填写的该商品的淘宝链接',  // 复制的内容
     };
   },
   methods: {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
+    onClickRight(){
+      this.moreOptPopup = true;
+    },
     formatPrice() {
       return '¥' + (this.goods.price / 100).toFixed(2);
     },
     toTaobao() {
-      Toast('跳转商品的淘宝链接');
-    }
+      this.$toast('跳转商品的淘宝链接');
+    },
+    // 复制成功
+    onCopySuccess: function (e) {
+      this.$toast('复制成功！')
+      this.moreOptPopup = false;
+    },
+    // 复制失败
+    onCopyError: function (e) {
+      this.$toast('复制失败！')
+      this.moreOptPopup = false;
+    },
   }
 };
 </script>
@@ -138,10 +156,13 @@ export default {
       margin-left: 5px;
     }
   }
-  .van-nav-bar{
-    background: none;
+  .select-content{
+    width: 100%;
+    text-align: center;
+    padding: 0 0 0.2rem 0;
   }
-  .van-nav-bar::after{
-    border-bottom-width: 0;
+  .select-content-item{
+    height: 1.2rem;
+    font-size: 0.426667rem;
   }
 </style>

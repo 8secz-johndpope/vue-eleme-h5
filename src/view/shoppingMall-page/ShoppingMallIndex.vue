@@ -19,7 +19,6 @@
         </div>
       </router-link>
     </div>
-    <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in swiptImages" :key="index" >
         <router-link :to="{ name: 'brandAlliance' }">
@@ -65,7 +64,6 @@ export default {
   },
   data () {
     return {
-      searchValue: '',  // 搜索关键词
       goldCoin: 100,
       swiptImages: [
         'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=32246159,1850476516&fm=26&gp=0.jpg',

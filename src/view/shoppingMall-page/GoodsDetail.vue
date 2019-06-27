@@ -33,6 +33,15 @@
       <van-cell-group title="实物商品收货信息" @click="toReceivingAddress" to="/setting/receivingAddress" v-if="goodsType === 0">
         <van-cell title="收货人" value="18124655384" icon="user-o"/>
         <van-cell title="收货地址：浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室" icon="location-o" is-link/>
+        <van-field
+          v-model="remarks"
+          label="留言备注"
+          type="textarea"
+          placeholder="选填，如对快递的特殊要求"
+          rows="1"
+          autosize
+          left-icon="comment-o"
+        />
       </van-cell-group>
       <!-- 虚拟商品收货地址 -->
       <van-cell-group title="虚拟商品收货信息" v-if="goodsType === 1">
@@ -80,6 +89,7 @@ export default {
       activeNames: ['1'],
       phone: '',  // 兑换手机号码
       goodsType: 0, // 商品类型 0-实物， 1-虚拟物品 虚拟物品不需要填写地址
+      remarks: '',  // 留言备注
     };
   },
   computed: {
