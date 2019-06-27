@@ -147,4 +147,13 @@
 .postVideo .vjs-poster{
   background-size: cover;
 }
+.postVideo .vjs-custom-skin > .video-js .vjs-big-play-button {
+   font-size: 2.5em !important;
+    height: 2em !important;
+    width: 2em !important;
+    line-height: 2em !important;
+    margin-top: -1em !important;
+    border-radius: 50% !important;
+    margin-left: -1em !important;
+}
 /* 帖子视频播放 -- 结束 */

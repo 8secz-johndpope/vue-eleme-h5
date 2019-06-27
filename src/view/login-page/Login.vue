@@ -98,7 +98,7 @@ export default {
       this.$router.push('/forgot')
     },
     onClickLeft(){
-      history.go(-2)
+      history.go(-1)
     },
     onClickRight(){
       this.$router.push('/index')
