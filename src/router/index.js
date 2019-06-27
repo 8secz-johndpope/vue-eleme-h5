@@ -654,6 +654,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/post-page/PostDetail'],resolve),
     },
+    {
+      path: '/post/postVideo/:postId',
+      name: 'postVideo', // 帖子详情
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostVideo'],resolve),
+    },
     /*
       帖子 微博 -- 结束
     */

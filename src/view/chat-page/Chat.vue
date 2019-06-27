@@ -12,39 +12,37 @@
     </div>
     <div :class=" showEmoji ? 'fixed-content-box' : 'fixed-content-box-large' ">
       <!-- 对话框高度 -->
-     <div class="xw-content" ref="xwBody">
-      <div class="xw-chat-wrap">
-       <ul>
-        <li v-for="messageList in records">
-         <div v-if="messageList.type==1">
-          <div class="xw-chat-time">
-           {{messageList.time}}
-          </div>
-          <div class="xw-chat-servicer">
-           <div class="xw-servicer-avantar-wrap">
-            <img :src="userImg1" class="xw-servicer-avantar" />
-           </div>
-           <div class="xw-chat-msg">
-            <span v-html="replaceFace(messageList.content)"></span>
-           </div>
-          </div>
-         </div>
-         <!-- 用户发送的消息模板-->
-         <div v-else="">
-          <div class="xw-chat-time">
-           {{messageList.time}}
-          </div>
-          <div class="xw-chat-customer">
-           <div class="xw-customer-avantar-wrap">
-            <img :src="userImg2" class="xw-customer-avantar" />
-           </div>
-           <div class="xw-chat-msg" style="display:inline-block">
-            <span v-html="replaceFace(messageList.content)"></span>
-           </div>
-          </div>
-         </div> </li>
-       </ul>
-      </div>
+      <div class="xw-content" ref="xwBody">
+        <div class="xw-chat-wrap">
+          <ul>
+            <li v-for="messageList in records">
+              <!-- 自己发送消息 -->
+              <div v-if="messageList.type==1">
+                <div class="xw-chat-time">{{messageList.time}}</div>
+                <div class="xw-chat-servicer">
+                   <div class="xw-servicer-avantar-wrap">
+                     <img :src="userImg1" class="xw-servicer-avantar" />
+                   </div>
+                   <div class="xw-chat-msg">
+                     <span v-html="replaceFace(messageList.content)"></span>
+                   </div>
+                </div>
+              </div>
+              <!-- 用户发送的消息模板-->
+              <div v-else="">
+                 <div class="xw-chat-time">{{messageList.time}}</div>
+                 <div class="xw-chat-customer">
+                   <div class="xw-customer-avantar-wrap">
+                     <img :src="userImg2" class="xw-customer-avantar" />
+                   </div>
+                   <div class="xw-chat-msg" style="display:inline-block">
+                      <span v-html="replaceFace(messageList.content)"></span>
+                   </div>
+                  </div>
+               </div>
+             </li>
+          </ul>
+        </div>
      </div>
      <!-- 提示音 -->
      <audio style="display:none" preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio" src="https://github.com/yiluxiangbei87110/vue-chat/blob/master/static/audio/msg.mp3">
@@ -118,7 +116,7 @@
         records: [{
           type: 1,
           time: new Date().toLocaleTimeString(),
-          content: '您好！欢迎来到小薇客服，请问有什么能帮到您？如有疑问请在线咨询或者拨打400-926-2012咨询！感谢您的支持! '
+          content: '如果对方未关注你，你只能发送最多三条消息，需要对方关注或者回复后才能恢复正常聊天！'
           },
           {
             type: 2,

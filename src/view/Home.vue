@@ -28,27 +28,6 @@
         </div>
     </div>
     <div class="content-box">
-      <!-- 精彩视频 -->
-      <van-cell value="更多" is-link :to="'/recommend'" class="home-van-cell mgt10">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">精彩热点</span>
-          </div>
-        </template>
-      </van-cell>
-      <!-- 视频 列表，默认四篇 -->
-      <div class="flex-space-around white-bg pd10">
-        <div class="video-list-item" v-for="(item, index) in getImitateVideoList">
-          <div class="img-zone" v-bind:style="{backgroundImage:'url(' + item.videopic + ')' }"  @click="openVideoPop">
-            <div class="img-zone-dec">{{item.title}}</div>
-          </div>
-          <div class="flex-space-between card-desc">
-            <span>@{{item.author}}</span>
-            <span @click="addMyLike()" class="myLike"><i class="fa fa-heart-o" :class="{ 'red-color': item.isLike }" aria-hidden="true"></i> {{COMMONFUNC.formatterW(item.likers)}}</span><!-- 收藏 -->
-          </div>
-        </div>
-      </div>
       <!-- 优选文章 -->
       <van-cell value="更多" is-link :to="'/article/articleList'" class="home-van-cell mgt10">
         <template slot="title">
@@ -90,10 +69,6 @@
         <ImgCard :composition="getImitateVideoList"></ImgCard>
       </div>
     </div>
-    <!-- 视频弹框 -->
-    <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
-      <VideoModalCard ref="childVideoCard" :playerOptions="playerOptions" :currentPlayData="currentPlayData" @on-close-videoPop="closeVideoPop"></VideoModalCard>
-    </van-popup>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="space"></div>
     <!-- 固定标签页 -->
@@ -104,9 +79,7 @@
 import Fixednav from 'components/common_components/Fixed_nav';
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
-import GoodsCard from 'components/common_components/GoodsCard';
 import ArticleCard from 'components/common_components/ArticleCard';
-import VideoModalCard from 'components/common_components/VideoModalCard';
 import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
 import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
 import { mapGetters } from 'vuex';
@@ -117,47 +90,12 @@ export default {
     Fixednav,
     Comments,
     ShareBox,
-    GoodsCard,
     ArticleCard,
-    VideoModalCard,
     EncyclopediasCard,
     ImgCard,
   },
   data () {
     return {
-      playerOptions: {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources: [{
-          type: "video/mp4",
-          src: "" //你的视频地址（必填）
-        }],
-        poster: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg", //你的封面地址
-        width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-      },
-      currentPlayData: {
-        content: '这是视频文本',  // 复制的视频文本
-        isLike: true,  // 是否喜欢
-        likers: 10001,  // 喜欢数
-        commentsNum: 10001,  // 评论数
-        targetId: '', // 选中的id值
-        itemIsTop: 1, // 子项是否置顶中的置顶
-        isShowRoofPlacement: false, // 是否在分享弹框显示置顶按钮
-      },
-      videoPopShow: false, // 视频弹框
       swiptImages: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
@@ -210,56 +148,6 @@ export default {
     ])
   },
   methods: {
-    // 打开弹出层
-    openVideoPop () {
-      let that = this;
-      const c_toast = this.$toast.loading({
-        duration: 0,       // 持续展示 toast
-        forbidClick: true, // 禁用背景点击
-        loadingType: 'spinner',
-        message: '加载中...'
-      });
-      setTimeout( () => {
-        that.videoPopShow = true;
-        that.playerOptions.sources[0].src =  "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //你的视频地址（必填）
-        that.$toast.clear();
-        // myPlayer.requestFullscreen(); // 全屏
-        // myPlayer.exitFullscreen();  // 退出全屏
-        setTimeout( () => {
-          that.$refs.childVideoCard.videoPlay();  // 触发子组件的方法
-        },300)
-      },1000)
-    },
-    // 点击遮罩层 关闭弹出层
-    closeVideoPop (params) {
-      this.videoPopShow = params;
-    },
-    // 加入喜欢
-    addMyLike: function (index) {
-      let that = this;
-      if(that.isLogin){
-        if (that.composition[index].isLike) {
-          that.composition[index].isLike = false;
-          that.composition[index].likers -= 1;
-        }else{
-          that.composition[index].isLike = true;
-          that.composition[index].likers += 1;
-          that.$toast('成功收藏！');
-        }
-      }else {
-        that.$dialog.confirm({
-          title: '未登录',
-          message: '登录后可收藏至您的喜欢',
-          confirmButtonText: '立即登录'
-        }).then(() => {
-          that.$router.push({  //核心语句
-            path:'/login'   //跳转的路径
-          })
-        }).catch(() => {
-          // on cancel
-        });
-      }
-    },
   },
 };
 </script>
@@ -270,21 +158,6 @@ export default {
     background-color: rgba(0,0,0,.7);
     display: flex;
     align-items: center;
-  }
-  .search-box{
-    background-color: #FE7C6C;
-    padding: 0.186667rem 0.266667rem
-  }
-  .item-linear{
-    background: linear-gradient(to right, #f38181, #e46d27, #f31802);
-    border: 0;
-    margin: 0.312rem 0.156rem 0 0.156rem;
-    width: 2.57rem;
-    padding: 0 0.156rem;
-    height: 1.094rem;
-    line-height: 1.094rem;
-  }
-  .content-box{
   }
   .classify-zone{
     padding: 0.266667rem 0 0 0;
@@ -309,35 +182,5 @@ export default {
   }
   .home-van-cell{
     padding: 0.266667rem 10px 0 10px;
-  }
-  .video-list-item{
-    height: 5rem;
-    width: 100%;
-    box-shadow: 3px 3px 2px #ddd;
-    margin: 0 0 10px 0
-  }
-  .img-zone{
-    height: 4.3rem;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    color: #fff;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  .img-zone-dec{
-    position: absolute;
-    font-size: 0.32rem;
-    height: 0.8rem;
-    width: 100%;
-    bottom: 0;
-    padding: 0 0.266667rem;
-    align-items: center;
-    display: flex;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(3%,transparent),color-stop(98%,rgba(0,0,0,.2)));
-    background-image: linear-gradient(-180deg,transparent 3%,rgba(0,0,0,.2) 98%);
-  }
-  .card-desc{
-    padding: 0.133333rem 0.266667rem;
   }
 </style>

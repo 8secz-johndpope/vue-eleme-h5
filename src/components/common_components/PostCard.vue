@@ -30,7 +30,7 @@
       </li>
     </ul>
     <!-- 视频区域 -->
-    <div class="video-zone" v-if="postObj.postType === 2">
+    <div class="video-zone" v-if="postObj.postType === 2" @click.stop="toPostVideo(postObj)">
       <img :src="postObj.videoImg" class="video-img">
       <van-icon name="play-circle-o" class="video-play-icon" />
       <div class="flex-space-between video-info">
@@ -210,6 +210,10 @@ export default {
     // 前往帖子分类
     toPostClassify (item) {
       this.$router.push({ name: 'postClassify', params: { containerid: item.containerid }})
+    },
+    // 前往视频播放
+    toPostVideo (item) {
+      this.$router.push({ name: 'postVideo', params: { postId: item.postId }})
     },
     // 打开橱窗
     openShowcase () {
