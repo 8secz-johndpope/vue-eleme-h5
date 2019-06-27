@@ -2,7 +2,7 @@
   <!-- 顶部 -->
   <div class="postVideo">
     <van-nav-bar left-arrow @click-left="onClickLeft" fixed class="van-nav-bar" />
-    <van-popup v-model="videoPopShow" :close-on-click-overlay="false">
+    <div class="postVideo-zone">
       <div class="videoPop">
         <video-player
           class="vjs-custom-skin"
@@ -25,7 +25,7 @@
           >
         </video-player>
       </div>
-    </van-popup>
+    </div>
     <!-- 底部下方描述区 -->
     <div class="pd15 white-color footer-zone">
       <!-- 商品橱窗 -->
@@ -84,18 +84,8 @@
     </van-popup>
     <!-- 商品展示页 -->
     <van-actionsheet v-model="showcasePopup" title="XXX的推荐">
-      <!-- 商品组件 -->
-      <GoodsCard></GoodsCard>
-      <div class="btn-zone">
-        <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
-          <van-button size="large" round type="danger">去看看</van-button>
-        </router-link>
-      </div>
-      <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
-        <p class="flex-center goShowcase red-color">
-          XXX的商品橱窗
-        </p>
-      </router-link>
+      <!-- 弹框商品组件 -->
+      <PopupCommity></PopupCommity>
     </van-actionsheet>
   </div>
 </template>
@@ -103,7 +93,7 @@
 <script>
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
-import GoodsCard from 'components/common_components/GoodsCard';
+import PopupCommity from 'components/common_components/PopupCommity';
 
 import CommentsInputBox from 'components/child_components/Comments_components/CommentsInputBox';
 import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
@@ -116,7 +106,7 @@ export default {
   components: {
     ShareBox,
     Comments,
-    GoodsCard,
+    PopupCommity,
     CommentsInputBox,
     MoreOperate,
     CommentsBottomGuide,
@@ -314,6 +304,27 @@ export default {
   }
   .van-nav-bar .van-icon {
     color: #fff;
+  }
+  .postVideo-zone{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+  .videoPop{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: #000;
+    -webkit-transition: .3s ease-out;
+    transition: .3s ease-out;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
   }
   .footer-zone{
     position: fixed;

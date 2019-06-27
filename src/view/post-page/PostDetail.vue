@@ -55,18 +55,8 @@
     </van-popup>
     <!-- 商品展示页 -->
     <van-actionsheet v-model="showcasePopup" title="XXX的推荐">
-      <!-- 商品组件 -->
-      <GoodsCard></GoodsCard>
-      <div class="btn-zone">
-        <router-link :to="{ name: 'commodity', params: {'id':'01'} }" >
-          <van-button size="large" round type="danger">去看看</van-button>
-        </router-link>
-      </div>
-      <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
-        <p class="flex-center goShowcase red-color">
-          XXX的商品橱窗
-        </p>
-      </router-link>
+      <!-- 弹框商品组件 -->
+      <PopupCommity></PopupCommity>
     </van-actionsheet>
   </div>
 </template>
@@ -74,7 +64,7 @@
 <script>
 import ShareBox from 'components/common_components/ShareBox';
 import Comments from 'components/common_components/Comments';
-import GoodsCard from 'components/common_components/GoodsCard';
+import PopupCommity from 'components/common_components/PopupCommity';
 import PostCard from 'components/common_components/PostCard';
 import UserList from 'components/common_components/UserList';
 
@@ -88,7 +78,7 @@ export default {
   components : {
     ShareBox,
     Comments,
-    GoodsCard,
+    PopupCommity,
     PostCard,
     UserList,
     CommentsInputBox,
@@ -168,12 +158,5 @@ export default {
   .comments-box{
     height: 11rem;
     overflow: scroll;
-  }
-  .btn-zone{
-    padding: 0.2rem 1rem;
-  }
-  .goShowcase{
-    padding: 0.2rem 0 0.6rem 0;
-    font-size: 16px;
   }
 </style>

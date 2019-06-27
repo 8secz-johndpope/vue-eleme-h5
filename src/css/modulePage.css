@@ -144,13 +144,6 @@
 /* 活动页 -- 结束 */
 
 /* 帖子视频播放 -- 开始 */
-.postVideo .van-overlay{
-  background-color: #000;
-  z-index: 2 !important;
-}
-.postVideo .van-popup{
-  z-index: 3 !important;
-}
 .postVideo .vjs-poster{
   background-size: cover;
 }
