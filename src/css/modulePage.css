@@ -148,6 +148,9 @@
   background-color: #000;
   z-index: 2 !important;
 }
+.postVideo .van-popup{
+  z-index: 3 !important;
+}
 .postVideo .vjs-poster{
   background-size: cover;
 }

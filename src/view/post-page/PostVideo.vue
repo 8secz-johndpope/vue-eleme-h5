@@ -33,7 +33,7 @@
         <van-icon name="cart-o" class="gold-color cart-icon mgr5" />
         <span class="showcaseDec">男神必备</span>
       </div>
-      <div class="userName">@大头儿子</div>
+      <div class="userName" @click="toUserZone">@大头儿子</div>
       <div class="video-desc">
         这是一段极其不通对的沙发发呆了解了解安抚；啊阿斯顿发阿暗示法啊方式阿发 啊所发生的发撒旦法大阿斯顿发
       </div>
@@ -41,20 +41,21 @@
     <!-- 右侧操作区 -->
     <div class="white-color right-zone">
       <div class="mgt10 user-van-avatar">
-        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1735688044,4235283864&fm=26&gp=0.jpg" class="van-avatar"/>
-        <div class="addMyLike-icon"><van-icon name="add" class="red-color" /></div>
+        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1735688044,4235283864&fm=26&gp=0.jpg" class="van-avatar" @click="toUserZone" />
+        <div class="addMyLike-icon" v-if=" postInfo.isFollow === 1 "><van-icon name="add" class="red-color" @click.stop="addFollow" /></div>
       </div>
       <div class="mgt15" @click="addMyLike">
-        <div><van-icon name="like-o" class="right-zone-icon" /></div>
-        <div>2.1w</div>
+        <div v-if=" postInfo.isLike === 0 "><van-icon name="like-o" class="red-color right-zone-icon" /></div>
+        <div v-else><van-icon name="like-o" class="right-zone-icon" /></div>
+        <div>{{postInfo.likers}}</div>
       </div>
       <div class="mgt15" @click="openCommentsPop">
         <div><van-icon name="chat-o" class="right-zone-icon" /></div>
-        <div>2.1w</div>
+        <div>{{postInfo.commentsNum}}</div>
       </div>
       <div class="mgt15" @click="share">
         <div><van-icon name="share" class="right-zone-icon" /></div>
-        <div>2.1w</div>
+        <div>{{postInfo.forwardNum}}</div>
       </div>
     </div>
     <!-- 分享选项 -->
@@ -127,6 +128,7 @@ export default {
   },
   data () {
     return {
+      postInfo: {}, //帖子信息
       optObj: {}, // 操作对象
       replyWho: '', // 回复谁
       videoPopShow: true,
@@ -162,12 +164,22 @@ export default {
   },
 
   mounted () {
-
+    this.postInfo = this.getImitatePostList[2]
   },
   beforeDestroy () {
 
   },
   computed: {
+    ...mapGetters([
+      'getImitatePostList', // 获取模拟帖子列表
+    ]),
+    isLogin () {
+      if(this.COMMONFUNC.getCookieValue("token") == 'isLogin'){
+        return true;
+      }else {
+        return false;
+      }
+    },
   },
   methods: {
     onClickLeft(){
@@ -179,7 +191,7 @@ export default {
       myPlayer.play();
     },
     // 点击分享
-    share (index) {
+    share () {
       this.sharePopShow = true;
     },
     // 点击评论
@@ -187,17 +199,28 @@ export default {
       this.commentsShow = true;
     },
     // 加入喜欢
-    addMyLike: function (index) {
+    addMyLike: function () {
       let that = this;
       if(that.isLogin){
-        if (that.composition[index].isLike) {
-          that.composition[index].isLike = false;
-          that.composition[index].likers -= 1;
+        if (that.postInfo.isLike === 0) {
+          that.postInfo.isLike = 1;
+          that.$toast('取消收藏！');
         }else{
-          that.composition[index].isLike = true;
-          that.composition[index].likers += 1;
+          that.postInfo.isLike = 0;
           that.$toast('成功收藏！');
         }
+      }else {
+        that.$router.push({  //核心语句
+          path:'/login'   //跳转的路径
+        })
+      }
+    },
+    // 加入喜欢
+    addFollow: function () {
+      let that = this;
+      if(that.isLogin && that.postInfo.isFollow === 1){
+        that.postInfo.isFollow = 0;
+        that.$toast('成功关注！');
       }else {
         that.$router.push({  //核心语句
           path:'/login'   //跳转的路径
@@ -233,6 +256,10 @@ export default {
     sharePost (sharePopup, itemIsTop) {
       this.sharePopup = sharePopup;
       // this.itemIsTop = this.composition[index].isTop;
+    },
+    // 前往用户主页
+    toUserZone () {
+      this.$router.push({ name: 'userzone', params: '' })
     },
     onPlayerFullScreenchange (player) {
       console.log("onPlayerFullScreenchange");
@@ -291,7 +318,7 @@ export default {
   .footer-zone{
     position: fixed;
     bottom: 0;
-    z-index: 2002;
+    z-index: 3;
     width: 70%;
     height: 3.2rem;
     line-height: 28px;
@@ -309,7 +336,7 @@ export default {
     right: 10px;
     width: 1rem;
     height: 6.9rem;
-    z-index: 2002;
+    z-index: 3;
     text-align: center;
     font-size: 14px;
   }

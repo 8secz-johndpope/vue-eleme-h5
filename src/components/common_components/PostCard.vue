@@ -158,17 +158,9 @@ export default {
           that.$toast('关注成功！');
         }
       }else {
-        that.$dialog.confirm({
-          title: '未登录',
-          message: '请先登录',
-          confirmButtonText: '立即登录'
-        }).then(() => {
-          that.$router.push({  //核心语句
-            path:'/login'   //跳转的路径
-          })
-        }).catch(() => {
-          // on cancel
-        });
+        that.$router.push({  //核心语句
+          path:'/login'   //跳转的路径
+        })
       }
     },
     // 帮顶
@@ -180,17 +172,9 @@ export default {
           that.$toast('帮顶成功，将会有更多的人看到哦！');
         }
       }else {
-        that.$dialog.confirm({
-          title: '未登录',
-          message: '请先登录',
-          confirmButtonText: '立即登录'
-        }).then(() => {
-          that.$router.push({  //核心语句
-            path:'/login'   //跳转的路径
-          })
-        }).catch(() => {
-          // on cancel
-        });
+        that.$router.push({  //核心语句
+          path:'/login'   //跳转的路径
+        })
       }
     },
     // 图片预览
