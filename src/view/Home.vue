@@ -102,27 +102,42 @@ export default {
       ],
       menuList: [
         {
-          levelOneName: '恋爱话术', // 分类一级名称
+          levelOneName: '恋爱话术', // 分类名称
           linkUrlName: 'talkingLibrary',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '精选文章', // 分类一级名称
+          levelOneName: '精选文章', // 分类名称
           linkUrlName: 'articleList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '情感百科', // 分类一级名称
+          levelOneName: '情感百科', // 分类名称
           linkUrlName: 'encyclopediasList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
-        // {
-        //   levelOneName: '情感问答', // 分类一级名称
-        //   linkUrlName: 'talkingLibrary',
-        //   img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
-        // },
         {
-          levelOneName: '实用工具', // 分类一级名称
+          levelOneName: 'AI导师', // 分类名称
+          linkUrlName: 'AITeachingChatList',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '问答专区', // 分类名称
+          linkUrlName: 'questionAndAnswer',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '任务中心', // 分类名称
+          linkUrlName: 'taskCenter',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '兑换商城', // 分类名称
+          linkUrlName: 'shoppingMallIndex',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '实用工具', // 分类名称
           linkUrlName: 'toolList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },

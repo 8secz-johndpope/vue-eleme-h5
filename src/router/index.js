@@ -506,7 +506,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/Encyclopedias-page/EncyclopediasList'],resolve),
+      component: (resolve) => require(['view/encyclopedias-page/EncyclopediasList'],resolve),
     },
     {
       path: '/encyclopedias/classify/:id',
@@ -514,7 +514,7 @@ export default new Router({
       meta: {
         keepAlive: true // 需要缓存
       },
-      component: (resolve) => require(['view/Encyclopedias-page/EncyclopediasClassification'],resolve),
+      component: (resolve) => require(['view/encyclopedias-page/EncyclopediasClassification'],resolve),
     },
     {
       path: '/encyclopedias/article/:id',
@@ -522,7 +522,7 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/Encyclopedias-page/Encyclopedias'],resolve),
+      component: (resolve) => require(['view/encyclopedias-page/Encyclopedias'],resolve),
     },
     /*
       情感百科 -- 结束
@@ -712,5 +712,21 @@ export default new Router({
     /*
       商城 -- 结束
     */
+
+    /*
+      问答专区 -- 开始
+    */
+    {
+      path: '/questionAndAnswer/index',
+      name: 'questionAndAnswer', // 问答专区首页
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/QuestionAndAnswer'],resolve),
+    },
+    /*
+      问答专区 -- 结束
+    */
+
   ]
 });
