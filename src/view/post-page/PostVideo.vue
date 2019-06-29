@@ -1,7 +1,7 @@
 <template>
   <!-- 顶部 -->
   <div class="postVideo">
-    <van-nav-bar left-arrow @click-left="onClickLeft" fixed class="van-nav-bar" />
+    <van-nav-bar left-arrow @click-left="onClickLeft" fixed />
     <div class="postVideo-zone">
       <div class="videoPop">
         <video-player
@@ -45,7 +45,7 @@
         <div class="addMyLike-icon" v-if=" postInfo.isFollow === 1 "><van-icon name="add" class="red-color" @click.stop="addFollow" /></div>
       </div>
       <div class="mgt15" @click="addMyLike">
-        <div v-if=" postInfo.isLike === 0 "><van-icon name="like-o" class="red-color right-zone-icon" /></div>
+        <div v-if=" postInfo.isLike === 0 "><van-icon name="like" class="red-color right-zone-icon" /></div>
         <div v-else><van-icon name="like-o" class="right-zone-icon" /></div>
         <div>{{postInfo.likers}}</div>
       </div>
@@ -301,9 +301,6 @@ export default {
   }
   .van-nav-bar::after{
     border-bottom-width: 0;
-  }
-  .van-nav-bar .van-icon {
-    color: #fff;
   }
   .postVideo-zone{
     position: fixed;

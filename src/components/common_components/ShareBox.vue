@@ -17,13 +17,13 @@
       <i class="fa fa-star fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>收藏</p>
     </div> -->
-    <div class="shareBox-item"
+    <!-- <div class="shareBox-item"
       v-clipboard:copy="copyContent"
       v-clipboard:success="onCopy"
-      v-clipboard:error="onError"><!-- 复制 -->
+      v-clipboard:error="onError">
       <i class="fa fa-clone fa-2x shareBox-icon" aria-hidden="true"></i>
       <p>复制链接</p>
-    </div>
+    </div> -->
     <router-link :to="{ name: 'accusation', params: {} }" v-if="!isShowRoofPlacementChild">
       <div class="shareBox-item">
         <i class="fa fa-exclamation-triangle fa-2x shareBox-icon" aria-hidden="true"></i>

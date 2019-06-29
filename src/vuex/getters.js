@@ -57,4 +57,6 @@ export default {
   getImitateGoodsClassifyList: (state) => state.imitateGoodsClassifyList,
   // 模拟商品列表
   getImitateGoodsList: (state) => state.imitateGoodsList,
+  // 模拟问题列表
+  getImitateQuestionList: (state) => state.imitateQuestionList,
 };

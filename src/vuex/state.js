@@ -4,7 +4,7 @@ import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } fro
 import { imitateUser, imitateUserList, imitateConversation, imitateArticleList, imitateMenu, imitateMessage,
          imitateComments, imitateMyPraiseAndComments, imitateVideoList, imitateEncyclopediasClassfication,
          imitateEncyclopediasList, imitatePostList, imitateRecommendMenuList, imitateTopicList, 
-         imitateGoodsClassifyList, imitateGoodsList,
+         imitateGoodsClassifyList, imitateGoodsList, imitateQuestionList
        } from '../falsedata/imitateData.js';
 
 export default {
@@ -70,4 +70,6 @@ export default {
   imitateGoodsClassifyList,
   // 模拟商品列表
   imitateGoodsList,
+  // 模拟问题列表
+  imitateQuestionList,
 };

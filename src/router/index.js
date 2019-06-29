@@ -89,7 +89,7 @@ export default new Router({
     },
     // 转发微博
     {
-      path: '/retransmission/:postId',
+      path: '/publish/retransmission/:postId',
       name: 'retransmission',
       meta: {
         keepAlive: false // 不需要缓存
@@ -723,6 +723,22 @@ export default new Router({
         keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/questionAndAnswer-page/QuestionAndAnswer'],resolve),
+    },
+    {
+      path: '/questionAndAnswer/questionList',
+      name: 'questionList',  // 回答
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/QuestionList'],resolve),
+    },
+    {
+      path: '/questionAndAnswer/answer/:postId',
+      name: 'answer',  // 回答
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/Answer'],resolve),
     },
     /*
       问答专区 -- 结束

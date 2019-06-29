@@ -1,148 +1,89 @@
 <template>
-  <div class="recommend-page">
-    <van-search
-      v-model="keywords"
-      placeholder="请输入搜索关键词"
-      show-action
-      shape="round"
-      @search="onSearch"
-      class="recommend-van-search"
-    >
-      <div slot="action" @click="onSearch">搜索</div>
-    </van-search>
+  <div class="questionAndAnswer-page">
+    <van-nav-bar title="问答专区" @click-left="onClickLeft" left-arrow fixed>
+      <van-icon name="search" slot="right" />
+    </van-nav-bar>
     <!-- 空格 -->
     <div class="top-space"></div>
-    <div class="content-box">
-      <van-tabs v-model="activeTab" @click="changeTab" sticky swipeable>
-        <van-tab :title="item.name" v-for="(item,index) in getImitateRecommendMenuList">
-          <PostList :composition="getImitatePostList"></PostList>
-        </van-tab>
-      </van-tabs>
-      <div class="moreTabs" @click="allTabsShow = !allTabsShow">
-        <span v-show="allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-up" /></span>
-        <span v-show="!allTabsShow" class="flex-center more-icon">更多<van-icon name="arrow-down" /></span>
-      </div>
-      <div class="allTabs" v-show="allTabsShow">
-        <ul>
-          <li v-for="(item, index) in getImitateRecommendMenuList" :key="item.containerid">
-            <van-button :class=" index === activeTab ? 'recommendMenu-btn-active' : '' " type="default" size="small" class="recommendMenu-btn" @click="selectTab(item,index)">
-              {{item.name}}
-            </van-button>
-          </li>
-        </ul>
-      </div>
+    <!-- 菜单分类 -->
+    <div class="flex-wrap white-bg classify-zone">
+        <div class="classify-item" v-for="(menuItem, index) in menuList">
+          <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
+            <div>
+              <img :src="menuItem.img"  class="van-avatar" />
+            </div>
+            <div>
+              {{menuItem.levelOneName}}
+            </div>
+          </router-link>
+        </div>
     </div>
-    <!-- 撑开Fixednav挡住的位置 -->
-    <div class="space"></div>
-    <Fixednav></Fixednav>
+    <PostList :composition="getImitatePostList"></PostList>
   </div>
 </template>
 
 <script>
-import Fixednav from 'components/common_components/Fixed_nav';
 import PostList from 'components/common_components/PostList';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'recommend',
+  name: 'questionAndAnswer',
   data () {
     return {
-      uname: '',
-      activeTab: 0,
       keywords: '', // 搜索关键词
-      allTabsShow: false, // 所有tabs
+      menuList: [
+        {
+          levelOneName: '答题', // 分类名称
+          linkUrlName: 'questionList',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '提问', // 分类名称
+          linkUrlName: 'articleList',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '我的提问', // 分类名称
+          linkUrlName: 'encyclopediasList',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+        {
+          levelOneName: '我的回答', // 分类名称
+          linkUrlName: 'AITeachingChatList',
+          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+        },
+      ]
     };
   },
-  // beforeRouteLeave(to, from, next) {
-  //   // 设置下一个路由的 meta
-  //   to.meta.keepAlive = false;  // 让 下一个路由 不缓存，即刷新
-  //   next();
-  // },
   mounted () {
-    this.activeTab = this.getRecommendHighLightTab;
   },
   computed: {
     ...mapGetters([
       'getImitatePostList', // 获取模拟帖子列表
-      'getRecommendHighLightTab', // 得到推荐页高亮tab
-      'getImitateRecommendMenuList', // 模拟推荐菜单列表
     ]),
   },
   methods: {
-    changeTab(index, title) {
-      this.$store.dispatch('setRcommendHighLightTab', index);
-      this.allTabsShow = false;
+    onClickLeft(){
+      this.COMMONFUNC.goBack();
     },
     onSearch () {
       if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
       this.$store.dispatch('setKeywords', this.keywords);
       this.$router.push('/result/'+this.keywords);
     },
-    // 菜单选择
-    selectTab (item, index) {
-      this.activeTab = index;
-      this.allTabsShow = false;
-    },
   },
   components: {
-    Fixednav,
     PostList,
   }
 };
 </script>
 
 <style lang="less" scoped>
-  .recommend-van-search{
-    position: fixed;
-    height: 1.333333rem;
-    z-index: 2;
-    widtH: 100%;
-    top: 0 !important;
+  .classify-zone{
+    padding: 0.266667rem 0 0 0;
   }
-  .moreTabs{
-    position: fixed;
-    top: 1.333333rem;
-    right: 0;
-    width: 50px;
-    height: 1.173333rem;
-    z-index: 3;
-    background-color: #fff;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 0.373333rem;
-    color: #7d7e80;
-  }
-  .more-icon{
-    color: #7d7e80;
-  }
-  .allTabs{
-    position: fixed;
-    top: 2.5rem;
-    left: 0;
-    right: 0;
-    text-align: left;
-    padding: 10px 0.426667rem 5px 0.426667rem;
-    color: #333;
-    background-color: #fafafa;
-    z-index: 3;
-  }
-  .allTabs ul{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .allTabs ul li{
+  .classify-item{
     width: 25%;
     text-align: center;
-    margin: 0 0 10px 0;
-  }
-  .recommendMenu-btn{
-    background-color: #eee;
-    width: 90%;
-  }
-  .recommendMenu-btn-active{
-    color: #ff8200;
-  }
-  .top-space{
-    height: 1.3rem
+    line-height: 0.8rem;
   }
 </style>
