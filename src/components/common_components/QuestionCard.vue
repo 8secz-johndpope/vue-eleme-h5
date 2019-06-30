@@ -1,7 +1,7 @@
 <template>
   <!-- 问题卡片 -->
   <div>
-    <div class="white-bg mgt5 pd10" v-for="(item,index) in questionList" :key="index">
+    <div class="white-bg mgt5 pd10 position-r" v-for="(item,index) in questionList" :key="index">
       <div class="flex-space-between">
         <div class="flex-center">
           <img :src="item.coverImg" class="van-avatar-small" />
@@ -34,6 +34,10 @@
         <div>{{item.answerNum}}个回答</div>
         <div>悬赏<span class="gold-color">{{item.awardGold}}</span>金币</div>
       </div>
+      <!-- 问题状态 -->
+      <div class="state-zone">
+        <img :src="yijiejue_img" class="state-img">
+      </div>
     </div>
   </div>
 </template>
@@ -50,7 +54,7 @@ export default {
   },
   data () {
     return {
-      
+      yijiejue_img: require('images/icon/yijiejue.png')
     };
   },
   components: {
@@ -91,5 +95,15 @@ export default {
   .van-ellipsis{
     color: #939393;
     max-width: 5rem;
+  }
+  .state-zone{
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .state-img{
+    width: 0.8rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 </style>

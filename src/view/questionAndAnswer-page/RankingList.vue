@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="待回答" @click-left="onClickLeft" @click-right="onClickRight" left-arrow fixed>
+    <van-nav-bar title="榜单" @click-left="onClickLeft" @click-right="onClickRight" left-arrow fixed>
       <van-icon name="question-o" slot="right" />
     </van-nav-bar>
     <!-- 空格 -->
@@ -25,7 +25,7 @@
 import { mapGetters } from 'vuex';
 import QuestionCard from 'components/common_components/QuestionCard';
 export default {
-  name: 'questionList',
+  name: 'rankgingList',
   data () {
     return {
       tabActive: 0, //高亮的tab
@@ -33,14 +33,11 @@ export default {
       // tab列表
       tabsList: [
         {
-          tabName: '推荐',
-          desc: '回答数超过后台系统设置的数值，如10条，以时间先后顺序排序',
+          tabName: '热度榜',
+          desc: '已采纳或已有最佳回答的超过后台系统设置的数值，如10条，以时间先后顺序排序',
         },{
-          tabName: '最新',
-          desc: '以发布时间先后顺序排序',
-        },{
-          tabName: '赏金最高',
-          desc: '以奖励金币最高顺序排序，金币同样以时间优先',
+          tabName: '导师榜',
+          desc: '按照回答值排行，回答值=采纳数*10+回答数，如用户A有100个回答，其中10个被采纳了，则回答值为100+10*10=200，用户B有50个回答，20个被采纳了，则回答值为50+20*10=250，回答值相同，回答数高在前',
         }
       ],
       loading: false,
@@ -67,8 +64,8 @@ export default {
     },
     onClickRight(){
       this.$dialog.alert({
-        title: '规则说明',
-        message: '本区域都是未采纳和未得出最佳答案的问答；悬赏问题说明：7天内，若提问者采纳某个回答，则赏金归被采纳者所有，问题状态变成已采纳；如果7天内有回答，但是没有采纳，则由帮顶人数最高者获得（不限自己），状态变成最佳答案；若7天无回答，则问题流拍，赏金退回，不再具有赏金性质；提问者不可以采纳自己的回答；如果没有悬赏金币，规则也是一样'
+        title: '悬赏问题规则',
+        message: '悬赏问题，先扣除提问者相应的金币；7天内，若提问者采纳某个回答，则赏金归被采纳者所有，问题状态变成已采纳；如果7天内有回答，但是没有采纳，则由回答中的帮顶人数最高者获得（不限自己），状态变成已解决；若7天无回答，则问题流拍，赏金退回，赏金变为0；提问者不可以采纳自己的回答'
       }).then(() => {
         // on close
       });

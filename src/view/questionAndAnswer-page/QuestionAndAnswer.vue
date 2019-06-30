@@ -32,18 +32,18 @@ export default {
       keywords: '', // 搜索关键词
       menuList: [
         {
-          levelOneName: '答题', // 分类名称
+          levelOneName: '待回答', // 分类名称
           linkUrlName: 'questionList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
           levelOneName: '提问', // 分类名称
-          linkUrlName: 'articleList',
+          linkUrlName: 'publishPost',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
           levelOneName: '榜单', // 分类名称
-          linkUrlName: 'encyclopediasList',
+          linkUrlName: 'rankingList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
       ]

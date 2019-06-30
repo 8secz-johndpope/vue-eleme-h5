@@ -931,6 +931,32 @@ export var imitateQuestionList = [
       questionTime: '2019-07-01', // 提问时间
       answerNum: 15,  // 回答人数
       awardGold: 20,  // 问题奖励金币
-      isAdopted: 1, // 是否已经被采纳 0-是，1-否 需求：问题提出后 3天内，没有人回答，则不扣除用户悬赏金币；用户可以采纳自己的回答
+      state: 0, // 问题状态 0-已采纳，1-已解决 2-未解决
+    },
+    {
+      questionId: 'questionId0001', // 问题Id
+      questionTitle: '问题标题，这是已解决问题的范本',  // 问题标题
+      questionDesc: '问题描述，字数不限', // 问题描述
+      coverImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',  // 封面图片
+      userName: '提问者名称',  // 提问者名称
+      userId: 'userId',  // 提问者Id
+      userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',  // 提问者头像
+      questionTime: '2019-07-01', // 提问时间
+      answerNum: 15,  // 回答人数
+      awardGold: 20,  // 问题奖励金币
+      state: 1, // 问题状态 0-已采纳，1-已解决 2-未解决
+    },
+    {
+      questionId: 'questionId0001', // 问题Id
+      questionTitle: '问题标题，这是已采纳问题的范本',  // 问题标题
+      questionDesc: '问题描述，字数不限', // 问题描述
+      coverImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',  // 封面图片
+      userName: '提问者名称',  // 提问者名称
+      userId: 'userId',  // 提问者Id
+      userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',  // 提问者头像
+      questionTime: '2019-07-01', // 提问时间
+      answerNum: 15,  // 回答人数
+      awardGold: 20,  // 问题奖励金币
+      state: 2, // 问题状态 0-已采纳，1-已解决 2-未解决
     }
 ]

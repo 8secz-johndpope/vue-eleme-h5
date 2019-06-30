@@ -740,6 +740,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/questionAndAnswer-page/Answer'],resolve),
     },
+    {
+      path: '/questionAndAnswer/rankingList',
+      name: 'rankingList',  // 回答专区榜单，包括问题排行榜，导师排行榜
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/RankingList'],resolve),
+    },
     /*
       问答专区 -- 结束
     */
