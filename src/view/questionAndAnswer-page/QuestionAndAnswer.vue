@@ -1,7 +1,7 @@
 <template>
   <div class="questionAndAnswer-page">
     <van-nav-bar 
-      title="知乎问答" 
+      title="情感问答" 
       right-text="我的提问" 
       left-arrow 
       fixed
