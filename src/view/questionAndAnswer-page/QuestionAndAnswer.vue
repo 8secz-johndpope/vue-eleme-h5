@@ -42,13 +42,8 @@ export default {
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '我的提问', // 分类名称
+          levelOneName: '榜单', // 分类名称
           linkUrlName: 'encyclopediasList',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
-        },
-        {
-          levelOneName: '我的回答', // 分类名称
-          linkUrlName: 'AITeachingChatList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
       ]
@@ -82,7 +77,7 @@ export default {
     padding: 0.266667rem 0 0 0;
   }
   .classify-item{
-    width: 25%;
+    width: 33%;
     text-align: center;
     line-height: 0.8rem;
   }

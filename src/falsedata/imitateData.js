@@ -922,8 +922,8 @@ export var imitateGoodsList = [
 export var imitateQuestionList = [
     {
       questionId: 'questionId0001', // 问题Id
-      questionTitle: '问题标题，如褚明宇老师在微博问答谈论房地产。大致观点如下：1，北京的租售比太贵',  // 问题标题
-      questionDesc: '问题标题，如褚明宇老师在微博问答谈论房地产。大致观点如下：1，北京的租售比太贵', // 问题描述
+      questionTitle: '问题标题，标题长度10字-30字，不能为空',  // 问题标题
+      questionDesc: '问题描述，字数不限', // 问题描述
       coverImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',  // 封面图片
       userName: '提问者名称',  // 提问者名称
       userId: 'userId',  // 提问者Id

@@ -79,13 +79,7 @@
       </div>
       <!-- 我的作品以及收藏 -->
       <van-tabs v-model="tabActive" sticky @click="changeTab" class="worksAndFavorite" swipeable>
-        <van-tab title="作品 999">
-          <PostList :composition="getImitatePostList"></PostList>
-        </van-tab>
-        <van-tab title="喜欢 999">
-          <PostList :composition="getImitatePostList"></PostList>
-        </van-tab>
-        <van-tab title="动态 999">
+        <van-tab :title="item.tabName" v-for="(item, index) in tabsList">
           <PostList :composition="getImitatePostList"></PostList>
         </van-tab>
       </van-tabs>
@@ -117,6 +111,19 @@ export default {
       praisedNumPopup: false, // 获得赞数 弹出层 查看具体赞数，可以插入广告
       background_wall_img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg', // 背景墙图片
       isSign: false, // 是否已签到
+      // tab列表
+      tabsList: [
+        {
+          tabName: '作品 999',
+          desc: '仅限自己发布的微撩作品，不包括自己的提问，转发',
+        },{
+          tabName: '喜欢 1024',
+          desc: '用户的喜欢收藏，包括但不限于自己或者他人的微撩作品，问答，转发',
+        },{
+          tabName: '动态 999',
+          desc: '只包括自己的提问，转发',
+        }
+      ],
     };
   },
   mounted () {
@@ -136,7 +143,13 @@ export default {
   methods: {
     // 切换tab 我的作品和收藏
     changeTab(index, title) {
-      this.$toast(title);
+      let that = this;
+      that.$dialog.alert({
+        title: '说明',
+        message: that.tabsList[index].desc
+      }).then(() => {
+        // on close
+      });
     },
     // 签到
     sign () {
