@@ -46,16 +46,6 @@
     mounted () {
       let that = this;
       this.userListData = [...this.getImitateUserList];
-      switch (this.userType) {
-        case 0:
-          that.tabTitle = '我的粉丝'
-          break;
-        case 1:
-          that.tabTitle = '我的关注'
-          break;
-        default:
-          that.tabTitle = '我的粉丝'
-      }
     },
     computed: {
       ...mapGetters([

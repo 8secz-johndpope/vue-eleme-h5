@@ -1,24 +1,30 @@
 <template>
   <div class="questionAndAnswer-page">
-    <van-nav-bar title="问答专区" @click-left="onClickLeft" left-arrow fixed>
-      <van-icon name="search" slot="right" />
-    </van-nav-bar>
+    <van-nav-bar 
+      title="知乎问答" 
+      right-text="我的提问" 
+      left-arrow 
+      fixed
+      @click-left="onClickLeft" 
+      @click-right="onClickRight" 
+    />
     <!-- 空格 -->
     <div class="top-space"></div>
+    <van-search placeholder="请输入搜索关键词" v-model="keywords" />
     <!-- 菜单分类 -->
     <div class="flex-wrap white-bg classify-zone">
-        <div class="classify-item" v-for="(menuItem, index) in menuList">
-          <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
-            <div>
-              <img :src="menuItem.img"  class="van-avatar" />
-            </div>
-            <div>
-              {{menuItem.levelOneName}}
-            </div>
-          </router-link>
-        </div>
+      <div class="classify-item" v-for="(menuItem, index) in menuList">
+        <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
+          <div>
+            <img :src="menuItem.img"  class="van-avatar" />
+          </div>
+          <div>
+            {{menuItem.levelOneName}}
+          </div>
+        </router-link>
+      </div>
     </div>
-    <PostList :composition="getImitatePostList"></PostList>
+    <PostList :composition="getImitatePostList" :isThanksShow="true"></PostList>
   </div>
 </template>
 
@@ -32,7 +38,7 @@ export default {
       keywords: '', // 搜索关键词
       menuList: [
         {
-          levelOneName: '待回答', // 分类名称
+          levelOneName: '问答', // 分类名称
           linkUrlName: 'questionList',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
@@ -59,6 +65,14 @@ export default {
   methods: {
     onClickLeft(){
       this.COMMONFUNC.goBack();
+    },
+    onClickRight(){
+      this.$router.push({
+        name: 'myAsk',
+        params: {
+          userId: 'userId0001'
+        }
+      });
     },
     onSearch () {
       if (!this.keywords) {this.$toast('请输入搜索关键词'); return}

@@ -122,7 +122,7 @@ export default {
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '问答专区', // 分类名称
+          levelOneName: '知乎问答', // 分类名称
           linkUrlName: 'questionAndAnswer',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },

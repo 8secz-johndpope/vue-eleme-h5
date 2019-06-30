@@ -22,7 +22,7 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsPopup" title="共999条评论">
-        <Comments @on-get-replyWho="getReplyWho" class="comments-box" @on-more-operate="moreOperate"></Comments>
+        <Comments class="comments-box" :isHasThank="isThanksShow" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
         <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
       </van-actionsheet>
       <!-- 评论输入框弹框 -->
@@ -80,6 +80,11 @@ export default {
     showTag: {
       type: Boolean,
       default: true,
+    },
+    // 评论区是否显示感谢Ta，问答页需要显示
+    isThanksShow: {
+      type: Boolean,
+      default: false,
     }
   },
   components : {

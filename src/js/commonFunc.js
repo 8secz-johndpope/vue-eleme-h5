@@ -110,11 +110,11 @@ function commentsTimeFormatter(timestamp) {
             return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate());
         })();
     } else if (dayC >= 1) {
-        // 超过1天，直接显示年月日 时分秒
+        // 超过1天，直接显示年月日 不显示时分秒
         return (function() {
             var date = new Date(timestamp);
-            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate()) + ' ' +
-                date.getHours() + ':' + zero(date.getMinutes() + 1);
+            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate()) 
+            // + ' ' + date.getHours() + ':' + zero(date.getMinutes() + 1);
         })();
     } else if (minC >= 1) {
         let yestdayStr = '';

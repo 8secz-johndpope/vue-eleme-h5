@@ -725,6 +725,14 @@ export default new Router({
       component: (resolve) => require(['view/questionAndAnswer-page/QuestionAndAnswer'],resolve),
     },
     {
+      path: '/questionAndAnswer/myAsk/:userId',
+      name: 'myAsk',  // 我的提问
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/MyAsk'],resolve),
+    },
+    {
       path: '/questionAndAnswer/questionList',
       name: 'questionList',  // 回答
       meta: {
@@ -742,7 +750,7 @@ export default new Router({
     },
     {
       path: '/questionAndAnswer/rankingList',
-      name: 'rankingList',  // 回答专区榜单，包括问题排行榜，导师排行榜
+      name: 'rankingList',  // 回答专区榜单，包括提问排行榜，回答排行榜
       meta: {
         keepAlive: false // 不需要缓存
       },
