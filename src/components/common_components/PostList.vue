@@ -22,7 +22,7 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsPopup" title="共999条评论">
-        <Comments class="comments-box" :isHasThank="isThanksShow" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate"></Comments>
+        <Comments class="comments-box" :isHasThank="isThanksShow" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-thanks="thanks"></Comments>
         <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
       </van-actionsheet>
       <!-- 评论输入框弹框 -->
@@ -45,6 +45,20 @@
         <!-- 商品组件 -->
         <PopupCommity></PopupCommity>
       </van-actionsheet>
+      <!-- 答谢某人，赠送金币 -->
+      <van-dialog
+        v-model="thanksPopup"
+        :title="'答谢'+thanksedUserName"
+        @confirm="confirmThanks"
+        show-cancel-button
+      >
+        <div class="tcenter">
+          <div class="mgt10">每人每天最多感谢他人10金币（后台设置），2元金币起答谢，您今天最多还可赠送10金币</div>
+          <div class="mgt10 mgb10">
+            <van-stepper v-model="thanksGold" min="2" max="10" integer />
+          </div>
+        </div>
+      </van-dialog>
     </van-list>
   </div>
 </template>
@@ -109,6 +123,9 @@ export default {
       moreOptPopup: false,  // 更多操作弹框
       optObj: {}, // 操作对象
       commentsInputPopup: false,  // 评论输入框
+      thanksPopup: false, // 赠送金币弹框
+      thanksGold: 2,  // 赠送金币
+      thanksedUserName: '', // 被答谢的人
     };
   },
   mounted () {
@@ -199,6 +216,15 @@ export default {
       this.sharePopup = sharePopup;
       // this.itemIsTop = this.composition[index].isTop;
     },
+    // 答谢
+    thanks (item){
+      this.thanksedUserName = item.sendUserName;  // 被答谢的人
+      this.thanksPopup = true;
+    },
+    // 确认答谢
+    confirmThanks () {
+      this.$toast('赠送金币成功')
+    }
   }
 };
 </script>

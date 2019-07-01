@@ -26,7 +26,7 @@
               <span class="comments-contents deletedContents" v-if="item.contentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
               <!-- 评论时间，地点 -->
               <span class="mgl5 reply-operate">{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
-              <span class="mgl5 reply-operate" v-if="isHasThank" @click.stop="thanksPopup = true">感谢Ta</span>
+              <span class="mgl5 reply-operate" v-if="isHasThank" @click.stop="thanks(item)">感谢Ta</span>
             </div>
             <!-- 评论时间，地点 -->
             <!-- <div class="flex-space-between">
@@ -64,17 +64,6 @@
           </div>
         </van-cell>
       </van-cell-group>
-      <van-dialog
-        v-model="thanksPopup"
-        title="感谢Ta的解答"
-        @confirm="confirmThanks"
-        show-cancel-button
-      >
-        <div class="tcenter">
-          <div class="mgt10">每人每天最多感谢他人10金币（后台设置），您今天最多还可赠送10金币</div>
-          <van-stepper class="mgt10" v-model="thanksGold" min="2" max="10" integer />
-        </div>
-      </van-dialog>
     </van-list>
   </div>
 </template>
@@ -98,10 +87,8 @@
         loading: false,
         finished: false,
         moreOptPopup: false,  // 更多操作弹框
-        thanksPopup: false, // 赠送金币弹框
         replyWho: '', // 回复谁
         commentsList: [], // 用来接收 用户列表数据,用来动态新增修改值
-        thanksGold: 2,  // 赠送金币
       };
     },
     components: {
@@ -217,8 +204,8 @@
         }
         this.$emit('on-more-operate', obj)
       },
-      confirmThanks () {
-        this.$toast('赠送金币成功')
+      thanks(item){
+        this.$emit('on-thanks', item)
       }
     }
   }
