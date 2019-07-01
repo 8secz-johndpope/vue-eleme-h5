@@ -44,7 +44,6 @@
       };
     },
     mounted () {
-      let that = this;
       this.userListData = [...this.getImitateUserList];
     },
     computed: {

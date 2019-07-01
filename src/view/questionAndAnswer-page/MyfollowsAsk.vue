@@ -1,6 +1,6 @@
 <template>
   <div class="questionAndAnswer-page">
-    <van-nav-bar title="我的提问" @click-left="onClickLeft" left-arrow fixed/>
+    <van-nav-bar title="我的关注" @click-left="onClickLeft" left-arrow fixed/>
     <!-- 空格 -->
     <div class="top-space"></div>
     <PostList :composition="getImitatePostList" :isQuetionAndAnswer="true"></PostList>

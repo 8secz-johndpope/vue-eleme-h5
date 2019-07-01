@@ -1,12 +1,12 @@
 <template>
   <div class="questionAndAnswer-page">
-    <van-nav-bar 
-      title="情感问答" 
-      right-text="我的提问" 
-      left-arrow 
+    <van-nav-bar
+      title="情感问答"
+      right-text="我的提问"
+      left-arrow
       fixed
-      @click-left="onClickLeft" 
-      @click-right="onClickRight" 
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
     />
     <!-- 空格 -->
     <div class="top-space"></div>
@@ -24,7 +24,7 @@
         </router-link>
       </div>
     </div>
-    <PostList :composition="getImitatePostList" :isThanksShow="true"></PostList>
+    <PostList :composition="getImitatePostList" :isQuetionAndAnswer="true"></PostList>
   </div>
 </template>
 
@@ -38,8 +38,8 @@ export default {
       keywords: '', // 搜索关键词
       menuList: [
         {
-          levelOneName: '问答', // 分类名称
-          linkUrlName: 'questionList',
+          levelOneName: '最新', // 分类名称
+          linkUrlName: 'newestAsk',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
@@ -48,8 +48,8 @@ export default {
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '榜单', // 分类名称
-          linkUrlName: 'rankingList',
+          levelOneName: '我的关注', // 分类名称
+          linkUrlName: 'myfollowsAsk',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
       ]

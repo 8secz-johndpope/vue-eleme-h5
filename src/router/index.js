@@ -742,28 +742,20 @@ export default new Router({
       component: (resolve) => require(['view/questionAndAnswer-page/MyAsk'],resolve),
     },
     {
-      path: '/questionAndAnswer/questionList',
-      name: 'questionList',  // 回答
+      path: '/questionAndAnswer/myfollowsAsk/:userId',
+      name: 'myfollowsAsk',  // 我关注的人的问答
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/questionAndAnswer-page/QuestionList'],resolve),
+      component: (resolve) => require(['view/questionAndAnswer-page/MyfollowsAsk'],resolve),
     },
     {
-      path: '/questionAndAnswer/answer/:postId',
-      name: 'answer',  // 回答
+      path: '/questionAndAnswer/newestAsk',
+      name: 'newestAsk',  // 最新问答
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/questionAndAnswer-page/Answer'],resolve),
-    },
-    {
-      path: '/questionAndAnswer/rankingList',
-      name: 'rankingList',  // 回答专区榜单，包括提问排行榜，回答排行榜
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/questionAndAnswer-page/RankingList'],resolve),
+      component: (resolve) => require(['view/questionAndAnswer-page/NewestAsk'],resolve),
     },
     /*
       问答专区 -- 结束
