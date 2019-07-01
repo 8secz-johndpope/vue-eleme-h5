@@ -346,14 +346,6 @@ export default new Router({
       },
       component: (resolve) => require(['view/login-page/LoginByCheckCode'],resolve),
     },
-    {
-      path: '/result/:id',
-      name: 'result',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/search-page/Result'],resolve),
-    },
     // 文章列表
     {
       path: '/article/articleList',
@@ -631,6 +623,15 @@ export default new Router({
       },
       component: (resolve) => require(['view/talkingLibrary-page/Index'],resolve),
     },
+
+    {
+      path: '/talkingLibrary/result/:id',
+      name: 'talkingLibraryResult', // 话术结果页
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/talkingLibrary-page/TalkingLibraryResult'],resolve),
+    },
     /*
       话术库 -- 结束
     */
@@ -661,6 +662,14 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/post-page/PostVideo'],resolve),
+    },
+    {
+      path: '/post/topPraiseUserList/:postId',
+      name: 'topPraiseUserList', // 顶赞列表
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/TopPraiseUserList'],resolve),
     },
     /*
       帖子 微博 -- 结束

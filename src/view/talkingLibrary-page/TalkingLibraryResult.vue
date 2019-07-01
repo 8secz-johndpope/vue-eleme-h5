@@ -22,7 +22,7 @@
 import Conversation from 'components/common_components/Conversation';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'myzone',
+  name: 'talkingLibraryResult',
   data () {
     return {
       uname: '',

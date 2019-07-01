@@ -16,7 +16,9 @@
           <van-button @click.stop="addPraise(postObj)" type="default" size="small" v-if="postObj.isFollow === 0 && postObj.isPraised === 1" class="addFollow">
             <span class="flex-center"><van-icon name="thumb-circle-o" class="mgr5" />帮顶</span>
           </van-button>
-          <van-button type="default" size="small" v-if="postObj.isFollow === 0 && postObj.isPraised === 0" class="addFollow">{{postObj.helpPraiseNum}}人已顶</van-button>
+          <van-button type="default" size="small" v-if="postObj.isFollow === 0 && postObj.isPraised === 0" class="addFollow" @click.stop="toTopPraiseUserList(postObj)">
+            {{postObj.helpPraiseNum}}人已顶
+          </van-button>
         </div>
       </div>
     </div>
@@ -198,6 +200,10 @@ export default {
     // 前往视频播放
     toPostVideo (item) {
       this.$router.push({ name: 'postVideo', params: { postId: item.postId }})
+    },
+    // 前往顶赞用户列表
+    toTopPraiseUserList (item) {
+      this.$router.push({ name: 'topPraiseUserList', params: { postId: item.postId }})
     },
     // 打开橱窗
     openShowcase () {

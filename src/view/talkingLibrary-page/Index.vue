@@ -29,7 +29,7 @@
           <i class="fa fa-heart rose-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
         </div>
         <div class="flex-space-around">
-          <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/result/' + child_item.listId" >
+          <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/talkingLibrary/result/' + child_item.listId" >
             <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
           </router-link>
         </div>
@@ -69,7 +69,7 @@ export default {
     onSearch () {
       if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
       this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/result/'+this.keywords);
+      this.$router.push('/talkingLibrary/result/'+this.keywords);
     },
     onClickLeft(){
       this.COMMONFUNC.goBack();
