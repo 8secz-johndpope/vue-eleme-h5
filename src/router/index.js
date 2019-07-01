@@ -742,7 +742,7 @@ export default new Router({
       component: (resolve) => require(['view/questionAndAnswer-page/MyAsk'],resolve),
     },
     {
-      path: '/questionAndAnswer/myfollowsAsk/:userId',
+      path: '/questionAndAnswer/myfollowsAsk',
       name: 'myfollowsAsk',  // 我关注的人的问答
       meta: {
         keepAlive: false // 不需要缓存

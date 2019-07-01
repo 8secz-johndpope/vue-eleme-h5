@@ -11,6 +11,7 @@
         <PostCard
           :postObj="item"
           :showTag="showTag"
+          :isQuetionAndAnswer="isQuetionAndAnswer"
           @on-open-comments-popup="commentsPopup = true"
           @on-share-post="sharePost"
           @on-open-showcase="showcasePopup = true">
@@ -22,7 +23,7 @@
       </van-actionsheet>
       <!-- 评论区 -->
       <van-actionsheet v-model="commentsPopup" title="共999条评论">
-        <Comments class="comments-box" :isHasThank="isQuetionAndAnswer" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-thanks="thanks"></Comments>
+        <Comments class="comments-box" :isQuetionAndAnswer="isQuetionAndAnswer" @on-get-replyWho="getReplyWho" @on-more-operate="moreOperate" @on-thanks="thanks"></Comments>
         <CommentsBottomGuide @on-open-comments-input-popup="commentsInputPopup = true"></CommentsBottomGuide>
       </van-actionsheet>
       <!-- 评论输入框弹框 -->

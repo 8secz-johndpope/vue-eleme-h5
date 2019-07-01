@@ -48,7 +48,7 @@
           <van-tag mark class="van-ellipsis tag-ellipsis">{{c_postObj.tagsName}}</van-tag>
         </span>
       </div>
-      <div class="gold-color flex" v-if="postObj.isBusiness === 0" @click.stop="openShowcase">
+      <div class="gold-color flex" v-if="postObj.isBusiness === 0 && !isQuetionAndAnswer" @click.stop="openShowcase">
         <van-icon name="cart-o" class="font-gold showcase" />
         <span class="showcaseDec">撩妹必备</span>
       </div>
@@ -93,7 +93,12 @@ export default {
     showFooterGuide: {
       type: Boolean,
       default: true,
-    }
+    },
+    // 是否是提问帖子
+    isQuetionAndAnswer: {
+      type: Boolean,
+      default: false,
+    },
   },
   components : {
   },

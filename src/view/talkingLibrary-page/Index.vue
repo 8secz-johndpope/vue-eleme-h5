@@ -22,7 +22,7 @@
         @search="onSearch"
         class="mgt10"
         >
-        <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger">搜索</van-button></div>
+        <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger" class="search-btn">搜索</van-button></div>
       </van-search>
       <van-panel class="pd10 mgt10" v-for="(menuItem, index) in getImitateMenu">
         <div slot="header">
@@ -79,6 +79,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .search-btn{
+    background-color: #FF6766;
+    border: 0.026667rem solid #FF6766;
+  }
   .item-linear{
     background: #FF6766;
     border: 0;

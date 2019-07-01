@@ -26,7 +26,7 @@
               <span class="comments-contents deletedContents" v-if="item.contentsStatus == 1">#该内容已被删除（涉黄涉反等后台支持删除）</span>
               <!-- 评论时间，地点 -->
               <span class="mgl5 reply-operate">{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
-              <span class="mgl5 reply-operate" v-if="isHasThank" @click.stop="thanks(item)">感谢Ta</span>
+              <span class="mgl5 reply-operate" v-if="isQuetionAndAnswer" @click.stop="thanks(item)">感谢Ta</span>
             </div>
             <!-- 评论时间，地点 -->
             <!-- <div class="flex-space-between">
@@ -76,8 +76,8 @@
   export default {
     name: 'comments',
     props: {
-      // 是否有感谢
-      isHasThank: {
+      // 是否是提问帖子
+      isQuetionAndAnswer: {
         type: Boolean,
         default: false
       }
