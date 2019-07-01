@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="toCommodity()">
+    <div @click="select()">
       <van-card
       tag="标签"
       price="2.00"
@@ -43,6 +43,11 @@ export default {
     moreOperate:{
       type: Boolean,
       default: false,
+    },
+    // 是否选择商品
+    isSelectGoods: {
+      type: Boolean,
+      default: false,
     }
   },
   components : {
@@ -59,8 +64,13 @@ export default {
   },
   methods: {
     // 跳转商品详情
-    toCommodity () {
-      this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
+    select () {
+      this.moreOperatePop = false;
+      if (this.isSelectGoods) {
+        this.$emit('on-select-goods', true)
+      }else {
+        this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
+      }
     },
     // 置顶
     roofPlacement () {

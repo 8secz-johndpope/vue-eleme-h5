@@ -51,6 +51,11 @@
           </van-uploader>
         </div>
       </div>
+      <!-- 商品橱窗 -->
+      <div class="position-r selectGoodZone" v-if="selectGoodsResult">
+        <GoodsCard :isSelectGoods="true"></GoodsCard>
+        <van-icon name="close" class="gray-color close-icon" @click="selectGoodsResult = false" />
+      </div>
     </div>
     <!-- 底部空隙 -->
     <div class="footer-space"></div>
@@ -58,11 +63,12 @@
     <footer class="fixed-footer white-bg">
       <div class="flex-space-between pd15">
         <div class="fixed-footer-left">
+          <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
           <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9 && !isRetransmission">
             <van-icon name="photo-o" class="footer-icon" />
           </van-uploader>
           <van-icon name="label-o" class="footer-icon" @click="openTopicPop" v-if="!isRetransmission"/>
-          <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
+          <van-icon name="cart-circle-o" class="footer-icon" @click="addGoods"/>
         </div>
         <div @click="publishTypePop = true">
           <van-tag plain color="#f2826a">
@@ -95,12 +101,20 @@
         </p>
       </div>
     </van-actionsheet>
+    <!-- 商品列表 弹框 -->
+    <van-actionsheet v-model="goodsListPop" title="添加商品" >
+      <div class="goodsList-box">
+        <!-- 商品组件 -->
+        <GoodsCard v-for="(item,index) in 7" :isSelectGoods="true" @on-select-goods="selectGoods"></GoodsCard>
+      </div>
+    </van-actionsheet>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import TopicList from 'components/child_components/Topic_components/TopicList';
+import GoodsCard from 'components/common_components/GoodsCard';
 import RetransmissionCard from 'components/child_components/Publish_components/RetransmissionCard';
 export default {
   name: 'add_conversation',
@@ -120,6 +134,7 @@ export default {
       selectTopicList: [],  // 选择的话题列表，最多选3个
       publishTypePop: false,  // 发布类型弹框
       topicShowPop: false,  // 话题弹框
+      goodsListPop: false,  // 商品列表弹框
       currentPublishValue: 0,  // 当前发布类型， 0-公开，默认
       publishTypeList: [ // 选择分享类型
         {
@@ -135,9 +150,12 @@ export default {
           value: 2
         },
       ],
+      goodsRadio: -1, // 选择的商品
+      selectGoodsResult: false, // 选择商品
     };
   },
   components: {
+    GoodsCard,
     TopicList,
     RetransmissionCard,
   },
@@ -266,6 +284,20 @@ export default {
         top: window.pageYOffset + 1000 || document.documentElement.scrollTop + 1000 || document.body.scrollTop + 1000 || 0 + 1000
       };
     },
+    // 添加商品
+    addGoods () {
+      this.$dialog.alert({
+        title: '标题',
+        message: '只有开通有橱窗，并且发微撩作品的时候，才有此功能，其他情形如转发、提问等，皆不显示该功能'
+      }).then(() => {
+        this.goodsListPop = true;
+      });
+    },
+    // 选择商品
+    selectGoods () {
+      this.selectGoodsResult = true;
+      this.goodsListPop = false;
+    }
   }
 };
 </script>
@@ -351,5 +383,9 @@ export default {
   }
   .input-box .van-hairline--top-bottom::after{
     border: 0;
+  }
+  .goodsList-box{
+    height: 8rem;
+    overflow: scroll;
   }
 </style>
