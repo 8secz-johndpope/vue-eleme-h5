@@ -648,6 +648,14 @@ export default new Router({
       component: (resolve) => require(['view/post-page/PostSearch'],resolve),
     },
     {
+      path: '/post/postSearchResult/:content',
+      name: 'postSearchResult', // 搜索帖子结果
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostSearchResult'],resolve),
+    },
+    {
       path: '/post/postClassify/:containerid',
       name: 'postClassify', // 帖子分类
       meta: {
@@ -678,6 +686,14 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/post-page/TopPraiseUserList'],resolve),
+    },
+    {
+      path: '/post/postRanking',
+      name: 'postRanking', // 热搜榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostRanking'],resolve),
     },
     /*
       帖子 微博 -- 结束

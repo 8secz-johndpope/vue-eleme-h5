@@ -1,7 +1,7 @@
 <template>
   <div class="white-bg postSearch">
-    <div class="pdl15 pdr15 white-bg top-zone">
-      <van-icon name="arrow-left" class="top-zone-left"/>
+    <div class="pdl15 pdr15 white-bg flex-align-center top-zone">
+      <van-icon name="arrow-left" class="top-zone-left" @click="onClickLeft"/>
       <form action="/" class="top-zone-right">
         <van-search
         v-model="value"
@@ -13,26 +13,68 @@
     <!-- 搜索历史 -->
     <div class="pdl15 pdr15">
       <div class="flex-space-between pdb10" v-for="(item, index) in searchRecordList" :key="index">
-        <div class="flex-center">
+        <div class="flex-center" @click="onSearch">
           <van-icon name="clock-o" class="mgr10"/>
           <span>{{item}}</span>
         </div>
         <van-icon name="close" @click="deleteRecord(index)" />
       </div>
     </div>
-    <div class="tcenter pdb10 more-zone" v-if="moreRecordBtnShow" @click="moreRecord">全部搜索记录</div>
-    <div class="tcenter pdb10 more-zone" v-if="!moreRecordBtnShow && searchRecordList.length > 0" @click="deleteRecord('all')">清除全部搜索记录</div>
+    <div class="tcenter pdb10 dy-font-color more-zone" v-if="moreRecordBtnShow" @click="moreRecord">全部搜索记录</div>
+    <div class="tcenter pdt5 pdb10 dy-font-color more-zone" v-if="!moreRecordBtnShow && searchRecordList.length > 0" @click="deleteRecord('all')">清除全部搜索记录</div>
     <!-- 热搜 -->
     <div class="pdl15 pdr15 flex-wrap">
-      <div class="flex-center mg5 recommendItem" v-for="(item, index) in recommendList" :key="index">
+      <div class="flex-start mg5 recommendItem" v-for="(item, index) in recommendList" :key="index" @click="toPostClassify">
         <span class="van-ellipsis mgr5">{{item.name}}</span>
         <van-tag type="danger" class="tag" v-if="item.type === 0">热</van-tag>
         <van-tag color="#f2826a" class="tag" v-if="item.type === 1">新</van-tag>
         <van-tag type="primary" class="tag" v-if="item.type === 2">荐</van-tag>
       </div>
     </div>
-    <div class="tcenter pdb10 more-zone" @click="moreRecord">查看更多热搜</div>
+    <div class="tcenter pdt5 pdb10 more-zone" @click="toPostRanking">查看更多热搜</div>
     <!-- 人气榜单 -->
+    <div class="pdl15 pdr15">
+      <div class="flex-align-center pdt10 pdb10">
+        <van-icon name="bar-chart-o" class="gold-color"/>
+        <span>人气榜单</span>
+      </div>
+      <div class="flex">
+        <div class="pd10 ranking-item-l mgr10">
+          <div class="flex-space-between pdb10">
+            <div>微撩红人榜</div>
+            <van-icon name="arrow"/>
+          </div>
+          <div class="flex">
+            <div class="mgr5">
+              <img class="van-avatar" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1735688044,4235283864&fm=26&gp=0.jpg" />
+            </div>
+            <div>
+              <div>TOP.1</div>
+              <div>我是榜首</div>
+            </div>
+          </div>
+        </div>
+        <div class="pd10 ranking-item-r">
+          <div class="flex-space-between pdb10">
+            <div>问答达人榜</div>
+            <van-icon name="arrow"/>
+          </div>
+          <div class="flex">
+            <div class="mgr5">
+              <img class="van-avatar" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1735688044,4235283864&fm=26&gp=0.jpg" />
+            </div>
+            <div>
+              <div>TOP.1</div>
+              <div>我是榜首</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 推荐内容 -->
+    <div>
+
+    </div>
   </div>
 </template>
 <script>
@@ -83,7 +125,7 @@ export default {
       this.COMMONFUNC.goBack();
     },
     onSearch () {
-      this.$toast('sd')
+      this.$router.push({ name: 'postSearchResult', params: { content: '搜索词' }})
     },
     // 删除记录
     deleteRecord (parem) {
@@ -92,6 +134,14 @@ export default {
       }else {
         this.searchRecordList.splice(1,1)
       }
+    },
+    // 前往帖子分类
+    toPostClassify () {
+      this.$router.push({ name: 'postClassify', params: { containerid: '0' }})
+    },
+    // 前往热搜榜
+    toPostRanking () {
+      this.$router.push({ name: 'postRanking', params: '' })
     },
     moreRecord () {
       for (var i = 0; i < 10; i++) {
@@ -108,19 +158,16 @@ export default {
     font-size: 14px;
   }
   .top-zone{
-    display: flex;
-    align-items: center;
     width: 100%;
   }
   .top-zone-left{
-    font-size: 18px
+    font-size: 18px;
   }
   .top-zone-right{
     width: 100%;
   }
   .more-zone{
     font-size: 14px;
-    color: rgb(150, 151, 153);
     border-bottom: 1px solid #F6F6F6;
   }
   .tag{
@@ -131,5 +178,18 @@ export default {
     width: 45%;
     height: 30px;
     border-bottom: 1px solid #F6F6F6;
+  }
+  .van-ellipsis{
+    max-width: 3.4rem;
+  }
+  .ranking-item-l{
+    width: 50%;
+    background: hsla(272,94%,60%,1) linear-gradient(135deg, hsla(40,75%,60%,1) , hsla(320,60%,60%,1) ,hsla(260,60%,60%,1));
+    color: #fff;
+  }
+  .ranking-item-r{
+    width: 50%;
+    background: hsla(272,94%,60%,1) linear-gradient(135deg, hsla(350,75%,60%,1) , hsla(280,60%,60%,1) ,hsla(200,60%,60%,1));
+    color: #fff;
   }
 </style>
