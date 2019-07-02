@@ -22,16 +22,17 @@
     </div>
     <div class="tcenter pdb10 more-zone" v-if="moreRecordBtnShow" @click="moreRecord">全部搜索记录</div>
     <div class="tcenter pdb10 more-zone" v-if="!moreRecordBtnShow && searchRecordList.length > 0" @click="deleteRecord('all')">清除全部搜索记录</div>
-    <!-- 推荐标签 -->
+    <!-- 热搜 -->
     <div class="pdl15 pdr15 flex-wrap">
       <div class="flex-center mg5 recommendItem" v-for="(item, index) in recommendList" :key="index">
-        <span class="mgr5">{{item.name}}</span>
+        <span class="van-ellipsis mgr5">{{item.name}}</span>
         <van-tag type="danger" class="tag" v-if="item.type === 0">热</van-tag>
         <van-tag color="#f2826a" class="tag" v-if="item.type === 1">新</van-tag>
         <van-tag type="primary" class="tag" v-if="item.type === 2">荐</van-tag>
       </div>
     </div>
     <div class="tcenter pdb10 more-zone" @click="moreRecord">查看更多热搜</div>
+    <!-- 人气榜单 -->
   </div>
 </template>
 <script>
@@ -52,7 +53,13 @@ export default {
           name: '这是热搜',
           type: 0,  // 0-热搜，1-新品，2-推荐
         },{
-          name: '这是热搜2',
+          name: '这是热搜，常常长的热搜，非常长',
+          type: 0,  // 0-热搜，1-新品，2-推荐
+        },{
+          name: '这是热搜',
+          type: 0,  // 0-热搜，1-新品，2-推荐
+        },{
+          name: '这是热搜，常常长的热搜，非常长',
           type: 0,  // 0-热搜，1-新品，2-推荐
         },{
           name: '这是新品',
