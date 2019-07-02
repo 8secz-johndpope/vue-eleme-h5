@@ -640,6 +640,14 @@ export default new Router({
       帖子 微博 -- 开始
     */
     {
+      path: '/post/postSearch',
+      name: 'postSearch', // 搜索帖子
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/post-page/PostSearch'],resolve),
+    },
+    {
       path: '/post/postClassify/:containerid',
       name: 'postClassify', // 帖子分类
       meta: {

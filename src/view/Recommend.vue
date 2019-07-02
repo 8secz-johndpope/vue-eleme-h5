@@ -5,7 +5,7 @@
       placeholder="请输入搜索关键词"
       show-action
       shape="round"
-      @search="onSearch"
+      @focus="onSearch"
       class="recommend-van-search"
     >
       <div slot="action" @click="onSearch">搜索</div>
@@ -73,9 +73,7 @@ export default {
       this.allTabsShow = false;
     },
     onSearch () {
-      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
-      this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/result/'+this.keywords);
+      this.$router.push('/post/postSearch');
     },
     // 菜单选择
     selectTab (item, index) {
