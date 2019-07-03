@@ -711,6 +711,22 @@ export default new Router({
       },
       component: (resolve) => require(['view/post-page/DarenRanking'],resolve),
     },
+    {
+      path: '/document/redPeopleRankingRules',
+      name: 'redPeopleRankingRules', // 微撩红人榜规则
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/document-page/RedPeopleRankingRules'],resolve),
+    },
+    {
+      path: '/document/darenRankingRules',
+      name: 'darenRankingRules', // 问答达人榜规则
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/document-page/DarenRankingRules'],resolve),
+    },
     /*
       帖子 微博 -- 结束
     */
