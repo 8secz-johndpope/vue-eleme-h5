@@ -12,42 +12,8 @@
     </div>
     <div class="content">
       <van-tabs sticky swipeable>
-        <van-tab v-for="(item, index) in getImitateEncyclopediasClassfication[0].list" :key="item.itemId" :title="item.itemName">
-          <router-link :to="{ name: 'encyclopedias', params: {'id': c_item.id} }" v-for="(c_item, c_index) in getImitateEncyclopediasList" :key="c_index">
-            <div class="van-panel">
-              <div class="title">
-                {{c_item.title}}
-              </div>
-              <div class="encyclopediasList">
-                <div class="flex-between gray-color">
-                  <div>
-                    {{c_item.praiseNum}}人觉得有用
-                  </div>
-                  <div>
-                    来自 {{c_item.belongsClassificationCnName}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </router-link>
-          <router-link :to="{ name: 'encyclopedias', params: {'id': c_item.id} }" v-for="(c_item, c_index) in getImitateEncyclopediasList" :key="c_index">
-            <div class="van-panel">
-              <div class="title">
-                {{c_item.title}}
-              </div>
-              <div class="encyclopediasList">
-                <div class="flex-between gray-color">
-                  <div>
-                    {{c_item.praiseNum}}人觉得有用
-                  </div>
-                  <div>
-                    来自 {{c_item.belongsClassificationCnName}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </router-link>
-          <router-link :to="{ name: 'encyclopedias', params: {'id': c_item.id} }" v-for="(c_item, c_index) in getImitateEncyclopediasList" :key="c_index">
+        <van-tab v-for="(item, index) in getImitateEncyclopediasClassfication[0].list" :key="index" :title="item.itemName">
+          <router-link :to="{ name: 'encyclopedias', params: {'id': c_item.id} }" v-for="(c_item, c_index) in encyclopediasListData" :key="c_index">
             <div class="van-panel">
               <div class="title">
                 {{c_item.title}}
@@ -77,9 +43,12 @@ export default {
   },
   data () {
     return {
+      encyclopediasListData: [],  // 模拟百科列表
     };
   },
   mounted () {
+    this.encyclopediasListData = [...this.getImitateEncyclopediasList];
+    this.encyclopediasListData = this.encyclopediasListData.concat(this.encyclopediasListData);
   },
   computed: {
     ...mapGetters([

@@ -4,7 +4,7 @@
       <van-icon name="arrow-left" class="top-zone-left" @click="onClickLeft"/>
       <form action="/" class="top-zone-right">
         <van-search
-        v-model="value"
+        v-model="searchValue"
         placeholder="请输入搜索关键词"
         @search="onSearch"
         />
@@ -24,14 +24,14 @@
     <div class="tcenter pdt5 pdb10 dy-font-color more-zone" v-if="!moreRecordBtnShow && searchRecordList.length > 0" @click="deleteRecord('all')">清除全部搜索记录</div>
     <!-- 热搜 -->
     <div class="pdl15 pdr15 flex-wrap">
-      <div class="flex-start mg5 recommendItem" v-for="(item, index) in recommendList" :key="index" @click="toPostClassify">
+      <div class="flex-start mg5 recommendItem" v-for="(item, index) in hotSearchList" :key="index" @click="toPostClassify">
         <span class="van-ellipsis mgr5">{{item.name}}</span>
         <van-tag type="danger" class="tag" v-if="item.type === 0">热</van-tag>
         <van-tag color="#f2826a" class="tag" v-if="item.type === 1">新</van-tag>
         <van-tag type="primary" class="tag" v-if="item.type === 2">荐</van-tag>
       </div>
     </div>
-    <div class="tcenter pdt5 pdb10 more-zone" @click="toHotSearchRanking">查看更多热搜</div>
+    <div class="tcenter pdt5 pdb10 dy-font-color more-zone" @click="toHotSearchRanking">查看更多热搜</div>
     <!-- 人气榜单 -->
     <div class="pdl15 pdr15">
       <div class="flex-align-center pdt10 pdb10">
@@ -71,10 +71,26 @@
         </div>
       </div>
     </div>
-    <!-- 推荐内容 -->
-    <div>
-
-    </div>
+    <!-- 推荐内容列表 -->
+    <van-list
+      v-model="loadingMore"
+      :finished="finishedMore"
+      finished-text=" "
+      @load="onLoad"
+      >
+      <div class="flex-space-between pd15 post-zone" v-for="(item, index) in recommendPostList" @click="toPostDetail">
+        <div class="pdr10 post-l">
+          <div class="mgb15">{{item.title}}</div>
+          <div class="flex-space-between dy-font-color">
+            <span>@{{item.userName}}</span>
+            <span>{{item.time}}</span>
+          </div>
+        </div>
+        <div class="post-r">
+          <img :src="item.img" class="post-img"/>
+        </div>
+      </div>
+    </van-list>
   </div>
 </template>
 <script>
@@ -87,10 +103,12 @@ export default {
   name: 'postSearch',
   data () {
     return {
-      value: '',
+      searchValue: '',  // 搜索关键词
+      loadingMore: false,
+      finishedMore: false,
       searchRecordList: ['搜索记录1，存于后台，最多30条','搜索记录1，存于后台，最多30条','搜索记录1，存于后台，最多30条'],
       moreRecordBtnShow: true, // 更多历史记录
-      recommendList: [
+      hotSearchList: [
         {
           name: '这是热搜',
           type: 0,  // 0-热搜，1-新品，2-推荐
@@ -110,6 +128,15 @@ export default {
           name: '这是推荐',
           type: 2,  // 0-热搜，1-新品，2-推荐
         },
+      ],
+      // 推荐帖子列表
+      recommendPostList: [
+        {
+          title: '12小时内的热点博客，用户没有看过的，这是用户发的描述信息',
+          userName: '用户昵称',
+          time: '6小时前',
+          img: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1735688044,4235283864&fm=26&gp=0.jpg',
+        }
       ]
     };
   },
@@ -151,11 +178,30 @@ export default {
     toDarenRanking () {
       this.$router.push({ name: 'darenRanking', params: '' })
     },
+    // 前往帖子详情
+    toPostDetail () {
+      this.$router.push({ name: 'postDetail', params: { postId: 'postId001'} })
+    },
     moreRecord () {
       for (var i = 0; i < 10; i++) {
         this.searchRecordList.push('搜索记录1，存于后台，最多30条')
       }
       this.moreRecordBtnShow = false;
+    },
+    onLoad() {
+      // 异步更新数据
+      setTimeout(() => {
+        let obj = this.recommendPostList[0];
+        for (let i = 0; i < 10; i++) {
+          this.recommendPostList.push(obj);
+        }
+        // 加载状态结束
+        this.loadingMore = false;
+        // 数据全部加载完成
+        if (this.recommendPostList.length >= 10) {
+          this.finishedMore = true;
+        }
+      }, 500);
     }
   }
 }
@@ -199,5 +245,18 @@ export default {
     width: 50%;
     background: hsla(272,94%,60%,1) linear-gradient(135deg, hsla(350,75%,60%,1) , hsla(280,60%,60%,1) ,hsla(200,60%,60%,1));
     color: #fff;
+  }
+  .post-zone{
+    border-bottom: 0.026667rem solid #F6F6F6;
+  }
+  .post-l{
+    width: 60%;
+  }
+  .post-r{
+  }
+  .post-img{
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 </style>
