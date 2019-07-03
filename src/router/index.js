@@ -688,12 +688,28 @@ export default new Router({
       component: (resolve) => require(['view/post-page/TopPraiseUserList'],resolve),
     },
     {
-      path: '/post/postRanking',
-      name: 'postRanking', // 热搜榜
+      path: '/post/hotSearchRanking',
+      name: 'hotSearchRanking', // 热搜榜
       meta: {
         keepAlive: true // 需要缓存
       },
-      component: (resolve) => require(['view/post-page/PostRanking'],resolve),
+      component: (resolve) => require(['view/post-page/HotSearchRanking'],resolve),
+    },
+    {
+      path: '/post/redPeopleRanking',
+      name: 'redPeopleRanking', // 微撩红人榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/post-page/RedPeopleRanking'],resolve),
+    },
+    {
+      path: '/post/darenRanking',
+      name: 'darenRanking', // 问答达人榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/post-page/DarenRanking'],resolve),
     },
     /*
       帖子 微博 -- 结束

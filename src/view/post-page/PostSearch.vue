@@ -31,7 +31,7 @@
         <van-tag type="primary" class="tag" v-if="item.type === 2">荐</van-tag>
       </div>
     </div>
-    <div class="tcenter pdt5 pdb10 more-zone" @click="toPostRanking">查看更多热搜</div>
+    <div class="tcenter pdt5 pdb10 more-zone" @click="toHotSearchRanking">查看更多热搜</div>
     <!-- 人气榜单 -->
     <div class="pdl15 pdr15">
       <div class="flex-align-center pdt10 pdb10">
@@ -39,7 +39,7 @@
         <span>人气榜单</span>
       </div>
       <div class="flex">
-        <div class="pd10 ranking-item-l mgr10">
+        <div class="pd10 ranking-item-l mgr10" @click="toRedPeopleRanking">
           <div class="flex-space-between pdb10">
             <div>微撩红人榜</div>
             <van-icon name="arrow"/>
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="pd10 ranking-item-r">
+        <div class="pd10 ranking-item-r" @click="toDarenRanking">
           <div class="flex-space-between pdb10">
             <div>问答达人榜</div>
             <van-icon name="arrow"/>
@@ -140,8 +140,16 @@ export default {
       this.$router.push({ name: 'postClassify', params: { containerid: '0' }})
     },
     // 前往热搜榜
-    toPostRanking () {
-      this.$router.push({ name: 'postRanking', params: '' })
+    toHotSearchRanking () {
+      this.$router.push({ name: 'hotSearchRanking', params: '' })
+    },
+    // 前往红人榜
+    toRedPeopleRanking () {
+      this.$router.push({ name: 'redPeopleRanking', params: '' })
+    },
+    // 前往问答达人榜
+    toDarenRanking () {
+      this.$router.push({ name: 'darenRanking', params: '' })
     },
     moreRecord () {
       for (var i = 0; i < 10; i++) {

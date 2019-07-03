@@ -42,7 +42,6 @@ export default {
   name: 'rankgingList',
   data () {
     return {
-      tabActive: 0, //高亮的tab
       // tab列表
       recommendList: [
         {
