@@ -643,7 +643,7 @@ export default new Router({
       path: '/post/postSearch',
       name: 'postSearch', // 搜索帖子
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/post-page/PostSearch'],resolve),
     },

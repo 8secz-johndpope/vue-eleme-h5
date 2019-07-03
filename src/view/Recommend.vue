@@ -1,14 +1,15 @@
 <template>
   <div class="recommend-page">
-    <van-search
-      v-model="keywords"
-      placeholder="请输入搜索关键词"
-      show-action
-      shape="round"
-      @focus="onSearch"
-      class="recommend-van-search"
-    >
-      <div slot="action" @click="onSearch">搜索</div>
+      <van-search
+        v-model="keywords"
+        placeholder="默认会有最新或者最热的帖子标题"
+        show-action
+        shape="round"
+        readonly="readonly"
+        @click="toPostSearch"
+        class="recommend-van-search"
+      >
+      <div slot="action" @click="toPublishPost"><van-icon name="edit" /></div>
     </van-search>
     <!-- 空格 -->
     <div class="top-space"></div>
@@ -72,7 +73,7 @@ export default {
       this.$store.dispatch('setRcommendHighLightTab', index);
       this.allTabsShow = false;
     },
-    onSearch () {
+    toPostSearch () {
       this.$router.push('/post/postSearch');
     },
     // 菜单选择
@@ -80,6 +81,10 @@ export default {
       this.activeTab = index;
       this.allTabsShow = false;
     },
+    // 前往帖子发布
+    toPublishPost () {
+      this.$router.push('/publishPost');
+    }
   },
   components: {
     Fixednav,
