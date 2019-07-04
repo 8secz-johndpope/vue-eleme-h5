@@ -10,7 +10,7 @@
     />
     <!-- 空格 -->
     <div class="top-space"></div>
-    <van-search placeholder="请输入搜索关键词" v-model="keywords" />
+    <van-search placeholder="默认会有最新或者最热的帖子标题" readonly="readonly" @click="toPostSearch" />
     <!-- 菜单分类 -->
     <div class="flex-wrap white-bg classify-zone">
       <div class="classify-item" v-for="(menuItem, index) in menuList">
@@ -74,10 +74,9 @@ export default {
         }
       });
     },
-    onSearch () {
-      if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
-      this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/result/'+this.keywords);
+    // 前往帖子搜索
+    toPostSearch () {
+      this.$router.push('/post/postSearch');
     },
   },
   components: {

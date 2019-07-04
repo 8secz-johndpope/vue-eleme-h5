@@ -73,6 +73,7 @@ export default {
       this.$store.dispatch('setRcommendHighLightTab', index);
       this.allTabsShow = false;
     },
+    // 前往帖子搜索
     toPostSearch () {
       this.$router.push('/post/postSearch');
     },
