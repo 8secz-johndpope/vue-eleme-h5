@@ -18,7 +18,7 @@
       <div class="pdl15 mgb10 dy-font-color">
         更新于 2019-07-02 20:30:00
       </div>
-      <div class="pdl5 mg5 recommendItem" v-for="(item, index) in userListData" :key="index" @click="toUserzone">
+      <div class="pdl5 mg5 pdb5" v-for="(item, index) in userListData" :key="index" @click="toUserzone">
         <div class="flex-space-between">
           <div class="flex-align-center">
             <div class="mgr5 flex-center ranking-user top-user" v-if="index < 3">
@@ -84,9 +84,6 @@ export default {
     width: 100%;
     height: 4rem;
     background-size: 100% 100%;
-  }
-  .recommendItem{
-    height: 1rem;
   }
   .van-ellipsis{
     max-width: 5.4rem;
