@@ -38,13 +38,13 @@ export default {
       keywords: '', // 搜索关键词
       menuList: [
         {
-          levelOneName: '最新', // 分类名称
-          linkUrlName: 'newestAsk',
+          levelOneName: '提问', // 分类名称
+          linkUrlName: 'publishPost',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {
-          levelOneName: '提问', // 分类名称
-          linkUrlName: 'publishPost',
+          levelOneName: '最新', // 分类名称
+          linkUrlName: 'newestAsk',
           img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
         },
         {

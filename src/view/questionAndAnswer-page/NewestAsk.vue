@@ -1,6 +1,6 @@
 <template>
   <div class="questionAndAnswer-page">
-    <van-nav-bar title="最新问答" @click-left="onClickLeft" left-arrow fixed/>
+    <van-nav-bar title="最新问答" @click-left="onClickLeft" @click-right="onClickRight" left-arrow right-text="提问" fixed/>
     <!-- 空格 -->
     <div class="top-space"></div>
     <PostList :composition="getImitatePostList" :isQuetionAndAnswer="true"></PostList>
@@ -26,6 +26,9 @@ export default {
   methods: {
     onClickLeft(){
       this.COMMONFUNC.goBack();
+    },
+    onClickRight(){
+      this.$router.push('/publishPost');
     },
   },
   components: {
