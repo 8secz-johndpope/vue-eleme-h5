@@ -45,6 +45,7 @@ export var imitateUserList = [
 export var imitateMenu = [
   {
     levelOneName: '恋爱话术', // 分类一级名称
+    levelOneDesc: '愉快开场，拒绝尬聊，畅快互撩', // 分类一级描述
     menuList: [
         {
             levelTwoName: '全部',
@@ -92,6 +93,7 @@ export var imitateMenu = [
   },
   {
     levelOneName: '邀约约会', // 分类一级名称
+    levelOneDesc: '懂得如何撩将决定您的成败', // 分类一级描述
     menuList: [
         {
             levelTwoName: '邀约套路',
@@ -118,6 +120,7 @@ export var imitateMenu = [
   },
   {
     levelOneName: '肢体升温', // 分类一级名称
+    levelOneDesc: '大胆进挪，碰出爱的火花', // 分类一级描述
     menuList: [
         {
             levelTwoName: '化解抵抗',
@@ -144,6 +147,7 @@ export var imitateMenu = [
   },
   {
     levelOneName: '幽默机智', // 分类一级名称
+    levelOneDesc: '自古深情留不住，从来套路得人心', // 分类一级描述
     menuList: [
         {
             levelTwoName: '神回复',

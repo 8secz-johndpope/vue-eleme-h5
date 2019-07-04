@@ -1,15 +1,16 @@
 <template>
-  <div class="content-box">
-    <form action="/">
-      <van-search
-        v-model="keywords"
-        placeholder="请输入搜索关键词"
-        show-action
-        @search="onSearch"
-        @cancel="onCancel"
-        class="fixed-top"
-      />
-    </form>
+  <div>
+    <div class="pdl15 pdr15 white-bg flex-align-center top-zone">
+      <van-icon name="arrow-left" class="top-zone-left" @click="onClickLeft"/>
+      <form action="/" class="top-zone-right">
+        <van-search
+          v-model="keywords"
+          placeholder="请输入搜索关键词"
+          @search="onSearch"
+          clear
+        />
+      </form>
+    </div>
     <!-- 空格 -->
     <div class="top-space"></div>
     <Conversation :composition="getImitateConversation"></Conversation>
@@ -23,10 +24,11 @@ import Conversation from 'components/common_components/Conversation';
 import { mapGetters } from 'vuex';
 export default {
   name: 'talkingLibraryResult',
+  components: {
+    Conversation,
+  },
   data () {
     return {
-      uname: '',
-      active: 0,
       keywords: '',
     };
   },
@@ -40,9 +42,7 @@ export default {
     ])
   },
   methods: {
-    // 取消返回上一页
-    onCancel(){
-      this.$store.dispatch('setKeywords', '');
+    onClickLeft(){
       this.COMMONFUNC.goBack();
     },
     // 查询
@@ -52,20 +52,23 @@ export default {
       this.$toast('查询成功');
     }
   },
-  components: {
-    Conversation,
-  }
 };
 </script>
 
 <style lang="less" scoped>
-  .fixed-top{
+  .top-zone{
+    width: 100%;
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 999;
   }
+  .top-zone-left{
+    font-size: 18px;
+  }
+  .top-zone-right{
+    width: 100%;
+  }
   .top-space{
-    height: 1.3rem
+    height: 1.5rem
   }
 </style>

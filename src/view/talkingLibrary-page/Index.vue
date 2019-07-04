@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="white-bg">
     <div>
       <van-nav-bar
         title="恋爱话术"
@@ -9,28 +9,23 @@
         >
       </van-nav-bar>
     </div>
-    <div class="fixed-content-box">
-      <van-swipe :autoplay="3000">
-        <van-swipe-item v-for="(image, index) in images" :key="index">
-          <img v-lazy="image" class="swipe-img" />
-        </van-swipe-item>
-      </van-swipe>
-      <van-search
-        v-model="keywords"
-        placeholder="请输入搜索关键词"
-        show-action
-        @search="onSearch"
-        class="mgt10"
-        >
-        <div slot="action" @click="onSearch" class="search-box-btn-zone"><van-button size="small" type="danger" class="search-btn">搜索</van-button></div>
-      </van-search>
+    <div class="top-space"></div>
+    <div>
+      <div class="tcenter">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2128793460,2380442370&fm=26&gp=0.jpg" class="mgt15 logo" />
+        <div class="font-14 dy-font-color mgt10">微撩，让天下没有难谈的恋爱</div>
+        <van-search placeholder="请输入搜索关键词" class="search-zone" v-model="keywords" />
+        <van-button round type="danger" @click="onSearch" class="search-btn mgt5 font-14">搜一搜</van-button>
+      </div>
       <van-panel class="pd10 mgt10" v-for="(menuItem, index) in getImitateMenu">
         <div slot="header">
-          <i class="fa fa-heart rose-color" aria-hidden="true"></i><span class="main-name">{{menuItem.levelOneName}}</span>
+          <span class="main-name font-14">{{menuItem.levelOneName}}</span>
+          <span class="font-14 dy-font-color">|</span>
+          <span class="font-12 dy-font-color">{{menuItem.levelOneDesc}}</span>
         </div>
         <div class="flex-space-around">
           <router-link v-for="(child_item, child_index) in menuItem.menuList" :to="'/talkingLibrary/result/' + child_item.listId" >
-            <van-button type="danger" class="item-linear">{{child_item.levelTwoName}}</van-button>
+            <van-button type="danger" class="item-linear dy-font-color">{{child_item.levelTwoName}}</van-button>
           </router-link>
         </div>
       </van-panel>
@@ -79,29 +74,39 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .logo{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .search-zone{
+    width: 80%;
+    margin: 5px auto;
+    padding: 10px;
+  }
   .search-btn{
-    background-color: #FF6766;
-    border: 0.026667rem solid #FF6766;
+    width: 3rem;
+    height: 1rem;
+    line-height: 1rem;
+    background-color: #3B4151;
+    border: 0.026667rem solid #3B4151;
   }
   .item-linear{
-    background: #FF6766;
+    background: #F3F6FD;
+    color: #333;
     border: 0;
     margin: 0.312rem 0.156rem 0 0.156rem;
     width: 2.57rem;
     padding: 0 0.156rem;
-    height: 1.094rem;
-    line-height: 1.094rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
   }
   .main-name{
     margin-left: 0.312rem;
   }
   .panel-header{
     padding-top: 0.312rem;
-  }
-  .swipe-img{
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 4.0rem;
   }
 </style>
