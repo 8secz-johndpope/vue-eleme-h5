@@ -104,42 +104,42 @@ export default {
         {
           levelOneName: '恋爱话术', // 分类名称
           linkUrlName: 'talkingLibrary',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/huashu.png'), // 绝对路径
         },
         {
           levelOneName: '精选文章', // 分类名称
           linkUrlName: 'articleList',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/wenzhang.png'), // 绝对路径
         },
         {
           levelOneName: '情感百科', // 分类名称
           linkUrlName: 'encyclopediasList',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/baike.png'), // 绝对路径
         },
         {
           levelOneName: 'AI导师', // 分类名称
           linkUrlName: 'AITeachingChatList',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/daoshi.png'), // 绝对路径
         },
         {
           levelOneName: '情感问答', // 分类名称
           linkUrlName: 'questionAndAnswer',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/wenda.png'), // 绝对路径
         },
         {
           levelOneName: '任务中心', // 分类名称
           linkUrlName: 'taskCenter',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/renwuzhongxin.png'), // 绝对路径
         },
         {
           levelOneName: '兑换商城', // 分类名称
           linkUrlName: 'shoppingMallIndex',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/shangcheng.png'), // 绝对路径
         },
         {
           levelOneName: '实用工具', // 分类名称
           linkUrlName: 'toolList',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/menu/gongju.png'), // 绝对路径
         },
       ]
     };
