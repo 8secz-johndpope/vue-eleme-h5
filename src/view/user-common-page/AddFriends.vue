@@ -28,34 +28,17 @@
       finished-text="暂时没有更多了"
       @load="onLoadMore"
     >
-      <van-cell-group v-for="(item,index) in arrs">
-        <van-cell class="displayflex" @click="goUserzone">
-          <div class="tleft van-user-item-left">
-            <div class="van-avatar-large"><img :src="item.userImg" alt="" class="van-avatar-img"></div>
-            <div class="flex-column van-user-item-text-info">
-              <span class="van-userName">{{item.userName}}</span>
-              <span class="van-autograph">{{item.autograph}}</span>
-              <span>{{item.sex === 1 ? '女' : '男'}}&nbsp;&nbsp;作品：{{COMMONFUNC.formatterW(item.workNum)}} 粉丝：{{COMMONFUNC.formatterW(item.fansNum)}}</span>
-            </div>
-          </div>
-          <div class="tright van-user-item-right">
-            <van-button type="danger" size="mini" @click.stop="addInterest(index)" v-show="item.follow_type == 0">关注</van-button>
-            <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 1">已关注</van-button>
-            <van-button type="default" size="mini" @click.stop="cancelInterest(index)" v-show="item.follow_type == 2">互相关注</van-button>
-          </div>
-        </van-cell>
-      </van-cell-group>
+      <div v-for="(item,index) in arrs">
+        <UserCard :userInfo="item"></UserCard>
+      </div>
     </van-list>
   </div>
 </template>
 
 <script>
-
   import { mapGetters } from 'vuex';
-
+  import UserCard from 'components/common_components/UserCard';
   export default {
-    components:{
-    },
     name: 'addFriends',
     data () {
       return {
@@ -64,6 +47,9 @@
         finished: false,
         value: '',
       };
+    },
+    components:{
+      UserCard,
     },
     mounted () {
       let that = this;

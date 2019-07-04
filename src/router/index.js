@@ -651,7 +651,7 @@ export default new Router({
       path: '/post/postSearchResult/:content',
       name: 'postSearchResult', // 搜索帖子结果
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/post-page/PostSearchResult'],resolve),
     },
