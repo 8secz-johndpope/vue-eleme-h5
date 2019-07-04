@@ -141,6 +141,9 @@
 .taskCenter .van-step--finish .van-step__circle, .taskCenter .van-step--finish .van-step__line{
   background-color: #FF6766;
 }
+.taskCenter .step .van-step__title{
+  font-size: 0.38rem;
+}
 /* 活动页 -- 结束 */
 
 /* 帖子视频播放 -- 开始 */

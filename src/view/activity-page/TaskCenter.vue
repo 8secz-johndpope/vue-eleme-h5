@@ -25,7 +25,7 @@
         <van-icon name="like-o" class="red-color mgr5" /><span>连续签到领福利</span>
       </div>
       <van-steps :active="stepActive" active-color="#FF6766" class="mgt10 mgb10">
-        <van-step v-for="(item, index) in 7" :key="index">{{item}}天</van-step>
+        <van-step v-for="(item, index) in 7" :key="index" class="step">{{item}}天</van-step>
       </van-steps>
       <div class="task-title">
         <van-icon name="like-o" class="red-color mgr5" /><span>日常任务</span>
