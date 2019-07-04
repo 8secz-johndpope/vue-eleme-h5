@@ -15,7 +15,7 @@
         <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2128793460,2380442370&fm=26&gp=0.jpg" class="mgt15 logo" />
         <div class="font-14 dy-font-color mgt10">微撩，让天下没有难谈的恋爱</div>
         <van-search placeholder="请输入搜索关键词" class="search-zone" v-model="keywords" />
-        <van-button round type="danger" @click="onSearch" class="search-btn mgt5 font-14" :disabled="keywords ? false : true">搜一搜</van-button>
+        <van-button round type="danger" @click="onSearch" class="search-btn mgt5 font-14">搜一搜</van-button>
       </div>
       <van-panel class="pd10 mgt10" v-for="(menuItem, index) in getImitateMenu">
         <div slot="header">
