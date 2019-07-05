@@ -1,8 +1,8 @@
 <template>
-  <div class="shopInfo">
+  <div class="white-bg shopInfo">
     <!-- 顶部 -->
     <van-nav-bar
-      title="橱窗通用信息"    
+      title="橱窗通用信息"
       right-text="提交"
       left-arrow
       @click-left="onClickLeft"
@@ -50,6 +50,10 @@
         </van-cell-group>
       </van-radio-group>
     </van-popup>
+    <!-- 中小卖家扶持计划 -->
+    <div class="flex-center mgt10 pdb15 plan-zone">
+      <img src="http://img2.imgtn.bdimg.com/it/u=1658873543,3808371031&fm=26&gp=0.jpg" class="plan-img"/>
+    </div>
     <div class="footer-zone">
       <router-link :to="{ name: 'addOrUpdateCommodity', params: {} }"><van-button type="danger" size="large" >添加商品</van-button></router-link>
     </div>
@@ -176,6 +180,17 @@
   .pop-select-conent{
     height: 5rem;
     overflow: scroll;
+  }
+  .plan-zone{
+    width: 100%;
+    height: 3rem;
+  }
+  .plan-img{
+    width: 90%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 10px;
   }
   .footer-zone {
     position: fixed;
