@@ -2,12 +2,13 @@
   <div>
     <div class="fixed-top">
         <van-nav-bar
-          title="商品橱窗"
-          right-text="我也要卖货"
           left-arrow
           @click-left="onClickLeft"
-          @click-right="onClickRight"
           >
+          <template slot="right">
+            <span @click="onClickRight" class="gold-color mgr10">我也要卖货</span>
+            <span @click="onClickRight">购物助手</span>
+          </template>
         </van-nav-bar>
     </div>
     <div class="fixed-content-box">
