@@ -6,8 +6,8 @@
           @click-left="onClickLeft"
           >
           <template slot="right">
-            <span @click="onClickRight" class="gold-color mgr10">我也要卖货</span>
-            <span @click="onClickRight">购物助手</span>
+            <span @click="toApplyOpenShop" class="gold-color mgr10">开通橱窗</span>
+            <span @click="toShoppingAssistant">购物助手</span>
           </template>
         </van-nav-bar>
     </div>
@@ -21,12 +21,12 @@
               </div>
             </router-link>
             <div class="flex-column shopkeeper">
-              <span>XXX的商品橱窗</span>
+              <span class="font-16">XXX的商品橱窗</span>
               <span class="gray-font">全部商品 10</span>
             </div>
           </div>
           <div>
-            <router-link :to="{ name: 'shopInfo', params: {} }" class="flex-center">编辑橱窗<van-icon name="edit" /></router-link>
+            <router-link :to="{ name: 'shopInfo', params: { 'id' : 'shopId001'} }" class="flex-center">编辑橱窗<van-icon name="edit" /></router-link>
           </div>
         </div>
       </van-panel>
@@ -82,8 +82,13 @@
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
-      onClickRight () {
+      // 前往申请开店
+      toApplyOpenShop () {
         this.$router.push('/setting/applyOpenShop')
+      },
+      // 前往店铺助手
+      toShoppingAssistant () {
+        this.$router.push('/showcase/ShoppingAssistant')
       },
       // 下拉加载更多
       onLoadMore() {

@@ -180,6 +180,12 @@
 .pdr15{
   padding-right: 0.4rem;
 }
+.font-14{
+  font-size: 0.38rem;
+}
+.font-16{
+  font-size: 0.42rem;
+}
 .position-r{
   position: relative;
 }
@@ -264,4 +270,8 @@
 }
 .van-content-box{
   margin: 1.226667rem 0 0 0;
+}
+.img-common{
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

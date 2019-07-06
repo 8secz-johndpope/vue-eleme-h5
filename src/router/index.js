@@ -422,30 +422,30 @@ export default new Router({
     },
     // 商品橱窗
     {
-      path: '/showcase/userId/:id',
+      path: '/showcase/index/:shopId',
       name: 'showcase',
       meta: {
         keepAlive: true // 不需要缓存
       },
-      component: (resolve) => require(['view/shop-page/Showcase'],resolve),
+      component: (resolve) => require(['view/showcase-page/Showcase'],resolve),
     },
     // 商品详情
     {
-      path: '/commodity/commodityId/:id',
+      path: '/commodity/index/:id',
       name: 'commodity',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/shop-page/Commodity'],resolve),
+      component: (resolve) => require(['view/showcase-page/Commodity'],resolve),
     },
     // 新增或者修改商品
     {
-      path: '/addOrUpdateCommodity/commodityId/:id',
+      path: '/commodity/addOrUpdateCommodity/:id',
       name: 'addOrUpdateCommodity',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/shop-page/AddOrUpdateCommodity'],resolve),
+      component: (resolve) => require(['view/showcase-page/AddOrUpdateCommodity'],resolve),
     },
     // 速推+上热门
     {
@@ -454,18 +454,33 @@ export default new Router({
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/shop-page/Extension'],resolve),
+      component: (resolve) => require(['view/showcase-page/Extension'],resolve),
     },
     // 店铺信息
     {
-      path: '/shopInfo/shopId/:id',
+      path: '/showcase/shopInfo/:id',
       name: 'shopInfo',
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/shop-page/ShopInfo'],resolve),
+      component: (resolve) => require(['view/showcase-page/ShopInfo'],resolve),
     },
-
+    {
+      path: '/showcase/shoppingAssistant',
+      name: 'shoppingAssistant',  // 购物助手
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/ShoppingAssistant'],resolve),
+    },
+    {
+      path: '/showcase/goodsRanking',
+      name: 'goodsRanking',  // 好物榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/GoodsRanking'],resolve),
+    },
     /*
       AI导师 -- 开始
     */

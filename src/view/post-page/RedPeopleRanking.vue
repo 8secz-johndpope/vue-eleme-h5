@@ -90,8 +90,8 @@ export default {
     max-width: 5.4rem;
   }
   .ranking-user{
-    width: 30px;
-    height: 30px;
+    width: 0.8rem;
+    height: 0.8rem;
   }
   .top-user{
     background-image: url('../../images/icon/huangguan.png');

@@ -7,7 +7,7 @@
         <van-button size="large" round type="danger">去看看</van-button>
       </router-link>
     </div>
-    <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
+    <router-link :to="{ name: 'showcase', params: {'shopId':'01'} }" >
       <p class="flex-center goShowcase red-color">
         XXX的商品橱窗
       </p>

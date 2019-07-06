@@ -2,13 +2,13 @@
   <div>
     <div @click="select()">
       <van-card
-      tag="标签"
-      price="2.00"
-      desc="描述信息"
-      title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男"
-      :thumb="imgSrc"
-      origin-price="10.00"
-      v-lazy="imgSrc"
+        tag="标签"
+        price="2.00"
+        desc="描述信息"
+        title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男"
+        :thumb="imgSrc"
+        origin-price="10.00"
+        v-lazy="imgSrc"
       >
       <div slot="num">
         9.9w+人看过
@@ -69,7 +69,7 @@ export default {
       if (this.isSelectGoods) {
         this.$emit('on-select-goods', true)
       }else {
-        this.$router.push({ name: 'commodity', params: { commodityId: 'id000000' }})
+        this.$router.push({ name: 'commodity', params: { id: 'id000000' }})
       }
     },
     // 置顶

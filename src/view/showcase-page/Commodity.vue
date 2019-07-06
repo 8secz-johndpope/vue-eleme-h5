@@ -24,7 +24,7 @@
       </van-cell-group>
 
       <van-cell-group class="goods-cell-group">
-        <van-cell value="进入橱窗" icon="shop-o" is-link :to="{ name: 'showcase', params: {'id':'01'} }">
+        <van-cell value="进入橱窗" icon="shop-o" is-link :to="{ name: 'showcase', params: {'shopId':'01'} }">
           <template slot="title">
             <span class="van-cell-text">XXX的橱窗</span>
             <van-tag class="goods-tag" type="danger">官方</van-tag>
