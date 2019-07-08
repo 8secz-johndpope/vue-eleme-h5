@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <!--缓存想要缓存的页面，实现后退不刷新-->
     <!--加上v-if的判断，可以自定义想要缓存的组件，自定义在router里面-->
     <keep-alive>

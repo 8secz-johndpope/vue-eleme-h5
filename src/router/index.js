@@ -78,7 +78,7 @@ export default new Router({
       },
       component: (resolve) => require(['view/Recommend'],resolve),
     },
-    // 发微博
+    // 发微撩
     {
       path: '/publishPost',
       name: 'publishPost',
@@ -87,7 +87,7 @@ export default new Router({
       },
       component: (resolve) => require(['view/PublishPost'],resolve),
     },
-    // 转发微博
+    // 转发微撩
     {
       path: '/publish/retransmission/:postId',
       name: 'retransmission',
@@ -652,7 +652,7 @@ export default new Router({
     */
 
     /*
-      帖子 微博 -- 开始
+      帖子 微撩 -- 开始
     */
     {
       path: '/post/postSearch',
@@ -743,7 +743,7 @@ export default new Router({
       component: (resolve) => require(['view/document-page/DarenRankingRules'],resolve),
     },
     /*
-      帖子 微博 -- 结束
+      帖子 微撩 -- 结束
     */
 
     /*

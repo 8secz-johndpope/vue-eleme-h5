@@ -2,7 +2,7 @@
   <div class="postDetail">
     <!-- 顶部 -->
     <van-nav-bar
-      title="微博详情"
+      title="微撩详情"
       left-arrow
       @click-left="onClickLeft"
       fixed

@@ -1,13 +1,13 @@
 <template>
   <div class="white-bg">
     <van-nav-bar
-      :title="isRetransmission ? '转发微博' : '发微博'"
+      :title="isRetransmission ? '转发微撩' : '发微撩'"
       left-arrow
       @click-left="onClickLeft"
       fixed
     >
       <div slot="right" @click="onClickRight">
-        <van-button type="danger" size="small" :disabled=" uploadImgList.length === 0 && message.length === 0" v-if="!isRetransmission">发表</van-button>
+        <van-button type="danger" size="small" :disabled=" uploadImgList.length === 0 && message.length === 0  && !videoImg" v-if="!isRetransmission">发表</van-button>
         <van-button type="danger" size="small" v-if="isRetransmission">发表</van-button>
       </div>
     </van-nav-bar>
@@ -51,6 +51,14 @@
           </van-uploader>
         </div>
       </div>
+      <!-- 图片预览区域 -->
+      <div class="flex-center pd15" v-if="videoImg">
+        <div class="position-r video-zone">
+          <img :src="videoImg" class="video-zone-img"/>
+          <van-icon name="play-circle-o" class="video-play-icon" />
+          <van-icon name="close" class="gray-color close-icon" @click="deleteVideo" />
+        </div>
+      </div>
       <!-- 商品橱窗 -->
       <div class="position-r selectGoodZone" v-if="selectGoodsResult">
         <GoodsCard :isSelectGoods="true"></GoodsCard>
@@ -62,11 +70,15 @@
     <!-- 底部固定区域 -->
     <footer class="fixed-footer white-bg">
       <div class="flex-space-between pd15">
-        <div class="fixed-footer-left">
+        <div class="flex fixed-footer-left">
           <van-icon name="smile-o" class="footer-icon" @click="showEmoji = !showEmoji"/>
-          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgList.length < 9 && !isRetransmission">
+          <van-uploader :after-read="onRead" accept="image/gif, image/jpeg, image/png" :max-count="9" multiple v-if="uploadImgFlag && uploadImgList.length < 9 && !isRetransmission">
             <van-icon name="photo-o" class="footer-icon" />
           </van-uploader>
+          <div class="fileinput-button" v-if="uploadVideoFlag && uploadImgList.length < 9 && !isRetransmission">
+            <van-icon name="video-o" class="footer-icon" />
+            <input type="file" accept="video/*" ref="videoFile" id="fileUpload" @change="uploadVideo($event)">
+          </div>
           <van-icon name="label-o" class="footer-icon" @click="openTopicPop" v-if="!isRetransmission"/>
           <van-icon name="cart-circle-o" class="footer-icon" @click="addGoods"/>
         </div>
@@ -112,10 +124,13 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters } from 'vuex';
 import TopicList from 'components/child_components/Topic_components/TopicList';
 import GoodsCard from 'components/common_components/GoodsCard';
 import RetransmissionCard from 'components/child_components/Publish_components/RetransmissionCard';
+import { Toast } from 'vant';
+Vue.use(Toast);
 export default {
   name: 'add_conversation',
   props: {
@@ -127,10 +142,11 @@ export default {
   },
   data () {
     return {
-      message: '',  // 微博文本内容
+      message: '',  // 微撩文本内容
       emojiList: [],  // emoji表情集合
       showEmoji: false, // 是否显示emoji
       uploadImgList: [],  // 预览图片区域
+      videoImg: '', // 预览视频图片区域
       selectTopicList: [],  // 选择的话题列表，最多选3个
       publishTypePop: false,  // 发布类型弹框
       topicShowPop: false,  // 话题弹框
@@ -152,6 +168,8 @@ export default {
       ],
       goodsRadio: -1, // 选择的商品
       selectGoodsResult: false, // 选择商品
+      uploadImgFlag: true,  // 图片上传按钮的flag，true 显示
+      uploadVideoFlag: true,  // 图片上传按钮的flag，true 显示
     };
   },
   components: {
@@ -174,7 +192,7 @@ export default {
     onClickLeft () {
       this.COMMONFUNC.goBack();
     },
-    // 发表微博
+    // 发表微撩
     onClickRight () {
       let that = this;
       this.$toast.success({
@@ -214,6 +232,7 @@ export default {
         that.uploadImgList.push('https://avatars1.githubusercontent.com/u/34303195?s=460&v=4')
       }
       that.$toast('最多上传9张，上传图片至服务器，服务器返回图片地址')
+      this.uploadVideoFlag = false;
       that.scrollToBottom();
     },
     // 获取emoji表情
@@ -236,6 +255,9 @@ export default {
     // 删除上传的图片
     deleteImg(item, index) {
       this.uploadImgList.splice(index, 1)
+      if (this.uploadImgList.length === 0) {
+        this.uploadVideoFlag = true;
+      }
       this.$toast('物理删除服务器的图片')
     },
     // 删除选择的话题
@@ -297,6 +319,48 @@ export default {
     selectGoods () {
       this.selectGoodsResult = true;
       this.goodsListPop = false;
+    },
+    uploadVideo(e) {
+      //e.target.value文件名
+      var file = e.target.files[0];
+      // var formdata = new FormData();
+      // formdata.append('fileStream', file);
+      // this.beforeUploadVideo(formdata);
+      this.beforeUploadVideo(file);
+    },
+    //上传前回调
+	  beforeUploadVideo (file) {
+      const isLt10M = file.size / 1024 / 1024 < 10;
+      //'video/ogg', 'video/flv', 'video/avi', 'video/wmv', 'video/rmvb'
+      if (['video/mp4','video/ogg', 'video/flv', 'video/avi', 'video/wmv', 'video/rmvb', 'video/quicktime'].indexOf(file.type) == -1) {
+          this.$toast.fail('请上传正确的视频格式，如mp4,ogg,flv,avi,wmv,rmvb');
+          return
+      }
+      if (!isLt10M) {
+          this.$toast.fail('上传视频大小不能超过10MB哦!');
+          return
+      }
+      this.doUpload(file);
+    },
+    // 将视频上传到数据库
+    doUpload(formdata) {
+      const toast = Toast.loading({
+        mask: true,
+        duration: 0,  // 值为 0 时，toast 不会消失
+        forbidClick: true, // 禁用背景点击
+        message: '视频处理中...(实际是上传到后台)'
+      });
+      setTimeout ( ()=> {
+        toast.clear();
+        this.videoImg = 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4';
+        this.uploadImgFlag = false;
+        this.$refs.videoFile.value = ''; // 清空file文件
+      },1000)
+    },
+    // 删除视频
+    deleteVideo () {
+      this.videoImg = '';
+      this.uploadImgFlag = true;
     }
   }
 };
@@ -387,5 +451,34 @@ export default {
   .goodsList-box{
     height: 8rem;
     overflow: scroll;
+  }
+  .fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .fileinput-button input{
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+  }
+  .video-play-icon{
+    font-size: 54px;
+    color: rgba(0,0,0,.4);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .video-zone{
+    width: 100%;
+    height: 5rem;
+  }
+  .video-zone-img{
+    width: 100%;
+    height: 5rem;
   }
 </style>

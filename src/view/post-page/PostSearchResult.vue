@@ -19,7 +19,7 @@
         </div>
         <PostList :composition="getImitatePostList" :isThanksShow="true"></PostList>
       </van-tab>
-      <van-tab title="微博">
+      <van-tab title="微撩">
         <PostList :composition="getImitatePostList" :isThanksShow="true"></PostList>
       </van-tab>
       <van-tab title="用户">
