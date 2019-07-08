@@ -441,37 +441,41 @@ export default new Router({
       },
       component: (resolve) => require(['view/showcase-page/Showcase'],resolve),
     },
-    // 商品详情
     {
       path: '/commodity/index/:id',
-      name: 'commodity',
+      name: 'commodity',  // 商品详情
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/showcase-page/Commodity'],resolve),
     },
-    // 新增或者修改商品
     {
       path: '/commodity/addOrUpdateCommodity/:id',
-      name: 'addOrUpdateCommodity',
+      name: 'addOrUpdateCommodity',  // 新增或者修改商品
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/showcase-page/AddOrUpdateCommodity'],resolve),
     },
-    // 速推+上热门
     {
       path: '/extension/workId/:id',
-      name: 'extension',
+      name: 'extension',  // 速推+上热门
       meta: {
         keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/showcase-page/Extension'],resolve),
     },
-    // 店铺信息
+    {
+      path: '/showcase/shopSetting/:shopId',
+      name: 'shopSetting',  // 橱窗设置
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/ShopSetting'],resolve),
+    },
     {
       path: '/showcase/shopInfo/:id',
-      name: 'shopInfo',
+      name: 'shopInfo', // 橱窗信息
       meta: {
         keepAlive: false // 不需要缓存
       },

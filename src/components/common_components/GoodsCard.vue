@@ -23,7 +23,7 @@
       <router-link :to="{ name: 'addOrUpdateCommodity', params: {'id':'cID00001'} }">
         <van-button size="mini">编辑</van-button>
       </router-link>
-      <van-button size="mini" @click="moreOperatePop = true">更多操作</van-button>
+      <van-button size="mini" @click="moreOperatePop = true" class="mgl5">更多操作</van-button>
     </div>
     <!-- 更多操作弹框 -->
     <van-actionsheet v-model="moreOperatePop" title="更多操作">

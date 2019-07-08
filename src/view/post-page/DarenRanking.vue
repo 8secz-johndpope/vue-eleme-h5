@@ -25,7 +25,7 @@
               {{index + 1}}
             </div>
             <span class="mgr5 flex-center ranking-user" v-else>{{index + 1}}.</span>
-            <img :src="item.userImg" class="van-avatar-large" />
+            <img :src="item.userImg" class="mgr5 van-avatar-large" />
             <span class="van-ellipsis mgr5">{{item.userName}}</span>
           </div>
           <div>
