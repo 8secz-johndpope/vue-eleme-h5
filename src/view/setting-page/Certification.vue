@@ -39,33 +39,20 @@
           </van-uploader>
         </div>
       </div>
-      <div slot="footer">
-        <span>继续表示同意</span>
-        <span class="gold-color" @click="showUserAgreementPop = true">用户协议及隐私条款</span>
+      <div slot="footer" class="flex-start">
+        <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
+        <span class="mgl5 mgr5">继续表示同意</span>
+        <router-link :to="{ name: 'userAgreement', params: {} }"><span class="gold-color">用户协议及隐私条款</span></router-link>
       </div>
     </van-panel>
     <div class="flex-center fixed-footer-btn-zone">
-      <van-button size="large" round type="danger" class="submit-btn" @click="submit">提交审核</van-button>
+      <van-button size="large" round type="danger" class="submit-btn" @click="submit" :disabled="!agreeCheckbox">提交审核</van-button>
     </div>
-    <van-popup v-model="showUserAgreementPop" position="bottom" :overlay="true">
-      <div class="fixed-top">
-        <van-nav-bar
-          title="用户协议及隐私条款"
-          @click-left="showUserAgreementPop = false"
-          left-arrow
-        />
-      </div>
-      <div class="fixed-content-box">
-        <UserAgreement></UserAgreement>
-      </div>
-    </van-popup>
   </div>
 </template>
 <script>
-  import UserAgreement from 'components/word_components/UserAgreement';
   export default {
     components:{
-      UserAgreement,
     },
     name: 'report',
     data () {
@@ -73,7 +60,7 @@
         userName: '',  // 真实姓名
         IDCard: '', // 身份证号码
         tel: '',  // 手机号
-        showUserAgreementPop: false,  // 隐私协议条款
+        agreeCheckbox: false,  // 同意条款
       };
     },
     mounted () {
@@ -111,7 +98,11 @@
         }).catch(() => {
           // on cancel
         });
-      }
+      },
+      // 切换同意条款按钮
+      changeAgreeCheckbox () {
+        this.isShoping = !this.isShoping;
+      },
     },
     watch: {
     }

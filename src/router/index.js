@@ -132,41 +132,53 @@ export default new Router({
       },
       component: (resolve) => require(['view/document-page/AddConversationQuestion'],resolve),
     },
-    // 金币充值说明
     {
       path: '/document/goldCoinRechargeDesc',
-      name: 'goldCoinRechargeDesc',
+      name: 'goldCoinRechargeDesc', // 金币充值说明
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/GoldCoinRechargeDesc'],resolve),
     },
-    // 充值帮助
     {
       path: '/document/invitationRules',
-      name: 'invitationRules',
+      name: 'invitationRules',  // 充值帮助
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/InvitationRules'],resolve),
     },
-    // 服务协议及投放要求
     {
       path: '/document/userAgreement',
-      name: 'userAgreement',
+      name: 'userAgreement',  // 服务协议及投放要求
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/UserAgreement'],resolve),
     },
-    // 邀请活动规则
     {
       path: '/document/rechargeHelp',
-      name: 'rechargeHelp',
+      name: 'rechargeHelp', // 邀请活动规则
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/RechargeHelp'],resolve),
+    },
+    {
+      path: '/document/transactionDisputes',
+      name: 'transactionDisputes', // 卖家常见问题，处理争议
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/TransactionDisputes'],resolve),
+    },
+    {
+      path: '/document/marginTreaty',
+      name: 'marginTreaty', // 保证金条约
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/MarginTreaty'],resolve),
     },
     /*
       文档说明 -- 结束
@@ -452,7 +464,7 @@ export default new Router({
       path: '/extension/workId/:id',
       name: 'extension',
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/showcase-page/Extension'],resolve),
     },

@@ -5,7 +5,9 @@
       <van-nav-bar
         title="商品分享功能申请"
         left-arrow
+        right-text="卖家问题"
         @click-left="onClickLeft"
+        @click-right="onClickRight"
       />
     </div>
     <div class="fixed-content-box">
@@ -78,6 +80,10 @@
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
+      },
+      // 前往卖家问题，争议处理
+      onClickRight(){
+        this.$router.push({ name: 'transactionDisputes' })
       },
       // 申请开店
       apply () {

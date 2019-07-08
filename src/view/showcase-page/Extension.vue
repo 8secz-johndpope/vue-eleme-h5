@@ -152,12 +152,10 @@
 <script>
   import Orientation from 'components/child_components/Extension_components/Orientation';
   import Daren from 'components/child_components/Extension_components/Daren';
-  import UserAgreement from 'components/word_components/UserAgreement';
   export default {
     components:{
       Orientation,
       Daren,
-      UserAgreement,
     },
     name: 'extension',
     data () {
