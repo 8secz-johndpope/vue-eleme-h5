@@ -2,16 +2,13 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="橱窗设置"
+      title="橱窗更多设置"
       left-arrow
       @click-left="onClickLeft"
     />
-    <van-cell title="商品管理" value="新增、编辑商品" is-link to="{ name : ''}" />
-    <van-cell title="橱窗信息" value="橱窗通用信息" is-link :to="{ name: 'shopInfo', params: { id: 'shopId001' } }" />
-    <van-cell title="数据分析" value="用户行为、画像" is-link to="setting/certification" />
-    <van-cell title="福利社" value="拓展营销渠道" is-link to="setting/applyOpenShop" />
-    <van-cell title="橱窗达人榜" value="每天中午12点更新排行" is-link to="setting/applyOpenShop" />
-    <van-cell title="更多" is-link to="/setting/contact" />
+    <van-cell title="服务费" value="前三个月免租金" is-link :to="{ name: 'serviceCharge', params: { showcaseId: 'showcaseId001' } }" />
+    <van-cell title="保证金退还" value="最少提前7天提出申请哦" is-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001' } }" />
+    <van-cell title="不良记录" value="用户行为、画像" is-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001' } }" />
   </div>
 </template>
 <script>

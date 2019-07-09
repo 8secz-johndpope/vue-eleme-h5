@@ -26,7 +26,7 @@
             </div>
           </div>
           <div>
-            <router-link :to="{ name: 'shopSetting', params: { 'shopId' : 'shopId001'} }" class="flex-center">编辑橱窗<van-icon name="edit" /></router-link>
+            <router-link :to="{ name: 'showcaseTools', params: { 'showcaseId' : 'showcaseId001'} }" class="flex-center">电商工具箱<van-icon name="edit" /></router-link>
           </div>
         </div>
       </van-panel>
@@ -36,11 +36,11 @@
         finished-text="没有更多了"
         @load="onLoadMore"
       >
-      <!-- 轮询商品 -->
-      <div v-for="(item,index) in goodsArr">
-        <!-- 商品组件 -->
-        <GoodsCard :moreOperate="true"></GoodsCard>
-      </div>
+        <!-- 轮询商品 -->
+        <div v-for="(item,index) in goodsArr">
+          <!-- 商品组件 -->
+          <GoodsCard :moreOperate="true"></GoodsCard>
+        </div>
       </van-list>
     </div>
   </div>

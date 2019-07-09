@@ -450,36 +450,12 @@ export default new Router({
       component: (resolve) => require(['view/showcase-page/Commodity'],resolve),
     },
     {
-      path: '/commodity/addOrUpdateCommodity/:id',
-      name: 'addOrUpdateCommodity',  // 新增或者修改商品
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/showcase-page/AddOrUpdateCommodity'],resolve),
-    },
-    {
       path: '/extension/workId/:id',
       name: 'extension',  // 速推+上热门
       meta: {
         keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/showcase-page/Extension'],resolve),
-    },
-    {
-      path: '/showcase/shopSetting/:shopId',
-      name: 'shopSetting',  // 橱窗设置
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/showcase-page/ShopSetting'],resolve),
-    },
-    {
-      path: '/showcase/shopInfo/:id',
-      name: 'shopInfo', // 橱窗信息
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/showcase-page/ShopInfo'],resolve),
     },
     {
       path: '/showcase/shoppingAssistant',
@@ -496,6 +472,86 @@ export default new Router({
         keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/showcase-page/GoodsRanking'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/:showcaseId',
+      name: 'showcaseTools',  // 电商工具箱
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/ShowcaseTools'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/goodsManage/:showcaseId',
+      name: 'goodsManage',  // 电商工具箱 -- 商品管理
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/GoodsManage'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/addOrUpdateCommodity/:showcaseId',
+      name: 'addOrUpdateCommodity',  // 电商工具箱 -- 商品管理 -- 新增或者修改商品
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/AddOrUpdateCommodity'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/showcaseInfo/:showcaseId',
+      name: 'showcaseInfo', // 电商工具箱 -- 橱窗信息
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseInfo'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/dataAnalysis/:showcaseId',
+      name: 'dataAnalysis', // 电商工具箱 -- 数据分析
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/DataAnalysis'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/welfareSociety/:showcaseId',
+      name: 'welfareSociety', // 电商工具箱 -- 福利社
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/WelfareSociety'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/showcaseRanking/:showcaseId',
+      name: 'showcaseRanking', // 电商工具箱 -- 橱窗达人榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseRanking'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/showcaseMoreSetting/:showcaseId',
+      name: 'showcaseMoreSetting', // 电商工具箱 -- 更多设置
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/showcaseMoreSetting/serviceCharge/:showcaseId',
+      name: 'serviceCharge', // 电商工具箱 -- 更多设置 -- 服务费
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/ServiceCharge'],resolve),
+    },
+    {
+      path: '/showcase/showcaseTools/showcaseMoreSetting/serviceChargeDetail/:showcaseId',
+      name: 'serviceChargeDetail', // 电商工具箱 -- 更多设置 -- 服务费记录
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/ServiceChargeDetail'],resolve),
     },
     /*
       AI导师 -- 开始

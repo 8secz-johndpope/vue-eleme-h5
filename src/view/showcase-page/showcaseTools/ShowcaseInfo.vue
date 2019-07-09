@@ -55,7 +55,7 @@
       <img src="http://img2.imgtn.bdimg.com/it/u=1658873543,3808371031&fm=26&gp=0.jpg" class="plan-img"/>
     </div> -->
     <div class="footer-zone">
-      <router-link :to="{ name: 'addOrUpdateCommodity', params: {} }"><van-button type="danger" size="large" >添加商品</van-button></router-link>
+      <router-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001'} }"><van-button type="danger" size="large" >添加商品</van-button></router-link>
     </div>
   </div>
 </template>

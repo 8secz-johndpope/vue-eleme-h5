@@ -1,46 +1,23 @@
 <template>
   <div>
-    <div class="fixed-top">
-        <van-nav-bar
-          left-arrow
-          @click-left="onClickLeft"
-          >
-          <template slot="right">
-            <span @click="toApplyOpenShop" class="gold-color mgr10">开通橱窗</span>
-            <span @click="toShoppingAssistant">购物助手</span>
-          </template>
-        </van-nav-bar>
-    </div>
+    <van-nav-bar
+      left-arrow
+      title="商品管理"
+      @click-left="onClickLeft"
+      fixed
+    />
     <div class="fixed-content-box">
-      <van-panel>
-        <div slot="header" class="flex-space-between header">
-          <div class="flex-start">
-            <router-link :to="{ name: 'userzone', params: {} }">
-              <div>
-                <span class="van-avatar"><img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" alt="" class="van-avatar-img"></span>
-              </div>
-            </router-link>
-            <div class="flex-column shopkeeper">
-              <span class="font-16">XXX的商品橱窗</span>
-              <span class="gray-font">全部商品 10</span>
-            </div>
-          </div>
-          <div>
-            <router-link :to="{ name: 'shopSetting', params: { 'shopId' : 'shopId001'} }" class="flex-center">编辑橱窗<van-icon name="edit" /></router-link>
-          </div>
-        </div>
-      </van-panel>
       <van-list
         v-model="listLoading"
         :finished="finished"
         finished-text="没有更多了"
         @load="onLoadMore"
       >
-      <!-- 轮询商品 -->
-      <div v-for="(item,index) in goodsArr">
-        <!-- 商品组件 -->
-        <GoodsCard :moreOperate="true"></GoodsCard>
-      </div>
+        <!-- 轮询商品 -->
+        <div v-for="(item,index) in goodsArr">
+          <!-- 商品组件 -->
+          <GoodsCard :moreOperate="true"></GoodsCard>
+        </div>
       </van-list>
     </div>
   </div>
@@ -82,14 +59,6 @@
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
-      // 前往申请开店
-      toApplyOpenShop () {
-        this.$router.push('/setting/applyOpenShop')
-      },
-      // 前往店铺助手
-      toShoppingAssistant () {
-        this.$router.push('/showcase/ShoppingAssistant')
-      },
       // 下拉加载更多
       onLoadMore() {
         // 异步更新数据
@@ -110,10 +79,4 @@
   }
 </script>
 <style lang="css" scoped>
-  .header{
-    padding: 0.2rem 0.4rem;
-  }
-  .shopkeeper{
-    padding: 0 0 0 0.2rem;
-  }
 </style>

@@ -20,7 +20,7 @@
     </van-card>
     </div>
     <div class="opt-zone" v-if="moreOperate">
-      <router-link :to="{ name: 'addOrUpdateCommodity', params: {'id':'cID00001'} }">
+      <router-link :to="{ name: 'addOrUpdateCommodity', params: {'showcaseId':'showcaseId00001'} }">
         <van-button size="mini">编辑</van-button>
       </router-link>
       <van-button size="mini" @click="moreOperatePop = true" class="mgl5">更多操作</van-button>
