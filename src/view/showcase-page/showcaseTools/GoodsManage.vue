@@ -3,7 +3,9 @@
     <van-nav-bar
       left-arrow
       title="商品管理"
+      right-text="添加商品"
       @click-left="onClickLeft"
+      @click-right="onClickRight"
       fixed
     />
     <div class="fixed-content-box">
@@ -58,6 +60,9 @@
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
+      },
+      onClickRight(){
+        this.$router.push({ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001'} })
       },
       // 下拉加载更多
       onLoadMore() {

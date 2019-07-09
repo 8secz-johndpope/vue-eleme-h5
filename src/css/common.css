@@ -142,7 +142,7 @@
   margin-right: 0.4rem;
 }
 .pdb5{
-  padding-bottom: 0 0 0.133333rem 0;
+  padding-bottom: 0.133333rem;
 }
 .pdt5{
   padding-top: 0.133333rem;
@@ -159,9 +159,6 @@
 .pdr10{
   padding-right:  0.266667rem;
 }
-.pdb15{
-  padding-bottom:  0.4rem;
-}
 .pdt10{
   padding-top: 0.266667rem;
 }
@@ -174,11 +171,32 @@
 .pdt15{
   padding-top: 0.4rem;
 }
+.pdb15{
+  padding-bottom:  0.4rem;
+}
 .pdl15{
   padding-left: 0.4rem;
 }
 .pdr15{
   padding-right: 0.4rem;
+}
+.pd15{
+  padding: 0.4rem;
+}
+.pd20{
+  padding-top: 0.5555556rem;
+}
+.pdt20{
+  padding-top: 0.5555556rem;
+}
+.pdb20{
+  padding-bottom:  0.5555556rem;
+}
+.pdl20{
+  padding-left: 0.5555556rem;
+}
+.pdr20{
+  padding-right: 0.5555556rem;
 }
 .font-14{
   font-size: 0.38rem;
