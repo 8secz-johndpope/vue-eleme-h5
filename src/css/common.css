@@ -198,6 +198,21 @@
 .pdr20{
   padding-right: 0.5555556rem;
 }
+.mg20{
+  margin-top: 0.5555556rem;
+}
+.mgt20{
+  margin-top: 0.5555556rem;
+}
+.mgb20{
+  margin-bottom:  0.5555556rem;
+}
+.mgl20{
+  margin-left: 0.5555556rem;
+}
+.mgr20{
+  margin-right: 0.5555556rem;
+}
 .font-14{
   font-size: 0.38rem;
 }

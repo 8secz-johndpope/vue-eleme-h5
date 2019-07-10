@@ -33,16 +33,11 @@
           <van-col span="9" class="flex-center">1,000<van-icon name="arrow-down" class="green-color mgl5" /></van-col>
         </van-row>
       </div>
-      <div class="mgt15 dy-font-color">
-        趋势分析
+      <div class="mgt20 dy-font-color">
+        近7天趋势分析
       </div>
       <!-- 趋势走势 echarts  折线图 -->
       <div id="lineEchart" class="echart"></div>
-      <div class="mgt15 dy-font-color">
-        数据来源
-      </div>
-      <!-- 数据来源 echarts  柱状图 -->
-      <div id="barEchart" class="echart"></div>
     </div>
   </div>
 </template>
@@ -70,7 +65,6 @@
       }
     },
     mounted () {
-      this.drawBar()
       this.drawLine()
     },
     methods: {
@@ -90,73 +84,6 @@
               fontSize = 60;
           }
           return fontSize;
-      },
-      drawBar () {
-        // 基于准备好的dom，初始化echarts实例
-        const size = this.fGetChartFontSize();
-        let eChart = echarts.init(document.getElementById('barEchart'))
-        // 绘制图表
-        eChart.setOption({
-          xAxis: [{
-            type: 'category',
-            axisTick: {
-              show: false
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#e3e3e3'
-              }
-            },
-            axisLabel: {
-              inside: false,
-              textStyle: {
-                color: '#999',
-                fontWeight: 'normal',
-                fontSize: size
-              }
-            },
-            splitLine: {show: false}, // 去除网格线
-            data : ['作品', '搜索', '福利社', '活动'],
-          }],
-          yAxis: [{
-            type: 'value',
-            axisTick: {
-              show: false
-            },
-            axisLine: {
-              show: false,
-            },
-            splitLine: {
-              show: false,
-            },
-            axisLabel: {
-              textStyle: {
-                color: '#bac0c0',
-                fontWeight: 'normal',
-                fontSize: size
-              },
-              formatter: '{value}'
-            }
-          }],
-          series: [{
-            type: 'bar',
-            itemStyle: {
-              normal: {
-                show: true,
-                color: '#4aa6fc',
-                borderWidth: 0
-              },
-              emphasis: {
-                shadowBlur: 15,
-                shadowColor: 'rgba(105,123, 214, 0.7)'
-              }
-            },
-            zlevel: 5,
-            barWidth : 40,//柱图宽度
-            data: [500, 200, 400, 300]
-          }]
-        })
       },
       drawLine () {
         // 基于准备好的dom，初始化echarts实例
@@ -178,7 +105,7 @@
                 }
             },
             legend: {
-                data: ['浏览量','访客量'],
+                data: ['浏览量(PV)','访客数(UV)'],
                 textStyle:{
                     fontSize: size,//字体大小
                 },
@@ -223,7 +150,7 @@
             ],
             series : [
                 {
-                    name:'浏览量',
+                    name:'浏览量(PV)',
                     type:'line',
                     stack: '总量',
                     areaStyle: {},
@@ -231,7 +158,7 @@
                     data: [120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name:'访客量',
+                    name:'访客数(UV)',
                     type:'line',
                     stack: '总量',
                     areaStyle: {normal: {}},
