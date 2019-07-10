@@ -3,7 +3,9 @@
     <van-nav-bar
       left-arrow
       title="服务费"
+      right-text="服务费说明"
       @click-left="onClickLeft"
+      @click-right="onClickRight"
       fiexed
       >
     </van-nav-bar>
@@ -28,7 +30,9 @@
       onClickLeft(){
         this.COMMONFUNC.goBack();
       },
-
+      onClickRight(){
+        this.COMMONFUNC.goBack();
+      },
     }
   }
 </script>

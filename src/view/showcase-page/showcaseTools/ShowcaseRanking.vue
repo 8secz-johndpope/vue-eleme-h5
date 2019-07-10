@@ -4,7 +4,6 @@
       title="橱窗达人榜"
       @click-left="onClickLeft"
       @click-right="onClickRight"
-      right-text="榜单规则"
       left-arrow
       fixed
     />
@@ -29,7 +28,7 @@
             <span class="van-ellipsis mgr5">{{item.userName}}</span>
           </div>
           <div>
-            <span class="dy-font-color">132.2w 影响力</span>
+            <span class="dy-font-color">去看Ta的橱窗></span>
           </div>
         </div>
       </div>
@@ -68,12 +67,9 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
-    onClickRight(){
-      this.$router.push({ name: 'redPeopleRankingRules', params: ''})
-    },
     // 前往帖子分类
     toUserzone () {
-      this.$router.push({ name: 'userzone', params: ''})
+      this.$router.push({ name: 'showcase', params: { shopId: 'id001'}})
     },
   }
 };
