@@ -553,6 +553,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/ServiceChargeDetail'],resolve),
     },
+    {
+      path: '/showcase/showcaseTools/showcaseMoreSetting/bond/:showcaseId',
+      name: 'bond', // 电商工具箱 -- 更多设置 -- 保证金
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/Bond'],resolve),
+    },
     /*
       AI导师 -- 开始
     */

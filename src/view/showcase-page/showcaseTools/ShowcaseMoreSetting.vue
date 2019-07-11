@@ -7,7 +7,7 @@
       @click-left="onClickLeft"
     />
     <van-cell title="服务费" value="前三个月免租金" is-link :to="{ name: 'serviceCharge', params: { showcaseId: 'showcaseId001' } }" />
-    <van-cell title="保证金退还" value="最少提前7天提出申请哦" is-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001' } }" />
+    <van-cell title="保证金" value="保障信用，守护你我" is-link :to="{ name: 'bond', params: { showcaseId: 'showcaseId001' } }" />
     <van-cell title="不良记录" value="用户行为、画像" is-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001' } }" />
   </div>
 </template>
