@@ -180,6 +180,14 @@ export default new Router({
       },
       component: (resolve) => require(['view/document-page/MarginTreaty'],resolve),
     },
+    {
+      path: '/document/bondDesc',
+      name: 'bondDesc', // 保证金说明
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/BondDesc'],resolve),
+    },
     /*
       文档说明 -- 结束
     */

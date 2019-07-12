@@ -28,7 +28,7 @@
             <span class="van-ellipsis mgr5">{{item.userName}}</span>
           </div>
           <div>
-            <span class="dy-font-color">去看Ta的橱窗></span>
+            <span class="dy-font-color">Ta的橱窗></span>
           </div>
         </div>
       </div>
