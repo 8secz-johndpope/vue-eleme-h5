@@ -1,8 +1,6 @@
 <template>
   <div>
-    <van-nav-bar left-arrow @click-left="onClickLeft" @click-right="onClickRight" fixed :title="goods.title">
-      <van-icon name="ellipsis" slot="right" />
-    </van-nav-bar>
+    <van-nav-bar left-arrow @click-left="onClickLeft" fixed :title="goods.title" />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <div class="goods">
@@ -40,31 +38,20 @@
           </van-collapse-item>
         </van-collapse>
       </van-cell-group>
-
-
       <van-goods-action>
-        <van-goods-action-big-btn icon="chat-o" to="/chat/userId">
-          客服
+        <van-goods-action-big-btn 
+          icon="chat-o" 
+          v-clipboard:copy="copyText"
+          v-clipboard:success="onCopySuccess"
+          v-clipboard:error="onCopyError"
+        >
+          复制商品淘宝链接
         </van-goods-action-big-btn>
         <van-goods-action-big-btn primary @click="toTaobao">
           去淘宝看看
         </van-goods-action-big-btn>
       </van-goods-action>
     </div>
-    <!-- 更多操作——举报 -->
-    <van-popup
-      v-model="moreOptPopup"
-      position="bottom"
-    >
-      <div class="select-content">
-        <p class="flex-center select-content-item red-color"
-        v-clipboard:copy="copyText"
-        v-clipboard:success="onCopySuccess"
-        v-clipboard:error="onCopyError">
-        复制商品淘宝链接
-      </p>
-      </div>
-    </van-popup>
     <van-actionsheet v-model="servicePopup" title="服务说明">
       <div class="pd15">
         <div class="flex-align-center mgb15" v-for="(item, index) in serviceContent" :key="index">
@@ -109,7 +96,6 @@ export default {
         ]
       },
       activeNames: ['1'],
-      moreOptPopup: false,  // 更多操作弹框
       servicePopup: false,  // 消保弹框
       serviceContent: [
         {
@@ -133,9 +119,6 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
-    onClickRight(){
-      this.moreOptPopup = true;
-    },
     formatPrice() {
       return '¥' + (this.goods.price / 100).toFixed(2);
     },
@@ -145,12 +128,10 @@ export default {
     // 复制成功
     onCopySuccess: function (e) {
       this.$toast('复制成功！')
-      this.moreOptPopup = false;
     },
     // 复制失败
     onCopyError: function (e) {
       this.$toast('复制失败！')
-      this.moreOptPopup = false;
     },
   }
 };

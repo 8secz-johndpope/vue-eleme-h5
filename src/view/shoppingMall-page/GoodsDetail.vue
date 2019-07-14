@@ -30,9 +30,9 @@
         </van-collapse>
       </van-cell-group>
       <!-- 实物收货地址 -->
-      <van-cell-group title="实物商品收货信息" @click="toReceivingAddress" to="/setting/receivingAddress" v-if="goodsType === 0">
+      <van-cell-group title="实物商品收货信息" v-if="goodsType === 0">
         <van-cell title="收货人" value="18124655384" icon="user-o"/>
-        <van-cell title="收货地址：浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室" icon="location-o" is-link/>
+        <van-cell title="收货地址：浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室" icon="location-o" is-link @click="toReceivingAddress" />
         <van-field
           v-model="remarks"
           label="留言备注"
