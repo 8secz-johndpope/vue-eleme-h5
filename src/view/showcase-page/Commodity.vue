@@ -21,6 +21,9 @@
           <van-col span="10">运费：{{ goods.express }}</van-col>
           <van-col span="14">剩余：{{ goods.remain }}</van-col>
         </van-cell>
+        <van-cell class="goods-express" isLink @click="servicePopup = true">
+          <van-col span="24">服务：假一赔三/7天退换/消费者保障服务</van-col>
+        </van-cell>
       </van-cell-group>
 
       <van-cell-group class="goods-cell-group">
@@ -62,6 +65,18 @@
       </p>
       </div>
     </van-popup>
+    <van-actionsheet v-model="servicePopup" title="服务说明">
+      <div class="pd15">
+        <div class="flex-align-center mgb15" v-for="(item, index) in serviceContent" :key="index">
+          <div><img :src="item.icon" class="van-avatar"></div>
+          <div class="mgl10">
+            <div class="font-14">{{item.name}}</div>
+            <div class="dy-font-color font-12">{{item.desc}}</div>
+          </div>
+        </div>
+        <van-button class="mgt15" size="large" type="danger" @click="servicePopup = false">确定</van-button>
+      </div>
+    </van-actionsheet>
   </div>
 </template>
 
@@ -95,6 +110,22 @@ export default {
       },
       activeNames: ['1'],
       moreOptPopup: false,  // 更多操作弹框
+      servicePopup: false,  // 消保弹框
+      serviceContent: [
+        {
+          name: '假一赔三',
+          icon: require('images/icon/service-protect/pei.png'), // 绝对路径
+          desc: '为了保障消费者权益，平台商品支持假一赔三',
+        },{
+          name: '七天退换',
+          icon: require('images/icon/service-protect/qitian.png'), // 绝对路径
+          desc: '消费者咋满足7天无理由退换货申请条件的前提下，可以提出“七天无理由退换货”的申请',
+        },{
+          name: '消费者保障服务',
+          icon: require('images/icon/service-protect/baozheng.png'), // 绝对路径
+          desc: '该卖家已缴纳保证金，如有商品质量问题，描述不符等，您有权申请退款或退货',
+        },
+      ],
       copyText: '用户填写的该商品的淘宝链接',  // 复制的内容
     };
   },

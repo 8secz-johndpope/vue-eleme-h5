@@ -48,15 +48,15 @@
   import { Row, Col } from 'vant';
   import { mapGetters } from 'vuex';
   Vue.use(Row).use(Col);
-  // 引入基本模板
-  let echarts = require('echarts/lib/echarts')
-  // 引入柱状图组件
-  require('echarts/lib/chart/line')
-  require('echarts/lib/chart/bar')
+  // // 引入基本模板
+  // let echarts = require('echarts/lib/echarts')
+  // // 引入柱状图组件
+  // require('echarts/lib/chart/line')
+  // require('echarts/lib/chart/bar')
 
-  // 引入提示框和title组件
-  require('echarts/lib/component/tooltip')
-  require('echarts/lib/component/legend')
+  // // 引入提示框和title组件
+  // require('echarts/lib/component/tooltip')
+  // require('echarts/lib/component/legend')
 
   export default {
     name: 'eCharts',
@@ -65,7 +65,7 @@
       }
     },
     mounted () {
-      this.drawLine()
+      // this.drawLine()
     },
     methods: {
       onClickLeft(){
