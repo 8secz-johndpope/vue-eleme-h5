@@ -122,7 +122,7 @@ export default new Router({
       component: (resolve) => require(['view/user-common-page/Userzone'],resolve),
     },
     /*
-      文档说明 -- 结束
+      文档说明 -- 开始
     */
     {
       path: '/addConversation/question',
@@ -187,6 +187,14 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/BondDesc'],resolve),
+    },
+    {
+      path: '/document/extendDesc',
+      name: 'extendDesc', // 速推常见问题
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/ExtendDesc'],resolve),
     },
     /*
       文档说明 -- 结束

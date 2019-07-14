@@ -4,7 +4,9 @@
         <van-nav-bar
         title="速推+上热门"
         left-arrow
+        right-text="常见问题"
         @click-left="onClickLeft"
+        @click-right="onClickRight"
         >
       </van-nav-bar>
     </div>
@@ -294,6 +296,9 @@
     methods: {
       onClickLeft(){
         this.COMMONFUNC.goBack();
+      },
+      onClickRight () {
+        this.$router.push({ name: 'extendDesc'})
       },
       // 帮助弹框
       helpIcon (type) {
