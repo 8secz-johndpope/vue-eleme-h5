@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="橱窗更多设置"
+      title="客户服务"
       left-arrow
       @click-left="onClickLeft"
     />
