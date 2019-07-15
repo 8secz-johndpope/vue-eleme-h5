@@ -113,7 +113,7 @@ function commentsTimeFormatter(timestamp) {
         // 超过1天，直接显示年月日 不显示时分秒
         return (function() {
             var date = new Date(timestamp);
-            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate()) 
+            return date.getFullYear() + '/' + zero(date.getMonth() + 1) + '/' + zero(date.getDate())
             // + ' ' + date.getHours() + ':' + zero(date.getMinutes() + 1);
         })();
     } else if (minC >= 1) {
@@ -140,12 +140,21 @@ function zero(value) {
     return value;
 };
 // 时间格式化 -- 转成年月日
-function crtTimeFtt(val) {
+function crtTimeFtt(val, type) {
     if (val != null) {
         var date = new Date(val);
         var m = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1;
         var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-        return date.getFullYear() + '-' + m + '-' + d;
+        var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        var f = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        if (type === 'yy-mm-dd') {
+          return date.getFullYear() + '-' + m + '-' + d;
+        }else if (type === 'yy-mm-dd hh-mm') {
+          return date.getFullYear() + '-' + m + '-' + d + ' ' + h + ':' + f;
+        }else {
+          return date.getFullYear() + '-' + m + '-' + d;
+        }
     }else {
       console.log('时间格式化出错：'+val)
     }

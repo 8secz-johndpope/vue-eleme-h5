@@ -192,7 +192,7 @@ export default new Router({
       path: '/document/extendDesc',
       name: 'extendDesc', // 速推常见问题
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/document-page/ExtendDesc'],resolve),
     },
@@ -341,6 +341,22 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/setting-page/mywallet-page/RechargeRecord'],resolve),
+    },
+    {
+      path: '/setting/extensionOrderManage/index',
+      name: 'extensionOrderManage', // 速推订单管理 -- 首页
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/extensionOrderManage/Index'],resolve),
+    },
+    {
+      path: '/setting/extensionOrderManage/detail/:orderId',
+      name: 'extensionOrdeDetail', // 速推订单管理 -- 详情
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/setting-page/extensionOrderManage/Detail'],resolve),
     },
     {
       path: '/login',

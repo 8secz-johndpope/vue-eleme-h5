@@ -241,23 +241,32 @@
 .font-16{
   font-size: 0.42rem;
 }
+.font-20{
+  font-size: 0.555556rem;
+}
+.font-bold{
+  font-weight: 700;
+}
 .width-100{
   width: 100%;
+}
+.width-80{
+  width: 80%;
 }
 .width-50{
   width: 50%;
 }
 .border{
-  border: 1px solid red;
+  border: 1px solid #F6F6F6;
 }
 .border-bottom{
-  border-bottom: 1px solid red
+  border-bottom: 1px solid #F6F6F6
 }
 .border-top{
-  border-top: 1px solid red
+  border-top: 1px solid #F6F6F6
 }
 .border-right{
-  border-right: 1px solid red
+  border-right: 1px solid #F6F6F6
 }
 #app .grayBg {
   background-color: #F2F2F2;

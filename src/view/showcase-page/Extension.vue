@@ -13,19 +13,17 @@
     <!-- 固定内容区域 -->
     <div class="content-zone">
       <!-- 作品区域 -->
-      <van-panel class="work-panel">
-        <div class="flex-wrap">
-          <div class="flex-center">
-            <img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" class="van-avatar" />
-          </div>
-          <div class="work-panel-right">
-            <div>
-              <p>男：你今天有点怪</p><p>女：哪里怪了（脸红）</p><p>男：怪可爱的，哈哈哈</p>
-            </div>
-            <div class="gray-color">XXX的作品</div>
-          </div>
+      <div class="flex-wrap pd15 white-bg">
+        <div class="flex-center">
+          <img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" class="van-avatar" />
         </div>
-      </van-panel>
+        <div class="pdl15">
+          <div>
+            <p>男：你今天有点怪</p><p>女：哪里怪了（脸红）</p><p>男：怪可爱的，哈哈哈</p>
+          </div>
+          <div class="gray-color">XXX的作品</div>
+        </div>
+      </div>
       <!-- 内容区域 -->
       <div class="content-box">
         <!-- 期望区域 -->
@@ -74,12 +72,12 @@
         <div class="flex-center red-color playbackVolume">
           {{playbackVolume}}+
         </div>
-        <!-- 投放金额 -->
+        <!-- 投放金币 -->
         <div class="cell-zone">
-          <span>投放金额</span>
+          <span>投放金币</span>
           <van-icon name="question-o" class="question-icon" @click="helpIcon('jineIcon')" />
         </div>
-        <!-- 金额列表区域 -->
+        <!-- 金币列表区域 -->
         <div class="shopList-zone">
           <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectMoney(index, item)" class="shop-btn">
             <span>{{item.value}}</span>
@@ -87,10 +85,10 @@
         </div>
         <div class="cell-zone">
           <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
-          <span>继续表示同意</span>
+          <span class="mgl5">继续表示同意</span>
           <router-link :to="{ name: 'userAgreement', params: {} }">
             <div>
-              <span class="gold-color">用户服务协议</span>
+              <span class="gold-color mgl5">用户服务协议</span>
               <span>及</span>
               <span class="gold-color">投放要求</span>
             </div>
@@ -99,11 +97,21 @@
       </div>
     </div>
     <van-submit-bar
-      :disabled="isShoping"
-      :price="price"
+      :disabled="isShoping || userCureentCoin < price"
+      price=""
       button-text="提交订单"
       @submit="onSubmit"
     >
+      <div class="pdl10 flex-space-between width-80">
+        <div>
+          <span class="font-14 dy-font-color">您的金币:</span>
+          <span class="font-16 red-color mgl5">{{userCureentCoin.toLocaleString()}}</span>
+        </div>
+        <div>
+          <span class="font-14 dy-font-color">合计:</span>
+          <span class="font-16 red-color mgl5">{{price.toLocaleString()}}</span>
+        </div>
+      </div>
     </van-submit-bar>
     <!-- 选择广告投放类型上拉菜单 弹框 -->
     <van-actionsheet v-model="advertisingTargetActionPop" title="投放目标" >
@@ -133,15 +141,15 @@
         <van-icon name="close" @click="showHelpPop=false" class="pop-close-icon"/>
       </div>
     </van-popup>
-    <!-- 自定义投放金额弹框 -->
+    <!-- 自定义投放金币弹框 -->
     <van-popup v-model="definedMoneyPop" class="helpPop" :close-on-click-overlay="false">
       <div class="pop-content">
-        <h3 class="pop-content-title">自定义金额</h3>
+        <h3 class="pop-content-title">自定义金币</h3>
         <van-cell-group>
-          <van-field v-model="definedMoneyNum" type="number" label="￥" placeholder="请输入金额" class="definedMoneyInput" >
+          <van-field v-model="definedMoneyNum" type="number" label="￥" placeholder="请输入金币" class="definedMoneyInput" >
           </van-field>
         </van-cell-group>
-        <span class="red-color definedMoneyDec">金额在10~5000之间，且为10的倍数</span>
+        <span class="red-color definedMoneyDec">金币在100~5000之间，且为10的倍数</span>
         <van-button type="danger" size="large" :disabled="isDefinedMoneyNumRight ? false : true" @click="confirmDefineMoney">确定</van-button>
       </div>
       <div class="flex-center pop-close-zone">
@@ -167,9 +175,10 @@
         showHelpPop: false,  // 帮助问题弹框
         advertisingTargetActionPop: false,  //逛选项上拉菜单
         durationActionPop: false,  // 时长上拉菜单
-        definedMoneyPop: false, // 自定义投放金额弹框
-        definedMoneyNum: '',  // 自定义金额
-        isDefinedMoneyNumRight: false,  // 自定义金额是否准确
+        definedMoneyPop: false, // 自定义投放金币弹框
+        userCureentCoin: 500,  // 用户当前金币
+        definedMoneyNum: '',  // 自定义金币
+        isDefinedMoneyNumRight: false,  // 自定义金币是否准确
         currentAdvertisingTarget: 0,  // 当前广告投放目标，0-视频互动量，1-粉丝增长
         advertisingTargetAction: [ // 投放广告选项
           {
@@ -220,44 +229,44 @@
           'dec': '数值为播放的最低时长，系统将在达到该顶点的时候结束投放。<br />自定义投放设置越精确，投放成本越高。<br />系统将会根据您的自定义投放设置实时估算预计播放量。',
         },
         jineDec: {
-          'title': '投放金额',
-          'dec': '投放金额为此次投放的最大消耗值，系统会100%投放完成，投放过程中如若遇到非系统故障，如'+
-                  '视频删除/人工举报，系统将不予退回金额。如遇到系统故障等非用户自身操作，如系统升级，系统会自动延放到下一个版本。',
+          'title': '投放金币',
+          'dec': '投放金币为此次投放的最大消耗值，系统会100%投放完成，投放过程中如若遇到非系统故障，如'+
+                  '视频删除/人工举报，系统将不予退回金币。如遇到系统故障等非用户自身操作，如系统升级，系统会自动延放到下一个版本。',
         },
         targetUserRadio: '0', // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
-        playbackVolume: 1000, // 预计播放量
-        basicMultiplePlaybackVolume: 1000,  //基本播放量
+        playbackVolume: 10000, // 预计播放量
+        basicMultiplePlaybackVolume: 10000,  //基本播放量
         currentMuultiple: 1,  // 当前倍数
-        price: 1000, // 价格，分为单位
+        price: 100, // 价格，分为单位
         currentSelect: 0,  // 当前选中
         shopList: [
           {
-            num: 10,
-            value: '￥10',
+            num: 100,
+            value: '100金币',
             isHot: 0, // 是否热选，0-是，1-否
             multiple: 1,  // 预计播放倍数
           },
           {
-            num: 20,
-            value: '￥20',
+            num: 200,
+            value: '200金币',
             isHot: 1, // 是否热选，0-是，1-否
             multiple: 2,  // 预计播放倍数
           },
           {
-            num: 30,
-            value: '￥30',
+            num: 300,
+            value: '300金币',
             isHot: 1, // 是否热选，0-是，1-否
             multiple: 3,  // 预计播放倍数
           },
           {
-            num: 50,
-            value: '￥50',
+            num: 500,
+            value: '500金币',
             isHot: 1, // 是否热选，0-是，1-否
             multiple: 5,  // 预计播放倍数
           },
           {
-            num: 100,
-            value: '￥100',
+            num: 1000,
+            value: '1000金币',
             isHot: 1, // 是否热选，0-是，1-否
             multiple: 10,  // 预计播放倍数
           },
@@ -275,12 +284,12 @@
     computed: {
     },
     watch: {
-      // 自定义输入金额
+      // 自定义输入金币
       definedMoneyNum (curVal, oldVal) {
-        if (parseFloat(curVal).toString() !== "NaN" && curVal >= 10 && curVal <= 5000 && curVal % 10 === 0 ) {
+        if (parseFloat(curVal).toString() !== "NaN" && curVal >= 100 && curVal <= 50000 && curVal % 100 === 0 ) {
           this.isDefinedMoneyNumRight = true;
-        }else if (curVal > 5000 ) {
-          this.definedMoneyNum = 5000;
+        }else if (curVal > 50000 ) {
+          this.definedMoneyNum = 50000;
         }else{
           this.isDefinedMoneyNumRight = false;
         }
@@ -288,7 +297,7 @@
       // 目标用户选项，0-系统智能投放，1-自定义定向投放，2-达人相似粉丝投放
       targetUserRadio (curVal, oldVal) {
         if (curVal == 0) {
-          this.basicMultiplePlaybackVolume = 1000;
+          this.basicMultiplePlaybackVolume = 10000;
         }
         this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
       }
@@ -302,7 +311,7 @@
       },
       // 帮助弹框
       helpIcon (type) {
-        if (type == 'jineIcon') {  // 投放金额icon
+        if (type == 'jineIcon') {  // 投放金币icon
           this.currentPopCentent = this.jineDec;
         }else if (type == 'bofangIcon') { // 播放icon
           this.currentPopCentent = this.bofangDec;
@@ -331,23 +340,33 @@
         that.isShoping = true;
         setTimeout(() => {
           that.isShoping = false;
-          that.$router.push('/setting/mywallet/payment')
+          that.userCureentCoin -= that.price;
+          that.$dialog.confirm({
+            title: '投放成功',
+            message: '您可以在我的-[三]-速推订单管理查看详情',
+            confirmButtonText: '前往查看',
+            cancelButtonText: '继续投放',
+          }).then(() => {
+            this.$router.push({ name: 'extensionOrderManage' })
+          }).catch(() => {
+            // on cancel
+          });
         }, 500);
       },
       // 切换同意条款按钮
       changeAgreeCheckbox () {
         this.isShoping = !this.isShoping;
       },
-      // 选择金额
+      // 选择金币
       selectMoney (index, item) {
         if (index === 5) {
-          // 点击的自定义金额
+          // 点击的自定义金币
           this.definedMoneyPop = true;
           this.definedMoneyNum = this.shopList[index].num == 0 ? '' : this.shopList[index].num;
         }else {
-          // 点击的非自定义金额
+          // 点击的非自定义金币
           this.currentSelect = index; // 高亮的位置
-          this.price = item.num * 100;  // 价格
+          this.price = item.num;  // 价格
           this.definedMoneyNum = '';
           this.shopList[5].num  = 0;
           this.shopList[5].value = '自定义';
@@ -355,12 +374,12 @@
           this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
         }
       },
-      // 确定自定义金额
+      // 确定自定义金币
       confirmDefineMoney () {
         this.currentSelect = 5;
         this.definedMoneyPop = false;
         this.shopList[5].num = this.definedMoneyNum;
-        this.price = this.definedMoneyNum * 100;
+        this.price = this.definedMoneyNum;
         this.shopList[5].value = '￥'+this.definedMoneyNum+'>';
         this.currentMuultiple = this.definedMoneyNum / 10; // 自定义倍数
         this.playbackVolume = this.basicMultiplePlaybackVolume * this.currentMuultiple ; // 播放量
@@ -376,13 +395,6 @@
 <style lang="css" scoped>
   .content-box{
     padding: 0 0.4rem 0 0.4rem;
-  }
-  .work-panel{
-    padding: 0 0.4rem 0.4rem 0.4rem;
-    margin: 0 0 0.2rem 0;
-  }
-  .work-panel-right{
-    padding: 0 0 0 0.4rem;
   }
   .cell-zone{
     display: flex;

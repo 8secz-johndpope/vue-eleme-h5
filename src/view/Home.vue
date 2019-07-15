@@ -16,16 +16,16 @@
     </van-swipe>
     <!-- 菜单分类 -->
     <div class="flex-wrap white-bg classify-zone">
-        <div class="classify-item" v-for="(menuItem, index) in menuList">
-          <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
-            <div>
-              <img :src="menuItem.img"  class="van-avatar-large" />
-            </div>
-            <div>
-              {{menuItem.levelOneName}}
-            </div>
-          </router-link>
-        </div>
+      <div class="classify-item" v-for="(menuItem, index) in menuList">
+        <router-link :to="{ name: menuItem.linkUrlName, params: {} }"  >
+          <div>
+            <img :src="menuItem.img"  class="van-avatar-large" />
+          </div>
+          <div>
+            {{menuItem.levelOneName}}
+          </div>
+        </router-link>
+      </div>
     </div>
     <div class="content-box">
       <!-- 优选文章 -->

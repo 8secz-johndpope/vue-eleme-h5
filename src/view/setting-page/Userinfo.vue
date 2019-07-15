@@ -173,7 +173,7 @@
       // 确认生日
       confirmBirth (e) {
         this.birthDayPop = false;
-        this.birthDay = this.COMMONFUNC.crtTimeFtt(e);
+        this.birthDay = this.COMMONFUNC.crtTimeFtt(e, 'yy-mm-dd');
       }
     }
 }

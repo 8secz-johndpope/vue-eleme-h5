@@ -10,6 +10,7 @@
     <van-cell title="我的钱包" icon="gem-o" is-link to="setting/mywallet" />
     <van-cell title="商店分享功能" icon="shopping-cart-o" value="立即开通" is-link to="setting/applyOpenShop" />
     <van-cell title="实名认证" icon="certificate" value="未认证" is-link to="setting/certification" />
+    <van-cell title="速推订单管理" icon="orders-o" is-link to="/setting/extensionOrderManage/index" />
     <van-cell title="反馈建议" icon="envelop-o" is-link to="/setting/feedback" />
     <van-cell title="邀请有礼" icon="point-gift-o" is-link to="/setting/invitation" />
     <van-cell title="邀请落地页" icon="point-gift-o" is-link to="/activity/inviteToShare" />
