@@ -43,7 +43,7 @@
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
-            <router-link :to="{ name: 'showcase', params: {'id':'01'} }" >
+            <router-link :to="{ name: 'showcase', params: { 'shopId': '01' } }" >
               <div class="gold-color showcase">
                 <span class="showcaseDec">商品橱窗</span><van-icon name="cart-o" />
               </div>

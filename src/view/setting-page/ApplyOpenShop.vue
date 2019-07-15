@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="conditionItem flex-center">
-            <router-link :to="{ name: 'addConversation', params: {} }">
+            <router-link :to="{ name: 'publishPost', params: {} }">
               <div>
                 <van-icon name="medel-o " class="icon pink-color" />
                 <div class="gray-color">发布作品</div>

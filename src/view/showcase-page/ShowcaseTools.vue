@@ -11,11 +11,7 @@
     <van-cell title="橱窗信息" value="橱窗通用信息" is-link :to="{ name: 'showcaseInfo', params: { showcaseId: 'showcaseId001' } }" />
     <van-cell title="福利社" value="拓展营销渠道" is-link :to="{ name: 'welfareSociety', params: { showcaseId: 'showcaseId001' } }" />
     <van-cell title="橱窗达人榜" value="每天中午12点更新排行" is-link :to="{ name: 'showcaseRanking', params: { showcaseId: 'showcaseId001' } }" />
-    <van-cell title="客户服务" is-link :to="{ name: 'showcaseMoreSetting', params: { showcaseId: 'showcaseId001' } }">
-      <template slot="default">
-        <van-tag type="danger">未读消息</van-tag>
-      </template>
-    </van-cell>
+    <van-cell title="客户服务" is-link :to="{ name: 'showcaseMoreSetting', params: { showcaseId: 'showcaseId001' } }" />
   </div>
 </template>
 <script>

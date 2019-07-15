@@ -50,6 +50,7 @@
         </van-cell-group>
       </van-radio-group>
     </van-popup>
+    <van-button size="large" @click="cancellation">注销店铺</van-button>
     <!-- 中小卖家扶持计划 -->
     <!-- <div class="flex-center mgt10 pdb15 plan-zone">
       <img src="http://img2.imgtn.bdimg.com/it/u=1658873543,3808371031&fm=26&gp=0.jpg" class="plan-img"/>
@@ -155,6 +156,22 @@
       // 切换是否显示电话
       changeTel (checked) {
         this.$toast('切换状态：'+checked)
+      },
+      cancellation () {
+        let that = this;
+        this.$dialog.confirm({
+          title: '提示',
+          message: '注销店铺后所有数据将被清除，是否注销',
+          confirmButtonColor: '#323233',
+          cancelButtonColor: '#1989fa',
+        }).then(() => {
+          that.$toast('注销成功')
+          setTimeout( ()=> {
+            that.$router.push({ name: 'applyOpenShop' })
+          }, 1500)
+        }).catch(() => {
+          // on cancel
+        });
       }
     }
 }
