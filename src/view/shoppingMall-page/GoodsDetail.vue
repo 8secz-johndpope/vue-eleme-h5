@@ -20,8 +20,9 @@
           <div class="goods-price">{{ formatPrice(goods.price) }}</div>
         </van-cell>
         <van-cell class="goods-express">
-          <van-col span="10">运费：{{ goods.express }}</van-col>
-          <van-col span="14">剩余：{{ goods.remain }}</van-col>
+          <van-col span="8">运费：{{ goods.express }}</van-col>
+          <van-col span="8">剩余：<span class="red-color font-14">{{ goods.remain }}</span> 件</van-col>
+          <van-col span="8">已兑换：<span class="red-color font-14">{{ goods.remain }}</span> 件</van-col>
         </van-cell>
         <van-collapse v-model="activeNames">
           <van-collapse-item title="商品详情" name="1">

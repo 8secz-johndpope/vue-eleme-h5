@@ -39,8 +39,8 @@
         </van-collapse>
       </van-cell-group>
       <van-goods-action>
-        <van-goods-action-big-btn 
-          icon="chat-o" 
+        <van-goods-action-big-btn
+          icon="chat-o"
           v-clipboard:copy="copyText"
           v-clipboard:success="onCopySuccess"
           v-clipboard:error="onCopyError"
@@ -176,5 +176,8 @@ export default {
   .select-content-item{
     height: 1.2rem;
     font-size: 0.426667rem;
+  }
+  .van-avatar{
+    background-color: #fff;
   }
 </style>

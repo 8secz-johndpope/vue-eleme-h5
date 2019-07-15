@@ -54,16 +54,13 @@
     <!-- <div class="flex-center mgt10 pdb15 plan-zone">
       <img src="http://img2.imgtn.bdimg.com/it/u=1658873543,3808371031&fm=26&gp=0.jpg" class="plan-img"/>
     </div> -->
-    <div class="footer-zone">
+    <!-- <div class="footer-zone">
       <router-link :to="{ name: 'addOrUpdateCommodity', params: { showcaseId: 'showcaseId001'} }"><van-button type="danger" size="large" >添加商品</van-button></router-link>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
-  import Vue from 'vue';
   import { mapGetters } from 'vuex';
-  import { SwitchCell } from 'vant';
-  Vue.use(SwitchCell);
   export default {
     components:{
     },

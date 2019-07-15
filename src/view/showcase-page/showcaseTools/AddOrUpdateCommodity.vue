@@ -3,7 +3,7 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="新增商品"
-      
+
       right-text="提交"
       :fixed="true"
       left-arrow
@@ -114,7 +114,15 @@
           />
         </van-cell-group>
       </div>
-
+      <!-- 消费者保障 -->
+      <div class="dec flex-space-between">
+        <span>开通消费者保障（选填），需<router-link :to="{ name: 'bond', params: { showcaseId: 'showcaseId001' } }" class="blue-color mgl5 mgr5">缴纳保证金</router-link>才能生效</span>
+        <van-icon name="question-o" class="question-icon" @click="$toast('消费者保障服务，包括假一赔三，七天无理由退货，消费者保障服务')" />
+      </div>
+      <van-cell-group>
+        <van-switch-cell v-model="serviceProtectSwitch" title="消费者保障" size="0.5rem" @change="changeServiceProtect" disabled />
+      </van-cell-group>
+      <!-- 商品描述 -->
       <div class="flex-space-between dec">
         <span>商品描述（选填）</span>
         <span>{{goodsDec.length}}/200</span>
@@ -169,6 +177,7 @@
         goodsDec: '', // 商品描述
         goodsTag: '', // 商品标签
         goodsTagArr: [],  // 商品标签组
+        serviceProtectSwitch: false,  // 是否开通保证金
       };
     },
     mounted () {
@@ -205,6 +214,10 @@
       deleteGoodsTag (item, index) {
         this.goodsTagArr.splice(index, 1);
       },
+      // 切换开通消保状态
+      changeServiceProtect  (checked) {
+        this.$toast('切换状态：'+checked)
+      }
     },
     watch: {
       // 商品描述长度
