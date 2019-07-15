@@ -681,59 +681,69 @@ export default new Router({
     /*
       仿微信、支付宝支付页 -- 开始
     */
-   // 工具列表
     {
       path: '/toolPage/ToolList',
-      name: 'toolList',
+      name: 'toolList',   // 工具列表
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/ToolList'],resolve),
     },
-    // 输入设置
     {
       path: '/toolPage/InputSetting/:routerLink',
-      name: 'inputSetting',
+      name: 'inputSetting',   // 输入设置
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/InputSetting'],resolve),
     },
-    // 微信支付
     {
       path: '/toolPage/wechatPayment/:amount',
-      name: 'wechatPayment',
+      name: 'wechatPayment',  // 微信支付
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/WechatPayment'],resolve),
     },
-    // 微信红包
     {
       path: '/toolPage/wechatRedPacket/:amount',
-      name: 'wechatRedPacket',
+      name: 'wechatRedPacket',  // 微信红包
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/WechatRedPacket'],resolve),
     },
-    // 微信零钱
     {
       path: '/toolPage/wechatChange/:amount',
-      name: 'wechatChange',
+      name: 'wechatChange',   // 微信零钱
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/WechatChange'],resolve),
     },
-    // 微信转账
     {
       path: '/toolPage/wechatTransfer/:amount',
-      name: 'wechatTransfer',
+      name: 'wechatTransfer', // 微信转账
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/WechatTransfer'],resolve),
+    },
+    {
+      path: '/toolPage/alipayBalance/:amount',
+      name: 'alipayBalance', // 支付宝余额
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/AlipayBalance'],resolve),
+    },
+    {
+      path: '/toolPage/alipayTransfer/:amount',
+      name: 'alipayTransfer', // 支付宝转账
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/tool-page/AlipayTransfer'],resolve),
     },
     /*
       仿微信、支付宝支付页 -- 结束
@@ -943,6 +953,5 @@ export default new Router({
     /*
       问答专区 -- 结束
     */
-
   ]
 });
