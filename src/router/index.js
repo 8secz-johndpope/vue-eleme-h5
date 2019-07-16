@@ -722,28 +722,12 @@ export default new Router({
       component: (resolve) => require(['view/tool-page/WechatChange'],resolve),
     },
     {
-      path: '/toolPage/wechatTransfer/:amount',
-      name: 'wechatTransfer', // 微信转账
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/tool-page/WechatTransfer'],resolve),
-    },
-    {
       path: '/toolPage/alipayBalance/:amount',
       name: 'alipayBalance', // 支付宝余额
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/tool-page/AlipayBalance'],resolve),
-    },
-    {
-      path: '/toolPage/alipayTransfer/:amount',
-      name: 'alipayTransfer', // 支付宝转账
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/tool-page/AlipayTransfer'],resolve),
     },
     /*
       仿微信、支付宝支付页 -- 结束

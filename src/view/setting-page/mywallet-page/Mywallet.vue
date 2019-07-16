@@ -3,7 +3,7 @@
     <!-- 顶部 -->
     <van-nav-bar
       title="我的钱包"
-      right-text="充值记录"
+      right-text="金币明细"
       left-arrow
       @click-left="onClickLeft"
       @click-right="toRechargeRecord"

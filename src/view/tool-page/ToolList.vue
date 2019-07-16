@@ -8,7 +8,7 @@
         >
       </van-nav-bar>
     </div>
-    <van-panel title="某信截图">
+    <van-panel title="常用截图">
       <div class="flex-wrap panel-content">
         <div class="flex-column panel-item">
           <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatPayment' } }">
@@ -29,25 +29,9 @@
           </router-link>
         </div>
         <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'wechatTransfer' } }">
-            <img src="../../images/toolPage/toolList/wx-transfer.png" class="van-avatar-large mgt10">
-            <div>某信转账</div>
-          </router-link>
-        </div>
-      </div>
-    </van-panel>
-    <van-panel title="某宝截图">
-      <div class="flex-wrap panel-content">
-        <div class="flex-column panel-item">
           <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'alipayBalance' } }">
             <img src="../../images/toolPage/toolList/zfb-ye.png" class="van-avatar-large mgt10">
             <div>某宝余额</div>
-          </router-link>
-        </div>
-        <div class="flex-column panel-item">
-          <router-link :to="{ name: 'inputSetting', params: {'routerLink' : 'alipayTransfer' } }">
-            <img src="../../images/toolPage/toolList/zfb-zz.png" class="van-avatar-large mgt10">
-            <div>某宝转账</div>
           </router-link>
         </div>
       </div>
@@ -60,7 +44,7 @@
   export default {
     components:{
     },
-    name: 'inputMoney',
+    name: 'toolList',
     data () {
       return {
         amount: 8888,  // 输入金额
