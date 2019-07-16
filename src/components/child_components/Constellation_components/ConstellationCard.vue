@@ -13,7 +13,7 @@
         <div>有效期限：2019-07-16</div>
       </div>
     </div>
-    <div>
+    <div class="mgl5">
       <div class="flex-start mgt5">
         <span class="mgr5">综合运势：</span>
         <van-rate v-model="rateValue" readonly size="50"/>
