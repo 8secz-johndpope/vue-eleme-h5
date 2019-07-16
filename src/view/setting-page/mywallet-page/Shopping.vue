@@ -57,35 +57,63 @@
             value: '40金币（￥19.88）',
             isHot: 0, // 是否热选，0-是，1-否
             goldCoin: '50金币', // 价值金币
-            extraGoldCoin: 10,  // 赠送金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
-            num: 38.88,
-            value: '80金币（￥38.88）',
+            num: 38,
+            value: '80金币（￥38）',
             isHot: 1, // 是否热选，0-是，1-否
             goldCoin: '80金币', // 价值金币
-            extraGoldCoin: 50,  // 赠送金币
+            extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 68,
             value: '150金币（￥68）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '200金币', // 价值金币
-            extraGoldCoin: 150,  // 赠送金币
+            goldCoin: '150金币', // 价值金币
+            extraGoldCoin: 5,  // 赠送金币
           },
           {
             num: 88,
-            value: '150金币（￥68）',
+            value: '200金币（￥88）',
             isHot: 1, // 是否热选，0-是，1-否
             goldCoin: '200金币', // 价值金币
-            extraGoldCoin: 150,  // 赠送金币
+            extraGoldCoin: 10,  // 赠送金币
           },
           {
-            num: 98,
-            value: '150金币（￥68）',
+            num: 128,
+            value: '350金币（￥128）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '200金币', // 价值金币
-            extraGoldCoin: 150,  // 赠送金币
+            goldCoin: '350金币', // 价值金币
+            extraGoldCoin: 20,  // 赠送金币
+          },
+          {
+            num: 168,
+            value: '500金币（￥168）',
+            isHot: 1, // 是否热选，0-是，1-否
+            goldCoin: '500金币', // 价值金币
+            extraGoldCoin: 30,  // 赠送金币
+          },
+          {
+            num: 318,
+            value: '1000金币（￥318）',
+            isHot: 1, // 是否热选，0-是，1-否
+            goldCoin: '1000金币', // 价值金币
+            extraGoldCoin: 30,  // 赠送金币
+          },
+          {
+            num: 588,
+            value: '2000金币（￥588）',
+            isHot: 1, // 是否热选，0-是，1-否
+            goldCoin: '2000金币', // 价值金币
+            extraGoldCoin: 30,  // 赠送金币
+          },
+          {
+            num: 1388,
+            value: '5000金币（￥1388）',
+            isHot: 1, // 是否热选，0-是，1-否
+            goldCoin: '5000金币', // 价值金币
+            extraGoldCoin: 30,  // 赠送金币
           },
         ],
         currentSelect: 1,  // 当前选中

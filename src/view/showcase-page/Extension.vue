@@ -149,7 +149,7 @@
           <van-field v-model="definedMoneyNum" type="number" label="￥" placeholder="请输入金币" class="definedMoneyInput" >
           </van-field>
         </van-cell-group>
-        <span class="red-color definedMoneyDec">金币在100~5000之间，且为10的倍数</span>
+        <span class="red-color definedMoneyDec">金币在100~50000之间，且为100的倍数</span>
         <van-button type="danger" size="large" :disabled="isDefinedMoneyNumRight ? false : true" @click="confirmDefineMoney">确定</van-button>
       </div>
       <div class="flex-center pop-close-zone">
@@ -288,8 +288,6 @@
       definedMoneyNum (curVal, oldVal) {
         if (parseFloat(curVal).toString() !== "NaN" && curVal >= 100 && curVal <= 50000 && curVal % 100 === 0 ) {
           this.isDefinedMoneyNumRight = true;
-        }else if (curVal > 50000 ) {
-          this.definedMoneyNum = 50000;
         }else{
           this.isDefinedMoneyNumRight = false;
         }
