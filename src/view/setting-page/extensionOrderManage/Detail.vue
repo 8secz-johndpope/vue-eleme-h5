@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="订单详情"
+      title="速推订单详情"
       left-arrow
       right-text="问题与帮助"
       @click-left="onClickLeft"
@@ -19,10 +19,10 @@
       <van-cell title="下单金币" :value="orderCoin" />
     </van-cell-group>
     <!-- 数据总览 -->
-    <div class="pd15 white-bg font-16">
+    <div class="pd15 white-bg">
       <div class="dy-font-color">数据总览：</div>
       <!-- 菜单分类 -->
-      <div class="flex-wrap white-bg classify-zone">
+      <div class="flex-wrap white-bg classify-zone font-16">
         <div class="classify-item">
           <div class="red-color">{{showNum}}</div>
           <div class="font-14">展示量</div>
@@ -50,7 +50,7 @@
     </div>
     <van-cell-group>
       <van-cell title="已消耗金币" :value="usedCoin" />
-      <van-cell title="消耗完成度" :value="progress" />
+      <van-cell title="消耗完成度" :value="progress + '%'" />
     </van-cell-group>
     <div class="footer-space"></div>
     <div class="fixed-footer-btn-zone">
@@ -69,7 +69,7 @@
         order: '2019071708170421',
         createTime: 1550281133875, //下单时间
         orderCoin: 100, // 下单金币
-        status: 0,  // 0-进行中  1-已完成  2-中途结束
+        status: 1,  // 0-进行中  1-已完成  2-中途结束
         showNum: 100, // 展示量，用户看到的数量
         playNum: 1000, // 展示量，包含重复播放的
         interactionNum: 50, // 互动量 包括点赞，评论，转发，帮顶的数量

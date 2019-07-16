@@ -46,60 +46,46 @@
       return {
         shopList: [
           {
-            num: 9.9,
-            value: '66金币（￥9.9）',
+            num: 9.98,
+            value: '20金币（￥9.98）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '66金币', // 价值金币
+            goldCoin: '20金币', // 价值金币
             extraGoldCoin: 0,  // 赠送金币
           },
           {
-            num: 19.9,
-            value: '166金币（￥19.9）',
+            num: 19.88,
+            value: '40金币（￥19.88）',
             isHot: 0, // 是否热选，0-是，1-否
-            goldCoin: '166金币', // 价值金币
+            goldCoin: '50金币', // 价值金币
             extraGoldCoin: 10,  // 赠送金币
           },
           {
-            num: 38,
-            value: '466金币（￥38）',
+            num: 38.88,
+            value: '80金币（￥38.88）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '466金币', // 价值金币
+            goldCoin: '80金币', // 价值金币
             extraGoldCoin: 50,  // 赠送金币
           },
           {
             num: 68,
-            value: '1266金币（￥68）',
+            value: '150金币（￥68）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '1266金币', // 价值金币
+            goldCoin: '200金币', // 价值金币
             extraGoldCoin: 150,  // 赠送金币
           },
           {
-            num: 28,
-            value: '1个月（￥28）',
+            num: 88,
+            value: '150金币（￥68）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '1个月', // 价值金币
-            extraGoldCoin: 0,  // 赠送金币
-          },
-          {
-            num: 66,
-            value: '3个月（￥66）',
-            isHot: 0, // 是否热选，0-是，1-否
-            goldCoin: '3个月', // 价值金币
-            extraGoldCoin: 0,  // 赠送金币
+            goldCoin: '200金币', // 价值金币
+            extraGoldCoin: 150,  // 赠送金币
           },
           {
             num: 98,
-            value: '6个月（￥98）',
+            value: '150金币（￥68）',
             isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '6个月', // 价值金币
-            extraGoldCoin: 0,  // 赠送金币
-          },
-          {
-            num: 188,
-            value: '一年（￥188）',
-            isHot: 1, // 是否热选，0-是，1-否
-            goldCoin: '1年', // 价值金币
-            extraGoldCoin: 0,  // 赠送金币
+            goldCoin: '200金币', // 价值金币
+            extraGoldCoin: 150,  // 赠送金币
           },
         ],
         currentSelect: 1,  // 当前选中

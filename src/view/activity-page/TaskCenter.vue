@@ -28,24 +28,32 @@
         <van-step v-for="(item, index) in 7" :key="index" class="step">{{item}}天</van-step>
       </van-steps>
       <div class="task-title">
+        <van-icon name="like-o" class="red-color mgr5" /><span>邀请有礼，你有我也有</span>
+      </div>
+      <div class="mg10">
+        <router-link :to="{ name: 'invitation', params: {} }">
+          <img src="http://img4.imgtn.bdimg.com/it/u=1622742900,2957030660&fm=26&gp=0.jpg" class="img-common invite" />
+        </router-link>
+      </div>
+      <div class="task-title">
         <van-icon name="like-o" class="red-color mgr5" /><span>日常任务</span>
       </div>
       <div class="task-box" v-for="(item, index) in taskList" :key="item.taskId">
         <div class="flex-space-between task-list">
           <div class="task-l">
             <div class="taskName">{{item.taskTitle}}</div>
-            <div class="flex-center">
-              <span class="gray-color mgr5">奖励</span>
-              <span class="gold-color">+{{item.taskReward}}</span>
-              <van-icon name="gold-coin-o" class="gold-color iconType" />
+            <div class="flex-center dy-font-color">
+              <span>奖励</span>
+              <span class="gold-color mgl5 mgr5">+{{item.taskReward}}</span>
+              <span>金币</span>
             </div>
           </div>
           <div class="task-r">
             <van-button class="task-btn btn-get" type="warning" size="small" round v-if="item.taskStatus === 1" @click="getReward(item, index)">领奖励</van-button>
             <van-button class="task-btn" type="warning" size="small" round v-if="item.taskStatus === 2" @click="taskLink(item)">去完成</van-button>
             <!-- 完成进度 -->
-            <div class="progress" v-if="item.taskStatus === 2 && item.totalNumber > 1">
-              <span>去完成</span>
+            <div class="progress" v-if="item.totalNumber > 1">
+              <span>完成度</span>
               <span class="gold-color">{{item.completeNumber}}</span>
               <span>/</span>
               <span>{{item.totalNumber}}</span>
@@ -72,59 +80,40 @@ export default {
       goldCoin: 100,
       taskList: [
         {
-            "totalNumber": 3,
-            "taskDetailType": 1,
-            "taskType": 1,
-            "taskLink": "publishPost",
-            "taskTitle": "写微撩",
-            "taskStatus": 2,
-            "taskId": 14,
-            "taskReward": 2,
-            "completeNumber": 1
+            "totalNumber": 1, // 完成进度需要次数
+            "taskLink": "publishPost",  // 跳转地址
+            "taskTitle": "写微撩", // 任务名称
+            "taskStatus": 2,  //   任务状态， 1-领奖励  2-去完成  3-已领取
+            "taskId": 14,   // 任务Id
+            "taskReward": 2,  // 任务奖励
+            "completeNumber": 0,  // 完成进度
         },
         {
-            "totalNumber": 1,
-            "taskDetailType": 1,
-            "taskType": 1,
-            "taskLink": "postClassify",
-            "taskTitle": "评论",
-            "taskStatus": 1,
-            "taskId": 15,
-            "taskReward": 2,
-            "completeNumber": 0
+            "totalNumber": 3,  // 完成进度需要次数
+            "taskLink": "postClassify", // 跳转地址
+            "taskTitle": "评论",  // 任务名称
+            "taskStatus": 1,    //   任务状态， 1-领奖励  2-去完成  3-已领取
+            "taskId": 15,  // 任务Id
+            "taskReward": 1,  // 任务奖励
+            "completeNumber": 3,  // 完成进度
         },
         {
-            "totalNumber": 1,
-            "taskDetailType": 1,
-            "taskType": 1,
-            "taskLink": "postClassify",
-            "taskTitle": "转发微撩",
-            "taskStatus": 2,
-            "taskId": 16,
-            "taskReward": 2,
-            "completeNumber": 0
+            "totalNumber": 3,  // 完成进度需要次数
+            "taskLink": "postClassify", // 跳转地址
+            "taskTitle": "帮顶",  // 任务名称
+            "taskStatus": 2,    //   任务状态， 1-领奖励  2-去完成  3-已领取
+            "taskId": 17,  // 任务Id
+            "taskReward": 1,  // 任务奖励
+            "completeNumber": 1,  // 完成进度
         },
         {
-            "totalNumber": 1,
-            "taskDetailType": 4,
-            "taskType": 1,
-            "taskLink": "postClassify",
-            "taskTitle": "帮顶",
-            "taskStatus": 2,
-            "taskId": 17,
-            "taskReward": 2,
-            "completeNumber": 0
-        },
-        {
-            "totalNumber": 1,
-            "taskDetailType": 5,
-            "taskType": 1,
-            "taskLink": "addFriends",
-            "taskTitle": "关注用户",
-            "taskStatus": 3,
-            "taskId": 18,
-            "taskReward": 2,
-            "completeNumber": 0
+            "totalNumber": 3,  // 完成进度需要次数
+            "taskLink": "postClassify", // 跳转地址
+            "taskTitle": "转发微撩",  // 任务名称
+            "taskStatus": 2,    //   任务状态， 1-领奖励  2-去完成  3-已领取
+            "taskId": 16,  // 任务Id
+            "taskReward": 1,  // 任务奖励
+            "completeNumber": 1,  // 完成进度
         },
       ]
     };
@@ -213,5 +202,9 @@ export default {
   }
   .btn-get{
     background-color: #FF6766
+  }
+  .invite{
+    width: 100%;
+    height: 2rem;
   }
 </style>
