@@ -161,7 +161,7 @@
         let that = this;
         this.$dialog.confirm({
           title: '提示',
-          message: '注销店铺后所有数据将被清除，是否注销',
+          message: '注销店铺后所有数据将被清除，如您已缴纳保证金，保证金将在3-7个工作日内退回到原来的账户，是否注销',
           confirmButtonColor: '#323233',
           cancelButtonColor: '#1989fa',
         }).then(() => {

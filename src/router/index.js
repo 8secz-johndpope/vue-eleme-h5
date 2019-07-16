@@ -125,14 +125,6 @@ export default new Router({
       文档说明 -- 开始
     */
     {
-      path: '/addConversation/question',
-      name: 'addConversationQuestion',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/document-page/AddConversationQuestion'],resolve),
-    },
-    {
       path: '/document/goldCoinRechargeDesc',
       name: 'goldCoinRechargeDesc', // 金币充值说明
       meta: {
@@ -568,22 +560,6 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting'],resolve),
-    },
-    {
-      path: '/showcase/showcaseTools/showcaseMoreSetting/serviceCharge/:showcaseId',
-      name: 'serviceCharge', // 电商工具箱 -- 更多设置 -- 服务费
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/ServiceCharge'],resolve),
-    },
-    {
-      path: '/showcase/showcaseTools/showcaseMoreSetting/serviceChargeDetail/:showcaseId',
-      name: 'serviceChargeDetail', // 电商工具箱 -- 更多设置 -- 服务费记录
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/showcase-page/showcaseTools/ShowcaseMoreSetting/ServiceChargeDetail'],resolve),
     },
     {
       path: '/showcase/showcaseTools/showcaseMoreSetting/bond/:showcaseId',
