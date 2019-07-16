@@ -29,40 +29,24 @@
     </div>
     <div class="content-box">
       <!-- 优选文章 -->
-      <van-cell value="更多" is-link :to="'/article/articleList'" class="home-van-cell mgt10">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">优选文章</span>
-          </div>
-        </template>
-      </van-cell>
+      <van-cell title="优选文章" value="更多" is-link :to="'/article/articleList'" class="mgt10"></van-cell>
       <!-- 文章列表，默认四篇 -->
-      <div class="white-bg pd10">
-        <ArticleCard :composition="getImitateArticleList" class="item-box"></ArticleCard>
+      <div class="white-bg">
+        <ArticleCard :composition="getImitateArticleList"></ArticleCard>
+      </div>
+      <!-- 星座运势 -->
+      <van-cell title="星座运势" value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="mgt10"></van-cell>
+      <div class="pd15 white-bg">
+        <ConstellationCard></ConstellationCard>
       </div>
       <!-- 情感百科 -->
-      <van-cell value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="home-van-cell mgt10">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">情感百科</span>
-          </div>
-        </template>
-      </van-cell>
+      <van-cell title="情感百科" value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="mgt10"></van-cell>
       <!-- 情感百科列表，默认3篇 -->
       <div class="white-bg pd10">
         <EncyclopediasCard></EncyclopediasCard>
       </div>
       <!-- AI导师 -->
-      <van-cell value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="home-van-cell mgt10">
-        <template slot="title">
-          <div class="flex-start">
-            <van-icon name="like-o" class="red-color mgr5" />
-            <span class="custom-text">AI导师</span>
-          </div>
-        </template>
-      </van-cell>
+      <van-cell title="AI导师" value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="mgt10"></van-cell>
       <!-- AI导师列表，默认四篇 -->
       <div class="flex-space-around white-bg pd10">
         <!-- AI导师卡片 -->
@@ -82,6 +66,7 @@ import Comments from 'components/common_components/Comments';
 import ArticleCard from 'components/common_components/ArticleCard';
 import EncyclopediasCard from 'components/common_components/EncyclopediasCard';
 import ImgCard from 'components/child_components/AITeaching_components/ImgCard';
+import ConstellationCard from 'components/child_components/Constellation_components/ConstellationCard';
 import { mapGetters } from 'vuex';
 // import "../css/common.css"; // 一次引入，全局使用 ？？？
 export default {
@@ -93,6 +78,7 @@ export default {
     ArticleCard,
     EncyclopediasCard,
     ImgCard,
+    ConstellationCard,
   },
   data () {
     return {
@@ -194,8 +180,5 @@ export default {
     background-repeat: no-repeat;
     height: 4.0rem;
     padding: 0.266667rem;
-  }
-  .home-van-cell{
-    padding: 0.266667rem 10px 0 10px;
   }
 </style>
