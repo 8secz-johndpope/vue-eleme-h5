@@ -1,16 +1,16 @@
 <template>
   <div class="font-14">
     <div class="flex-space-around mgb10">
-      <div><img :src="constellationImg" class="van-avatar-large img-common"/></div>
+      <div @click="selectContellationTypePopup = true"><img :src="constellationImg" class="van-avatar-large img-common"/></div>
       <div>
-        <div class="flex-start">
-          <div><span class="gold-color mgr5">{{contellationName}}</span>今日运势</div>
-          <div class="mgl10 gold-color flex-center" @click="selectContellationTypePopup = true">
-            <span>切换</span>
+        <div class="flex-start mgb5">
+          <div><span class="gold-color mgr5" @click="selectContellationTypePopup = true">{{contellationName}}</span>今日运势</div>
+          <div class="mgl5 gold-color flex-center" @click="selectContellationTypePopup = true">
+            <span>切换星座</span>
             <van-icon name="exchange" class="mgl5" />
           </div>
         </div>
-        <div>有效期限：2019-07-16</div>
+        <div>有效期限：{{today}}</div>
       </div>
     </div>
     <div class="mgl5">
@@ -40,6 +40,7 @@
         <div class="classify-item mgb10" v-for="(item, index) in constellationList" :key="index" @click="selectContellationType(item)">
           <div><img :src="item.constellationImg"  class="van-avatar-large" />  </div>
           <div>{{item.name}}</div>
+          <div class="dy-font-color">{{item.time}}</div>
         </div>
       </div>
       <div class="flex-center mgt20">
@@ -57,6 +58,7 @@
     name: 'constellationCard',
     data () {
       return {
+        today: '',  //  当日
         contellationName: '白羊座',  // 星座名
         rateValue: 3, // 运势度
         constellationImg: require('images/constellation/baiyang.png'), // 星座图片
@@ -64,50 +66,62 @@
         constellationList: [
           {
             name: '双鱼座',  // 星座名
+            time: '02/19-03/20',
             constellationImg: require('images/constellation/shuangyu.png'), // 星座图片
             id: 'id001',
           },{
             name: '白羊座',  // 星座名
+            time: '03/21-04/19',
             constellationImg: require('images/constellation/baiyang.png'), // 星座图片
             id: 'id001',
           },{
             name: '金牛座',  // 星座名
+            time: '04/20-05/20',
             constellationImg: require('images/constellation/jinniu.png'), // 星座图片
             id: 'id001',
           },{
             name: '双子座',  // 星座名
+            time: '05/21-06/21',
             constellationImg: require('images/constellation/shuangzi.png'), // 星座图片
             id: 'id001',
           },{
             name: '巨蟹座',  // 星座名
+            time: '06/22-07/22',
             constellationImg: require('images/constellation/juxie.png'), // 星座图片
             id: 'id001',
           },{
             name: '狮子座',  // 星座名
+            time: '07/23-08/22',
             constellationImg: require('images/constellation/shizi.png'), // 星座图片
             id: 'id001',
           },{
             name: '处女座',  // 星座名
+            time: '08/23-09/22',
             constellationImg: require('images/constellation/chunv.png'), // 星座图片
             id: 'id001',
           },{
             name: '天秤座',  // 星座名
+            time: '09/23-10/23',
             constellationImg: require('images/constellation/tianping.png'), // 星座图片
             id: 'id001',
           },{
             name: '天蝎座',  // 星座名
+            time: '10/24-11/22',
             constellationImg: require('images/constellation/tianxie.png'), // 星座图片
             id: 'id001',
           },{
             name: '射手座',  // 星座名
+            time: '11/23-12/21',
             constellationImg: require('images/constellation/sheshou.png'), // 星座图片
             id: 'id001',
           },{
             name: '摩羯座',  // 星座名
+            time: '12/22-01/19',
             constellationImg: require('images/constellation/mojie.png'), // 星座图片
             id: 'id001',
           },{
             name: '水瓶座',  // 星座名
+            time: '01/20-02/18',
             constellationImg: require('images/constellation/shuiping.png'), // 星座图片
             id: 'id001',
           },
@@ -115,6 +129,7 @@
       };
     },
     mounted () {
+      this.today = this.COMMONFUNC.crtTimeFtt(new Date(), 'yy-mm-dd')
     },
     computed: {
       ...mapGetters([
@@ -141,9 +156,9 @@
     width: 80%;
   }
   .classify-item{
-    width: 25%;
+    width: 33%;
     text-align: center;
-    line-height: 0.8rem;
+    line-height: 0.6rem;
   }
   .pop-close-icon{
     color: #fff;
