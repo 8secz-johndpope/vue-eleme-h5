@@ -51,6 +51,7 @@
           <div class="task-r">
             <van-button class="task-btn btn-get" type="warning" size="small" round v-if="item.taskStatus === 1" @click="getReward(item, index)">领奖励</van-button>
             <van-button class="task-btn" type="warning" size="small" round v-if="item.taskStatus === 2" @click="taskLink(item)">去完成</van-button>
+            <van-button class="task-btn" type="warning" size="small" round disabled v-if="item.taskStatus === 3">已领取</van-button>
             <!-- 完成进度 -->
             <div class="progress" v-if="item.totalNumber > 1">
               <span>完成度</span>
@@ -58,7 +59,6 @@
               <span>/</span>
               <span>{{item.totalNumber}}</span>
             </div>
-            <van-button class="task-btn" type="warning" size="small" round disabled v-if="item.taskStatus === 3">已领取</van-button>
           </div>
         </div>
       </div>

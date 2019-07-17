@@ -16,31 +16,34 @@
     <div class="mgl5">
       <div class="flex-start mgt5">
         <span class="mgr5">综合运势：</span>
-        <van-rate v-model="rateValue" readonly size="50"/>
+        <van-rate v-model="rateValue" readonly :size="50"/>
         <span class="mgl20 mgr5">健康指数：</span><span>85%</span>
       </div>
       <div class="flex-start mgt5">
         <span class="mgr5">工作运势：</span>
-        <van-rate v-model="rateValue" readonly size="50"/>
+        <van-rate v-model="rateValue" readonly :size="50"/>
         <span class="mgl20 mgr5">速配星座：</span><span>处女座</span>
       </div>
       <div class="flex-start mgt5">
         <span class="mgr5">爱情运势：</span>
-        <van-rate v-model="rateValue" readonly size="50"/>
+        <van-rate v-model="rateValue" readonly :size="50"/>
         <span class="mgl20 mgr5">幸运颜色：</span><span>紫色</span>
       </div>
       <div class="flex-start mgt5">
         <span class="mgr5">理财运势：</span>
-        <van-rate v-model="rateValue" readonly size="50"/>
+        <van-rate v-model="rateValue" readonly :size="50"/>
         <span class="mgl20 mgr5">幸运数字：</span><span>11</span>
       </div>
     </div>
-    <van-popup v-model="selectContellationTypePopup" class="border-radius selectContellationTypePopup">
-      <div class="white-bg pdt15 pdr15 pdl15 flex-wrap">
+    <van-popup v-model="selectContellationTypePopup" class="selectContellationTypePopup">
+      <div class="border-radius white-bg pdt15 pdr15 pdl15 flex-wrap">
         <div class="classify-item mgb10" v-for="(item, index) in constellationList" :key="index" @click="selectContellationType(item)">
           <div><img :src="item.constellationImg"  class="van-avatar-large" />  </div>
           <div>{{item.name}}</div>
         </div>
+      </div>
+      <div class="flex-center mgt20">
+        <van-icon name="close" @click="selectContellationTypePopup=false" class="pop-close-icon"/>
       </div>
     </van-popup>
   </div>
@@ -134,11 +137,16 @@
 </script>
 <style lang="css" scoped>
   .selectContellationTypePopup{
+    background-color: transparent;
     width: 80%;
   }
   .classify-item{
     width: 25%;
     text-align: center;
     line-height: 0.8rem;
+  }
+  .pop-close-icon{
+    color: #fff;
+    font-size: 0.64rem;
   }
 </style>

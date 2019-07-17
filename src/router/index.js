@@ -913,5 +913,36 @@ export default new Router({
     /*
       问答专区 -- 结束
     */
+
+    /*
+      星座运势 -- 开始
+    */
+    {
+      path: '/constellation/index',
+      name: 'constellation', // 星座运势首页
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/constellation-page/Index'],resolve),
+    },
+    {
+      path: '/constellation/bloodType/:id',
+      name: 'bloodType',  // 星座运势 血型页
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/constellation-page/BloodType'],resolve),
+    },
+    {
+      path: '/constellation/knowledge/:id',
+      name: 'knowledge',  // 星座运势 知识页
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/constellation-page/Knowledge'],resolve),
+    },
+    /*
+      星座运势 -- 结束
+    */
   ]
 });

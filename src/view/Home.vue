@@ -35,7 +35,7 @@
         <ArticleCard :composition="getImitateArticleList"></ArticleCard>
       </div>
       <!-- 星座运势 -->
-      <van-cell title="星座运势" value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="mgt10"></van-cell>
+      <van-cell title="星座运势" value="更多" is-link :to="'/constellation/index'" class="mgt10"></van-cell>
       <div class="pd15 white-bg">
         <ConstellationCard></ConstellationCard>
       </div>
