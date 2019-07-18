@@ -5,7 +5,7 @@
       <van-nav-bar
         title="商品分享功能申请"
         left-arrow
-        right-text="卖家问题"
+        right-text="问题与帮助"
         @click-left="onClickLeft"
         @click-right="onClickRight"
       />
