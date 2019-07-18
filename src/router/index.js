@@ -142,11 +142,27 @@ export default new Router({
     },
     {
       path: '/document/userAgreement',
-      name: 'userAgreement',  // 服务协议及投放要求
+      name: 'userAgreement',  // “微撩”用户服务协议
       meta: {
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/document-page/UserAgreement'],resolve),
+    },
+    {
+      path: '/document/privacyPolicy',
+      name: 'privacyPolicy',  // 隐私政策
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/PrivacyPolicy'],resolve),
+    },
+    {
+      path: '/document/extendRequirement',
+      name: 'extendRequirement',  // 投放要求
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/document-page/ExtendRequirement'],resolve),
     },
     {
       path: '/document/rechargeHelp',

@@ -86,13 +86,15 @@
         <div class="cell-zone">
           <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
           <span class="mgl5">继续表示同意</span>
-          <router-link :to="{ name: 'userAgreement', params: {} }">
-            <div>
+          <div>
+            <router-link :to="{ name: 'userAgreement', params: {} }">
               <span class="gold-color mgl5">用户服务协议</span>
-              <span>及</span>
+            </router-link>
+            <span>及</span>
+            <router-link :to="{ name: 'extendRequirement', params: {} }">
               <span class="gold-color">投放要求</span>
-            </div>
-          </router-link>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
