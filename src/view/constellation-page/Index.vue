@@ -22,7 +22,10 @@
               <van-icon name="exchange" class="mgl5" />
             </div>
           </div>
-          <div>有效期限：{{today}}</div>
+          <div>
+            <router-link :to="{ name: 'bloodType', params: { id: 'id001' } }"><van-button type="warning" round plain size="mini" class="btn">{{contellationName}}血型</van-button></router-link>
+            <router-link :to="{ name: 'knowledge', params: { id: 'id001' } }"><van-button type="warning" round plain size="mini" class="btn">{{contellationName}}知识</van-button></router-link>
+          </div>
         </div>
       </div>
       <van-tabs swipeable :swipe-threshold="6" v-model="tabActive">
@@ -99,11 +102,9 @@
   </div>
 </template>
 <script>
-import ConstellationCard from 'components/child_components/Constellation_components/ConstellationCard';
 export default {
   name: 'constellation',
   components: {
-    ConstellationCard,
   },
   data () {
     return {
@@ -227,5 +228,8 @@ export default {
   .pop-close-icon{
     color: #fff;
     font-size: 0.64rem;
+  }
+  .btn{
+    width: 1.8rem;
   }
 </style>

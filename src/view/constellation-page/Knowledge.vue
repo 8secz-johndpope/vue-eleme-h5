@@ -1,60 +1,85 @@
 <template>
-  <div class="encyclopediasClassification">
+  <div>
     <!-- 顶部 -->
     <div class="fixed-top">
       <van-nav-bar
-        title="单身期"
+        :title=" contellationName + '知识' "
         left-arrow
         @click-left="onClickLeft"
         fixed
       >
       </van-nav-bar>
     </div>
-    <div class="content">
-      <van-tabs sticky swipeable>
-        <van-tab v-for="(item, index) in getImitateEncyclopediasClassfication[0].list" :key="index" :title="item.itemName">
-          <router-link :to="{ name: 'encyclopedias', params: {'id': c_item.id} }" v-for="(c_item, c_index) in encyclopediasListData" :key="c_index">
-            <div class="van-panel">
-              <div class="title">
-                {{c_item.title}}
-              </div>
-              <div class="encyclopediasList">
-                <div class="flex-between gray-color">
-                  <div>
-                    {{c_item.praiseNum}}人觉得有用
-                  </div>
-                  <div>
-                    来自 {{c_item.belongsClassificationCnName}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </router-link>
+    <div class="top-space"></div>
+    <div class="white-bg pd10 font-14">
+      <van-tabs swipeable sticky :swipe-threshold="6" v-model="tabActive">
+        <van-tab v-for="(item, index) in tabList" :title="item.name">
+          <div class="pdl15 pdr15 pdt10 pdb10" v-if="index === 0">
+            <p class="desc mgb5">天蝎座精力旺盛、占有欲极强，对于生活很有目标，不达到目的誓不罢休，复仇心理重，记仇会让自己不顾一切报复曾经伤害过你的人。天蝎男自我主义色彩很强烈，天蝎女的自我保护意识很强，不容易接近。</p>
+            <p class="desc mgb5">冥王星是天蝎座的守护星，他是掌管幽冥世界，所以天蝎座有神秘的特质，令人变得残酷、阴险。天蝎座的人给人一种精力旺盛、热情、善妒、占有欲强的特质。十二星座之中，天蝎座是最性感的，因为它也掌管了生殖器官，性欲强盛，而且影响到他们的精力会无穷无尽地发挥，他们一定要每天都过得非常充实，如没有目标的事，他们难以投入！</p>
+            <p class="desc mgb5">至于天蝎座的人是记仇的，切忌得罪他，有朝一日必定报仇的；因为冥王星的影响，将狡猾、残酷、的性格加诸他们身上，会不惜方法打击仇人；如果你想做中间人，他可能会迁怒于你，发泄他的怒气。不过天蝎座的人有一个成功的优点，就是他们一旦定了目标，就会不达目标心不死，永不退缩的！</p>
+            <p class="desc mgb5">天蝎座不易说谎，因为天蝎爱憎分明，谎还没说，他们的策略就是干脆一走了之，先消失了再说。不过，天蝎座有天生的敏锐，最能洞悉别人的谎言，而一旦被发现你在说谎，他眼中那冷冷鄙夷，绝对令你不寒而栗。</p>
+          </div>
+          <div class="pdl15 pdr15 pdt10 pdb10" v-if="index === 1">
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">天蝎男</h4>
+            <p class="desc mgb5">特点：智慧、理智、领导能力</p>
+            <p class="desc mgb5">弱点：城府深、难深交</p>
+            <p class="desc mgb5">爱情：在爱情中占主导地位</p>
+            <p class="desc mgb5">高冷的天蝎座男生，性格属于思辨型，拥有着高度敏锐的洞察力。凛然正气的天蝎男，对外界的戒备心非常强，只要有风水草动会就马上警惕。虽然个性争强好胜，但你们却能崇尚公平的竞争精神。得益于冷静的判断力，天蝎男极少会吃亏，难得的是不怕吃亏。因为你们展望的可是未来的谋划，而非眼前的小利。</p>
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">天蝎女</h4>
+            <p class="desc mgb5">特点：智慧、理智、领导能力</p>
+            <p class="desc mgb5">弱点：城府深、难深交</p>
+            <p class="desc mgb5">爱情：在爱情中占主导地位</p>
+            <p class="desc mgb5">谜样般的天蝎座女生，外表冷若冰霜，内在狂热不羁。让人捉摸不透的天蝎女，有着复杂而强烈的情绪。看似安静内敛的天蝎女，却具有狂野性感的挑逗力，对于男生来说那时无法抗拒的魅力。而且这是个敢爱敢恨的星座，你们更偏恋灵魂伴侣，一旦爱上就是“不成功便成仁”的壮烈追求。</p>
+          </div>
+          <div class="pdl15 pdr15 pdt10 pdb10" v-if="index === 2">
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">天蝎座爱情</h4>
+            <p class="desc mgb5">这只沙漠来的悍将…如果是你主动追求别人还好，而如果是别人追求你，而你又对对方无兴趣的也都还好，但如果是对方来追求你，而你又觉得与对方有机会发展的话，那就…不堪设想了…　你这个不屈不挠的战士，当追求对象时会不惜一切(不择手段)但还是会以不会伤害对方为宗指(追求中的时候)，但当是对方来追求你时，你会把对方视为同等状态(即视对方为也是悍将一名)给予对方无数的难题，考验及试探，简直是魔鬼……　</p>
+            <p class="desc mgb5">当对方满身伤痕的终于打动了你时，真正的恶梦才开始，因为被蝎子于爱情中站在主导的位置，你就只剩两个选择：1.)离开他，但要无时无刻防备他受到背叛的复仇，2.)永永远远的臣服于他，不要让他感到些微的背叛，如果做不到的或是中途受不了的，请选回1.)的路线。好好的不要惹他们为妙，因为你不能想像一个用一辈子想出来的复仇大计画会将你变成怎样………但，当蝎子真正爱上你时，他们的魅力又的确能像空气一样包围着你，有些时候更包到令你窒息……天蝎座的人大都抱着不是全有，就是全无的极端心态对待任何事物，爱情也是一样，你可以全心全意的爱着对方，也可以全心全意的伤害对方，简直…　而这种心态也是你渴望情人待你的心态，不要接近你，或，不要离开你。天蝎的爱情中，充满嫉妒，却又有能力与你爱得死来活去……</p>
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">天蝎座爱情面包的抉择</h4>
+            <p class="desc mgb5">如果爱情与面包不能两全，天蝎座的表现，让我想竖超大姆指来称赞一番。</p>
+            <p class="desc mgb5">我看过的天蝎座都是这样处理：紧紧拥抱他的爱情，然后自己拼命去赚面包。</p>
+            <p class="desc mgb5">想象中，一个不善营生的大情人，碰上重感情，又能辛勤养家的天蝎座，应该是非常完美的搭配。大部分的人，包括那些选择爱情的天蝎座，一定以为王子和公主从此就可以过着幸福快乐的日子了。可是，真实的状况却不是那么容易达成。</p>
+            <p class="desc mgb5">因为天蝎座的占有欲原本就很强。现在，你勇敢地不顾现实的压力，选择与他共创感情的小天地。多多少少，你会觉得自己做了相当的牺牲；多多少少，你觉得他亏欠了你一份情。于是你有更充分的理由，对他要求完整、无缺的爱。他必需也像你一样，不顾一切地来爱你，才不算辜负你的一分痴情。</p>
+            <p class="desc mgb5">这是多么重大的一份责任啊！从此他在你心中已经失去了自主权，他只有满足你的想法和要求，才能够无愧地面对你。这样的日子，又岂是任何人所能忍受的？如果你设身处地为他想想，就知道要维持这种感情有多难了。既然你勇敢地选择爱情，就应宽容地珍惜他的爱，否则牺性不是没有意义了吗？</p>
+          </div>
+          <div class="pdl15 pdr15 pdt10 pdb10" v-if="index === 3">
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">优点</h4>
+            <p class="desc mgb5">深谋远虑，恩怨分明，直觉敏锐，对决定的事有执行力，不畏挫折，坚持到底，对朋友讲义气，天生的性感魅力，坚持追求事情的真相，善于保守秘密，对人生有潜在的热情</p>
+            <h4 class="pdl15 pdr15 pdt10 tcenter pdb10">缺点</h4>
+            <p class="desc mgb5">太过好强，占有欲过高，善妒，爱吃醋，疑心病重，报复心太强，得理不饶人，感情用事，明知故犯，口是心非，城府太深，爱恨太强烈</p>
+          </div>
         </van-tab>
       </van-tabs>
     </div>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
 export default {
-  name: 'encyclopediasClassification',
+  name: 'bloodType',
   components: {
   },
   data () {
     return {
-      encyclopediasListData: [],  // 模拟百科列表
+      contellationName: '天蝎座',  // 星座名
+      contellationTime: '10/24-11/22', // 星座时间
+      tabActive: 0, // 绑定当前选中标签的标识符
+      tabList: [ // tab列表
+        {
+          name: '性格',
+        },{
+          name: '特点',
+        },{
+          name: '爱情观',
+        },{
+          name: '优缺点',
+        }
+      ],
     };
   },
   mounted () {
-    this.encyclopediasListData = [...this.getImitateEncyclopediasList];
-    this.encyclopediasListData = this.encyclopediasListData.concat(this.encyclopediasListData);
   },
   computed: {
-    ...mapGetters([
-      'getImitateEncyclopediasClassfication', // 模拟百科分类
-      'getImitateEncyclopediasList', // 模拟百科列表
-    ])
   },
   methods: {
     onClickLeft(){
@@ -65,17 +90,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .content{
-    margin: 1.2rem 0 0 0;
-  }
-  .title{
-    color: #323233;
-    font-size: 0.373333rem;
-  }
-  .van-panel{
-    padding:  0.266667rem  0.266667rem 0 0.266667rem;
-  }
-  .encyclopediasList{
-    padding: 10px 0
+  .desc{
+    text-indent: 0.74rem;
+    line-height: 0.7rem;
   }
 </style>
