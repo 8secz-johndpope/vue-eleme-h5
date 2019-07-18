@@ -13,27 +13,32 @@
         <div>有效期限：{{today}}</div>
       </div>
     </div>
-    <div class="mgl5">
-      <div class="flex-start mgt5">
-        <span class="mgr5">综合运势：</span>
-        <van-rate v-model="rateValue" readonly :size="50"/>
-        <span class="mgl20 mgr5">健康指数：</span><span>85%</span>
+    <div class="mgl5 position-r">
+      <div>
+        <div class="flex-start mgt5">
+          <span>综合运势：</span>
+          <van-rate v-model="rateValue" readonly :size="50"/>
+          <span class="mgl10">健康指数：</span><span>85%</span>
+        </div>
+        <div class="flex-start mgt5">
+          <span>工作运势：</span>
+          <van-rate v-model="rateValue" readonly :size="50"/>
+          <span class="mgl10">幸运颜色：</span><span>紫色</span>
+        </div>
+        <div class="flex-start mgt5">
+          <span>理财运势：</span>
+          <van-rate v-model="rateValue" readonly :size="50"/>
+          <span class="mgl10">幸运数字：</span><span>11</span>
+        </div>
+        <div class="flex-start mgt5">
+          <span>爱情运势：</span>
+          <van-rate v-model="rateValue" readonly :size="50"/>
+          <span class="mgl10">速配星座：</span><span>处女座</span>
+        </div>
       </div>
-      <div class="flex-start mgt5">
-        <span class="mgr5">工作运势：</span>
-        <van-rate v-model="rateValue" readonly :size="50"/>
-        <span class="mgl20 mgr5">速配星座：</span><span>处女座</span>
-      </div>
-      <div class="flex-start mgt5">
-        <span class="mgr5">爱情运势：</span>
-        <van-rate v-model="rateValue" readonly :size="50"/>
-        <span class="mgl20 mgr5">幸运颜色：</span><span>紫色</span>
-      </div>
-      <div class="flex-start mgt5">
-        <span class="mgr5">理财运势：</span>
-        <van-rate v-model="rateValue" readonly :size="50"/>
-        <span class="mgl20 mgr5">幸运数字：</span><span>11</span>
-      </div>
+      <router-link :to="{ name: 'constellation', params: {} }" class="detail">
+        <van-button round type="warning" size="small" class="detail-btn">详情</van-button>
+      </router-link>
     </div>
     <van-popup v-model="selectContellationTypePopup" class="selectContellationTypePopup">
       <div class="border-radius white-bg pdt15 pdr15 pdl15 flex-wrap">
@@ -163,5 +168,18 @@
   .pop-close-icon{
     color: #fff;
     font-size: 0.64rem;
+  }
+  .detail{
+    position: absolute;
+    right: 0;
+    top: 0.8rem;
+  }
+  .detail-btn{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 0.4rem;
+    width: 1.2rem;
+    height: 0.8rem;
+    line-height: 0.4rem;
   }
 </style>
