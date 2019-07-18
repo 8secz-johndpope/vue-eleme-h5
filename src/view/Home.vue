@@ -7,10 +7,10 @@
     />
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
-    <van-swipe :autoplay="3000" class="swipe white-bg ">
-      <van-swipe-item v-for="(image, index) in swiptImages" :key="index" class="flex-center swipe-img-zone">
-        <router-link :to="{ name: 'toolList', params: {} }">
-          <img v-lazy="image" class="swipe-img" />
+    <van-swipe :autoplay="3000" class="white-bg van-swipe-zone">
+      <van-swipe-item v-for="(image, index) in swiptImages" :key="index" class="flex-center">
+        <router-link :to="{ name: 'shoppingMallIndex', params: {} }">
+          <img v-lazy="image" class="swipe-img img-common border-radius" />
         </router-link>
       </van-swipe-item>
     </van-swipe>
@@ -83,7 +83,7 @@ export default {
   data () {
     return {
       swiptImages: [
-        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
+        'http://img3.imgtn.bdimg.com/it/u=1631905243,177371678&fm=26&gp=0.jpg',
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550992736&di=b5f7eaa82f8368773fc73615fdec6ee4&imgtype=jpg&er=1&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F11%2F23%2F16pic_1123089_b.jpg',
       ],
       menuList: [
@@ -118,9 +118,9 @@ export default {
           img: require('images/menu/renwuzhongxin.png'), // 绝对路径
         },
         {
-          levelOneName: '兑换商城', // 分类名称
-          linkUrlName: 'shoppingMallIndex',
-          img: require('images/menu/shangcheng.png'), // 绝对路径
+          levelOneName: '星座运势', // 分类名称
+          linkUrlName: 'constellation',
+          img: require('images/menu/xingzuo.png'), // 绝对路径
         },
         {
           levelOneName: '实用工具', // 分类名称
@@ -168,17 +168,12 @@ export default {
     text-align: center;
     line-height: 0.8rem;
   }
-  .swipe{
+  .van-swipe-zone{
     height: 4.2rem;
-  }
-  .swipe-img-zone{
-    width: 34.375rem;
-    height: 13.125rem;
+    width: 100%;
   }
   .swipe-img{
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
     height: 4.0rem;
-    padding: 0.266667rem;
+    width: 9.7rem;
   }
 </style>
