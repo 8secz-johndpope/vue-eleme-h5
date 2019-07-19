@@ -56,7 +56,7 @@ export default new Router({
     },
     {
       path: '/search/:keyword',
-      name: 'Search',
+      name: 'search',
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -216,7 +216,7 @@ export default new Router({
     },
     {
       path: '/myfollows',
-      name: 'Myfollows',
+      name: 'myfollows',
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -405,7 +405,7 @@ export default new Router({
     */
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -421,7 +421,7 @@ export default new Router({
     },
     {
       path: '/register',
-      name: 'Register',
+      name: 'register',
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -429,7 +429,7 @@ export default new Router({
     },
     {
       path: '/loginByCheckCode',
-      name: 'LoginByCheckCode',
+      name: 'loginByCheckCode',
       meta: {
         keepAlive: false // 不需要缓存
       },

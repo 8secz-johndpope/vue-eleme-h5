@@ -1,111 +1,67 @@
 <template>
-  <div class="payment-components">
-    <Backbar :titleName="'支付结果'"></Backbar>
+  <div>
+    <!-- 顶部 -->
+    <van-nav-bar
+      title="支付结果"
+      left-text="订单"
+      right-text="完成"
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
+    <!-- 支付成功 -->
+    <div v-if="payState === 0">
+      <div class="white-bg tcenter pdb15">
+        <div>
+          <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3524168456,1333029941&fm=26&gp=0.jpg" class="img-common" />
+        </div>
+        <div class="success">支付成功</div>
+      </div>
+      <van-cell-group>
+        <van-cell title="订单号" value="20190720190718" />
+        <van-cell title="支付总金额" value="182元" />
+        <van-cell title="优惠金额" value="182元" />
+        <van-cell title="实际支付金额" value="182元" />
+        <van-cell title="付款时间" value="2019-09-20 19:20:16" />
+      </van-cell-group>
+    </div>
   </div>
 </template>
 <script>
-  import Backbar from 'components/common_components/Back_bar';
   export default {
     components:{
-      Backbar
     },
     name: 'paymentResult',
     data () {
       return {
-        radio: '1', // 1=支付宝支付，2-微信支付
-        minutes: 15,  // 分钟数
-        seconds: 0, // 秒数
-        money: '19.90', // 金额
-        orderNum: '2019040516250000', // 订单编号
-        isPaying: false,  // 支付当中
+        payState: 0, // 0-支付成 1-支付失败（余额不足，网络中断） 2-取消支付
       };
     },
     mounted () {
-      this.add()
     },
     methods: {
-      num: function (n) {
-        return n < 10 ? '0' + n : '' + n;
-      },
-      add: function () {
-        var _this = this;
-        var time = window.setInterval(function () {
-          if (_this.seconds === 0 && _this.minutes !== 0) {
-            _this.seconds = 59;
-            _this.minutes -= 1;
-          } else if (_this.minutes === 0 && _this.seconds === 0) {
-            _this.seconds = 0;
-            _this.$toast('订单取消');
-            setTimeout( () => {
-              history.go(-1)
-            }, 3000 )
-            window.clearInterval(time);
-          } else {
-            _this.seconds -= 1;
-          }
-        }, 1000)
-      },
-      pay () {
+      onClickLeft(){
         let that = this;
-        that.$toast.success('支付成功');
-        that.isPaying = true;
-        setTimeout( () => {
-          that.isPaying = false;
-          that.$router.push({ name: 'myzone' })
-        },3000)
-      }
+        that.$dialog.alert({
+          title: '提示',
+          message: '如果是金币充值的付款'
+        }).then(() => {
+          // on close
+        });
+        // this.$router.push({ name: '' })
+      },
+      onClickRight(){
+        this.$router.push({ name: '' })
+      },
     },
     watch: {
-      second: {
-        handler (newVal) {
-          this.num(newVal)
-        }
-      },
-      minute: {
-        handler (newVal) {
-          this.num(newVal)
-        }
-      }
     },
     computed: {
-      second: function () {
-        return this.num(this.seconds)
-      },
-      minute: function () {
-        return this.num(this.minutes)
-      }
     }
 }
 </script>
 
 <style lang="less" scoped>
-  .payment-components{
-    // position: relative;
-  }
-  .order-zone{
-    height: 5rem;
-    font-size: 0.373rem;
-  }
-  .money-zone{
-    height: 1.2rem;
-    color: #333;
-  }
-  .pay-icon{
-    font-size: 0.48rem;
-    margin-top: 0.36rem;
-  }
-  .money-num{
-    font-size: 0.96rem;
-  }
-  .immediately-pay-zone{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  .item{
-    height: 0.8rem;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+  .success{
+    font-size: 0.8rem;
   }
 </style>

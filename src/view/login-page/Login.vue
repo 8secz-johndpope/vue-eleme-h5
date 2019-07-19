@@ -39,9 +39,9 @@
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
         <div class="flex-center noAccount">
-          <p><router-link :to="{ name: 'LoginByCheckCode', params: {} }" class="noAccount-a">验证码登录</router-link></p>
+          <p><router-link :to="{ name: 'loginByCheckCode', params: {} }" class="noAccount-a">验证码登录</router-link></p>
           <p class="shutiao">|</p>
-          <p><router-link :to="{ name: 'Register', params: {} }" class="noAccount-a">新用户注册</router-link></p>
+          <p><router-link :to="{ name: 'register', params: {} }" class="noAccount-a">新用户注册</router-link></p>
         </div>
       </div>
     </div>
@@ -101,7 +101,7 @@ export default {
       history.go(-1)
     },
     onClickRight(){
-      this.$router.push({ name: 'index' })
+      this.$router.push({ name: 'home' })
     },
   },
 };

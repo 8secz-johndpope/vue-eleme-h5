@@ -44,9 +44,9 @@
         </van-cell-group>
         <van-button type="primary" size="large" @click="cheack_n_p" class="classify-button">登录</van-button>
         <div class="flex-center noAccount">
-          <p><router-link :to="{ name: 'Login', params: {} }" class="noAccount-a">账号登录</router-link></p>
+          <p><router-link :to="{ name: 'login', params: {} }" class="noAccount-a">账号登录</router-link></p>
           <p class="shutiao">|</p>
-          <p><router-link :to="{ name: 'Register', params: {} }" class="noAccount-a">新用户注册</router-link></p>
+          <p><router-link :to="{ name: 'register', params: {} }" class="noAccount-a">新用户注册</router-link></p>
         </div>
       </div>
     </div>

@@ -8,17 +8,20 @@
       @click-left="onClickLeft"
       @click-right="toRechargeRecord"
     />
-    <van-panel class="panel-self">
-      <div class="balance">
-        <van-icon name="gold-coin-o" class="balance-icon"></van-icon><span>账户余额（金币：枚）</span>
+    <div class="white-bg pd15">
+      <div class="font-14">
+        <span>账户余额（金币：枚）</span>
       </div>
-      <div class="flex-space-between amount">
-        <span>1，000</span>
+      <div class="flex-space-between pdt15">
+        <div class="gold-color flex-align-center amount">
+          <van-icon name="gold-coin-o" class="mgr5"></van-icon>
+          <span>1,000</span>
+        </div>
         <router-link :to="{ name: 'buyCoin' }" >
           <van-button size="small" type="danger">点我充值</van-button>
         </router-link>
       </div>
-    </van-panel>
+    </div>
     <!-- 优惠券单元格 -->
     <Coupon :componentsType="1"></Coupon>
     <van-cell title="兑换商城" is-link to="/shoppingMall/shoppingMallIndex" />
@@ -62,19 +65,7 @@
 </script>
 
 <style lang="less" scoped>
-  .balance{
-    font-size: 0.4rem;
-    width: 90%;
-    margin: 0 auto;
-    padding: 0.1rem 0;
-    .balance-icon{
-      color: gold;
-      padding: 0 0.2rem 0 0;
-    }
-  }
   .amount{
-    width: 90%;
-    margin: 0 auto;
     font-family: Arial, "Microsoft YaHei";
     font-size: 0.8rem;
   }
