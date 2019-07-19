@@ -52,7 +52,7 @@
       },
       // 举报
       accusation () {
-        this.$router.push('/accusation')
+        this.$router.push({ name: 'accusation' })
       }
     }
   }

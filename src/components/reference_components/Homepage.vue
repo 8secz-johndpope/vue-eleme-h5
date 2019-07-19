@@ -209,7 +209,7 @@ export default {
   },
   methods: {
     enter_search (e) {
-      this.$router.push('/search/' + this.search_word);
+      this.$router.push({ name: 'search', params: { keyword: 'keyword' } });
     },
     // 加载更多
     loadMore () {

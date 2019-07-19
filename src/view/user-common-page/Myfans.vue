@@ -40,7 +40,7 @@
         this.COMMONFUNC.goBack();
       },
       onClickRight() {
-        this.$router.push('/addFriends');
+        this.$router.push({ name: 'addFriends' });
       },
     }
   }

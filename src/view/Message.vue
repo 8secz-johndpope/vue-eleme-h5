@@ -8,10 +8,10 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <van-tabbar v-model="messageActive" class="topTabbar" active-color="#7d7e80">
-      <van-tabbar-item icon="friends-o" :to="'/myfollows'">关注</van-tabbar-item>
-      <van-tabbar-item icon="user-circle-o" info="20" :to="'/myfans'">粉丝</van-tabbar-item>
-      <van-tabbar-item icon="thumb-circle-o" :to="'/mypraise'" dot>赞</van-tabbar-item>
-      <van-tabbar-item icon="comment-circle-o" :to="'/mycomments'" info="5">评论</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" :to="{ name: 'myfollows' }">关注</van-tabbar-item>
+      <van-tabbar-item icon="user-circle-o" info="20" :to="{ name: 'myfans' }" >粉丝</van-tabbar-item>
+      <van-tabbar-item icon="thumb-circle-o" :to="{ name: 'mypraise' }" dot>赞</van-tabbar-item>
+      <van-tabbar-item icon="comment-circle-o" :to="{ name: 'mycomments' }"  info="5">评论</van-tabbar-item>
     </van-tabbar>
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
@@ -138,8 +138,7 @@
       // 跳转聊天室
       toChat (ev){
         if (this.isToChat) {
-          // console.log('s');
-          this.$router.push('chat/userId')
+          this.$router.push({ name: 'chat', params: { userId: 'userId001' } })
         }
         this.isToChat = true;
       },

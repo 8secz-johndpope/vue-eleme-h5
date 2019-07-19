@@ -64,7 +64,7 @@ export default {
     onSearch () {
       if (!this.keywords) {this.$toast('请输入搜索关键词'); return}
       this.$store.dispatch('setKeywords', this.keywords);
-      this.$router.push('/talkingLibrary/result/'+this.keywords);
+      this.$router.push({ name: 'talkingLibraryResult', params: { id: 'id001'} });
     },
     onClickLeft(){
       this.COMMONFUNC.goBack();

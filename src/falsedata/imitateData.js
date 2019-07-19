@@ -485,6 +485,7 @@ export var imitateEncyclopediasClassfication = [
     id: 'id0', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '单身期',  //  名称
+    desc: '告别单身，从此开始',  // 百科描述
     list: [
       {
         itemId: 'itemId0', //词条分类id
@@ -516,6 +517,7 @@ export var imitateEncyclopediasClassfication = [
     id: 'id1', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '追求期',  //  名称
+    desc: '俘获芳心，抱得美人归',  // 百科描述
     list: [
       {
         itemId: 'itemId3', //词条分类id
@@ -535,6 +537,7 @@ export var imitateEncyclopediasClassfication = [
     id: 'id2', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '恋爱期',  //  名称
+    desc: '小确幸，大甜蜜',  // 百科描述
     list: [
       {
         itemId: 'itemId6', //词条分类id
@@ -554,6 +557,7 @@ export var imitateEncyclopediasClassfication = [
     id: 'id3', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '失恋期',  //  名称
+    desc: '我们懂你',  // 百科描述
     list: [
       {
         itemId: 'itemId9', //词条分类id
@@ -573,6 +577,7 @@ export var imitateEncyclopediasClassfication = [
     id: 'id', // 该百科词条的id
     img: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',  // 图片
     name: '婚后期',  //  名称
+    desc: '经营婚姻，经营幸福',  // 百科描述
     list: [
       {
         itemId: 'itemId12', //词条分类id

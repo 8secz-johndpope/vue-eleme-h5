@@ -84,11 +84,11 @@
       },
       // 前往申请开店
       toApplyOpenShop () {
-        this.$router.push('/setting/applyOpenShop')
+        this.$router.push({ name: 'applyOpenShop' })
       },
       // 前往店铺助手
       toShoppingAssistant () {
-        this.$router.push('/showcase/ShoppingAssistant')
+        this.$router.push({ name: 'shoppingAssistant' })
       },
       // 下拉加载更多
       onLoadMore() {

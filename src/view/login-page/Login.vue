@@ -95,13 +95,13 @@ export default {
     },
     // 跳转忘记密码页面，写在页面不生效
     goForget () {
-      this.$router.push('/forgot')
+      this.$router.push({ name: 'forgot'})
     },
     onClickLeft(){
       history.go(-1)
     },
     onClickRight(){
-      this.$router.push('/index')
+      this.$router.push({ name: 'index' })
     },
   },
 };

@@ -223,7 +223,7 @@
         this.COMMONFUNC.goBack();
       },
       onClickRight() {
-        this.$router.push('/userSetting');
+        this.$router.push({ name: 'userSetting', params: { userId: 'userId001'} });
       },
     }
   }

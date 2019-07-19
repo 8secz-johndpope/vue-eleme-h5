@@ -14,7 +14,7 @@
       </div>
       <div class="flex-space-between amount">
         <span>1，000</span>
-        <router-link :to="'/setting/mywallet/shopping'" >
+        <router-link :to="{ name: 'buyCoin' }" >
           <van-button size="small" type="danger">点我充值</van-button>
         </router-link>
       </div>

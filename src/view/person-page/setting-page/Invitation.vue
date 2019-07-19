@@ -65,7 +65,7 @@
         this.COMMONFUNC.goBack();
       },
       onClickRight () {
-        this.$router.push('/document/invitationRules')
+        this.$router.push({ name: 'invitationRules' })
       }
     }
 }

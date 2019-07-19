@@ -150,9 +150,9 @@
       seeDetail (item,index) {
         // commentsType: 0,  // 评论所属类型， 0-作品，1-文章
         if (item.commentsType == 0) {
-          this.$router.push('replyDetail/'+item.commentsId)
+          this.$router.push({ name: 'replyDetail', params: { commentsId: 'commentsId001' } })
         }else if (item.commentsType === 1) {
-          this.$router.push('/articleComments/'+item.commentsId)
+          this.$router.push({ name: 'articleComments', params: { commentsId: 'commentsId001' } })
         }
       }
     }

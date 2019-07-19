@@ -6,7 +6,7 @@
           {{item.title}}
         </div>
         <div class="encyclopediasList">
-          <div class="flex-between gray-color">
+          <div class="flex-between dy-font-color">
             <div>
               {{item.praiseNum}}人觉得有用
             </div>
@@ -32,8 +32,9 @@
               <van-tag color="#f2826a" class="mgr5" v-for="(c_item, c_index) in item.list" :key="c_item.itemId" v-if="c_index < 3">{{c_item.itemName}}</van-tag>
             </div>
           </div>
-          <div>
-            <van-icon name="arrow" class="gray-color encyclopediasItem-r-icon" />
+          <div class="flex-center">
+            <span class="dy-font-color">{{item.desc}}</span>
+            <van-icon name="arrow" class="dy-font-color encyclopediasItem-r-icon" />
           </div>
         </div>
       </div>

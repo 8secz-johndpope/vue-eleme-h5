@@ -75,7 +75,7 @@ export default {
     },
     // 前往帖子搜索
     toPostSearch () {
-      this.$router.push('/post/postSearch');
+      this.$router.push({ name: 'postSearch' });
     },
     // 菜单选择
     selectTab (item, index) {
@@ -84,7 +84,7 @@ export default {
     },
     // 前往帖子发布
     toPublishPost () {
-      this.$router.push('/publishPost');
+      this.$router.push({ name: 'publishPost' });
     }
   },
   components: {

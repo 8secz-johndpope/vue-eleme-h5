@@ -28,7 +28,7 @@ export default {
       this.COMMONFUNC.goBack();
     },
     onClickRight(){
-      this.$router.push('/publishPost');
+      this.$router.push({ name: 'publishPost' });
     },
   },
   components: {

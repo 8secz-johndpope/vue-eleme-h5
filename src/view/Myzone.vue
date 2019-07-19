@@ -23,7 +23,7 @@ export default {
   },
   beforeCreate () {
     if (this.COMMONFUNC.getCookieValue("token") !== 'isLogin') {
-      this.$router.push('/login');
+      this.$router.push({ name: 'login' });
     }
   },
   beforeRouteEnter(to, from, next) {

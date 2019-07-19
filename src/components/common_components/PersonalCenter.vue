@@ -3,7 +3,7 @@
       <div class="bgImg" :style="{backgroundImage: 'url(' + background_wall_img + ')' }" @click="backgroundWallImg">
         <!-- 用户自己的主页 -->
         <div v-if="centerType === 0 ">
-          <i class="fa fa-bars setting" @click.stop="goSetting"></i>
+          <i class="fa fa-bars setting" @click.stop="goPerson"></i>
         </div>
         <!-- 他人用户主页 -->
         <div v-else-if="centerType === 1 ">
@@ -39,9 +39,9 @@
           <div class="myzone_uid">
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="!isSign && centerType === 0 "><van-icon name="sign" class="iconType" />签到</van-button>
             <van-button type="danger" class="zone-btn" size="small" @click.stop="sign" v-if="isSign && centerType === 0 "><van-icon name="sign" class="iconType" />已签到</van-button>
-            <van-button type="danger" class="zone-btn" size="small" @click.stop="goGoldCoin" v-if="centerType === 0 "><van-icon name="gold-coin-o" class="iconType" />{{COMMONFUNC.formatterW(getImitateUser.goldCoin)}}</van-button>
+            <van-button type="danger" class="zone-btn" size="small" @click.stop="goMywallet" v-if="centerType === 0 "><van-icon name="gold-coin-o" class="iconType" />{{COMMONFUNC.formatterW(getImitateUser.goldCoin)}}</van-button>
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '0' && centerType === 1 " @click.stop="addInterest"><van-icon name="plus" class="iconType" />加关注</van-button>
-            <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button>
+            <!-- <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="sendMsg" ><van-icon name="chat-o" class="iconType" />发消息</van-button> -->
             <van-button type="danger" class="zone-btn" size="small" v-if="follow_type == '1' && centerType === 1 " @click.stop="cancelInterest"><van-icon name="exchange" class="iconType"  /></van-button>
             <router-link :to="{ name: 'showcase', params: { 'shopId': '01' } }" >
               <div class="gold-color showcase">
@@ -190,17 +190,24 @@ export default {
     onClickLeft(){
       this.COMMONFUNC.goBack();
     },
-    // 前往设置页
-    goSetting () {
-      this.$router.push('/setting')
+    // 前往个人中心页
+    goPerson () {
+      this.$router.push({
+        name: 'personalCenter',
+      })
     },
     // 前往设置页
     goUserSetting () {
-      this.$router.push('/userSetting')
+      this.$router.push({
+        name: 'userSetting',
+        params: { userId: 'userId001' }
+      })
     },
-    // 前往金币页
-    goGoldCoin () {
-      this.$router.push('/setting/mywallet')
+    // 前往我的钱包页
+    goMywallet () {
+      this.$router.push({
+        name: 'mywallet',
+      })
     },
     // 发消息
     sendMsg () {
@@ -216,7 +223,7 @@ export default {
     },
     // 用户自己主页可跳转
     goUserInfo () {
-      if (this.centerType === 0)  this.$router.push('/setting/userinfo')
+      if (this.centerType === 0)  this.$router.push({ name: 'userinfo' })
     }
   },
 };

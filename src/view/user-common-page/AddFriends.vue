@@ -112,7 +112,7 @@
       },
       // 用户中心
       goUserzone () {
-        this.$router.push('/userzone')
+        this.$router.push({ name: 'userzone' })
       }
     }
   }

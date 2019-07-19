@@ -76,7 +76,7 @@
       // 关闭优惠券弹框
       onChange(index) {
         if (this.componentsType === 1 && index !== -1) {
-          this.$router.push('/setting/shopping')
+          this.$router.push({ name: 'buyCoin' })
         }
         this.showList = false;
         this.chosenCoupon = index;

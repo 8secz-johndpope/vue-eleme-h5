@@ -35,7 +35,7 @@
       </van-cell-group>
     </van-radio-group>
     <div class="immediately-pay-zone">
-      <van-button type="warning" size="large" :disabled="isPaying" @click="pay">立即支付</van-button>
+      <van-button type="warning" size="large" :disabled="isPaying" @click="nowPay">立即支付</van-button>
     </div>
   </div>
 </template>
@@ -81,13 +81,14 @@
           }
         }, 1000)
       },
-      pay () {
+      // 立即支付
+      nowPay () {
         let that = this;
-        that.$toast.success('支付成功');
+        that.$toast('调用微信、支付宝支付，跳转其页面，得到结果后，返回跳转支付结果页');
         that.isPaying = true;
         setTimeout( () => {
           that.isPaying = false;
-          that.$router.push('/myzone')
+          that.$router.push({ name: 'paymentResult', params: { orderId: 'orderId001' } })
         },3000)
       }
     },

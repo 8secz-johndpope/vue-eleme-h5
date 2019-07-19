@@ -76,7 +76,7 @@ export default {
     },
     // 前往帖子搜索
     toPostSearch () {
-      this.$router.push('/post/postSearch');
+      this.$router.push({ name: 'postSearch' });
     },
   },
   components: {

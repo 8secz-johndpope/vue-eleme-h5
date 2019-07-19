@@ -138,7 +138,7 @@
         that.isShoping = true;
         setTimeout(() => {
           that.isShoping = false;
-          that.$router.push('/setting/mywallet/payment')
+          that.$router.push({ name: 'payment', params: { orderId: 'orderId001' } })
         }, 1000);
       },
       // 选择商品
@@ -157,7 +157,7 @@
       },
       // 前往帮助中心
       toRechargeHelp () {
-        this.$router.push('/document/goldCoinRechargeDesc')
+        this.$router.push({ name: 'goldCoinRechargeDesc' })
       }
     }
 }

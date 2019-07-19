@@ -106,18 +106,17 @@ export default new Router({
     },
     {
       path: '/myzone',
-      name: 'myzone',
+      name: 'myzone', // 我的用户中心
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/Myzone'],resolve),
     },
-
     {
-      path: '/userzone',
-      name: 'userzone',
+      path: '/otherUser/userzone/:userId',
+      name: 'userzone',   // 他人用户中心
       meta: {
-        keepAlive: false // 不需要缓存
+        keepAlive: true // 需要缓存
       },
       component: (resolve) => require(['view/user-common-page/Userzone'],resolve),
     },
@@ -232,140 +231,178 @@ export default new Router({
       },
       component: (resolve) => require(['view/chat-page/Chat'],resolve),
     },
-    // 个人用户设置 -- 自己的
+    /*
+      个人中心页 -- 开始
+    */
     {
-      path: '/setting',
-      name: 'setting',
+      path: '/personalCenter/index',
+      name: 'personalCenter',  // 个人用户中心 -- 首页
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Setting'],resolve),
+      component: (resolve) => require(['view/person-page/PersonalCenter'],resolve),
     },
-    // 其他用户更多
     {
-      path: '/userSetting',
-      name: 'userSetting',
+      path: '/otherUser/userSetting/:userId',
+      name: 'userSetting',     // 其他用户更多
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/UserSetting'],resolve),
+      component: (resolve) => require(['view/person-page/UserSetting'],resolve),
     },
     {
-      path: '/setting/userinfo',
-      name: 'userinfo',
+      path: '/personalCenter/userinfo',
+      name: 'userinfo',  // 个人用户中心 -- 用户个人资料
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Userinfo'],resolve),
+      component: (resolve) => require(['view/person-page/Userinfo'],resolve),
     },
     {
-      path: '/setting/mywallet',
-      name: 'mywallet',
+      path: '/personalCenter/mywallet/index',
+      name: 'mywallet', // 个人用户中心 -- 钱包首页
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/mywallet-page/Mywallet'],resolve),
+      component: (resolve) => require(['view/person-page/mywallet-page/Mywallet'],resolve),
     },
-    // 购买商品页
     {
-      path: '/setting/mywallet/shopping',
-      name: 'shopping',
+      path: '/personalCenter/mywallet/buyCoin',
+      name: 'buyCoin',  // 个人用户中心 -- 购买金币
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/mywallet-page/Shopping'],resolve),
-    },
-    // 支付订单页
-    {
-      path: '/setting/mywallet/payment',
-      name: 'payment',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/setting-page/mywallet-page/Payment'],resolve),
-    },
-    // 邀请分享
-    {
-      path: '/setting/invitation',
-      name: 'invitation',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/setting-page/Invitation'],resolve),
+      component: (resolve) => require(['view/person-page/mywallet-page/BuyCoin'],resolve),
     },
     {
-      path: '/setting/feedback',
-      name: 'feedback',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/setting-page/Feedback'],resolve),
-    },
-    {
-      path: '/setting/contact',
-      name: 'contact',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/setting-page/Contact'],resolve),
-    },
-    // 申请开店
-    {
-      path: '/setting/applyOpenShop',
-      name: 'applyOpenShop',
+      path: '/personalCenter/mywallet/rechargeRecord',
+      name: 'rechargeRecord',  // 个人用户中心 -- 充值记录
       meta: {
         keepAlive: true // 需要缓存
       },
-      component: (resolve) => require(['view/setting-page/ApplyOpenShop'],resolve),
+      component: (resolve) => require(['view/person-page/mywallet-page/RechargeRecord'],resolve),
     },
     {
-      path: '/setting/certification',
+      path: '/personalCenter/mywallet/rechargeRecord/detail/:orderId',
+      name: 'rechargeRecordDetail',  // 个人用户中心 -- 充值记录详情
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/person-page/mywallet-page/rechargeRecordDetail'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/index',
+      name: 'setting', // 个人用户中心 -- 设置页
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/Setting'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/invitation',
+      name: 'invitation', // 邀请分享
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/Invitation'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/feedback',
+      name: 'feedback', // 反馈建议
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/Feedback'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/contact',
+      name: 'contact',  // 联系我们
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/Contact'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/applyOpenShop',
+      name: 'applyOpenShop',  // 申请开店
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/ApplyOpenShop'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/certification',
       name: 'certification',   // 实名认证
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/Certification'],resolve),
+      component: (resolve) => require(['view/person-page/setting-page/Certification'],resolve),
     },
     {
-      path: '/setting/receivingAddress/:userId',
+      path: '/personalCenter/setting/officialCertification',
+      name: 'officialCertification',   // 官方认证
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
+      component: (resolve) => require(['view/person-page/setting-page/OfficialCertification'],resolve),
+    },
+    {
+      path: '/personalCenter/setting/receivingAddress/:userId',
       name: 'receivingAddress',  // 地址列表
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/ReceivingAddress'],resolve),
+      component: (resolve) => require(['view/person-page/setting-page/ReceivingAddress'],resolve),
     },
     {
-      path: '/setting/addorUpAddress',
+      path: '/personalCenter/setting/addorUpAddress',
       name: 'addorUpAddress',  // 新增或修改地址
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/AddorUpAddress'],resolve),
+      component: (resolve) => require(['view/person-page/setting-page/AddorUpAddress'],resolve),
     },
     {
-      path: '/setting/mywallet/rechargeRecord',
-      name: 'rechargeRecord', // 充值记录
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/setting-page/mywallet-page/RechargeRecord'],resolve),
-    },
-    {
-      path: '/setting/extensionOrderManage/index',
+      path: '/personalCenter/extensionOrderManage/index',
       name: 'extensionOrderManage', // 速推订单管理 -- 首页
       meta: {
         keepAlive: true // 需要缓存
       },
-      component: (resolve) => require(['view/setting-page/extensionOrderManage/Index'],resolve),
+      component: (resolve) => require(['view/person-page/extensionOrderManage/Index'],resolve),
     },
     {
-      path: '/setting/extensionOrderManage/detail/:orderId',
+      path: '/personalCenter/extensionOrderManage/detail/:orderId',
       name: 'extensionOrdeDetail', // 速推订单管理 -- 详情
       meta: {
         keepAlive: false // 不需要缓存
       },
-      component: (resolve) => require(['view/setting-page/extensionOrderManage/Detail'],resolve),
+      component: (resolve) => require(['view/person-page/extensionOrderManage/Detail'],resolve),
     },
+    /*
+      个人中心页 -- 结束
+    */
+    /*
+      支付页 -- 开始
+    */
+    {
+      path: '/payment/:orderId',
+      name: 'payment',    // 支付订单页
+      meta: {
+        keepAlive: false // 需要缓存
+      },
+      component: (resolve) => require(['view/payment-page/Payment'],resolve),
+    },
+    {
+      path: '/payment/result/:orderId',
+      name: 'paymentResult',    // 支付订单结果
+      meta: {
+        keepAlive: false // 需要缓存
+      },
+      component: (resolve) => require(['view/payment-page/PaymentResult'],resolve),
+    },
+    /*
+      支付页 -- 结束
+    */
     {
       path: '/login',
       name: 'Login',
@@ -644,7 +681,7 @@ export default new Router({
     */
     {
       path: '/activity/inviteToShare',
-      name: 'inviteToShare',
+      name: 'inviteToShare',  // 邀请有礼
       meta: {
         keepAlive: false // 不需要缓存
       },
@@ -652,7 +689,7 @@ export default new Router({
     },
     {
       path: '/activity/taskCenter',
-      name: 'taskCenter',
+      name: 'taskCenter',  // 任务中心
       meta: {
         keepAlive: false // 不需要缓存
       },
