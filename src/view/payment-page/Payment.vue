@@ -3,9 +3,12 @@
     <Backbar :titleName="'支付订单'"></Backbar>
     <!-- 订单区域 -->
     <div class="order-zone flex-center">
-      <div class="gray-font">
-        <div class="item">
+      <div>
+        <!-- <div class="item">
           支付剩余时间 {{minute}}：{{second}}
+        </div> -->
+        <div class="item">
+          <span>微撩订单金额</span>
         </div>
         <div class="flex-center money-zone">
           <span class="pay-icon">￥</span><span class="money-num">{{money}}</span>
@@ -13,9 +16,9 @@
         <div class="item">
           <span>订单号：</span><span>{{orderNum}}</span>
         </div>
-        <div class="item">
+        <!-- <div class="item">
           <span>订单详情：</span><span>166金币</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <van-radio-group v-model="radio">
@@ -89,7 +92,7 @@
         setTimeout( () => {
           that.isPaying = false;
           that.$router.push({ name: 'paymentResult', params: { orderId: 'orderId001' } })
-        },3000)
+        },1500)
       }
     },
     watch: {
