@@ -4,9 +4,11 @@
       <van-nav-bar
       left-arrow
       @click-left="onClickLeft"
+      fixed
       />
     </div>
-    <div class="fixed-content-box replyDetail-box">
+    <div class="top-space"></div>
+    <div class="replyDetail-box">
       <Conversation :composition="conversationArr" :isRecommend="false"></Conversation>
     </div>
   </div>

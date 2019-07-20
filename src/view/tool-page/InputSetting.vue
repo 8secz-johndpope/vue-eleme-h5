@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div @touchmove.prevent>
     <div>
       <van-nav-bar
         title="输入设置"
         left-arrow
         @click-left="onClickLeft"
-        >
-      </van-nav-bar>
+        fixed
+      />
     </div>
+    <div class="top-space"></div>
     <van-cell-group class="mgt10">
       <van-field
         v-model="amount"

@@ -8,20 +8,19 @@
       @click-right="onClickRight"
       fixed
     />
-    <div class="fixed-content-box">
-      <van-list
-        v-model="listLoading"
-        :finished="finished"
-        finished-text="没有更多了"
-        @load="onLoadMore"
-      >
-        <!-- 轮询商品 -->
-        <div v-for="(item,index) in goodsArr">
-          <!-- 商品组件 -->
-          <GoodsCard :moreOperate="true"></GoodsCard>
-        </div>
-      </van-list>
-    </div>
+    <div class="top-space"></div>
+    <van-list
+      v-model="listLoading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoadMore"
+    >
+      <!-- 轮询商品 -->
+      <div v-for="(item,index) in goodsArr">
+        <!-- 商品组件 -->
+        <GoodsCard :moreOperate="true"></GoodsCard>
+      </div>
+    </van-list>
   </div>
 </template>
 

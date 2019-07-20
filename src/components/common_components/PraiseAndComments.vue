@@ -8,44 +8,43 @@
         @click-left="onClickLeft"
       />
     </div>
-    <div class="fixed-content-box">
-      <!-- 主体内容 -->
-      <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
-        <van-list
-          v-model="listLoading"
-          :finished="finished"
-          finished-text="我也是底线的"
-          @load="onLoadMore"
-        >
-          <van-cell-group v-for="(item,index) in arrs">
-            <van-cell class="displayflex" @click="seeDetail(item,index)">
-              <div class="tleft van-user-item-left">
-                <div class="van-avatar-large"><img :src="item.firstUserImg" alt="" class="van-avatar-img"></div>
-                <div class="flex-column van-user-item-text-info">
-                  <span class="van-userName">@{{item.firstUserName}}</span>
-                  <span class="van-autograph" v-if="msgType === 0 && item.type === 0">等{{item.total}}人赞了你的作品</span>
-                  <span class="van-autograph" v-if="msgType === 0 && item.type === 1">等{{item.total}}人赞了你的评论</span>
-                  <span class="van-autograph" v-if="msgType === 1 ">{{item.comments}}</span>
-                  <!-- 如果是点赞，则会同一时间有多个点赞，评论则是单独的 -->
-                  <div v-if="msgType === 0 ">
-                    <div class="van-avatar-small" v-for="(c_item, c_index) in item.userList" v-if="c_index < 4"><img :src="c_item.userImg" alt="" class="van-avatar-img"></div>
-                  </div>
-                  <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
+    <div class="top-space"></div>
+    <!-- 主体内容 -->
+    <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
+      <van-list
+        v-model="listLoading"
+        :finished="finished"
+        finished-text="我也是底线的"
+        @load="onLoadMore"
+      >
+        <van-cell-group v-for="(item,index) in arrs">
+          <van-cell class="displayflex" @click="seeDetail(item,index)">
+            <div class="tleft van-user-item-left">
+              <div class="van-avatar-large"><img :src="item.firstUserImg" alt="" class="van-avatar-img"></div>
+              <div class="flex-column van-user-item-text-info">
+                <span class="van-userName">@{{item.firstUserName}}</span>
+                <span class="van-autograph" v-if="msgType === 0 && item.type === 0">等{{item.total}}人赞了你的作品</span>
+                <span class="van-autograph" v-if="msgType === 0 && item.type === 1">等{{item.total}}人赞了你的评论</span>
+                <span class="van-autograph" v-if="msgType === 1 ">{{item.comments}}</span>
+                <!-- 如果是点赞，则会同一时间有多个点赞，评论则是单独的 -->
+                <div v-if="msgType === 0 ">
+                  <div class="van-avatar-small" v-for="(c_item, c_index) in item.userList" v-if="c_index < 4"><img :src="c_item.userImg" alt="" class="van-avatar-img"></div>
                 </div>
+                <span>{{COMMONFUNC.commentsTimeFormatter(item.time)}}</span>
               </div>
-              <!-- 作品内容 -->
-              <div class="van-user-item-right">
-                <van-panel :title="'@' + item.workAuthor" class="panel-s">
-                  <div class="content-box" v-html="item.workFirstHtml">
-                    {{item.workFirstHtml}}
-                  </div>
-                </van-panel>
-              </div>
-            </van-cell>
-          </van-cell-group>
-        </van-list>
-      </van-pull-refresh>
-    </div>
+            </div>
+            <!-- 作品内容 -->
+            <div class="van-user-item-right">
+              <van-panel :title="'@' + item.workAuthor" class="panel-s">
+                <div class="content-box" v-html="item.workFirstHtml">
+                  {{item.workFirstHtml}}
+                </div>
+              </van-panel>
+            </div>
+          </van-cell>
+        </van-cell-group>
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 

@@ -1,48 +1,47 @@
 <template>
   <div>
     <div class="fixed-top">
-        <van-nav-bar
-          left-arrow
-          @click-left="onClickLeft"
-          >
-          <template slot="right">
-            <span @click="toApplyOpenShop" class="gold-color mgr10">开通橱窗</span>
-            <span @click="toShoppingAssistant">购物助手</span>
-          </template>
-        </van-nav-bar>
+      <van-nav-bar
+        left-arrow
+        @click-left="onClickLeft"
+        >
+        <template slot="right">
+          <span @click="toApplyOpenShop" class="gold-color mgr10">开通橱窗</span>
+          <span @click="toShoppingAssistant">购物助手</span>
+        </template>
+      </van-nav-bar>
     </div>
-    <div class="fixed-content-box">
-      <van-panel>
-        <div slot="header" class="flex-space-between header">
-          <div class="flex-start">
-            <router-link :to="{ name: 'userzone', params: {} }">
-              <div>
-                <span class="van-avatar"><img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" alt="" class="van-avatar-img"></span>
-              </div>
-            </router-link>
-            <div class="flex-column shopkeeper">
-              <span class="font-16">XXX的商品橱窗</span>
-              <span class="gray-font">全部商品 10</span>
+    <div class="top-space"></div>
+    <van-panel>
+      <div slot="header" class="flex-space-between header">
+        <div class="flex-start">
+          <router-link :to="{ name: 'userzone', params: {} }">
+            <div>
+              <span class="van-avatar"><img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" alt="" class="van-avatar-img"></span>
             </div>
-          </div>
-          <div>
-            <router-link :to="{ name: 'showcaseTools', params: { 'showcaseId' : 'showcaseId001'} }" class="flex-center">电商工具箱<van-icon name="edit" /></router-link>
+          </router-link>
+          <div class="flex-column shopkeeper">
+            <span class="font-16">XXX的商品橱窗</span>
+            <span class="gray-font">全部商品 10</span>
           </div>
         </div>
-      </van-panel>
-      <van-list
-        v-model="listLoading"
-        :finished="finished"
-        finished-text="没有更多了"
-        @load="onLoadMore"
+        <div>
+          <router-link :to="{ name: 'showcaseTools', params: { 'showcaseId' : 'showcaseId001'} }" class="flex-center">电商工具箱<van-icon name="edit" class="pdl5" /></router-link>
+        </div>
+      </div>
+    </van-panel>
+    <van-list
+      v-model="listLoading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoadMore"
       >
-        <!-- 轮询商品 -->
-        <div v-for="(item,index) in goodsArr">
-          <!-- 商品组件 -->
-          <GoodsCard :moreOperate="true"></GoodsCard>
-        </div>
-      </van-list>
-    </div>
+      <!-- 轮询商品 -->
+      <div v-for="(item,index) in goodsArr">
+        <!-- 商品组件 -->
+        <GoodsCard :moreOperate="true"></GoodsCard>
+      </div>
+    </van-list>
   </div>
 </template>
 

@@ -121,7 +121,7 @@
         let that = this;
         if (that.percentage < 100) {
           that.percentage += 5;
-          that.percentage = that.percentage >= 100 ? 100 : that.percentage; 
+          that.percentage = that.percentage >= 100 ? 100 : that.percentage;
         }else{
           that.percentage = 100
           return
@@ -656,20 +656,11 @@
       transform: translate3d(0, 0, 0);
     }
   }
-
   .bounceInUp {
     -webkit-animation-name: bounceInUp;
     animation-name: bounceInUp;
   }
   .emoji-icon{
     width: 0.533rem;
-  }
-  .fixed-content-box{
-    height: 8.4rem;
-    margin-top: 1.2rem;
-  }
-  .fixed-content-box-large{
-    height: 12.2rem;
-    margin-top: 1.2rem;
   }
 </style>

@@ -9,7 +9,7 @@
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <!-- 推荐商品展示区 列表-->
-    <div>
+    <div class="pdt10">
       <ShoppingMallGoodCard :goodsList="getImitateGoodsList"></ShoppingMallGoodCard>
     </div>
   </div>

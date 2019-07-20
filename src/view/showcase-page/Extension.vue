@@ -1,103 +1,93 @@
 <template>
   <div>
-    <div class="fixed-top">
-        <van-nav-bar
-        title="速推+上热门"
-        left-arrow
-        right-text="常见问题"
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-        >
-      </van-nav-bar>
+    <van-nav-bar
+      title="速推+上热门"
+      left-arrow
+      right-text="常见问题"
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+      fixed
+    >
+    </van-nav-bar>
+    <div class="top-space"></div>
+    <!-- 作品区域 -->
+    <div class="pdl15 pdr15 pdt10">
+      <RetransmissionCard :isWxBg="false"></RetransmissionCard>
     </div>
-    <!-- 固定内容区域 -->
-    <div class="content-zone">
-      <!-- 作品区域 -->
-      <div class="flex-wrap pd15 white-bg">
+    <!-- 内容区域 -->
+    <div class="content-box">
+      <!-- 期望区域 -->
+      <div class="cell-zone">
         <div class="flex-center">
-          <img src="https://avatars1.githubusercontent.com/u/34303195?s=460&v=4" class="van-avatar" />
+          <span>期望提升</span>
+          <van-icon name="question-o" class="question-icon" @click="helpIcon('qiwangIcon')" />
+          <span class="red-color" @click="advertisingTargetActionPop = true">{{currentAdvertisingTarget === 0 ? '视频互动量' : '粉丝增长'}}></span>
         </div>
-        <div class="pdl15">
-          <div>
-            <p>男：你今天有点怪</p><p>女：哪里怪了（脸红）</p><p>男：怪可爱的，哈哈哈</p>
-          </div>
-          <div class="gray-color">XXX的作品</div>
+        <span class="flex-center gray-color vertical-line">|</span>
+        <div class="flex-center">
+          <span>投放时长</span>
+          <van-icon name="question-o" class="question-icon" @click="helpIcon('shichangIcon')"/>
+          <span class="red-color" @click="durationActionPop = true">{{currentDuration === 0 ? '6小时' : currentDuration === 1 ? '12小时' : '24小时'}}></span>
         </div>
       </div>
-      <!-- 内容区域 -->
-      <div class="content-box">
-        <!-- 期望区域 -->
-        <div class="cell-zone">
-          <div class="flex-center">
-            <span>期望提升</span>
-            <van-icon name="question-o" class="question-icon" @click="helpIcon('qiwangIcon')" />
-            <span class="red-color" @click="advertisingTargetActionPop = true">{{currentAdvertisingTarget === 0 ? '视频互动量' : '粉丝增长'}}></span>
-          </div>
-          <span class="flex-center gray-color vertical-line">|</span>
-          <div class="flex-center">
-            <span>投放时长</span>
-            <van-icon name="question-o" class="question-icon" @click="helpIcon('shichangIcon')"/>
-            <span class="red-color" @click="durationActionPop = true">{{currentDuration === 0 ? '6小时' : currentDuration === 1 ? '12小时' : '24小时'}}></span>
-          </div>
-        </div>
-        <!-- 选择兴趣用户 -->
-        <div class="cell-zone">
-          <span>把作品推荐给潜在兴趣用户</span>
-          <van-icon name="question-o" class="question-icon" @click="helpIcon('xingquUseIcon')" />
-        </div>
-        <!-- 选择潜在用户选项 -->
-        <van-radio-group v-model="targetUserRadio">
-          <van-cell-group>
-            <van-cell title="系统智能投放" clickable @click="targetUserRadio = '0'">
-              <van-radio name="0" />
-            </van-cell>
-            <van-cell title="自定义定向投放" clickable @click="targetUserRadio = '1'">
-              <van-radio name="1" />
-            </van-cell>
-            <!-- 自定义定向投放 区域 -->
-            <Orientation v-show="targetUserRadio == '1'" @childMultiple="getChildMultiple"></Orientation>
-            <van-cell title="达人相似粉丝投放" clickable @click="targetUserRadio = '2'">
-              <van-radio name="2" />
-            </van-cell>
-            <!-- 达人相似粉丝投放 区域 -->
-            <Daren v-show="targetUserRadio == '2'" @childMultiple="getChildMultiple"></Daren>
-          </van-cell-group>
-        </van-radio-group>
-        <!-- 播放量提升 -->
-        <div class="cell-zone">
-          <span>预计播放量提升</span>
-          <van-icon name="question-o" class="question-icon" @click="helpIcon('bofangIcon')" />
-        </div>
-        <!-- 播放量提升数 -->
-        <div class="flex-center red-color playbackVolume">
-          {{playbackVolume}}+
-        </div>
-        <!-- 投放金币 -->
-        <div class="cell-zone">
-          <span>投放金币</span>
-          <van-icon name="question-o" class="question-icon" @click="helpIcon('jineIcon')" />
-        </div>
-        <!-- 金币列表区域 -->
-        <div class="shopList-zone">
-          <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectMoney(index, item)" class="shop-btn">
-            <span>{{item.value}}</span>
-          </van-button>
-        </div>
-        <div class="cell-zone">
-          <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
-          <span class="mgl5">继续表示同意</span>
-          <div>
-            <router-link :to="{ name: 'userAgreement', params: {} }">
-              <span class="gold-color mgl5">用户服务协议</span>
-            </router-link>
-            <span>及</span>
-            <router-link :to="{ name: 'extendRequirement', params: {} }">
-              <span class="gold-color">投放要求</span>
-            </router-link>
-          </div>
+      <!-- 选择兴趣用户 -->
+      <div class="cell-zone">
+        <span>把作品推荐给潜在兴趣用户</span>
+        <van-icon name="question-o" class="question-icon" @click="helpIcon('xingquUseIcon')" />
+      </div>
+      <!-- 选择潜在用户选项 -->
+      <van-radio-group v-model="targetUserRadio">
+        <van-cell-group>
+          <van-cell title="系统智能投放" clickable @click="targetUserRadio = '0'">
+            <van-radio name="0" />
+          </van-cell>
+          <van-cell title="自定义定向投放" clickable @click="targetUserRadio = '1'">
+            <van-radio name="1" />
+          </van-cell>
+          <!-- 自定义定向投放 区域 -->
+          <Orientation v-show="targetUserRadio == '1'" @childMultiple="getChildMultiple"></Orientation>
+          <van-cell title="达人相似粉丝投放" clickable @click="targetUserRadio = '2'">
+            <van-radio name="2" />
+          </van-cell>
+          <!-- 达人相似粉丝投放 区域 -->
+          <Daren v-show="targetUserRadio == '2'" @childMultiple="getChildMultiple"></Daren>
+        </van-cell-group>
+      </van-radio-group>
+      <!-- 播放量提升 -->
+      <div class="cell-zone">
+        <span>预计播放量提升</span>
+        <van-icon name="question-o" class="question-icon" @click="helpIcon('bofangIcon')" />
+      </div>
+      <!-- 播放量提升数 -->
+      <div class="flex-center red-color playbackVolume">
+        {{playbackVolume}}+
+      </div>
+      <!-- 投放金币 -->
+      <div class="cell-zone">
+        <span>投放金币</span>
+        <van-icon name="question-o" class="question-icon" @click="helpIcon('jineIcon')" />
+      </div>
+      <!-- 金币列表区域 -->
+      <div class="shopList-zone">
+        <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectMoney(index, item)" class="shop-btn">
+          <span>{{item.value}}</span>
+        </van-button>
+      </div>
+      <div class="cell-zone">
+        <van-checkbox v-model="agreeCheckbox" @change="changeAgreeCheckbox"></van-checkbox>
+        <span class="mgl5">继续表示同意</span>
+        <div>
+          <router-link :to="{ name: 'userAgreement', params: {} }">
+            <span class="gold-color mgl5">用户服务协议</span>
+          </router-link>
+          <span>及</span>
+          <router-link :to="{ name: 'extendRequirement', params: {} }">
+            <span class="gold-color">投放要求</span>
+          </router-link>
         </div>
       </div>
     </div>
+    <div class="footer-space"></div>
     <van-submit-bar
       :disabled="isShoping || userCureentCoin < price"
       price=""
@@ -163,10 +153,12 @@
 
 <script>
   import Orientation from 'components/child_components/Extension_components/Orientation';
+  import RetransmissionCard from 'components/child_components/Publish_components/RetransmissionCard';
   import Daren from 'components/child_components/Extension_components/Daren';
   export default {
     components:{
       Orientation,
+      RetransmissionCard,
       Daren,
     },
     name: 'extension',

@@ -9,9 +9,7 @@
     </van-nav-bar>
     <!-- 空格 -->
     <div class="top-space"></div>
-    <div>
-      <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1177216182,3827976010&fm=11&gp=0.jpg" class="top-bg" />
-    </div>
+    <div><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1177216182,3827976010&fm=11&gp=0.jpg" class="top-bg" /></div>
     <van-tabs v-model="tabActive" swipeable sticky @change="changeTab">
       <van-tab v-for="(tabItem, tabIndex) in tabList" :title="tabItem.name">
         <div class="pdt10 font-14" @click="toPostDetail">
@@ -106,7 +104,7 @@ export default {
     // 前往作品
     toPostDetail () {
       this.$router.push({
-          name: 'postDetail', 
+          name: 'postDetail',
           params: {
             postId: 'postId001'
           }

@@ -11,7 +11,7 @@
       </van-nav-bar>
     </div>
     <div class="top-space"></div>
-    <div class="white-bg pd10 font-14">
+    <div class="white-bg font-14">
       <van-tabs swipeable sticky :swipe-threshold="6" v-model="tabActive">
         <van-tab v-for="(item, index) in tabList" :title="item.name">
           <div class="pdl15 pdr15 pdt10 pdb10" v-if="index === 0">

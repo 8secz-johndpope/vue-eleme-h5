@@ -5,7 +5,9 @@
       title="电商工具箱"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell title="商品管理" value="新增、编辑商品" is-link :to="{ name: 'goodsManage', params: { showcaseId: 'showcaseId001' } }" />
     <van-cell title="数据分析" value="用户行为、画像" is-link :to="{ name: 'dataAnalysis', params: { showcaseId: 'showcaseId001' } }" />
     <van-cell title="橱窗信息" value="橱窗通用信息" is-link :to="{ name: 'showcaseInfo', params: { showcaseId: 'showcaseId001' } }" />

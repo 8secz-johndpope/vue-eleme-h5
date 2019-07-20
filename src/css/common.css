@@ -230,7 +230,10 @@
   height: 1.6rem;
 }
 .top-space{
-  height: 1.2rem;
+  height: 1.22rem;
+}
+.footer-space{
+  height: 1.4rem;
 }
 .font-12{
   font-size: 0.32rem;
@@ -302,11 +305,8 @@
 .fixed-top{
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 100;
   width: 100%;
-}
-.fixed-content-box{
-  margin-top: 1.2rem;
 }
 .zhifubao-icon{
   background-image: url('../images/icon/zhifubao.png');
@@ -340,4 +340,10 @@
 }
 .border-radius{
   border-radius: 0.138889rem;
+}
+.z-index-999{
+  z-index: 999;
+}
+.overflow-h{
+  overflow: hidden;
 }

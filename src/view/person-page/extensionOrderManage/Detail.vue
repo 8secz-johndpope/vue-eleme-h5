@@ -7,7 +7,9 @@
       right-text="问题与帮助"
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      fixed
     />
+    <div class="top-space"></div>
     <!-- 订单详情 -->
     <div class="pd15 white-bg">
       <div class="dy-font-color">当前订单状态：</div>

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="pdl15 pdr15 white-bg flex-align-center top-zone">
+  <div class="postSearchResult-page">
+    <div class="pdl15 pdr15 white-bg flex-align-center fixed-top width-100">
       <van-icon name="arrow-left" class="top-zone-left" @click="onClickLeft"/>
-      <form action="/" class="top-zone-right">
+      <form action="/" class="width-100">
         <van-search
           v-model="searchValue"
           placeholder="请输入搜索关键词"
@@ -11,9 +11,10 @@
         />
       </form>
     </div>
+    <div class="top-space"></div>
     <van-tabs v-model="tabActive" sticky swipeable>
       <van-tab title="综合">
-        <div class="mgb10 white-bg">
+        <div class="mgt10 mgb10 white-bg">
           <div class="pdl15 pdt15 dy-font-color">用户（如果搜索精确匹配到用户）</div>
           <UserCard :userInfo="getImitateUserList[0]"></UserCard>
         </div>
@@ -44,7 +45,7 @@ import { mapGetters } from 'vuex';
 import PostList from 'components/common_components/PostList';
 import UserCard from 'components/common_components/UserCard';
 export default {
-  name: 'questionList',
+  name: 'postSearchResult',
   data () {
     return {
       tabActive: 0, // 高亮tab
@@ -114,9 +115,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .top-zone{
-    width: 100%;
-  }
   .top-zone-left{
     font-size: 18px;
   }

@@ -11,9 +11,9 @@
       </van-nav-bar>
     </div>
     <div class="top-space"></div>
-    <div class="white-bg pd10 font-14">
-      <van-tabs swipeable sticky :swipe-threshold="6" v-model="tabActive">
-        <van-tab v-for="(item, index) in tabList" :title="item.name">
+    <div class="white-bg font-14">
+      <van-tabs swipeable sticky v-model="tabActive">
+        <van-tab v-for="(item, index) in tabList" :title="item.name" class="">
           <h3 class="tcenter pdt10 pdb10">{{item.title}}</h3>
           <van-panel>
             <div slot="header"><h4 class="pdl15 pdr15 pdt10">性格及气质</h4></div>

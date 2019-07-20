@@ -5,9 +5,11 @@
         title="工具列表"
         left-arrow
         @click-left="onClickLeft"
+        fixed
         >
       </van-nav-bar>
     </div>
+    <div class="top-space"></div>
     <van-panel title="常用截图">
       <div class="flex-wrap panel-content">
         <div class="flex-column panel-item">

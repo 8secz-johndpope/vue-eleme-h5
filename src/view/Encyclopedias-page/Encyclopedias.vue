@@ -1,19 +1,17 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <div class="fixed-top">
-      <van-nav-bar
-        title="工作996，生病ICU，年轻人，你的头发还好吗？"
-        left-arrow
-        @click-left="onClickLeft"
-        fixed
+    <van-nav-bar
+      title="工作996，生病ICU，年轻人，你的头发还好吗？"
+      left-arrow
+      @click-left="onClickLeft"
+      fixed
       >
-      </van-nav-bar>
-    </div>
+    </van-nav-bar>
     <!-- 撑开Fixednav挡住的位置 -->
     <div class="top-space"></div>
     <div class="white-bg">
-      <van-cell class="mgt10">
+      <van-cell>
         <template slot="title">
           <div class="flex-start">
             <van-icon name="like-o" class="red-color mgr5" />

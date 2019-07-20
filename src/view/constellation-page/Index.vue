@@ -6,7 +6,6 @@
         title="星座运势"
         left-arrow
         @click-left="onClickLeft"
-        fixed
       >
       </van-nav-bar>
     </div>
