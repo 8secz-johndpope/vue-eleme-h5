@@ -10,6 +10,7 @@
         />
       </form>
     </div>
+    <div class="top-space"></div>
     <!-- 搜索历史 -->
     <div class="pdl15 pdr15">
       <div class="flex-space-between pdb10" v-for="(item, index) in searchRecordList" :key="index">
@@ -213,6 +214,12 @@ export default {
   }
   .top-zone{
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999
+  }
+  .top-space{
+    height: 1.5rem
   }
   .top-zone-left{
     font-size: 18px;

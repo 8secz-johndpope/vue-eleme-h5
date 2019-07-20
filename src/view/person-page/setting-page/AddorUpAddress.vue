@@ -13,10 +13,15 @@
       :area-list="getAreaList"
       show-postal
       show-delete
-      show-set-default
       @save="onSave"
       @delete="onDelete"
-    />
+    >
+      <template slot="default">
+        <van-cell-group>
+          <van-switch-cell v-model="isDefaultAddress" title="设为默认收货地址" size="50px" />
+        </van-cell-group>
+      </template>
+    </van-address-edit>
   </div>
 </template>
 <script>
@@ -30,6 +35,7 @@
     name: 'addorUpAddress',
     data () {
       return {
+        isDefaultAddress: true,  // 设为默认收货地址
       };
     },
     mounted () {

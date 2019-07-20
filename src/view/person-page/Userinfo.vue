@@ -5,7 +5,9 @@
       title="个人信息"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell is-link class="cellTop">
       <template slot="title">
         <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" class="uploaderImg">

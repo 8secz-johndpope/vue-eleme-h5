@@ -6,9 +6,11 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      fixed
     >
       <van-icon name="share" slot="right" />
     </van-nav-bar>
+    <div class="top-space"></div>
     <van-cell-group>
       <van-cell class="displayflex">
         <div class="img-zone">

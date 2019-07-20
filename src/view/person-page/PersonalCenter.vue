@@ -5,7 +5,9 @@
       title="个人中心"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell title="个人资料" icon="user-o" is-link :to="{ name: 'userinfo' }" class="cellSpace" />
     <van-cell title="我的钱包" icon="gem-o" is-link :to="{ name: 'mywallet' }" />
     <van-cell title="邀请有礼" icon="point-gift-o" is-link :to="{ name: 'invitation' }" />

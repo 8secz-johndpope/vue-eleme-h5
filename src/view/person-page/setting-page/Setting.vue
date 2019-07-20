@@ -5,7 +5,9 @@
       title="设置"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell title="商店分享功能" icon="shopping-cart-o" value="立即开通" is-link :to="{ name: 'applyOpenShop' }" />
     <van-cell title="实名认证" icon="certificate" value="未认证" is-link :to="{ name: 'certification' }" />
     <van-cell title="申请官方认证" icon="passed" value="个人、企业机构认证" is-link :to="{ name: 'officialCertification' }" />
