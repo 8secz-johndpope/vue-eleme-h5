@@ -12,7 +12,7 @@
     <!-- <p class="noData wx-bg font-16 mgt20" v-if="rechargeRecordList.length === 0">
       您还没有充值记录
     </p> -->
-    <van-tabs v-model="tabActive">
+    <van-tabs v-model="tabActive" swipeable>
       <van-tab title="全部">
         <van-cell :title="item.amount + '元 ' + item.goldCoin + '金币'" :value="item.time" v-for="(item,index) in rechargeRecordList" />
       </van-tab>
