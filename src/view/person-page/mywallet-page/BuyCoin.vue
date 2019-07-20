@@ -7,7 +7,9 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="toRechargeHelp"
+      fixed
     />
+    <div class="top-space"></div>
     <van-notice-bar
       text="开业大酬宾，充值金币满100送10，充的越多，送的越多，快快参加吧"
       left-icon="volume-o"
@@ -16,7 +18,7 @@
     <div class="shopList-zone">
       <van-button plain :type=" currentSelect == index ? 'danger' : 'default' " v-for="(item, index) in shopList"  @click="selectShop(index, item)" class="shop-btn">
         <span>{{item.value}}</span>
-        <van-tag plain type="danger" v-if="item.isHot === 0">推荐</van-tag>
+        <van-tag plain type="danger" v-if="item.tag">{{item.tag}}</van-tag>
       </van-button>
     </div>
     <!-- 优惠券单元格 -->
@@ -48,72 +50,72 @@
           {
             num: 9.98,
             value: '20金币（￥9.98）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '促销', // 商品标签
             goldCoin: '20金币', // 价值金币
             extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 19.88,
             value: '40金币（￥19.88）',
-            isHot: 0, // 是否热选，0-是，1-否
+            tag: '推荐', // 商品标签
             goldCoin: '50金币', // 价值金币
             extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 38,
             value: '80金币（￥38）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '推荐', // 商品标签
             goldCoin: '80金币', // 价值金币
             extraGoldCoin: 0,  // 赠送金币
           },
           {
             num: 68,
             value: '150金币（￥68）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '优选', // 商品标签
             goldCoin: '150金币', // 价值金币
             extraGoldCoin: 5,  // 赠送金币
           },
           {
             num: 88,
             value: '200金币（￥88）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '优选', // 商品标签
             goldCoin: '200金币', // 价值金币
-            extraGoldCoin: 10,  // 赠送金币
+            extraGoldCoin: 5,  // 赠送金币
           },
           {
             num: 128,
             value: '350金币（￥128）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '优选', // 商品标签
             goldCoin: '350金币', // 价值金币
-            extraGoldCoin: 20,  // 赠送金币
+            extraGoldCoin: 10,  // 赠送金币
           },
           {
             num: 168,
             value: '500金币（￥168）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '爆款', // 商品标签
             goldCoin: '500金币', // 价值金币
             extraGoldCoin: 30,  // 赠送金币
           },
           {
             num: 318,
             value: '1000金币（￥318）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '爆款', // 商品标签
             goldCoin: '1000金币', // 价值金币
             extraGoldCoin: 30,  // 赠送金币
           },
           {
             num: 588,
             value: '2000金币（￥588）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '壕', // 商品标签
             goldCoin: '2000金币', // 价值金币
-            extraGoldCoin: 30,  // 赠送金币
+            extraGoldCoin: 50,  // 赠送金币
           },
           {
             num: 1388,
             value: '5000金币（￥1388）',
-            isHot: 1, // 是否热选，0-是，1-否
+            tag: '壕', // 商品标签
             goldCoin: '5000金币', // 价值金币
-            extraGoldCoin: 30,  // 赠送金币
+            extraGoldCoin: 50,  // 赠送金币
           },
         ],
         currentSelect: 1,  // 当前选中

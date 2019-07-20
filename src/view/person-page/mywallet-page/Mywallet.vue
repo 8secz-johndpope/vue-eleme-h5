@@ -7,7 +7,9 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="toRechargeRecord"
+      fixed
     />
+    <div class="top-space"></div>
     <div class="white-bg pd15">
       <div class="font-14">
         <span>账户余额（金币：枚）</span>

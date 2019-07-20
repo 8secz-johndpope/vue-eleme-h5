@@ -5,7 +5,9 @@
       title="联系我们"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-collapse v-model="activeNames">
       <van-collapse-item title="联系方式" name="1">
         QQ：809136696；</br>

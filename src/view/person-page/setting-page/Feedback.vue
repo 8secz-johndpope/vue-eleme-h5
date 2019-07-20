@@ -7,7 +7,9 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="commitAdvice"
+      fixed
     />
+    <div class="top-space"></div>
     <!-- 文本框 -->
     <van-cell-group class="van-cell-group">
       <van-field

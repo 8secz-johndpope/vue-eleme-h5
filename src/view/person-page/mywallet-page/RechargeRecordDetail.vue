@@ -2,7 +2,7 @@
   <div class="mywallet">
     <!-- 顶部 -->
     <van-nav-bar
-      title="充值记录"
+      title="充值记录详情"
       left-arrow
       @click-left="onClickLeft"
       fixed

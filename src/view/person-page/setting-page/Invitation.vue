@@ -7,7 +7,9 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      fixed
     />
+    <div class="top-space"></div>
     <div class="main-content">
       <div class="img-zone">
         <img src="http://img.zcool.cn/community/031aa6a567797a900000138c4216392.jpg" class="img" />

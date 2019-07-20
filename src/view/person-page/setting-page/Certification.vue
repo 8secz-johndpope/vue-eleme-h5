@@ -5,7 +5,9 @@
       title="实名认证"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell-group>
       <van-field
       v-model="userName"

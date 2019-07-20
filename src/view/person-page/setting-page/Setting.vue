@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部 -->
     <van-nav-bar
-      title="个人中心"
+      title="设置"
       left-arrow
       @click-left="onClickLeft"
     />

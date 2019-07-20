@@ -7,7 +7,9 @@
       right-text="问题与帮助"
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      fixed
     />
+    <div class="top-space"></div>
     <!-- 主体内容 -->
     <van-pull-refresh v-model="isRefreshLoading" @refresh="onRefresh">
       <div class="tcenter white-bg pd15">

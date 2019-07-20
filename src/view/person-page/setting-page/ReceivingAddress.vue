@@ -7,7 +7,9 @@
       @click-left="onClickLeft"
       right-text="保存并使用"
       @click-right="onClickRight"
+      fixed
     />
+    <div class="top-space"></div>
     <van-address-list
       v-model="chosenAddressId"
       :list="list"

@@ -5,7 +5,9 @@
       title="收货地址编辑"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
+    <div class="top-space"></div>
     <!-- 新增或收货地址 -->
     <van-address-edit
       :area-list="getAreaList"
