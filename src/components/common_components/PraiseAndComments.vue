@@ -18,7 +18,7 @@
         @load="onLoadMore"
       >
         <van-cell-group v-for="(item,index) in arrs">
-          <van-cell class="displayflex" @click="seeDetail(item,index)">
+          <van-cell class="displayflex" @click="toDetail(item,index)">
             <div class="tleft van-user-item-left">
               <div class="van-avatar-large"><img :src="item.firstUserImg" alt="" class="van-avatar-img"></div>
               <div class="flex-column van-user-item-text-info">
@@ -106,30 +106,29 @@
       // 下拉加载更多
       onLoadMore() {
         let obj = {
-            userList: [ // 子一级评论/点赞用户列表
-                {
-                    userId: '',
-                    userName: '最新用户',
-                    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
-                },
-                {
-                    userId: '',
-                    userName: '最新用户',
-                    userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
-                },
-            ],
-            workId: 'workId001',    // 作品Id
-            workAuthor: '作品作者',  // 作品作者
-            workFirstHtml: '<p>男：点赞评论html</p>',
-            time: '1552838875',
-            type: 1,    // 0-点赞作品，1-点赞评论，2-评论内容
-            total: 2,   // 点赞/评论 总人数
-            comments: '这是一条评论',
-            firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
-            firstUserName: '最新用户',    // 最新用户的名称
-            firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 最新用户的头像
-            commentsId: 'cID000001', // 该评论的Id
-            commentsType: 0,  // 评论所属类型， 0-作品，1-文章
+          userList: [ // 子一级评论/点赞用户列表
+            {
+                userId: '',
+                userName: '最新用户',
+                userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+            },
+            {
+                userId: '',
+                userName: '最新用户',
+                userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',
+            },
+          ],
+          workId: 'workId001',    // 作品Id
+          workAuthor: '作品作者',  // 作品作者
+          workFirstHtml: '<p>男：点赞评论html</p>',
+          time: '1552838875',
+          type: 1,    // 0-点赞作品，1-点赞评论，2-评论内容
+          total: 2,   // 点赞/评论 总人数
+          comments: '这是一条评论',
+          firstUserId: '',    // 最新用户的id，跟userList数组第一个一致
+          firstUserName: '最新用户',    // 最新用户的名称
+          firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 最新用户的头像
+          commentsId: 'cID000001', // 该评论的Id
         };
         // 异步更新数据
         setTimeout(() => {
@@ -146,13 +145,8 @@
         }, 500);
       },
       // 查看详情
-      seeDetail (item,index) {
-        // commentsType: 0,  // 评论所属类型， 0-作品，1-文章
-        if (item.commentsType == 0) {
-          this.$router.push({ name: 'replyDetail', params: { commentsId: 'commentsId001' } })
-        }else if (item.commentsType === 1) {
-          this.$router.push({ name: 'articleComments', params: { commentsId: 'commentsId001' } })
-        }
+      toDetail (item,index) {
+        this.$router.push({ name: 'postDetail', params: { postId: 'postId001' } })
       }
     }
   }

@@ -347,3 +347,6 @@
 .overflow-h{
   overflow: hidden;
 }
+.lh25{
+  line-height: 0.7rem;
+}

@@ -500,15 +500,6 @@ export default new Router({
       },
       component: (resolve) => require(['view/user-common-page/Mycomments'],resolve),
     },
-    // 回复详情页，定位到被点赞，被评论页
-    {
-      path: '/replyDetail/:id',
-      name: 'replyDetail',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
-      component: (resolve) => require(['view/conversation-page/ReplyDetail'],resolve),
-    },
     // 商品橱窗
     {
       path: '/showcase/index/:shopId',

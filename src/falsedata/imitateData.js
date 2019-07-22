@@ -377,7 +377,6 @@ export var imitateMyPraiseAndComments = [
     firstUserName: '最新用户',    // 最新用户的id
     firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的id
     commentsId: 'cID000001', // 该评论的Id
-    commentsType: 0,  // 评论所属类型， 0-作品，1-文章
   },
   {
     userList: [ // 子一级评论/点赞用户列表
@@ -403,7 +402,6 @@ export var imitateMyPraiseAndComments = [
     firstUserName: '最新用户',    // 最新用户的名称
     firstUserImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4',      // 最新用户的头像
     commentsId: 'cID000002', // 该评论的Id
-    commentsType: 1,  // 评论所属类型， 0-作品，1-文章
   },
 ];
 
