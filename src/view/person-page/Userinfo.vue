@@ -82,9 +82,7 @@
 </template>
 <script>
   import Vue from 'vue';
-  import { DatetimePicker } from 'vant';
   import { mapGetters } from 'vuex';
-  Vue.use(DatetimePicker);
   export default {
     components:{
     },

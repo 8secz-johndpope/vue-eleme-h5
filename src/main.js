@@ -8,7 +8,7 @@ import 'lib-flexible/flexible';
 import { Tabbar, TabbarItem, Cell, CellGroup, SwipeCell, Icon, Tab, Tabs, Popup, Button, NavBar, PullRefresh, Panel, Actionsheet,
          Search, Swipe, SwipeItem, Lazyload, Field, Uploader, Picker, CouponCell, CouponList, Collapse, CollapseItem, Loading, List,
          Tag, Card, SubmitBar, NoticeBar, RadioGroup, Radio, Switch, Area, Checkbox, CheckboxGroup, Progress, AddressList, SwitchCell,
-         Rate, } from 'vant';
+         Rate, DatetimePicker, } from 'vant';
 import VueClipboards from 'vue-clipboard2'; //复制粘贴
 import 'vant/lib/index.css';
 // import 'font-awesome/css/font-awesome.min.css';
@@ -29,7 +29,7 @@ Vue.use(VueClipboards,axios);
 Vue.use(Tabbar).use(TabbarItem).use(Cell).use(CellGroup).use(SwipeCell).use(Icon).use(Tab).use(Tabs).use(Popup).use(Button).use(NavBar).use(PullRefresh).use(Panel).use(Actionsheet)
    .use(Search).use(Swipe).use(SwipeItem).use(Lazyload).use(Field).use(Uploader).use(Picker).use(CouponCell).use(CouponList).use(Collapse).use(CollapseItem).use(Loading).use(List)
    .use(Tag).use(Card).use(SubmitBar).use(NoticeBar).use(RadioGroup).use(Radio).use(Switch).use(Area).use(Checkbox).use(CheckboxGroup).use(Progress).use(AddressList)
-   .use(SwitchCell).use(Rate);
+   .use(SwitchCell).use(Rate).use(DatetimePicker);
 // setDPR();
 // remChange();
 
