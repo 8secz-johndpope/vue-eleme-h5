@@ -6,9 +6,10 @@
       right-text="福利社说明"
       @click-left="onClickLeft"
       @click-right="onClickRight"
-      fiexed
+      fixed
       >
     </van-nav-bar>
+    <div class="top-space"></div>
     <van-notice-bar mode="closeable">
       注意：带*为必填内容
     </van-notice-bar>

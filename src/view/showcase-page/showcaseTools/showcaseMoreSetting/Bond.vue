@@ -6,9 +6,10 @@
       right-text="保证金说明"
       @click-left="onClickLeft"
       @click-right="onClickRight"
-      fiexed
+      fixed
       >
     </van-nav-bar>
+    <div class="top-space"></div>
     <div class="bond-bg img-common white-color flex-center">
       <div class="tcenter">
         <div class="bondAmount">{{bondAmount}}</div>
