@@ -152,6 +152,8 @@ function crtTimeFtt(val, type) {
           return date.getFullYear() + '-' + m + '-' + d;
         }else if (type === 'yy-mm-dd hh-mm') {
           return date.getFullYear() + '-' + m + '-' + d + ' ' + h + ':' + f;
+        }else if (type === 'yy-mm') {
+          return date.getFullYear() + '-' + m;
         }else {
           return date.getFullYear() + '-' + m + '-' + d;
         }
