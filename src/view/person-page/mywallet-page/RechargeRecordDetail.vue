@@ -47,7 +47,6 @@
     data () {
       return {
         orderState: 1, // 0-已完成 1-待付款 2-已取消
-        recordIcon: require('images/icon/zhangdan.png'),
       };
     },
     mounted () {
