@@ -5,8 +5,8 @@
     <div class="top-space"></div>
     <div class="goods">
       <van-swipe class="goods-swipe" :autoplay="3000">
-        <van-swipe-item v-for="thumb in goods.thumb" :key="thumb" :height="300">
-          <img :src="thumb" >
+        <van-swipe-item v-for="(item, index) in goods.thumb" :key="index" :height="300" @click.stop="goodsImgList(goods.thumb, index)">
+          <img :src="item" >
         </van-swipe-item>
       </van-swipe>
       <van-notice-bar
@@ -67,6 +67,7 @@ import {
   GoodsAction,
   GoodsActionBigBtn,
   GoodsActionMiniBtn,
+  ImagePreview,
 } from 'vant';
 export default {
   components: {
@@ -74,6 +75,7 @@ export default {
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
     [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
+    [ImagePreview.name]: ImagePreview,
   },
   data() {
     return {
@@ -125,6 +127,16 @@ export default {
           userId: 'userId0001'
         },
       })
+    },
+    // 图片预览
+    goodsImgList (list, imgIndex) {
+      ImagePreview({
+        images: list,
+        startPosition: imgIndex,
+        onClose() {
+          // do something
+        }
+      });
     },
     // 前往兑换
     toExchange () {

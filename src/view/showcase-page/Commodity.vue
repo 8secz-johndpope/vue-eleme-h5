@@ -5,8 +5,8 @@
     <div class="top-space"></div>
     <div class="goods">
       <van-swipe class="goods-swipe" :autoplay="3000">
-        <van-swipe-item v-for="thumb in goods.thumb" :key="thumb" :height="300">
-          <img :src="thumb" >
+        <van-swipe-item v-for="(item, index) in goods.thumb" :key="index" :height="300" @click.stop="goodsImgList(goods.thumb, index)">
+          <img :src="item" >
         </van-swipe-item>
       </van-swipe>
 
@@ -73,6 +73,7 @@ import {
   GoodsAction,
   GoodsActionBigBtn,
   GoodsActionMiniBtn,
+  ImagePreview,
 } from 'vant';
 import MoreOperate from 'components/child_components/Comments_components/MoreOperate';
 export default {
@@ -81,6 +82,7 @@ export default {
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
     [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
+    [ImagePreview.name]: ImagePreview,
     MoreOperate,
   },
   data() {
@@ -132,6 +134,16 @@ export default {
     // 复制失败
     onCopyError: function (e) {
       this.$toast('复制失败！')
+    },
+    // 图片预览
+    goodsImgList (list, imgIndex) {
+      ImagePreview({
+        images: list,
+        startPosition: imgIndex,
+        onClose() {
+          // do something
+        }
+      });
     },
   }
 };
