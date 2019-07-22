@@ -1,6 +1,7 @@
 <template>
   <div class="payment-components">
     <Backbar :titleName="'支付订单'"></Backbar>
+    <div class="top-space"></div>
     <!-- 订单区域 -->
     <div class="order-zone flex-center">
       <div>

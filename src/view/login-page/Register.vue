@@ -1,6 +1,7 @@
 <template>
   <div>
     <Backbar :titleName="'注册'"></Backbar>
+    <div class="top-space"></div>
     <div class="login_box">
       <div class="title">
         <img src="http://img.bqatj.com/img/6a51e6cae12c5002.jpg" class="common-img" />

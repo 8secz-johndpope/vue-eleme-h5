@@ -5,6 +5,7 @@
       :title="titleName"
       left-arrow
       @click-left="onClickLeft"
+      fixed
     />
   </div>
 </template>

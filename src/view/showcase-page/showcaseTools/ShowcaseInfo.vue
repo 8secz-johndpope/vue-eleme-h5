@@ -7,7 +7,9 @@
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      fixed
     />
+    <div class="top-space"></div>
     <van-cell title="发货地址" is-link :value="address" @click="areaPopShow = true" />
     <van-cell title="橱窗类型" is-link :value="shopType === -1 ? '请选择橱窗类型' : shopTypeName " @click="shopTypePop = true" />
     <van-cell title="联系电话" is-link :value="tel" @click="telPop = true" />

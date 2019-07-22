@@ -1,6 +1,7 @@
 <template>
   <div>
     <Backbar :titleName="'忘记密码'"></Backbar>
+    <div class="top-space"></div>
     <div class="login_box">
       <!-- <Backbar title="登录"></Backbar> -->
       <div class="title">
