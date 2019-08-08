@@ -39,18 +39,18 @@
       <div class="pd15 white-bg">
         <ConstellationCard></ConstellationCard>
       </div>
-      <!-- 情感百科 -->
-      <van-cell title="情感百科" value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="mgt10"></van-cell>
-      <!-- 情感百科列表，默认3篇 -->
-      <div class="white-bg pd10">
-        <EncyclopediasCard></EncyclopediasCard>
-      </div>
       <!-- AI导师 -->
       <van-cell title="AI导师" value="更多" is-link :to="'/AITeaching/AITeachingChatList'" class="mgt10"></van-cell>
       <!-- AI导师列表，默认四篇 -->
       <div class="flex-space-around white-bg pd10">
         <!-- AI导师卡片 -->
         <ImgCard :composition="getImitateVideoList"></ImgCard>
+      </div>
+      <!-- 情感百科 -->
+      <van-cell title="情感百科" value="更多" is-link :to="'/encyclopedias/encyclopediasList'" class="mgt10"></van-cell>
+      <!-- 情感百科列表，默认3篇 -->
+      <div class="white-bg pd10">
+        <EncyclopediasCard></EncyclopediasCard>
       </div>
     </div>
     <!-- 撑开Fixednav挡住的位置 -->

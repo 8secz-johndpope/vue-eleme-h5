@@ -224,7 +224,7 @@ export var imitateArticleList = [
     id: 'zs20190214',
     title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
-    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
+    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565244489401&di=dffd6a071b7f2c91fc657c3fd822f6ee&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F444%2Fw640h604%2F20180728%2Faf00-hfxsxzf6326836.jpg',
     time: '2019.02.13',
     readingNumbers: 99999,   // 阅读数
     isCarefullyChosen: true, // 是否精选
@@ -233,7 +233,7 @@ export var imitateArticleList = [
     id: 'zs20190214',
     title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
-    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
+    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565244489401&di=dffd6a071b7f2c91fc657c3fd822f6ee&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F444%2Fw640h604%2F20180728%2Faf00-hfxsxzf6326836.jpg',
     time: '2019.02.13',
     readingNumbers: 9999,   // 阅读数
     isCarefullyChosen: false, // 是否精选
@@ -242,7 +242,7 @@ export var imitateArticleList = [
     id: 'zs20190214',
     title: '老想睡觉怎么办？老司机给你带路',
     desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
-    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552210959430&di=c51a258d17691b5059e1ad6db3ee56fb&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg',
+    imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565244489401&di=dffd6a071b7f2c91fc657c3fd822f6ee&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F444%2Fw640h604%2F20180728%2Faf00-hfxsxzf6326836.jpg',
     time: '2019.02.13',
     readingNumbers: 9999,   // 阅读数
     isCarefullyChosen: false, // 是否精选

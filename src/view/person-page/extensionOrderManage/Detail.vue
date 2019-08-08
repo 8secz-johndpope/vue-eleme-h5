@@ -19,6 +19,8 @@
       <van-cell title="订单号" :value="order" />
       <van-cell title="下单时间" :value="COMMONFUNC.crtTimeFtt(createTime, 'yy-mm-dd hh-mm')" />
       <van-cell title="下单金币" :value="orderCoin" />
+      <van-cell title="已消耗金币" :value="usedCoin" />
+      <van-cell title="消耗完成度" :value="progress + '%'" />
     </van-cell-group>
     <!-- 数据总览 -->
     <div class="pd15 white-bg">
@@ -38,9 +40,17 @@
           <div class="font-14">互动量</div>
         </div>
       </div>
+      <div class="dy-font-color pdt10">*仅统计由投放获得的增量数据，自然流量不统计在内，数据可能会有延迟，延迟会在1小时内</div>
+    </div>
+    <div class="pdl15 pdr15 white-bg">
+      <div class="dy-font-color">互动数据：</div>
+      <van-cell title="评论数" value="4000" />
+      <van-cell title="喜欢数" value="500" />
+      <van-cell title="分享数" value="200" />
+      <van-cell title="点赞数" value="300" />
     </div>
     <!-- 投放内容 -->
-    <div class="pd15 white-bg">
+    <div class="pdb15 pdl15 pdr15 white-bg">
       <div class="dy-font-color">投放内容：</div>
       <div class="flex-wrap mgt10">
         <div class="flex-center"><img :src="userImg" class="van-avatar" /></div>
@@ -50,10 +60,6 @@
         </div>
       </div>
     </div>
-    <van-cell-group>
-      <van-cell title="已消耗金币" :value="usedCoin" />
-      <van-cell title="消耗完成度" :value="progress + '%'" />
-    </van-cell-group>
     <div class="footer-space"></div>
     <div class="fixed-footer-btn-zone">
       <van-button round type="danger" size="large" @click="continueExtend">继续投放</van-button>
@@ -74,7 +80,7 @@
         status: 1,  // 0-进行中  1-已完成  2-中途结束
         showNum: 100, // 展示量，用户看到的数量
         playNum: 1000, // 展示量，包含重复播放的
-        interactionNum: 50, // 互动量 包括点赞，评论，转发，帮顶的数量
+        interactionNum: 5000, // 互动量 包括点赞，评论，转发，帮顶的数量
         usedCoin: 100,  // 已消耗金币
         progress: 100,  // 进度
         userImg: 'https://avatars1.githubusercontent.com/u/34303195?s=460&v=4', // 作品的用户头像

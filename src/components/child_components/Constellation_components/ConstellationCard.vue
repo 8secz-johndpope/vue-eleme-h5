@@ -26,7 +26,7 @@
           <span class="mgl10">幸运颜色：</span><span>紫色</span>
         </div>
         <div class="flex-start mgt5">
-          <span>理财运势：</span>
+          <span>财富运势：</span>
           <van-rate v-model="rateValue" readonly :size="50"/>
           <span class="mgl10">幸运数字：</span><span>11</span>
         </div>

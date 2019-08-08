@@ -18,7 +18,7 @@
           <div>
             <img :src="menuItem.img"  class="van-avatar" />
           </div>
-          <div>
+          <div class="font-14">
             {{menuItem.levelOneName}}
           </div>
         </router-link>
@@ -40,17 +40,17 @@ export default {
         {
           levelOneName: '提问', // 分类名称
           linkUrlName: 'publishPost',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/icon/questionAndAnswer/tiwen.png'), // 绝对路径
         },
         {
           levelOneName: '最新', // 分类名称
           linkUrlName: 'newestAsk',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          img: require('images/icon/questionAndAnswer/zuixin.png'), // 绝对路径
         },
         {
-          levelOneName: '我的关注', // 分类名称
-          linkUrlName: 'myfollowsAsk',
-          img: "http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg",
+          levelOneName: '排行榜', // 分类名称
+          linkUrlName: 'darenRanking',
+          img: require('images/icon/questionAndAnswer/paihangbang.png'), // 绝对路径
         },
       ]
     };

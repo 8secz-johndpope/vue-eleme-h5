@@ -72,7 +72,7 @@
     mounted () {
       setTimeout( ()=> {
         this.onLoadMore();
-      },3000)
+      },1500)
     },
     computed: {
       ...mapGetters([

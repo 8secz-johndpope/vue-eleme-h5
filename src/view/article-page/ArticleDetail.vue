@@ -13,7 +13,7 @@
       <!-- 文章内容 -->
       <article class="article-contents">
         <section class="img-zone">
-          <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1552210959430&amp;di=c51a258d17691b5059e1ad6db3ee56fb&amp;imgtype=0&amp;src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201709%2F21%2Fa05161a4469dc5ef8be88ee217d53d92.jpg" class="text-img">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565244489401&di=dffd6a071b7f2c91fc657c3fd822f6ee&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F444%2Fw640h604%2F20180728%2Faf00-hfxsxzf6326836.jpg" class="text-img">
         </section>
         <section>
           2018年已经进入倒计时，屏幕面前的你，还是单身汪吗？

@@ -24,68 +24,68 @@
           <div>
             <router-link :to="{ name: 'bloodType', params: { id: 'id001' } }"><van-button type="warning" round plain size="mini" class="btn">{{contellationName}}血型</van-button></router-link>
             <router-link :to="{ name: 'knowledge', params: { id: 'id001' } }"><van-button type="warning" round plain size="mini" class="btn">{{contellationName}}知识</van-button></router-link>
+            <van-button type="warning" round plain size="mini" class="btn" @click="$toast('跳转后台配置的文章')">{{contellationName}}爱情</van-button>
           </div>
         </div>
       </div>
       <van-tabs swipeable :swipe-threshold="6" v-model="tabActive">
-        <van-tab v-for="(item, index) in tabList" :title="item.name">
-          <div v-if="index < 5">
-            <div class="pd15">
-              <div class="flex-start mgt5">
-                <span class="mgr5">综合运势：</span>
-                <van-rate v-model="rateValue" readonly :size="50"/>
-                <div v-if="index < 2"><span class="mgl20 mgr5">幸运数字：</span><span>11</span></div>
-              </div>
-              <div class="flex-start mgt5">
-                <span class="mgr5">爱情运势：</span>
-                <van-rate v-model="rateValue" readonly :size="50"/>
-                <div v-if="index < 2"><span class="mgl20 mgr5">速配星座：</span><span>处女座</span></div>
-              </div>
-              <div class="flex-start mgt5">
-                <span class="mgr5">工作运势：</span>
-                <van-rate v-model="rateValue" readonly :size="50"/>
-                <div v-if="index < 2"><span class="mgl20 mgr5">幸运颜色：</span><span>紫色</span></div>
-              </div>
-              <div class="flex-start mgt5">
-                <span class="mgr5">理财运势：</span>
-                <van-rate v-model="rateValue" readonly :size="50"/>
-                <div v-if="index < 2"><span class="mgl20 mgr5">健康指数：</span><span>85%</span></div>
-              </div>
+        <van-tab v-for="(item, index) in tabList" :title="item.name" :key="index">
+          <div class="pdl15 pdr15 pdb10 pdt10">
+            <div class="flex-start mgt5">
+              <span class="mgr5">综合运势：</span>
+              <van-rate v-model="rateValue" readonly :size="50"/>
+              <div v-if="index < 2"><span class="mgl20 mgr5">幸运数字：</span><span>11</span></div>
             </div>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">综合运势</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">你容易通过花钱的方式来发泄心中的不满情绪，在购物这件事上特别冲动。与他人交流或是商谈的时候，不要过分自我，也不要把自己摆在高高在上的位置，这样容易让自己陷入孤立无援。有伴者可以多为伴侣用点心，能够驱赶Ta心里面的不安。</div>
-            </van-panel>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">爱情运势</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">单身的整理好自己的情感，不合适尽早悬崖勒马。</div>
-            </van-panel>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">工作运势</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">凡事多动脑筋，听听别人的劝告，能少走很多弯路。</div>
-            </van-panel>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">理财运势</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">花钱买了一堆不实用的东西。</div>
-            </van-panel>
+            <div class="flex-start mgt5">
+              <span class="mgr5">爱情运势：</span>
+              <van-rate v-model="rateValue" readonly :size="50"/>
+              <div v-if="index < 2"><span class="mgl20 mgr5">速配星座：</span><span>处女座</span></div>
+            </div>
+            <div class="flex-start mgt5">
+              <span class="mgr5">工作运势：</span>
+              <van-rate v-model="rateValue" readonly :size="50"/>
+              <div v-if="index < 2"><span class="mgl20 mgr5">幸运颜色：</span><span>紫色</span></div>
+            </div>
+            <div class="flex-start mgt5">
+              <span class="mgr5">财富运势：</span>
+              <van-rate v-model="rateValue" readonly :size="50"/>
+              <div v-if="index < 2"><span class="mgl20 mgr5">健康指数：</span><span>85%</span></div>
+            </div>
           </div>
-          <div v-else>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">综合运势</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">狮子们在2019年里的爱情运势处于逐渐上升的状态，你们对待爱情不再冲动，能够更加理性地对待，并且会思考自己真正需要的爱情形式是什么。在上半年里，爱情运势比较一般般，单身的狮子们可能还沉浸在旧日的恋情回忆，而恋爱中的狮子们与恋人的感情则比较稳定。在下半年的时候，狮子们的爱情运势则有所上升，单身的狮子们有机会邂逅心仪对象，恋爱中的狮子们与恋人的感情稳定，很有可能会订婚或是结婚，已婚的狮子们的婚姻状况也十分甜蜜恩爱，还会听到与孩子相关的好消息。</div>
-            </van-panel>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">女生篇</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">在2月和3月的时候，你们可能会因为某些场景而回想起曾经的爱恋，但是你们能够放下往日的感情，勇敢地朝前走，并且追寻属于自己的幸福。如果你们处于单身的状态，那么你们很有可能会邂逅爱情，并且与对方发展成恋人关系。如果你们处于恋爱状态，那么你们与恋人的感情状态非常不错哦，很有可能会发展成订婚或是结婚的情况。如果你们处于已婚的状态，那么你们与另一半的婚姻状况很甜蜜温馨，可能会迎来小生命哦。</div>
-            </van-panel>
-            <van-panel>
-              <div slot="header"><h4 class="pdl15 pdr15 pdt10">男生篇</h4></div>
-              <div class="pdl15 pdr15 pdt10 pdb10">婚神星会从6月份的时候来到你们的本位宫，对于单身的狮子座男生来说是极好的消息，你们可能会邂逅一个能够给予特别感觉的对象，能够和对方产生精神上的共鸣。在下半年的时候，你们的爱情会开花结果，尤其是有恋人的狮子座男生，你们与恋人的关系会有进一步的发展。不过，如果你们已婚的话，那就要保持警惕了哦，因为你们的婚姻关系可能会遭到第三者的破坏。如果能够顺利过关，那么婚姻就会更加地牢固，若是不够坚定，那么婚姻就会出现破裂。</div>
-            </van-panel>
-          </div>
+          <van-panel>
+            <div slot="header"><h4 class="pdl15 pdr15 pdt10">综合运势</h4></div>
+            <div class="pdl15 pdr15 pdt10 pdb10">你容易通过花钱的方式来发泄心中的不满情绪，在购物这件事上特别冲动。与他人交流或是商谈的时候，不要过分自我，也不要把自己摆在高高在上的位置，这样容易让自己陷入孤立无援。有伴者可以多为伴侣用点心，能够驱赶Ta心里面的不安。</div>
+          </van-panel>
+          <van-panel>
+            <div slot="header"><h4 class="pdl15 pdr15 pdt10">爱情运势</h4></div>
+            <div class="pdl15 pdr15 pdt10 pdb10">单身的整理好自己的情感，不合适尽早悬崖勒马。</div>
+          </van-panel>
+          <van-panel>
+            <div slot="header"><h4 class="pdl15 pdr15 pdt10">工作运势</h4></div>
+            <div class="pdl15 pdr15 pdt10 pdb10">凡事多动脑筋，听听别人的劝告，能少走很多弯路。</div>
+          </van-panel>
+          <van-panel>
+            <div slot="header"><h4 class="pdl15 pdr15 pdt10">财富运势</h4></div>
+            <div class="pdl15 pdr15 pdt10 pdb10">花钱买了一堆不实用的东西。</div>
+          </van-panel>
         </van-tab>
       </van-tabs>
     </div>
+    <!-- 星座密语文章 -->
+    <van-cell value="来自星星的蜜语" >
+      <template slot="title">
+        <span class="font-16">星座蜜语</span>
+      </template>
+    </van-cell>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="我也是底线的"
+      :lazy-load="true"
+      @load="onLoad"
+    >
+      <ArticleCard :composition="articleListData"></ArticleCard>
+    </van-list>
     <van-popup v-model="selectContellationTypePopup" class="selectContellationTypePopup">
       <div class="border-radius white-bg pdt15 pdr15 pdl15 flex-wrap">
         <div class="classify-item mgb10" v-for="(item, index) in constellationList" :key="index" @click="selectContellationType(item)">
@@ -101,12 +101,18 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+import ArticleCard from 'components/common_components/ArticleCard';
 export default {
   name: 'constellation',
   components: {
+    ArticleCard
   },
   data () {
     return {
+      loading: false,   // 加载中
+      finished: false,  // 加载完成
+      articleListData: [],  // 文章列表
       today: '',  // 当日
       contellationName: '白羊座',  // 星座名
       contellationTime: '02/19-03/20', // 星座时间
@@ -123,11 +129,7 @@ export default {
           name: '本周',
         },{
           name: '本月',
-        },{
-          name: '今年',
-        },{
-          name: '爱情',
-        },
+        }
       ],
       constellationList: [
         {
@@ -195,9 +197,13 @@ export default {
     };
   },
   mounted () {
+    this.articleListData = JSON.parse(JSON.stringify(this.getImitateArticleList));
     this.today = this.COMMONFUNC.crtTimeFtt(new Date(), 'yy-mm-dd')
   },
   computed: {
+    ...mapGetters([
+      'getImitateArticleList', // 获取模拟文章列表
+    ]),
   },
   methods: {
     onClickLeft(){
@@ -209,7 +215,32 @@ export default {
       this.constellationImg = item.constellationImg;
       this.contellationTime = item.contellationTime;
       this.selectContellationTypePopup = false;
-    }
+    },
+    // 加载更多文章
+    onLoad() {
+      let that = this;
+      let obj = {
+        id: 'zs20190214',
+        title: '网上撩妹怎么聊？老司机给你带路',
+        desc: '如何像案例中这样搜索话术聊天，可以微信添加导师微信领取与咨询,老司机带你一夜暴富，脱贫脱单.....',
+        imgSrc: 'http://img2.imgtn.bdimg.com/it/u=3121687100,2370171796&fm=26&gp=0.jpg',
+        time: '2019.02.13',
+        readingNumbers: 99999,   // 阅读数
+        isCarefullyChosen: true, // 是否精选
+      };
+      // 异步更新数据
+      setTimeout(() => {
+        for (let i = 0; i < 5; i++) {
+          that.articleListData.push(obj);
+        }
+        // 加载状态结束
+        that.loading = false;
+        // 数据全部加载完成
+        if (that.articleListData.length >= 10) {
+          that.finished = true;
+        }
+      }, 500);
+    },
   },
 };
 </script>

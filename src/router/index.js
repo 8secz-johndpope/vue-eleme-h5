@@ -845,14 +845,6 @@ export default new Router({
       component: (resolve) => require(['view/post-page/RedPeopleRanking'],resolve),
     },
     {
-      path: '/post/darenRanking',
-      name: 'darenRanking', // 问答达人榜
-      meta: {
-        keepAlive: true // 需要缓存
-      },
-      component: (resolve) => require(['view/post-page/DarenRanking'],resolve),
-    },
-    {
       path: '/document/redPeopleRankingRules',
       name: 'redPeopleRankingRules', // 微撩红人榜规则
       meta: {
@@ -953,6 +945,14 @@ export default new Router({
         keepAlive: false // 不需要缓存
       },
       component: (resolve) => require(['view/questionAndAnswer-page/NewestAsk'],resolve),
+    },
+    {
+      path: '/questionAndAnswer/darenRanking',
+      name: 'darenRanking', // 问答达人榜
+      meta: {
+        keepAlive: true // 需要缓存
+      },
+      component: (resolve) => require(['view/questionAndAnswer-page/DarenRanking'],resolve),
     },
     /*
       问答专区 -- 结束

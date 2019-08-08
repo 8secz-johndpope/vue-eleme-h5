@@ -3,9 +3,11 @@
     <router-link v-for="(item, index) in composition" :to="'/articleDetail/' + item.id" >
       <van-card
           :tag="item.isCarefullyChosen ? '精选' : '' "
-          :thumb="item.imgSrc"
           class="van-card"
         >
+        <div slot="thumb" class="img">
+          <img :src="item.imgSrc" class="img-common img" />
+        </div>
         <div slot="title" class="title">
           {{item.title}}
         </div>
@@ -13,10 +15,10 @@
           {{item.desc}}
         </div>
         <div slot="price">
-          <span class="reading-number">阅读数：{{COMMONFUNC.formatterW(item.readingNumbers)}}</span>
+          <span class="reading-number dy-font-color">{{COMMONFUNC.formatterW(item.readingNumbers)}}人已读</span>
         </div>
         <div slot="num">
-          <span>阅读全文</span>
+          <span class="dy-font-color">{{item.time}}</span>
         </div>
       </van-card>
     </router-link>
@@ -53,6 +55,10 @@ export default {
     background-color: #fff;
     padding: 0.2rem 0.4rem;
   }
+  .img{
+    width: 100%;
+    height: 100%;
+  }
   .title{
     font-weight: 700;
   }
@@ -60,7 +66,6 @@ export default {
     height: 1.5rem;
   }
   .reading-number{
-    color: #3d3d3d;
     font-weight: normal;
   }
 </style>
